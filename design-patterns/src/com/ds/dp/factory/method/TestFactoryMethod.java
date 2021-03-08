@@ -4,6 +4,7 @@ package com.ds.dp.factory.method;
  * @Author ds
  * @Date 2021/3/8 15:31
  * @Description 工厂方法模式
+ *              创建对象的工作延迟到子类去实现
  */
 public class TestFactoryMethod {
 

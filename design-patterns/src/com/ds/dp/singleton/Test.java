@@ -5,6 +5,7 @@ package com.ds.dp.singleton;
  * @Date 2021/3/5 17:22
  * @Version 1.0
  * @Description 单例模式测试
+ *              使用场景：工具类
  */
 public class Test {
 
