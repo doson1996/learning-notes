@@ -5,7 +5,7 @@ package com.ds.dp.singleton;
  * @Date 2021/3/5 17:19
  * @Version 1.0
  * @Description 饿汉式
- *              线程安全，由于是一开始就加载，没有使用的话会造成浪费
+ *              线程安全，由于是一开始就加载，没有使用的话会造成浪费(空间换时间)
  *              JDK中使用 {@link Runtime}
  */
 public class Singleton01 {

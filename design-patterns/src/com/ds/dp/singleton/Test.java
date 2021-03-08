@@ -30,7 +30,16 @@ public class Test {
         Singleton03 singleton032 = Singleton03.getInstance();
         System.out.println(singleton031 == singleton032);
 
+        //静态内部类
+        Singleton04 singleton041 = Singleton04.getInstance();
+        Singleton04 singleton042 = Singleton04.getInstance();
+        System.out.println(singleton041 == singleton042);
 
+        //枚举
+        Singleton05 singleton051 = Singleton05.instance;
+        Singleton05 singleton052 = Singleton05.instance;
+        singleton051.say("枚举实现单例");
+        System.out.println(singleton051 == singleton052);
 
 
     }
