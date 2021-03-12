@@ -9,7 +9,7 @@ package com.ds.dp.factory.abstractF;
  *                  2.切换产品簇更方便          2.容易造成类层次更复杂
  *
  */
-public class Client {
+public class AbstractFactoryClient {
 
     public static void main(String[] args) {
 
