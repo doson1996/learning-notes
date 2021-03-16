@@ -33,6 +33,8 @@
         <!-- dependency version -->
         <spring-boot-dependencies.version>2.4.3</spring-boot-dependencies.version>
         <lombok.version>1.18.18</lombok.version>
+        <mysql-connector.version>8.0.23</mysql-connector.version>
+
     </properties>
 
     <modules>
@@ -43,6 +45,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
     </dependencies>
@@ -64,6 +71,14 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
