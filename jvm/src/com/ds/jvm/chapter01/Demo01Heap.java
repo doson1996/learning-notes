@@ -13,11 +13,9 @@ import java.util.List;
  */
 public class Demo01Heap {
 
-    private byte[] _1MB = new byte[1 * 1024 * 1024];
+    private byte[] mb = new byte[1 * 1024 * 1024];
 
     public static void main(String[] args) {
-
-        System.out.println("java.version = " + System.getProperty("java.version"));
 
         List<Demo01Heap> list = new ArrayList<>();
         while (true){
