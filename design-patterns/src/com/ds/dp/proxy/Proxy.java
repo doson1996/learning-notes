@@ -37,12 +37,8 @@ public class Proxy implements UserApi{
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()){
-               // int userId = resultSet.getInt("id");
-               // String name = resultSet.getString("name");
-                int dept = resultSet.getInt("dept_no");
 
-               // user.setId(userId);
-               // user.setName(name);
+                int dept = resultSet.getInt("dept_no");
                 user.setDeptNo(dept);
             }
         } catch (SQLException e) {
