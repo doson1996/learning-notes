@@ -34,7 +34,7 @@
         <spring-boot-dependencies.version>2.4.3</spring-boot-dependencies.version>
         <lombok.version>1.18.18</lombok.version>
         <mysql-connector.version>8.0.23</mysql-connector.version>
-
+        <cglib.version>3.3.0</cglib.version>
     </properties>
 
     <modules>
@@ -50,6 +50,11 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
         </dependency>
 
     </dependencies>
@@ -78,6 +83,14 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>
