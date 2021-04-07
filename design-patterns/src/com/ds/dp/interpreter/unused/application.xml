@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <jdbc>
+        <driver-class>数据库驱动</driver-class>
+        <url>连接数据库的url</url>
+        <user>连接数据库的用户名</user>
+        <password>连接数据库的密码</password>
+    </jdbc>
+</root>
