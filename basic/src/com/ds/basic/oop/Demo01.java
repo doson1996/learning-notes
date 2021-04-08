@@ -8,9 +8,8 @@ package com.ds.basic.oop;
 public class Demo01 {
 
     public static void main(String[] args) {
+        Father father = new Son();
 
-        Person person = new Person();
-
-        System.out.println(person.toString());
+        father.print();
     }
 }
