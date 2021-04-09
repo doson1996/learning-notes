@@ -9,6 +9,7 @@ package com.ds.dp.responsibility.simple;
  *                      2.动态组合职责
  *                  缺点：
  *                      1.产生很多细粒度对象
+ *                      2.不一定能被处理
  */
 public class Client {
 
