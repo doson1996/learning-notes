@@ -18,6 +18,5 @@ public class Client {
         Flyweight test2 = factory.getFlyweight("test");
         System.out.println("test1 = " + test1);
         System.out.println("test2 = " + test2);
-
     }
 }
