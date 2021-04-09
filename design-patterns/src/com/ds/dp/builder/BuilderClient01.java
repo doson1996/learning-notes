@@ -17,6 +17,5 @@ public class BuilderClient01 {
 
         User lisi = User.builder().name(null).build();
         System.out.println(lisi);
-
     }
 }
