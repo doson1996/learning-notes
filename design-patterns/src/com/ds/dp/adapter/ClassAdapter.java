@@ -14,7 +14,6 @@ public class ClassAdapter extends LogOperate implements LogDbOperateApi{
     public void insert(LogModel log) {
 
         List<String> logs = this.read();
-
     }
 
     @Override
