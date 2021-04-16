@@ -17,6 +17,10 @@ package com.ds.jvm.classloader;
  *         Extention ClassLoader 标准扩展类加载器
  *         Application ClassLoader 应用类加载器
  *         User ClassLoader 用户自定义类加载器
+ *
+ *         打破双亲委派： 自定义一个类加载器的时候，并重写loadClass 或 findclass(推荐)方法 。
+ *
+ *         打破双亲委派的例子：jdbc 、tomcat 、jdk9模块化技术
  */
 public class ParentalDelegation {
 
