@@ -1,4 +1,4 @@
-package com.ds.concurrent.chapter02.threadpool;
+package com.ds.concurrent.chapter02;
 
 import java.util.concurrent.*;
 

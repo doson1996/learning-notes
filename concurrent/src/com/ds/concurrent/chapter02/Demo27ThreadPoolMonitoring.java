@@ -1,7 +1,5 @@
 package com.ds.concurrent.chapter02;
 
-import com.ds.concurrent.chapter02.threadpool.CustomizeThreadPool;
-
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -29,7 +27,6 @@ public class Demo27ThreadPoolMonitoring {
             TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<>(QUEUE_CAPACITY),
             new CustomizePolicy());
-
 
     public static void main(String[] args) {
 
@@ -70,16 +67,12 @@ public class Demo27ThreadPoolMonitoring {
                                     " - 线程池已完成的任务数:" + threadPool.getCompletedTaskCount() +
                                     " - 线程池队列大小:" + (threadPool.getQueue().size() + threadPool.getQueue().remainingCapacity()) +
                                     " - 当前排队线程数: " + threadPool.getQueue().size() +
-                                    " - 队列剩余大小: " + threadPool.getQueue().remainingCapacity()
-                        );
+                                    " - 队列剩余大小: " + threadPool.getQueue().remainingCapacity());
             });
 
         }
 
-
         threadPool.shutdown();
-
     }
-
 
 }
