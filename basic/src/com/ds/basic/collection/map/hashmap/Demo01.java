@@ -12,7 +12,8 @@ public class Demo01 {
 
     public static void main(String[] args) {
 
-        Map<String,Object> map = new HashMap<>();
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("a","a");
 
 
     }
