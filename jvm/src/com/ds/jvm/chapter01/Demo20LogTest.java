@@ -7,6 +7,6 @@ package com.ds.jvm.chapter01;
  */
 public class Demo20LogTest {
     public static void main(String[] args) {
-        System.out.println(1);
+
     }
 }
