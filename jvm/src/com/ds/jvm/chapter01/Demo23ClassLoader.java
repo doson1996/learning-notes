@@ -5,7 +5,7 @@ package com.ds.jvm.chapter01;
  * @date 2021/9/14 22:08
  */
 public class Demo23ClassLoader {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //系统类加载器 sun.misc.Launcher$AppClassLoader@18b4aac2
         ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
@@ -26,6 +26,12 @@ public class Demo23ClassLoader {
         //基本类型数组不需要类加载器加载，所以为null
         int[] intArr = new int[10];
         System.out.println("intArr = " + intArr.getClass().getClassLoader());
+
+        Class<?> user1 = Class.forName("com.ds.jvm.chapter01.User");
+        System.out.println("user1 = " + user1);
+       // user1.getMethod("setName", String.class).invoke();
+
+
     }
 
 }
