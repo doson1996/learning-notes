@@ -1,0 +1,10 @@
+索引失效
+    1.字段上加函数操作（隐式转换）
+        #能走索引
+        EXPLAIN SELECT * FROM sys_user WHERE phone = '17940732567';
+        #不能走索引，做了隐式转换，在MySQL中，字符串和数字做比较的话，是将字符串转换成数字。 17940732567是整数，所以会在字段phone上进行CAST(phone AS signed int)函数操作
+        EXPLAIN SELECT * FROM sys_user WHERE phone = 17940732567;
+        # 能走索引
+        EXPLAIN SELECT * FROM sys_user WHERE id = '123';
+    2.不同字符集（隐式字符编码转换）
+    3.条件使用or时，不同字段中有一个没索引
