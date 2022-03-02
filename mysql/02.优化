@@ -1,0 +1,10 @@
+服务器层
+    1.innodb_io_capacity  刷脏页 服务器的io能力
+    2.innodb_flush_neighbors 刷脏页时刷相邻的脏页（可以一直蔓延，查询更慢）
+        1.开启(机械硬盘适合，减少很多随机IO)
+        0.关闭(固态硬盘适合<只刷自己，快速响应>,减少SQL语句响应时间，8.0默认关闭)
+    3.alter table A engine=InnoDB 重建表
+
+SQL
+    1.join
+        被驱动表 连接字段加索引
