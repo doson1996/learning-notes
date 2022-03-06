@@ -19,9 +19,9 @@ public class Demo27Monitor {
         System.out.println("初始堆大小: " + heapMemoryUsage.getInit() / MB + "m");
         System.out.println("最大堆大小: " + heapMemoryUsage.getMax() / MB + "m");
         System.out.println("已用堆大小: " + heapMemoryUsage.getUsed() / MB + "m");
-        System.out.println("已用堆大小: " + heapMemoryUsage.getCommitted() / MB + "m");
         System.out.println("--------------------------");
         System.out.println("最大堆大小: " + Runtime.getRuntime().maxMemory() / MB + "m");
         System.out.println("可用堆大小: " + Runtime.getRuntime().freeMemory() / MB + "m");
+        System.out.println("可用处理器: " + Runtime.getRuntime().availableProcessors() + "个");
     }
 }
