@@ -8,3 +8,4 @@
         EXPLAIN SELECT * FROM sys_user WHERE id = '123';
     2.不同字符集（隐式字符编码转换）
     3.条件使用or时，不同字段中有字段没索引
+    4.between 返回的数据超过大约20%，（加上limit时超过了20%的数据也能走索引）

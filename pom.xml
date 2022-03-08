@@ -39,7 +39,11 @@
     </properties>
 
     <modules>
-
+        <module>basic</module>
+        <module>concurrent</module>
+        <module>design-patterns</module>
+        <module>jvm</module>
+        <module>netty</module>
     </modules>
 
     <dependencies>

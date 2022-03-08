@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @Date 2021/4/6 14:52
  * @Description
  */
-public class DefaultThreadPool<Job extends Runnable> implements ThreadPool{
+public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
 
     /**
      *  线程池最大限制数

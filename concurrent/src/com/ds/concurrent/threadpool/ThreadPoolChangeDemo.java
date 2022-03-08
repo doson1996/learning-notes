@@ -40,15 +40,12 @@ public class ThreadPoolChangeDemo {
                 workQueue,
                 threadFactory,
                 handler);
-
     }
 
     /**
      * 提交任务给线程池，并且改变线程池参数
      */
     private static void dynamicModifyExecutor(ThreadPoolExecutor executor) throws InterruptedException {
-
-
         for (int i = 0; i < 20; i++) {
             executor.submit(()->{
                 threadPoolStatus(executor, "创建任务");
@@ -64,7 +61,6 @@ public class ThreadPoolChangeDemo {
         executor.setMaximumPoolSize(10);
         threadPoolStatus(executor, "改变之后");*/
         Thread.currentThread().join();
-
     }
 
     /**
@@ -73,11 +69,11 @@ public class ThreadPoolChangeDemo {
      * @param name
      */
     private static void threadPoolStatus(ThreadPoolExecutor executor, String name){
-
         LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue) executor.getQueue();
-        System.out.println(new Date().toLocaleString() + Thread.currentThread().getName() + "-" + name + "-: " +
-                "核心线程池数: " + executor.getCorePoolSize() +
+        System.out.println(new Date().toString() + Thread.currentThread().getName() + "-" + name + "-: " +
+                " 线程池线程数: " + executor.getPoolSize() +
                 " 活动线程数: " + executor.getActiveCount() +
+                " 核心线程池数: " + executor.getCorePoolSize() +
                 " 最大线程数: " + executor.getMaximumPoolSize() +
                 " 线程活跃度: " + (divide(executor.getActiveCount(), executor.getMaximumPoolSize())) +
                 " 完成任务数: " + executor.getCompletedTaskCount() +
