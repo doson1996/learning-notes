@@ -42,30 +42,12 @@
         <module>basic</module>
         <module>concurrent</module>
         <module>design-patterns</module>
+        <module>elasticsearch</module>
         <module>jvm</module>
         <module>netty</module>
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
 
     </dependencies>
 
