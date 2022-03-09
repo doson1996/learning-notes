@@ -19,8 +19,8 @@ public class Demo01Heap {
     public static void main(String[] args) {
 
         List<Demo01Heap> list = new ArrayList<>();
-        while (true){
-            System.out.println(list.size());
+        while (true) {
+          //  System.out.println(list.size());
             list.add(new Demo01Heap());
         }
 
