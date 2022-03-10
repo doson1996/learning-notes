@@ -19,6 +19,12 @@
             <artifactId>jdbc8</artifactId>
             <version>1.8</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+            <version>5.22.0</version>
+        </dependency>
     </dependencies>
 
     <!-- 添加镜像仓库配置-->
