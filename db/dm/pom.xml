@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>db</artifactId>
+        <groupId>com.ds</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>dm</artifactId>
+    <version>${revision}</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.dameng</groupId>
+            <artifactId>jdbc8</artifactId>
+            <version>1.8</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 添加镜像仓库配置-->
+    <repositories>
+        <!-- 使用阿里云镜像仓库用来提高下载速度-->
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!-- 使用 DM 的镜像仓库来下载驱动包-->
+        <repository>
+            <id>dc</id>
+            <name>dc Repository</name>
+            <url>http://119.96.100.222:8181/repository/maven-releases/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>

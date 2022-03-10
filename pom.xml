@@ -41,6 +41,7 @@
     <modules>
         <module>basic</module>
         <module>concurrent</module>
+        <module>db</module>
         <module>design-patterns</module>
         <module>elasticsearch</module>
         <module>jvm</module>
