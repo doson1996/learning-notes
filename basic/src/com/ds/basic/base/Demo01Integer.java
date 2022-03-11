@@ -1,11 +1,16 @@
 package com.ds.basic.base;
 
+import java.util.Properties;
+
 /**
- * @Author ds
- * @Date 2021/3/17 16:44
- * @Description {@link Integer.IntegerCache} 中缓存了 -128 到 127
- *              false
- *              true
+ *
+ @description {@link Integer.IntegerCache} 中缓存了 -128 到 127
+ * -XX:AutoBoxCacheMax=1024
+ * 在不设置时缓存了 -128 到 127 下面的结果为 false true
+ * 在设置时缓存了 -128 到 1024 下面的结果为 true true
+ * @author ds
+ *
+ *
  */
 public class Demo01Integer {
 
