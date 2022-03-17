@@ -1,7 +1,6 @@
 package com.ds.basic.io.file;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * delete无需解释，为直接删除，
@@ -13,6 +12,9 @@ import java.io.IOException;
 public class Demo01File {
     public static void main(String[] args) throws IOException {
         File file = new File("a.txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        writer.write("95");
+        writer.flush();
         System.out.println(file.getAbsolutePath());
         try {
             Thread.sleep(5000);
