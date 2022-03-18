@@ -46,6 +46,7 @@
         <module>elasticsearch</module>
         <module>jvm</module>
         <module>netty</module>
+        <module>springframework</module>
     </modules>
 
     <dependencies>
