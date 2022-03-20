@@ -8,7 +8,7 @@ import java.sql.*;
  */
 public class Test {
     static String cname = "dm.jdbc.driver.DmDriver";
-    static String url = "jdbc:dm://:5236?schema=ZMAGICUBE";
+    static String url = "jdbc:dm://127.0.0.1:5236?schema=ZMAGICUBE";
     static String userid = "SYSDBA";
     static String pwd = "SYSDBA";
     static Connection con = null;
