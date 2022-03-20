@@ -31,9 +31,11 @@ public class Demo03DocBatchCreate {
         user.setAge(20);
         user.setSex("男");
         String user1 = mapper.writeValueAsString(user);
+        user.setAge(21);
         user.setName("李四");
         String user2 = mapper.writeValueAsString(user);
         user.setName("王五");
+        user.setAge(22);
         String user3 = mapper.writeValueAsString(user);
 
         //批量插入数据

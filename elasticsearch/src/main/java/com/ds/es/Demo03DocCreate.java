@@ -12,6 +12,8 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 
+import java.util.Random;
+
 
 /**
  * 创建文档
@@ -30,7 +32,7 @@ public class Demo03DocCreate {
         //向es里存放数据  必须将数据转换为json格式
         User user = new User();
         user.setName("张三");
-        user.setAge(20);
+        user.setAge(new Random().nextInt());
         user.setSex("男");
         ObjectMapper mapper = new ObjectMapper();
         String userJson = mapper.writeValueAsString(user);
