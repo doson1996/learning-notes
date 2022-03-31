@@ -1,18 +1,16 @@
 package com.ds.concurrent.chapter04;
 
-import io.netty.util.concurrent.DefaultThreadFactory;
-
 import java.util.Date;
 import java.util.concurrent.*;
 
 /**
- * 
+ *
  * @author ds
  */
 public class Demo01 {
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor executorService = new ThreadPoolExecutor(2, 3, 2, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(2), new DefaultThreadFactory("test"),
+                new LinkedBlockingQueue<>(2),
                 new ThreadPoolExecutor.DiscardPolicy());
 
         //每隔两秒打印线程池的信息
