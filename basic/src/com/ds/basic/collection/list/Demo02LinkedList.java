@@ -19,5 +19,7 @@ public class Demo02LinkedList {
         list.get(1);
         list.addAll(Arrays.asList(arr));
         System.out.println("list = " + list);
+        // 指定位置连续几个数据
+        System.out.println(list.subList(0, 2));
     }
 }

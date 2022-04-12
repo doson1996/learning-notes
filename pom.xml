@@ -45,6 +45,7 @@
         <module>design-patterns</module>
         <module>elasticsearch</module>
         <module>jvm</module>
+        <module>mq</module>
         <module>netty</module>
         <module>springframework</module>
     </modules>
