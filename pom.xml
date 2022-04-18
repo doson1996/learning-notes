@@ -36,6 +36,8 @@
         <mysql-connector.version>8.0.23</mysql-connector.version>
         <cglib.version>3.3.0</cglib.version>
         <netty.version>4.1.63.Final</netty.version>
+        <hutool.version>5.7.21</hutool.version>
+        <rocketmq.version></rocketmq.version>
     </properties>
 
     <modules>
@@ -65,6 +67,12 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>4.5.2</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -92,6 +100,11 @@
                 <version>${netty.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
