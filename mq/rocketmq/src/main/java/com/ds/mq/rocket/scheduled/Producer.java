@@ -27,6 +27,7 @@ public class Producer {
             message.setTopic("topic_scheduled");
             message.setTags("tag_scheduled");
             message.setKeys("key_scheduled");
+            // 1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h 对应着等级1到18
             message.setDelayTimeLevel(3);
             message.setBody(("延时消息" + i).getBytes(RemotingHelper.DEFAULT_CHARSET) );
             System.out.println(DateUtil.now()  + "发送延时消息" + i);
