@@ -18,7 +18,6 @@ public class EmailObserver implements Observer {
         System.out.println(email + "--收到邮件--" + emailSubject.getEmailContent());
     }
 
-
     public void setEmail(String email) {
         this.email = email;
     }

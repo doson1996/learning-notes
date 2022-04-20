@@ -8,7 +8,6 @@ package com.ds.dp.observer.jdk;
 public class Client {
 
     public static void main(String[] args) {
-
        EmailSubject emailSubject = new EmailSubject();
 
         for (int i = 0; i < 10; i++) {
@@ -19,8 +18,5 @@ public class Client {
         }
 
         emailSubject.setEmailContent("网站通知《观察者模式》");
-
-
-
     }
 }

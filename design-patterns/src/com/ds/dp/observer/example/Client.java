@@ -30,8 +30,5 @@ public class Client {
         }
 
         newspaper.setContent("观察者模式");
-
-
-
     }
 }

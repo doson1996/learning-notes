@@ -11,8 +11,6 @@ public class EmailSubject extends Observable {
 
     private String emailContent;
 
-
-
     public String getEmailContent() {
         return emailContent;
     }

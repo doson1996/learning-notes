@@ -15,6 +15,5 @@ public class Test {
         }
 
         concreteSubject.setState("1");
-
     }
 }
