@@ -7,7 +7,7 @@ import java.util.Map;
  *
  * @author ds
  */
-public abstract class NoneStep extends AbstractStep {
+public abstract class NoOpStep extends AbstractStep {
 
     @Override
     public void handler(Map<String, Object> context) {
