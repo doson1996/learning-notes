@@ -9,14 +9,16 @@ import java.util.Objects;
  * @author ds
  */
 public class DataCheckStep extends ExceptionStep {
+
     @Override
     public void execute(Map<String, Object> context) throws Exception {
         process(context);
         if ("200".equals(context.get("code"))) {
             // 参数校验成功执行步骤
-            System.out.println("参数校验成功");
+            context.put("msg","参数校验成功");
+            setNextStep(new ResultStep());
         } else {
-            System.out.println("参数校验失败");
+            setNextStep(new ResultStep());
         }
 
     }
@@ -36,7 +38,7 @@ public class DataCheckStep extends ExceptionStep {
         }
         if (applyNo.length() > 17) {
             context.put("code", "400");
-            context.put("msg", "申请编号长度不能小于17!");
+            context.put("msg", "申请编号长度不能大于17!");
             return context;
         }
 
@@ -51,5 +53,4 @@ public class DataCheckStep extends ExceptionStep {
 
         return String.valueOf(value);
     }
-
 }

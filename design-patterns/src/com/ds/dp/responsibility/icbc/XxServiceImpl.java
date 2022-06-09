@@ -1,5 +1,6 @@
 package com.ds.dp.responsibility.icbc;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,10 +12,11 @@ public class XxServiceImpl {
 
     public static void main(String[] args) {
         Map<String,Object> context = new HashMap<>();
-        context.put("applyNo", "1");
+        context.put("applyNo", new ArrayList<>());
 
         StartStep startStep = new StartStep();
         startStep.handler(context);
+        System.out.println("result = " + context);
     }
 
 }
