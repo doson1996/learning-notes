@@ -50,6 +50,7 @@
         <module>jvm</module>
         <module>mq</module>
         <module>netty</module>
+        <module>spi</module>
         <module>springframework</module>
     </modules>
 
