@@ -1,4 +1,4 @@
-package com.ds.kafka.demo01;
+package com.ds.kafka.config;
 
 /**
  * @author ds
