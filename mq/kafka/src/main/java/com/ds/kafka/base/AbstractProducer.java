@@ -1,7 +1,6 @@
 package com.ds.kafka.base;
 
 import com.ds.kafka.config.Config;
-import com.ds.kafka.producer.interceptor.Producer1;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -46,13 +45,5 @@ public abstract class AbstractProducer implements Config {
     public void remove(Properties properties) {
 
     }
-
-    /**
-     * 设置具体producer实例
-     *
-     * @return
-     */
-    public abstract Class<? extends AbstractProducer> setClass();
-
 
 }
