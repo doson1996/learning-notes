@@ -13,4 +13,9 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>canal</module>
+        <module>dm</module>
+    </modules>
+
 </project>
