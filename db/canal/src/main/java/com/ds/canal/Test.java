@@ -78,7 +78,7 @@ public class Test {
                     eventType));
 
             for (RowData rowData : rowChage.getRowDatasList()) {
-                if (eventType == EventType.DELETE) {
+                if (eventType == EventType.DELETE ) {
                     printColumn(rowData.getBeforeColumnsList());
                 } else if (eventType == EventType.INSERT) {
                     printColumn(rowData.getAfterColumnsList());
