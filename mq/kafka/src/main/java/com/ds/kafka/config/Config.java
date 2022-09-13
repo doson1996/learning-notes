@@ -11,6 +11,6 @@ public interface Config {
 
     String GROUP_ID_CONFIG = "GID_TEST";
 
-    String TOPIC = "TOPIC_TEST";
+    String TOPIC = "topic1";
 
 }

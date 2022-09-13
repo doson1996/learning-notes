@@ -1,5 +1,6 @@
 package com.ds.kafka.demo01;
 
+import cn.hutool.core.date.DateUtil;
 import com.ds.kafka.config.Config;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -18,7 +19,7 @@ public class Producer implements Config {
     public static void main(String[] args) {
         KafkaProducer<String, Object> producer = getKafkaProducer();
         for (int i = 0; i < 10; i++) {
-            ProducerRecord<String, Object> record = new ProducerRecord<>(TOPIC, "hello kafka" + i);
+            ProducerRecord<String, Object> record = new ProducerRecord<>(TOPIC, "hello kafka" + i + " " + DateUtil.now());
             producer.send(record, ((recordMetadata, e) -> {
                 if (e != null) {
                     log.info("消息发送失败: " + e.getMessage());
