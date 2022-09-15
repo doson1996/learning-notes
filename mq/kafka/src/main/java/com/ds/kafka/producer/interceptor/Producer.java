@@ -21,6 +21,8 @@ public class Producer extends AbstractProducer {
             producer.send(record, ((metadata, exception) -> {
                 if (exception == null) {
                     log.info("发送成功--> {} , partition: {}, offset: {}", record, metadata.partition(), metadata.offset());
+                } else {
+                    log.error("发送失败--> {}", exception.getMessage());
                 }
             }));
         }
