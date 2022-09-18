@@ -1,7 +1,6 @@
 package com.ds.kafka.consumer.offset;
 
 import com.ds.kafka.base.AbstractConsumer;
-import com.ds.kafka.consumer.ConsumerSubscribe;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
