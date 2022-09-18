@@ -15,7 +15,7 @@ public class ProducerPartition extends AbstractProducer {
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
         KafkaProducer<String, Object> producer = ProducerPartition.class.newInstance().initKafkaProducer();
         for (int i = 0; i < 10; i++) {
-            ProducerRecord<String, Object> record = new ProducerRecord<>(TOPIC, 1, "key", "hello kafka" + i);
+            ProducerRecord<String, Object> record = new ProducerRecord<>(TOPIC, 0, "key", "hello kafka" + i);
             producer.send(record, ((metadata, exception) -> {
                 if (exception == null) {
                     log.info("发送成功--> {} , partition: {}, offset: {}", record.value(), metadata.partition(), metadata.offset());
