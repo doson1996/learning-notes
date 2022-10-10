@@ -14,6 +14,9 @@ public class Request {
     // 请求方法
     private String method;
 
+    // 请求参数
+    private String params;
+
     // 构造函数，参数为后面2.4中Socket建立的IO流
     public Request(InputStream in) throws IOException {
 
@@ -48,5 +51,13 @@ public class Request {
 
     public void setMethod(String method) {
         this.method = method;
+    }
+
+    public String getParams() {
+        return params;
+    }
+
+    public void setParams(String params) {
+        this.params = params;
     }
 }

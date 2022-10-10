@@ -83,9 +83,17 @@ public class SimpleServer {
         FileInputStream fileInputStream = null;
         StringBuffer stringBuffer = new StringBuffer();
 
+        String url = request.getUrl();
+        int i = url.indexOf("?");
+        // 请求路径
+        String path = url.substring(0, i).replace("/", "");
+        // 请求参数
+        String params = url.substring(i + 1);
+        request.setParams(params);
+
         // 有Servlet映射
-        if (map.containsKey(request.getUrl().replace("/", ""))) {
-            String servletClassName = map.get(request.getUrl().replace("/", ""));
+        if (map.containsKey(path)) {
+            String servletClassName = map.get(path);
 
             // 反射
             Class clazz = Class.forName(servletClassName);

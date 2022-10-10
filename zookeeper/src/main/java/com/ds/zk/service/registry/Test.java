@@ -1,6 +1,7 @@
 package com.ds.zk.service.registry;
 
 /**
+ * 测试服务器动态上下线
  * @author ds
  */
 public class Test {

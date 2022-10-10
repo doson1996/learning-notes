@@ -15,7 +15,7 @@ public class TestServlet extends Servlet {
     @Override
     public void doGet(Request request, Response response) {
         try {
-            response.write(request.getUrl(), 200);
+            response.write(request.getParams(), 200);
         } catch (IOException e) {
             e.printStackTrace();
         }
