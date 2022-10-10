@@ -41,7 +41,7 @@ public class ZkClient {
      */
     @Test
     public void create() throws Exception {
-        String result = zooKeeper.create("/zk", "hello zk".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        String result = zooKeeper.create("/zk2", "hello zk".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
         System.out.println("result = " + result);
     }
 
