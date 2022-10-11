@@ -42,7 +42,7 @@ public class SimpleServer {
     // 开启服务器
     public void start(int port) {
         try {
-            System.out.println("MyTomcat is starting... \n");
+            System.out.println("port " + port + " server is starting... \n");
 
             // 监听8080端口
             ServerSocket serverSocket = new ServerSocket(port);
