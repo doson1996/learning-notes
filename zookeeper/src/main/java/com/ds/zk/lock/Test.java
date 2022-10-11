@@ -17,7 +17,7 @@ public class Test {
             if (zkLock1.lock(RESOURCE)) {
                 System.out.println("线程1 加锁成功...");
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -32,7 +32,7 @@ public class Test {
             if (zkLock2.lock(RESOURCE)) {
                 System.out.println("线程2 加锁成功...");
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -40,16 +40,24 @@ public class ZkLock {
 
     private static final String ROOT_PATH = "/locks";
 
+    private CountDownLatch connectLatch = new CountDownLatch(1);
+
     private CountDownLatch waitLatch = new CountDownLatch(1);
 
     public ZkLock() throws Exception {
         // 创建zk连接
         zk = new ZooKeeper(connectString, sessionTimeout, (event) -> {
+            if (event.getState() == Watcher.Event.KeeperState.SyncConnected) {
+                System.out.println("connect...");
+                connectLatch.countDown();
+            }
+
             if (event.getType().equals(Watcher.Event.EventType.NodeDeleted) && event.getPath().equals(preNodePath)) {
                 waitLatch.countDown();
             }
         });
 
+        connectLatch.await();
         //判断根节点是否存在
         Stat root = zk.exists(ROOT_PATH, false);
         if (root == null) {
