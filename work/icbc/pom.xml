@@ -4,18 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>learning-notes</artifactId>
+        <artifactId>work</artifactId>
         <groupId>com.ds</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>work</artifactId>
+    <artifactId>icbc</artifactId>
     <version>${revision}</version>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>icbc</module>
-    </modules>
 
     <dependencies>
 
