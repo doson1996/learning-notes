@@ -15,7 +15,7 @@ public class CuratorTest {
 
     public static final String LOCK_PATH = "/locks/prod1";
 
-    private static final String ZK_HOST = "dus.com:2181";
+    private static final String ZK_HOST = "dy.com:2181";
 
     public static void main(String[] args) {
 

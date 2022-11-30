@@ -21,7 +21,7 @@ public class ZkLock {
 
     private int sessionTimeout = 2000;
 
-    private String connectString = "dus.com";
+    private String connectString = "dy.com";
 
     /**
      * 加锁资源

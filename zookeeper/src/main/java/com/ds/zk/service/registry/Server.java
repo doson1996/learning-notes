@@ -30,7 +30,7 @@ public class Server {
 
     private void initZk() {
         try {
-            zk = new ZooKeeper("dus.com:2181", 2000, (event)->{});
+            zk = new ZooKeeper("dy.com:2181", 2000, (event)->{});
             Stat exists = zk.exists(ROOT_PATH, false);
             if (exists == null) {
                 zk.create(ROOT_PATH, null,ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ZkClient {
 
-    private static final String HOST = "dus.com:2181";
+    private static final String HOST = "dy.com:2181";
 
     private ZooKeeper zooKeeper;
 

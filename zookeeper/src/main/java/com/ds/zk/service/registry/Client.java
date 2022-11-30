@@ -16,7 +16,7 @@ public class Client {
 
     private ZooKeeper zkClient;
 
-    private String connectString = "dus.com:2181";
+    private String connectString = "dy.com:2181";
 
     private int sessionTimeout = 2000;
 
