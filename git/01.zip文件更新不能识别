@@ -1,0 +1,3 @@
+修改工程目录下.git文件夹（隐藏文件夹）中的config文件，追加以下内容
+[diff "zip"]
+textconv = unzip -c -a
