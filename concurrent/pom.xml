@@ -11,6 +11,6 @@
 
     <artifactId>concurrent</artifactId>
     <version>${revision}</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
 </project>

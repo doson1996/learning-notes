@@ -11,9 +11,9 @@ package java.lang;
  *      否则 JavaFX 应用程序类必须扩展javafx.application.Application
  * 因为在java.lang包下的类都已经被启动类加载器加载了，而真正的String里是没有main方法的
  */
-public class String {
-
-    public static void main(String[] args) {
-        System.out.println("1");
-    }
-}
+//public class String {
+//
+//    public static void main(String[] args) {
+//        System.out.println("1");
+//    }
+//}
