@@ -16,9 +16,6 @@ public class SimpleCanalClientExample {
                 destination,
                 "canal",
                 "canal");
-
-
-
     }
 
 }

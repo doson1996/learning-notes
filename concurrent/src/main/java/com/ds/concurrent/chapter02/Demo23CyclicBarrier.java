@@ -27,7 +27,7 @@ public class Demo23CyclicBarrier {
 
     public static void main(String[] args) throws Exception {
         new Thread(()-> {
-            System.out.println("1");
+            System.out.println("1- " + System.currentTimeMillis());
             try {
                 c.await();
             } catch (Exception e) {
@@ -36,7 +36,7 @@ public class Demo23CyclicBarrier {
         }).start();
 
         c.await();
-        System.out.println(2);
+        System.out.println("2- " + System.currentTimeMillis());
 
     }
 
@@ -44,7 +44,7 @@ public class Demo23CyclicBarrier {
 
         @Override
         public void run() {
-            System.out.println("TaskA 优先执行");
+            System.out.println("TaskA 优先执行- " + System.currentTimeMillis());
         }
     }
 
