@@ -66,7 +66,7 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         for (int i = 1; i < size; i++) {
             if (index == i)
                 return node.element;
-                // 继续往下寻找
+            // 继续往下寻找
             else
                 node = node.next;
         }
@@ -83,9 +83,11 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
     @Override
     public E remove(int index) {
         checkIndex(index);
+        // 返回的元素
+        E element;
         // 第一个节点
         if (index == 0) {
-            E element = first.element;
+            element = first.element;
             first = first.next;
             size--;
             return element;
@@ -96,15 +98,15 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         Node<E> prev = first;
         for (int i = 1; i < size; i++) {
             if (index == i) {
+                element = current.element;
                 // 找到之后，下一个节点变成当前节点
                 current = current.next;
                 // 然后下一个节点去连接上一个节点
                 prev.next = current;
                 size--;
-                return current.element;
-            }
+                return element;
             // 继续往下寻找
-            else {
+            } else {
                 // 当前节点赋值给上一个节点
                 prev = current;
                 // 下一个节点赋值给当前节点
