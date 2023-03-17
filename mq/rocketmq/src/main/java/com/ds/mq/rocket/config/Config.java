@@ -6,6 +6,6 @@ package com.ds.mq.rocket.config;
  */
 public class Config {
 
-    public static final String NAME_SERVER_ADDRESSES = "47.98.217.92:9876";
+    public static final String NAME_SERVER_ADDRESSES = "ds.com:9876";
 
 }
