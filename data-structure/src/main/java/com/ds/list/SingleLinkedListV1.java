@@ -5,10 +5,10 @@ import java.util.List;
 
 /**
  * @author ds
- * @date 2023/3/17
- * @description 单向链表
+ * @date 2023/3/18
+ * @description 没有设置尾节点, add方法每次都要遍历所有元素, 耗时极长
  */
-public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
+public class SingleLinkedListV1<E> extends AbstractList<E> implements List<E> {
 
     /**
      * 头节点
@@ -16,16 +16,11 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
     private Node<E> first;
 
     /**
-     * 尾节点
-     */
-    private Node<E> last;
-
-    /**
      * 元素个数
      */
     private int size;
 
-    public SingleLinkedList() {
+    public SingleLinkedListV1() {
         size = 0;
     }
 
@@ -38,18 +33,18 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
     @Override
     public boolean add(E element) {
         Node<E> newNode = new Node<>(element, null);
-        // 第一次add，把新增元素设置为头节点
+        // 第一次add
         if (first == null) {
-            // 新的节点赋值为头节点
             first = newNode;
-            // 尾节点和头结点为同一节点
-            last = first;
             size++;
             return true;
         }
-        // 不是第一次add，在尾节点后面追加新增元素
-        last.next = newNode;
-        last = newNode;
+        // 不是第一次add
+        Node<E> node = first;
+        while (node.next != null) {
+            node = node.next;
+        }
+        node.next = newNode;
         size++;
         return true;
     }
@@ -71,7 +66,7 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         for (int i = 1; i < size; i++) {
             if (index == i)
                 return node.element;
-            // 继续往下寻找
+                // 继续往下寻找
             else
                 node = node.next;
         }
@@ -110,7 +105,7 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
                 prev.next = current;
                 size--;
                 return element;
-            // 继续往下寻找
+                // 继续往下寻找
             } else {
                 // 当前节点赋值给上一个节点
                 prev = current;
