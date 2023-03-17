@@ -16,6 +16,11 @@ public class Demo02LinkedList {
         LinkedList<Integer> list = new LinkedList<>();
         list.add(1);
         list.add(2);
+
+        for (Integer integer : list) {
+            System.out.println("integer = " + integer);
+        }
+
         list.get(1);
         list.addAll(Arrays.asList(arr));
         System.out.println("list = " + list);

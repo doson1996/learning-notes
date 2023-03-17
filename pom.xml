@@ -50,6 +50,7 @@
     <modules>
         <module>basic</module>
         <module>concurrent</module>
+        <module>data-structure</module>
         <module>db</module>
         <module>design-patterns</module>
         <module>dubbo</module>
