@@ -52,7 +52,7 @@ public class DsLinkedList<E> extends AbstractList<E> implements List<E> {
 
     private static class Node<E> {
 
-        private E value;
+        private final E value;
 
         private Node<E> pre;
 

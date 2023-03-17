@@ -10,7 +10,7 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) {
-        List<String> list = new DsLinkedList<>();
+        List<String> list = new SingleLinkedList<>();
         list.add("a");
         list.add("b");
         list.add("c");
