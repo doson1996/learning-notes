@@ -42,13 +42,14 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         if (first == null) {
             // 新的节点赋值为头节点
             first = newNode;
-            // 尾节点和头结点为同一节点
+            // 尾节点和头节点为同一节点
             last = first;
             size++;
             return true;
         }
-        // 不是第一次add，在尾节点后面追加新增元素
+        // 不是第一次add，在add之前的尾节点后面追加新增元素
         last.next = newNode;
+        // 再把新增元素变成尾节点
         last = newNode;
         size++;
         return true;
@@ -63,9 +64,12 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
     @Override
     public E get(int index) {
         checkIndex(index);
-        if (index == 0) {
+        // 头节点
+        if (index == 0)
             return first.element;
-        }
+        // 尾节点
+        if (index == size - 1)
+            return last.element;
 
         Node<E> node = first.next;
         for (int i = 1; i < size; i++) {
