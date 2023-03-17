@@ -16,11 +16,6 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
     private Node<E> first;
 
     /**
-     * 尾节点
-     */
-    private Node<E> last;
-
-    /**
      * 元素个数
      */
     private int size;
@@ -29,6 +24,12 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         size = 0;
     }
 
+    /**
+     * 新增元素
+     *
+     * @param element element whose presence in this collection is to be ensured
+     * @return
+     */
     @Override
     public boolean add(E element) {
         Node<E> newNode = new Node<>(element, null);
@@ -40,11 +41,7 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         }
         // 不是第一次add
         Node<E> node = first;
-//        while (node.next != null) {
-//            node = node.next;
-//        }
-
-        for (int i = 1; i < size; i++) {
+        while (node.next != null) {
             node = node.next;
         }
         node.next = newNode;
@@ -52,6 +49,12 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         return true;
     }
 
+    /**
+     * 获取第index位元素
+     *
+     * @param index index of the element to return
+     * @return
+     */
     @Override
     public E get(int index) {
         checkIndex(index);
@@ -60,18 +63,55 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         }
 
         Node<E> node = first.next;
-
-        int i = 1;
-        // 如果查找的下标大于size的一半，从二分之一开始查找
-        if (index > size / 2)
-            i = size / 2;
-        for (; i < size; i++) {
+        for (int i = 1; i < size; i++) {
             if (index == i)
                 return node.element;
+                // 继续往下寻找
             else
                 node = node.next;
         }
         // 下标大于size，返回null
+        return null;
+    }
+
+    /**
+     * 删除第index位元素
+     *
+     * @param index the index of the element to be removed
+     * @return
+     */
+    @Override
+    public E remove(int index) {
+        checkIndex(index);
+        // 第一个节点
+        if (index == 0) {
+            E element = first.element;
+            first = first.next;
+            size--;
+            return element;
+        }
+        // 当前节点
+        Node<E> current = first.next;
+        // 记录上一个节点
+        Node<E> prev = first;
+        for (int i = 1; i < size; i++) {
+            if (index == i) {
+                // 找到之后，下一个节点变成当前节点
+                current = current.next;
+                // 然后下一个节点去连接上一个节点
+                prev.next = current;
+                size--;
+                return current.element;
+            }
+            // 继续往下寻找
+            else {
+                // 当前节点赋值给上一个节点
+                prev = current;
+                // 下一个节点赋值给当前节点
+                current = current.next;
+            }
+        }
+        // 链表中没有此下标
         return null;
     }
 
@@ -95,7 +135,7 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         /**
          * 元素
          */
-        private E element;
+        private final E element;
 
         /**
          * 下一个节点
