@@ -15,9 +15,9 @@ public class Test {
         list.add("b");
         list.add("c");
 
-        for (String s : list) {
-            System.out.println("s = " + s);
-        }
+//        for (String s : list) {
+//            System.out.println("s = " + s);
+//        }
 
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
