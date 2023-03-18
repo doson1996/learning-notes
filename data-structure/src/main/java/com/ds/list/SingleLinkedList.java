@@ -21,6 +21,11 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
     private Node<E> last;
 
     /**
+     * 中间节点
+     */
+    private Node<E> middle;
+
+    /**
      * 元素个数
      */
     private int size;
@@ -37,6 +42,7 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
      */
     @Override
     public boolean add(E element) {
+        size++;
         Node<E> newNode = new Node<>(element, null);
         // 第一次add，把新增元素设置为头节点
         if (first == null) {
@@ -44,14 +50,13 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
             first = newNode;
             // 尾节点和头节点为同一节点
             last = first;
-            size++;
+
             return true;
         }
         // 不是第一次add，在add之前的尾节点后面追加新增元素
         last.next = newNode;
         // 再把新增元素变成尾节点
         last = newNode;
-        size++;
         return true;
     }
 
