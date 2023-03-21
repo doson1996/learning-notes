@@ -20,7 +20,9 @@ public abstract class AbstractConsumer implements Config {
     private Properties defineDefaultConfiguration() {
         Properties properties = new Properties();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BROKER_LIST);
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID_CONFIG);
         properties.put(ConsumerConfig.CLIENT_ID_CONFIG, CLIENT_ID);
+        properties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 10);
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         put(properties);
