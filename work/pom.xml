@@ -7,6 +7,7 @@
         <artifactId>learning-notes</artifactId>
         <groupId>com.ds</groupId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>work</artifactId>
@@ -15,9 +16,11 @@
 
     <modules>
         <module>icbc</module>
+        <module>ccpsfd</module>
     </modules>
 
     <dependencies>
+
 
     </dependencies>
 </project>

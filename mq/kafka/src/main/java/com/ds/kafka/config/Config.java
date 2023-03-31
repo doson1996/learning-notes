@@ -5,7 +5,7 @@ package com.ds.kafka.config;
  */
 public interface Config {
 
-    String BROKER_LIST = "ds.com:9092";
+    String BROKER_LIST = "47.98.217.92:9092";
 
     String CLIENT_ID = "CID_TEST";
 
