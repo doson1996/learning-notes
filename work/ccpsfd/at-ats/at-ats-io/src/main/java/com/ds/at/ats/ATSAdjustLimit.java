@@ -1,4 +1,4 @@
-package com.ds.at.access;
+package com.ds.at.ats;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import java.util.Map;
  * @date 2023/3/31
  * @description
  */
-public interface AtAdjustLimit {
+public interface ATSAdjustLimit {
 
     /**
      * 申请
