@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  */
 @EnableDubbo
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
-        scanBasePackages = {"com.ds.at.access"}
+        scanBasePackages = {"com.ds.at.access", "com.ds.lib"}
 )
 public class AtAccessBootUp {
     public static void main(String[] args) {

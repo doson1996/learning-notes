@@ -20,7 +20,7 @@ import java.util.Map;
 @RequestMapping("adjust")
 public class AdjustController {
 
-    private AdjustLimit adjustLimit;
+    private final AdjustLimit adjustLimit;
 
     @PostMapping("apply")
     public Map<String, Object> apply(@RequestBody Map<String, Object> input) {
