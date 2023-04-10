@@ -5,22 +5,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ds</groupId>
-        <artifactId>at-access</artifactId>
+        <artifactId>at</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>at-access-api</artifactId>
+    <artifactId>at-ats</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.ds</groupId>
-            <artifactId>at-access-io</artifactId>
+            <artifactId>lib</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.ds</groupId>
-            <artifactId>lib</artifactId>
+            <artifactId>at-ats-io</artifactId>
         </dependency>
 
         <dependency>

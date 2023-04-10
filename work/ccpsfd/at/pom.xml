@@ -5,12 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ds</groupId>
-        <artifactId>at-ats</artifactId>
+        <artifactId>ccpsfd</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>at-ats-io</artifactId>
+    <artifactId>at</artifactId>
+    <packaging>pom</packaging>
 
+    <modules>
+        <module>at-access</module>
+        <module>at-access-io</module>
+        <module>at-ats</module>
+        <module>at-ats-io</module>
+    </modules>
 
 </project>

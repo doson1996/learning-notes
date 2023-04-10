@@ -32,7 +32,7 @@
 
         <!-- dependency version -->
         <spring-boot-dependencies.version>2.4.3</spring-boot-dependencies.version>
-        <springframework.version>5.3.19</springframework.version>
+        <springframework.version>5.3.4</springframework.version>
         <lombok.version>1.18.18</lombok.version>
         <mysql-connector.version>8.0.23</mysql-connector.version>
         <cglib.version>3.3.0</cglib.version>
@@ -41,7 +41,7 @@
         <rocketmq.version>4.5.2</rocketmq.version>
         <kafka.version>3.2.0</kafka.version>
         <zookeeper.version>3.6.3</zookeeper.version>
-        <curator.version>5.3.0</curator.version>
+        <curator.version>4.2.0</curator.version>
         <dubbo.version>3.1.6</dubbo.version>
         <junit.version>4.13.2</junit.version>
         <slf4j.version>1.7.36</slf4j.version>
@@ -63,8 +63,6 @@
         <module>work</module>
         <module>zookeeper</module>
         <module>work/ccpsfd</module>
-        <module>work/ccpsfd/at-ats/at-ats-api</module>
-        <module>work/ccpsfd/at-ats/at-ats-io</module>
     </modules>
 
     <dependencies>
@@ -188,13 +186,25 @@
 
             <dependency>
                 <groupId>com.ds</groupId>
-                <artifactId>at-access-api</artifactId>
+                <artifactId>at-access</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
                 <groupId>com.ds</groupId>
                 <artifactId>at-access-io</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ds</groupId>
+                <artifactId>at-ats</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ds</groupId>
+                <artifactId>at-ats-io</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
@@ -207,6 +217,12 @@
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-zookeeper</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
         </dependencies>

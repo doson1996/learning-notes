@@ -11,7 +11,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @description
  */
 @EnableDubbo
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
+        scanBasePackages = {"com.ds.at.access"}
+)
 public class AtAccessBootUp {
     public static void main(String[] args) {
         SpringApplication.run(AtAccessBootUp.class, args);
