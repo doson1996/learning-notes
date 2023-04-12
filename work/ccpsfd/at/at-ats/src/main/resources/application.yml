@@ -1,0 +1,24 @@
+server:
+  port: 8082
+
+env:
+  host:
+
+spring:
+  application:
+    name: at-ats
+
+dubbo:
+  application:
+    name: ${spring.application.name}
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    protocol: zookeeper
+    address: zookeeper://${env.host}:2181
+    check: false  #关闭注册中心是否启动的相关检查,false表示不检查注册中心是否启动，就不会报错
+  consumer:
+    check: false  #关闭订阅服务是否启动的检查【检查时，没有服务提供者会报错】
+  config-center:
+    timeout: 30000
