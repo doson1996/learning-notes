@@ -19,7 +19,9 @@ public class AtsApply extends AbstractBaseService {
     @Override
     protected Map<String, Object> execute(Map<String, Object> input) {
         log.info("atsApply.execute..., input: {}", input);
-        return Result.success();
+        Map<String, Object> result = Result.success();
+        result.put("data", input);
+        return result;
     }
 
 }

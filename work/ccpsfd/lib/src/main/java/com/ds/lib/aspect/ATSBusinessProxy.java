@@ -1,7 +1,6 @@
 package com.ds.lib.aspect;
 
 import com.ds.lib.context.SpringContext;
-import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * @author ds
@@ -39,8 +39,8 @@ public class ATSBusinessProxy {
             log.info("执行{}方法, 参数: {}", methodInfo, input);
             //执行远程调用，(模拟SpringContainer中获取远程服务执行)
             Object service = SpringContext.getService(atsServerName);
-            Method invokeMethod = service.getClass().getDeclaredMethod(methodName);
-            result = invokeMethod.invoke(service);
+            Method invokeMethod = service.getClass().getDeclaredMethod(methodName, Map.class);
+            result = invokeMethod.invoke(service, input);
         } catch (Throwable e) {
             log.error("方法名：{}，异常：", methodName, e);
         } finally {
