@@ -1,7 +1,8 @@
 package com.ds.at.access.dubbo;
 
-import com.ds.at.ats.ATSAdjustLimit;
+import com.ds.at.ats.AdjustLimitService;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -13,6 +14,6 @@ import org.springframework.context.annotation.Configuration;
 public class ConsumerConfig {
 
     @DubboReference(version = "1.0")
-    ATSAdjustLimit atsAdjustLimit;
+    AdjustLimitService adjustLimitService;
 
 }

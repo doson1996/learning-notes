@@ -7,7 +7,7 @@ import java.util.Map;
  * @date 2023/3/31
  * @description
  */
-public interface ATSAdjustLimit {
+public interface AdjustLimitService {
 
     /**
      * 申请

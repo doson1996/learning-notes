@@ -14,11 +14,10 @@ import java.util.Map;
  * @description
  */
 @Slf4j
-@Primary
 @Service
-public class AdjustLimitService implements AdjustLimit {
+public class AdjustLimitImpl implements AdjustLimit {
 
-    @AtBusiness(value = "001")
+    @AtBusiness(trxCode = "001")
     @Override
     public Map<String, Object> apply(Map<String, Object> input) {
 
