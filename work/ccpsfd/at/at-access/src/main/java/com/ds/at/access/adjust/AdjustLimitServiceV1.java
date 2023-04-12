@@ -16,14 +16,12 @@ import java.util.Map;
  * @description
  */
 @Slf4j
-@Primary
-@Service
+@Service("adjustLimitV1")
 public class AdjustLimitServiceV1 implements AdjustLimit {
 
     @DubboReference(version = "1.0")
     AdjustLimitService adjustLimitService;
 
-    @AtBusiness(value = "001")
     @Override
     public Map<String, Object> apply(Map<String, Object> input) {
         Map<String, Object> apply = adjustLimitService.apply(input);

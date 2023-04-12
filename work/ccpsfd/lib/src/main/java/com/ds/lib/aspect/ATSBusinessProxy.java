@@ -1,11 +1,16 @@
 package com.ds.lib.aspect;
 
+import com.ds.lib.context.SpringContext;
+import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import java.lang.reflect.Method;
 
 /**
  * @author ds
@@ -24,14 +29,18 @@ public class ATSBusinessProxy {
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint joinPoint) {
         String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
+        // 转换为ats服务名
+        String atsServerName = StringUtils.uncapitalize(className).replace("Impl", "Service");
         String methodName = joinPoint.getSignature().getName();
         Object input = joinPoint.getArgs()[0];
         String methodInfo = className + "." + methodName;
         Object result = null;
         try {
             log.info("执行{}方法, 参数: {}", methodInfo, input);
-            //目标方法的执行，(todo SpringContainer中获取远程服务执行)
-             result = joinPoint.proceed();
+            //执行远程调用，(模拟SpringContainer中获取远程服务执行)
+            Object service = SpringContext.getService(atsServerName);
+            Method invokeMethod = service.getClass().getDeclaredMethod(methodName);
+            result = invokeMethod.invoke(service);
         } catch (Throwable e) {
             log.error("方法名：{}，异常：", methodName, e);
         } finally {

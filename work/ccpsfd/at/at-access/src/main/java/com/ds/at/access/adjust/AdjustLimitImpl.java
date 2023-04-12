@@ -14,7 +14,7 @@ import java.util.Map;
  * @description
  */
 @Slf4j
-@Service
+@Service("adjustLimit")
 public class AdjustLimitImpl implements AdjustLimit {
 
     @AtBusiness(trxCode = "001")
