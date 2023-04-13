@@ -17,6 +17,7 @@
     <modules>
         <module>icbc</module>
         <module>ccpsfd</module>
+        <module>ccpsfd/ctp-batch</module>
     </modules>
 
     <dependencies>

@@ -3,6 +3,7 @@ package com.ds.at.access.adjust;
 import com.ds.at.access.AdjustLimit;
 import com.ds.lib.annotation.AtBusiness;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service("adjustLimit")
+@DubboService(version = "1.0")
 public class AdjustLimitImpl implements AdjustLimit {
 
     @AtBusiness(trxCode = "001")
