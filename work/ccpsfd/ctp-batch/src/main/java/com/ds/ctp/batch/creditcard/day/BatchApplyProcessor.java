@@ -16,7 +16,7 @@ import java.util.Map;
  * @description 调用联机服务批量测试
  */
 @Slf4j
-@Process("ccpsfd_d_batch_apply_process")
+@Process(jobName = "ccpsfd_d_batch_apply_process")
 public class BatchApplyProcessor extends BaseProcessJob {
 
     @DubboReference(version = "1.0")

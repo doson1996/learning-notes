@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  * @description 测试批量
  */
 @Slf4j
-@Process(value = "ccpsfd_n_test_process")
+@Process(jobName = "ccpsfd_n_test_process")
 public class TestProcessor extends BaseProcessJob {
     @Override
     protected ProcessResult mainProcess() {

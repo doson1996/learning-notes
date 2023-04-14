@@ -17,4 +17,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Import(ProcessScannerRegistrar.class)
 public @interface EnableBatchProcess {
+
+    String value() default "";
+
+    String[] scanBasePackages() default {};
+
 }

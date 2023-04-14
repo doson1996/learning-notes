@@ -1,5 +1,6 @@
 package com.ds.ctp.batch.bootup;
 
+import com.ds.lib.annotation.EnableBatchProcess;
 import com.ds.lib.batch.BatchBootUp;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @description
  */
 @EnableDubbo
-//@EnableBatchProcess
+@EnableBatchProcess(scanBasePackages = {"com.ds.ctp.batch"})
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
         scanBasePackages = {"com.ds.ctp.batch", "com.ds.lib"}
 )

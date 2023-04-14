@@ -1,6 +1,9 @@
 package com.ds.lib.scan;
 
+import com.ds.lib.annotation.EnableBatchProcess;
 import com.ds.lib.annotation.Process;
+import com.ds.lib.batch.BaseProcessJob;
+import com.ds.lib.batch.ProcessFactoryBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -67,10 +70,10 @@ public class ProcessScannerRegistrar implements ImportBeanDefinitionRegistrar, R
             // 遍历每一个候选类，如果符合条件就把他们注册到容器
             for (BeanDefinition candidateComponent : candidateComponents) {
                 if (candidateComponent instanceof AnnotatedBeanDefinition) {
-                    // verify annotated class is an interface
+                    // todo 可以做一些校验
                     AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) candidateComponent;
                     AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
-                    Assert.isTrue(annotationMetadata.isInterface(), "@Process can only be specified on an interface");
+                    // Assert.isTrue(annotationMetadata.isInterface(), "@Process can only be specified on an interface");
                     // 获取@Process注解的属性
                     Map<String, Object> attributes = annotationMetadata.getAnnotationAttributes(Process.class.getCanonicalName());
                     // 注册到容器
@@ -84,12 +87,12 @@ public class ProcessScannerRegistrar implements ImportBeanDefinitionRegistrar, R
      * 利用factoryBean创建代理对象，并注册到容器
      */
     private static void registerProcess(BeanDefinitionRegistry registry,
-                                                AnnotationMetadata annotationMetadata,
-                                                Map<String, Object> attributes) {
+                                        AnnotationMetadata annotationMetadata,
+                                        Map<String, Object> attributes) {
         // 类名（接口全限定名）
         String className = annotationMetadata.getClassName();
         // 创建ProcessFactoryBean的BeanDefinition
-        BeanDefinitionBuilder definition = BeanDefinitionBuilder.genericBeanDefinition(Process.class);
+        BeanDefinitionBuilder definition = BeanDefinitionBuilder.genericBeanDefinition(ProcessFactoryBean.class);
         // 解析出@Process注解的name
         String name = getName(attributes);
         if (!StringUtils.hasText(name)) {
@@ -104,7 +107,7 @@ public class ProcessScannerRegistrar implements ImportBeanDefinitionRegistrar, R
         AbstractBeanDefinition beanDefinition = definition.getBeanDefinition();
 
         // 注册bean定义信息到容器
-        BeanDefinitionHolder holder = new BeanDefinitionHolder(beanDefinition, className, new String[]{alias});
+        BeanDefinitionHolder holder = new BeanDefinitionHolder(beanDefinition, name, new String[]{alias});
         // 使用BeanDefinitionReaderUtils工具类将BeanDefinition注册到容器
         BeanDefinitionReaderUtils.registerBeanDefinition(holder, registry);
     }
@@ -132,18 +135,11 @@ public class ProcessScannerRegistrar implements ImportBeanDefinitionRegistrar, R
      */
     protected static Set<String> getBasePackages(AnnotationMetadata importingClassMetadata) {
         // 获取到@EnableProcesss注解所有属性
-        Map<String, Object> attributes = importingClassMetadata.getAnnotationAttributes(Process.class.getCanonicalName());
+        Map<String, Object> attributes = importingClassMetadata.getAnnotationAttributes(EnableBatchProcess.class.getCanonicalName());
         Set<String> basePackages = new HashSet<>();
-        assert attributes != null;
-        // value 属性是否有配置值，如果有则添加
-        for (String pkg : (String[]) attributes.get("value")) {
-            if (StringUtils.hasText(pkg)) {
-                basePackages.add(pkg);
-            }
-        }
 
         // basePackages 属性是否有配置值，如果有则添加
-        for (String pkg : (String[]) attributes.get("basePackages")) {
+        for (String pkg : (String[]) attributes.get("scanBasePackages")) {
             if (StringUtils.hasText(pkg)) {
                 basePackages.add(pkg);
             }
@@ -161,7 +157,7 @@ public class ProcessScannerRegistrar implements ImportBeanDefinitionRegistrar, R
      * 获取name
      */
     protected static String getName(Map<String, Object> attributes) {
-        String name = (String) attributes.get("name");
+        String name = (String) attributes.get("jobName");
         if (!StringUtils.hasText(name)) {
             name = (String) attributes.get("value");
         }
