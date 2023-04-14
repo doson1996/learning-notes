@@ -1,6 +1,6 @@
 package com.ds.basic.dynamicproxy.dljk;
 
-import com.ds.basic.dynamicproxy.UserService;
+import com.ds.basic.dynamicproxy.demo.UserService;
 
 /**
  * @author ds

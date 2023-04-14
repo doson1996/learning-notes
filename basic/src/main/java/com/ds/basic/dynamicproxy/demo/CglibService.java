@@ -1,4 +1,4 @@
-package com.ds.basic.dynamicproxy;
+package com.ds.basic.dynamicproxy.demo;
 
 /**
  * @Author ds

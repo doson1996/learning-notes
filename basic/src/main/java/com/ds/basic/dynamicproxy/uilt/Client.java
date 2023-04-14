@@ -1,7 +1,7 @@
 package com.ds.basic.dynamicproxy.uilt;
 
-import com.ds.basic.dynamicproxy.UserService;
-import com.ds.basic.dynamicproxy.UserServiceImpl;
+import com.ds.basic.dynamicproxy.demo.UserService;
+import com.ds.basic.dynamicproxy.demo.UserServiceImpl;
 
 /**
  * @author ds

@@ -1,4 +1,4 @@
-package com.ds.basic.dynamicproxy;
+package com.ds.basic.dynamicproxy.demo;
 
 
 import net.sf.cglib.proxy.Enhancer;
