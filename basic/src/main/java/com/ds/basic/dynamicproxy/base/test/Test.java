@@ -13,7 +13,7 @@ import com.ds.basic.dynamicproxy.base.ProxyFactory;
 public class Test {
     public static void main(String[] args) {
        // testJdk();
-        testCglib();
+       // testCglib();
       //  testFactory();
     }
 
@@ -29,6 +29,9 @@ public class Test {
         userService2.say();
     }
 
+    /**
+     * cglib 不能代理final修饰的类
+     */
     private static void testCglib() {
         BaseProxy cglibProxy = new CglibProxy();
         IUserService userService1 = (IUserService) cglibProxy.create(new UserServiceImpl());

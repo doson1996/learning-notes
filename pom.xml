@@ -63,6 +63,7 @@
         <module>work</module>
         <module>zookeeper</module>
         <module>work/ccpsfd</module>
+        <module>io</module>
     </modules>
 
     <dependencies>

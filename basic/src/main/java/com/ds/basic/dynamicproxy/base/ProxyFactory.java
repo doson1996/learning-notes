@@ -13,7 +13,8 @@ public class ProxyFactory implements BaseProxy {
 
     @Override
     public Object create(Object target) {
-        if (target.getClass().getInterfaces().length == 0) {
+        // 被代理对象没有实现接口或是一个接口的时候，用cglib代理
+        if (target.getClass().getInterfaces().length == 0 || target.getClass().isInterface()) {
             return cglibProxy.create(target);
         }
         return jdkProxy.create(target);
