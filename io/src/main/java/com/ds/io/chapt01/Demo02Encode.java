@@ -1,7 +1,6 @@
 package com.ds.io.chapt01;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
@@ -17,7 +16,7 @@ import java.util.Arrays;
  *                  一个英文占一个字节，二进制第一位是0
  *                  一个中文占三个字节，二进制第一位是1
  */
-public class EncodeDemo {
+public class Demo02Encode {
     public static void main(String[] args) throws UnsupportedEncodingException {
         /* 编码 */
         String str = "ab张三";

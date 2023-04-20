@@ -4,6 +4,10 @@ import com.ds.basic.dynamicproxy.base.BaseProxy;
 import com.ds.basic.dynamicproxy.base.CglibProxy;
 import com.ds.basic.dynamicproxy.base.JdkProxy;
 import com.ds.basic.dynamicproxy.base.ProxyFactory;
+import lombok.SneakyThrows;
+import sun.misc.ProxyGenerator;
+
+import java.io.FileOutputStream;
 
 /**
  * @author ds
@@ -12,9 +16,26 @@ import com.ds.basic.dynamicproxy.base.ProxyFactory;
  */
 public class Test {
     public static void main(String[] args) {
+        principle();
+
        // testJdk();
        // testCglib();
       //  testFactory();
+    }
+
+    /**
+     * 原理
+     */
+    @SneakyThrows
+    public static void principle() {
+        BaseProxy jdkProxy = new JdkProxy();
+        IUserService userService = (IUserService) jdkProxy.create(new UserServiceImpl());
+        userService.say();
+        byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0",new Class[]{userService.getClass()});
+
+        FileOutputStream os = new FileOutputStream("Proxy0.class");
+        os.write(bytes);
+        os.close();
     }
 
     private static void testJdk() {

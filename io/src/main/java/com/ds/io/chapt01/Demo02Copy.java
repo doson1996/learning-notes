@@ -9,7 +9,7 @@ import java.io.IOException;
  * @date 2023/4/18
  * @description 文件拷贝
  */
-public class CopyDemo {
+public class Demo02Copy {
     public static void main(String[] args) {
         FileInputStream fis = null;
         FileOutputStream fos = null;

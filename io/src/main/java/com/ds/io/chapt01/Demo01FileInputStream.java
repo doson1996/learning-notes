@@ -7,7 +7,7 @@ import java.io.FileInputStream;
  * @date 2023/4/18
  * @description
  */
-public class FileInputStreamDemo {
+public class Demo01FileInputStream {
     public static void main(String[] args) throws Exception {
         FileInputStream fis = new FileInputStream("a.txt");
 //        byte[] data = new byte[1024];
