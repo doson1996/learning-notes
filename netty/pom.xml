@@ -18,5 +18,11 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.jboss.pnc.build-agent</groupId>
+            <artifactId>logback</artifactId>
+            <version>1.0.6</version>
+        </dependency>
     </dependencies>
 </project>
