@@ -33,6 +33,9 @@ public class Demo01ByteBuffer {
             }
             // 切换至写模式
             buffer.clear();
+
+            // 把未读的数据往前移
+           // buffer.compact();
         }
         channel.close();
     }
