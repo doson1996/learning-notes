@@ -19,8 +19,8 @@ public class BufferUtils {
         System.out.println("------------------------------------------");
         System.out.println("position: " + buffer.position() +
                 " limit: " + buffer.limit() +
-                " cap: " + buffer.capacity() +
-                " value: " + value);
+                " cap: " + buffer.capacity() + "\n" +
+                "value: " + value);
         System.out.println(Arrays.toString(buffer.array()));
     }
 
