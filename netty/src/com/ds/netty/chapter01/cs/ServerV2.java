@@ -1,11 +1,16 @@
 package com.ds.netty.chapter01.cs;
 
-import com.ds.netty.chapter01.BufferUtils;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.nio.ByteBuffer;
-import java.nio.channels.*;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
 /**
@@ -38,21 +43,39 @@ public class ServerV2 {
                 SelectionKey key = selectedKeys.next();
                 log.info("key = {}", key);
                 ServerSocketChannel channel = (ServerSocketChannel) key.channel();
+                channel.configureBlocking(false);
                 SocketChannel socketChannel = channel.accept();
                 log.info("socketChannel = {}", socketChannel);
                 int read = socketChannel.read(buffer);
                 if (read > 0) {
-                    log.info("读取之前...");
                     // 切换至读模式
                     buffer.flip();
-                    BufferUtils.print(buffer);
+                    String params = new String(buffer.array()).trim();
+                    log.info("接收到参数: {}", params);
+                    response(params,socketChannel);
+                    //  BufferUtils.print(buffer);
                     // 切换至写模式
                     buffer.clear();
-                    log.info("读取之后...");
                 }
-
                 selectedKeys.remove();
             }
         }
     }
+
+    /**
+     * 响应客户端
+     * @param params
+     * @param socketChannel
+     */
+    private static void response(String params, SocketChannel socketChannel) {
+        Socket socket = socketChannel.socket();
+        try {
+            OutputStream outputStream = socket.getOutputStream();
+            outputStream.write(("服务器返回：" + params).getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
