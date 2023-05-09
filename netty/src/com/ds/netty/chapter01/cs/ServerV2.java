@@ -36,23 +36,28 @@ public class ServerV2 {
         ByteBuffer buffer = ByteBuffer.allocate(16);
         while (true) {
             // 没有事件发生，线程阻塞，有事件发生，恢复运行
+            // 有事件未处理，不会阻塞 （事件发生后，要么处理，要么取消）
             selector.select();
             // 处理事件，selectedKeys包含了所有发生的事件
             Iterator<SelectionKey> selectedKeys = selector.selectedKeys().iterator();
             while (selectedKeys.hasNext()) {
                 SelectionKey key = selectedKeys.next();
+                // 取消
+                //key.cancel();
                 log.info("key = {}", key);
                 ServerSocketChannel channel = (ServerSocketChannel) key.channel();
-                channel.configureBlocking(false);
+
                 SocketChannel socketChannel = channel.accept();
+                socketChannel.configureBlocking(false);
                 log.info("socketChannel = {}", socketChannel);
                 int read = socketChannel.read(buffer);
                 if (read > 0) {
                     // 切换至读模式
                     buffer.flip();
-                    String params = new String(buffer.array()).trim();
-                    log.info("接收到参数: {}", params);
-                    response(params,socketChannel);
+                    // 请求处理
+                    String params = request(buffer);
+                    // 响应
+                    response(params, socketChannel);
                     //  BufferUtils.print(buffer);
                     // 切换至写模式
                     buffer.clear();
@@ -63,7 +68,20 @@ public class ServerV2 {
     }
 
     /**
+     * 请求处理
+     *
+     * @param buffer
+     * @return
+     */
+    private static String request(ByteBuffer buffer) {
+        String params = new String(buffer.array()).trim();
+        log.info("接收到参数: {}", params);
+        return params;
+    }
+
+    /**
      * 响应客户端
+     *
      * @param params
      * @param socketChannel
      */
@@ -76,6 +94,5 @@ public class ServerV2 {
             throw new RuntimeException(e);
         }
     }
-
 
 }
