@@ -20,6 +20,7 @@ public class Client {
 
         client.read(buffer);
         System.out.println(new String(buffer.array()).trim());
+        client.close();
 //        while (true) {
 //            client.write(ByteBuffer.wrap("client a...".getBytes()));
 //            Thread.sleep(1000);

@@ -42,27 +42,39 @@ public class ServerV2 {
             Iterator<SelectionKey> selectedKeys = selector.selectedKeys().iterator();
             while (selectedKeys.hasNext()) {
                 SelectionKey key = selectedKeys.next();
-                // 取消
-                //key.cancel();
-                log.info("key = {}", key);
-                ServerSocketChannel channel = (ServerSocketChannel) key.channel();
-
-                SocketChannel socketChannel = channel.accept();
-                socketChannel.configureBlocking(false);
-                log.info("socketChannel = {}", socketChannel);
-                int read = socketChannel.read(buffer);
-                if (read > 0) {
-                    // 切换至读模式
-                    buffer.flip();
-                    // 请求处理
-                    String params = request(buffer);
-                    // 响应
-                    response(params, socketChannel);
-                    //  BufferUtils.print(buffer);
-                    // 切换至写模式
-                    buffer.clear();
-                }
                 selectedKeys.remove();
+
+                log.info("key = {}", key);
+                if (key.isAcceptable()) {
+                    ServerSocketChannel channel = (ServerSocketChannel) key.channel();
+                    SocketChannel socketChannel = channel.accept();
+                    socketChannel.configureBlocking(false);
+                    log.info("socketChannel = {}", socketChannel);
+                    socketChannel.register(selector, SelectionKey.OP_READ);
+                } else if (key.isReadable()) {
+                    try {
+                        SocketChannel channel = (SocketChannel) key.channel();
+                        channel.configureBlocking(false);
+                        int read = channel.read(buffer);
+                        if (read == -1) {  //客户端正常断开，返回-1
+                            key.cancel();
+                        }
+                        if (read > 0) {
+                            // 切换至读模式
+                            buffer.flip();
+                            // 请求处理
+                            String params = request(buffer);
+                            // 响应
+                            // response(params, channel);
+                            //  BufferUtils.print(buffer);
+                            // 切换至写模式
+                            buffer.clear();
+                        }
+                    } catch (IOException e) {
+                        log.error("发生异常：", e);
+                        key.cancel();
+                    }
+                }
             }
         }
     }
