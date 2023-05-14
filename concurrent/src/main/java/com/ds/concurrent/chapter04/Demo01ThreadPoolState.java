@@ -7,7 +7,7 @@ import java.util.concurrent.*;
  *
  * @author ds
  */
-public class Demo01 {
+public class Demo01ThreadPoolState {
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor executorService = new ThreadPoolExecutor(2, 3, 2, TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>(2),

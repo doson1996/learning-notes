@@ -77,9 +77,9 @@ public class Demo14Condition {
         private Object[] items;
         // 添加的下标，删除的下标和数组当前数量
         private int addIndex, removeIndex, count;
-        private Lock lock = new ReentrantLock();
-        private Condition notEmpty = lock.newCondition();
-        private Condition notFull = lock.newCondition();
+        private final Lock lock = new ReentrantLock();
+        private final Condition notEmpty = lock.newCondition();
+        private final Condition notFull = lock.newCondition();
 
         public BoundedQueue(int capacity) {
             items = new Object[capacity];

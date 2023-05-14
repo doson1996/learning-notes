@@ -20,8 +20,9 @@ public class Demo02Print {
         map.put("q", "q");
         map.put("Á", "Á");
         map.put("á", "á");
-//        map.put("Ʊ", "Ʊ");
-//        map.put("ǁ", "ǁ");
+        PrintUtils.hashMap(map);
+        map.put("Ʊ", "Ʊ");
+        map.put("ǁ", "ǁ");
 
        // map.put("b", "b");
 //        map.put("d", "d");
