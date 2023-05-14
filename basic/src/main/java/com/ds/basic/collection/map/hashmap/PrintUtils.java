@@ -3,9 +3,7 @@ package com.ds.basic.collection.map.hashmap;
 import lombok.SneakyThrows;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author ds
@@ -73,6 +71,32 @@ public final class PrintUtils {
         Field field = map.getClass().getDeclaredField(filedName);
         field.setAccessible(true);
         return field.get(map);
+    }
+
+    /**
+     * hash冲突
+     */
+    public static void hashConflicts() {
+        Map<Integer, List<String>> param = new HashMap<>();
+        for (int i = 33; i < 1000; i++) {
+            char ch = (char) i;
+            String str = String.valueOf(ch);
+            int index = 15 & hash(str);
+            List<String> list = param.get(index);
+            if (list == null) {
+                list = new ArrayList<>();
+            }
+            list.add(str);
+            param.put(index, list);
+        }
+
+        param.forEach((k,v) -> System.out.println(k + " " + Arrays.toString(v.toArray())));
+
+    }
+
+    private static int hash(Object key) {
+        int h;
+        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 
 }

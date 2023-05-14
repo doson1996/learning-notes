@@ -1,7 +1,6 @@
 package com.ds.basic.collection.map.hashmap;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author ds
@@ -10,15 +9,23 @@ import java.util.Map;
  */
 public class Demo02Print {
     public static void main(String[] args) {
-        Map<String, Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<>();
         for (int i = 0; i < 6; i++) {
-            map.put(String.valueOf(i), i);
+          //  map.put(String.valueOf(i), i);
         }
-        map.put("a", "a");
+        map.put("1", "1");
         map.put("A", "A");
-        map.put("b", "b");
-        map.put("d", "d");
-        map.put("D", "D");
+        map.put("a", "a");
+        map.put("Q", "Q");
+        map.put("q", "q");
+        map.put("Á", "Á");
+        map.put("á", "á");
+//        map.put("Ʊ", "Ʊ");
+//        map.put("ǁ", "ǁ");
+
+       // map.put("b", "b");
+//        map.put("d", "d");
+//        map.put("D", "D");
         PrintUtils.hashMap(map);
     }
 }
