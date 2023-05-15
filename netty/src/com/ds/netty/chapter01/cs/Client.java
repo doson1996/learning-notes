@@ -16,11 +16,11 @@ public class Client {
         ByteBuffer buffer = ByteBuffer.allocate(32);
         SocketChannel client = SocketChannel.open();
         client.connect(new InetSocketAddress("localhost", 8080));
-        client.write(ByteBuffer.wrap("client a...".getBytes()));
+        client.write(ByteBuffer.wrap("012345\n678sasASassasa9client a...\n".getBytes()));
 
-        client.read(buffer);
-        System.out.println(new String(buffer.array()).trim());
-        client.close();
+//        client.read(buffer);
+//        System.out.println(new String(buffer.array()).trim());
+//        client.close();
 //        while (true) {
 //            client.write(ByteBuffer.wrap("client a...".getBytes()));
 //            Thread.sleep(1000);

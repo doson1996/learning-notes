@@ -1,5 +1,6 @@
 package com.ds.netty.chapter01.cs;
 
+import com.ds.netty.chapter01.BufferUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -33,7 +34,6 @@ public class ServerV2 {
         server.bind(new InetSocketAddress(8080));
         log.info("服务器已启动 ->{}...", server);
 
-        ByteBuffer buffer = ByteBuffer.allocate(16);
         while (true) {
             // 没有事件发生，线程阻塞，有事件发生，恢复运行
             // 有事件未处理，不会阻塞 （事件发生后，要么处理，要么取消）
@@ -50,25 +50,37 @@ public class ServerV2 {
                     SocketChannel socketChannel = channel.accept();
                     socketChannel.configureBlocking(false);
                     log.info("socketChannel = {}", socketChannel);
-                    socketChannel.register(selector, SelectionKey.OP_READ);
+                    // 为SelectionKey设置附件
+                    ByteBuffer buffer = ByteBuffer.allocate(16);
+                    socketChannel.register(selector, SelectionKey.OP_READ, buffer);
                 } else if (key.isReadable()) {
                     try {
                         SocketChannel channel = (SocketChannel) key.channel();
                         channel.configureBlocking(false);
+                        // 获取SelectionKey中的附件
+                        ByteBuffer buffer = (ByteBuffer) key.attachment();
                         int read = channel.read(buffer);
                         if (read == -1) {  //客户端正常断开，返回-1
                             key.cancel();
                         }
                         if (read > 0) {
+                            spit(buffer);
+                            if (buffer.position() == buffer.limit()) { // 说明没有拆分出一条完整的消息，进行扩容后放入selectionKey
+                                ByteBuffer newBuffer = ByteBuffer.allocate(buffer.capacity() << 1);
+                                buffer.flip();
+                                newBuffer.put(buffer);
+                                key.attach(newBuffer);
+                            }
+
                             // 切换至读模式
-                            buffer.flip();
+                            //buffer.flip();
                             // 请求处理
-                            String params = request(buffer);
+                            //String params = request(buffer);
                             // 响应
                             // response(params, channel);
                             //  BufferUtils.print(buffer);
                             // 切换至写模式
-                            buffer.clear();
+                            //buffer.clear();
                         }
                     } catch (IOException e) {
                         log.error("发生异常：", e);
@@ -105,6 +117,28 @@ public class ServerV2 {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * buffer拆分出完整的消息
+     * @param source
+     */
+    public static void spit(ByteBuffer source) {
+        source.flip();
+        for (int i = 0; i < source.limit(); i++) {
+            // get(i) 不会更新position
+            if (source.get(i) == '\n') {
+                // source开始读的位置
+                int len = i + 1 - source.position();
+                ByteBuffer target = ByteBuffer.allocate(len);
+                for (int j = 0; j < len; j++) {
+                    target.put(source.get());
+                }
+                target.flip();
+                BufferUtils.print(target);
+            }
+        }
+        source.compact();
     }
 
 }

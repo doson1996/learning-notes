@@ -12,7 +12,7 @@ public class Demo08ByteBufferExam {
     public static void main(String[] args) {
         ByteBuffer source = ByteBuffer.allocate(16);
         source.put("abc\ndefg\nhi".getBytes());
-        spit(source);
+        spit1(source);
         source.put("jk\n".getBytes());
         spit(source);
     }
