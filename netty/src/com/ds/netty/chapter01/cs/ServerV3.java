@@ -26,7 +26,18 @@ public class ServerV3 {
     private static ServerSocketChannel SERVER;
 
     public static void main(String[] args) {
-        start(8080);
+        new Thread(()->{
+            start(8080);
+        }).start();
+
+        new Thread(()->{
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            close();
+        }).start();
     }
 
     public static void start(int port) {
