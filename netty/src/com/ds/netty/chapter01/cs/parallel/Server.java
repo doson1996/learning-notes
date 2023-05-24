@@ -4,10 +4,14 @@ import com.ds.netty.chapter01.BufferUtils;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.util.Iterator;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author ds
@@ -41,8 +45,8 @@ public class Server {
                 if (sk.isAcceptable()) {
                     SocketChannel channel = server.accept();
                     channel.configureBlocking(false);
-                    worker0.init();
-                    channel.register(worker0.selector, SelectionKey.OP_READ);
+                    log.info("{}建立连接...", channel);
+                    worker0.init(channel);
                 }
             }
         }
@@ -62,32 +66,60 @@ public class Server {
             this.name = name;
         }
 
-        @SneakyThrows
-        public void init() {
+        private final Queue<Runnable> queue = new ConcurrentLinkedQueue<>();
+
+        public void init(SocketChannel channel) {
             if (!init) {
-                selector = Selector.open();
+                log.info("{} init...", name);
+                try {
+                    this.selector = Selector.open();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 thread = new Thread(this, name);
                 thread.start();
                 init = true;
             }
+            // 向队列中添加任务
+            queue.add(() -> {
+                try {
+                    log.info("register...");
+                    channel.register(this.selector, SelectionKey.OP_READ);
+                } catch (ClosedChannelException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            // 唤醒selector
+            selector.wakeup();
+            log.info("wakeup...");
         }
 
-        @SneakyThrows
+
         @Override
         public void run() {
-            selector.select();
-            Iterator<SelectionKey> itr = selector.selectedKeys().iterator();
-            while (itr.hasNext()) {
-                SelectionKey selectionKey = itr.next();
-                itr.remove();
-                if (selectionKey.isReadable()) {
-                    ByteBuffer buffer = ByteBuffer.allocate(16);
-                    SocketChannel channel = (SocketChannel) selectionKey.channel();
-                    channel.configureBlocking(false);
-                    channel.read(buffer);
-                    buffer.flip();
-                    BufferUtils.print(buffer);
+            try {
+                log.info("{} running...", this.name);
+                selector.select();  // 阻塞
+                log.info("select...");
+                // 取出任务并执行
+                Runnable task = queue.poll();
+                if (task != null)
+                    task.run();
+                Iterator<SelectionKey> itr = selector.selectedKeys().iterator();
+                while (itr.hasNext()) {
+                    SelectionKey selectionKey = itr.next();
+                    itr.remove();
+                    if (selectionKey.isReadable()) {
+                        log.info("{} 读事件", Thread.currentThread().getName());
+                        ByteBuffer buffer = ByteBuffer.allocate(16);
+                        SocketChannel channel = (SocketChannel) selectionKey.channel();
+                        channel.read(buffer);
+                        buffer.flip();
+                        BufferUtils.print(buffer);
+                    }
                 }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }
