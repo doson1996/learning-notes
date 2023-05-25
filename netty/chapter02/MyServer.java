@@ -1,4 +1,4 @@
-package com.ds.netty.chapter02;
+package com.ds.netty.chapter03;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
