@@ -1,4 +1,4 @@
-package com.ds.netty.chapter01;
+package com.ds.netty.chapter01nio;
 
 import lombok.extern.slf4j.Slf4j;
 

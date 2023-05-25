@@ -1,4 +1,4 @@
-package com.ds.netty.chapter01.cs;
+package com.ds.netty.chapter01nio.cs;
 
 import lombok.extern.slf4j.Slf4j;
 

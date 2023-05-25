@@ -1,6 +1,6 @@
-package com.ds.netty.chapter01.cs.parallel;
+package com.ds.netty.chapter01nio.cs.parallel;
 
-import com.ds.netty.chapter01.BufferUtils;
+import com.ds.netty.chapter01nio.BufferUtils;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,7 +11,6 @@ import java.nio.channels.*;
 import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author ds
@@ -74,6 +73,7 @@ public class Server {
                 try {
                     this.selector = Selector.open();
                 } catch (IOException e) {
+                    log.info("Selector.open ex: ", e);
                     throw new RuntimeException(e);
                 }
                 thread = new Thread(this, name);
@@ -98,7 +98,7 @@ public class Server {
         @Override
         public void run() {
             try {
-                log.info("{} running...", this.name);
+                log.info("{} running...", Thread.currentThread().getName());
                 selector.select();  // 阻塞
                 log.info("select...");
                 // 取出任务并执行

@@ -1,4 +1,4 @@
-package com.ds.netty.chapter01;
+package com.ds.netty.chapter01nio;
 
 import java.io.IOException;
 import java.nio.file.*;

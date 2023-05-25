@@ -1,6 +1,6 @@
-package com.ds.netty.chapter01.cs;
+package com.ds.netty.chapter01nio.cs;
 
-import com.ds.netty.chapter01.BufferUtils;
+import com.ds.netty.chapter01nio.BufferUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

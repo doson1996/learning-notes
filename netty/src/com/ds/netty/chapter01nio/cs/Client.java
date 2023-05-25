@@ -1,7 +1,6 @@
-package com.ds.netty.chapter01.cs;
+package com.ds.netty.chapter01nio.cs;
 
 
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
