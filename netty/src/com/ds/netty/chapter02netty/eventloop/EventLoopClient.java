@@ -2,12 +2,13 @@ package com.ds.netty.chapter02netty.eventloop;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringEncoder;
+import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetSocketAddress;
 
@@ -16,9 +17,10 @@ import java.net.InetSocketAddress;
  * @date 2023/5/29
  * @description
  */
+@Slf4j
 public class EventLoopClient {
     public static void main(String[] args) throws InterruptedException {
-        Channel client = new Bootstrap()
+        ChannelFuture channelFuture = new Bootstrap()
                 .group(new NioEventLoopGroup())
                 .channel(NioSocketChannel.class)
                 .handler(new ChannelInitializer<NioSocketChannel>() {
@@ -27,10 +29,18 @@ public class EventLoopClient {
                         ch.pipeline().addLast(new StringEncoder());
                     }
                 })
-                .connect(new InetSocketAddress("localhost", 8080))
-                .sync()
-                .channel();
+                .connect(new InetSocketAddress("localhost", 8080));
+        // 1. 使用sync方法，同步处理结果
+//        channelFuture.sync();
+//        Channel channel = channelFuture.channel();
+//        log.info("channel = {}", channel);
+//        channel.writeAndFlush("aa");
 
-        client.writeAndFlush("aa");
+        // 2. 使用addListener(回调对象)方法异步处理结果
+        channelFuture.addListener((ChannelFutureListener) future -> {
+            Channel channel = future.channel();
+            log.info("channel = {}", channel);
+            channel.writeAndFlush("listener异步执行");
+        });
     }
 }
