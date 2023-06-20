@@ -1,4 +1,4 @@
-package com.ds.netty.chapter02netty.future;
+package com.ds.netty.chapter02netty.d3future;
 
 import lombok.extern.slf4j.Slf4j;
 

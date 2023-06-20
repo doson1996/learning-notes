@@ -9,6 +9,7 @@ import java.io.FileWriter;
  */
 public class Demo04FileWriter {
     public static void main(String[] args) throws Exception {
+        // 不加true会清空文件
         FileWriter fileWriter = new FileWriter("a.txt", true);
         fileWriter.write("张三");
         fileWriter.close();

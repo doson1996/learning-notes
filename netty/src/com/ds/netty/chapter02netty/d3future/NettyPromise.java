@@ -1,4 +1,4 @@
-package com.ds.netty.chapter02netty.future;
+package com.ds.netty.chapter02netty.d3future;
 
 import io.netty.channel.EventLoop;
 import io.netty.channel.nio.NioEventLoopGroup;

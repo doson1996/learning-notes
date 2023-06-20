@@ -1,4 +1,4 @@
-package com.ds.netty.chapter02netty.eventloop;
+package com.ds.netty.chapter02netty.d4eventloop;
 
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;

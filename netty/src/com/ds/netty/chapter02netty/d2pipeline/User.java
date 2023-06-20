@@ -1,4 +1,4 @@
-package com.ds.netty.chapter02netty.pipeline;
+package com.ds.netty.chapter02netty.d2pipeline;
 
 /**
  * @author ds

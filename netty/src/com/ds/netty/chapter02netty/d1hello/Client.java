@@ -1,4 +1,4 @@
-package com.ds.netty.chapter02netty.d1;
+package com.ds.netty.chapter02netty.d1hello;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;

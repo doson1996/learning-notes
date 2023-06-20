@@ -1,4 +1,4 @@
-package com.ds.netty.chapter02netty.bytebuf;
+package com.ds.netty.chapter02netty.d5bytebuf;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;

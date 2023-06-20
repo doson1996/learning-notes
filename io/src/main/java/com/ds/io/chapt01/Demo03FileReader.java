@@ -1,6 +1,5 @@
 package com.ds.io.chapt01;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 /**
