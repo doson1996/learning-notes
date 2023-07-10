@@ -1,5 +1,6 @@
 package com.ds.netty.chapter02netty.d8chat;
 
+import com.ds.netty.chapter02netty.d8chat.handler.ChatRequestMessageHandler;
 import com.ds.netty.chapter02netty.d8chat.handler.LoginRequestMessageHandler;
 import com.ds.netty.chapter02netty.d8chat.protocol.MessageCodec;
 import com.ds.netty.chapter02netty.d8chat.protocol.ProcotolFrameDecoder;
@@ -30,6 +31,7 @@ public class ChatServer {
     private static final MessageCodec MESSAGE_CODEC = new MessageCodec();
     private static final LoggingHandler LOGGING_HANDLER = new LoggingHandler(LogLevel.DEBUG);
     private static final LoginRequestMessageHandler LOGIN_HANDLER = new LoginRequestMessageHandler();
+    private static final ChatRequestMessageHandler CHAT_REQUEST_MESSAGE_HANDLER = new ChatRequestMessageHandler();
 
     public static void main(String[] args) {
         try {
@@ -65,6 +67,7 @@ public class ChatServer {
                     ch.pipeline().addLast(new ProcotolFrameDecoder()); // 帧解码器 【与自定义编解码器 MessageCodecSharable一起配置参数】
                     ch.pipeline().addLast(LOGGING_HANDLER);            // 日志
                     ch.pipeline().addLast(MESSAGE_CODEC);              // 出站入站的 自定义编解码器 【 解析消息类型 】
+                    ch.pipeline().addLast(CHAT_REQUEST_MESSAGE_HANDLER);
                     // simple处理器 【针对性的对登录进行处理】 【流水线 会向上执行出站Handler,  到 ProcotolFrameDecoder(入站停止)】
                     ch.pipeline().addLast(LOGIN_HANDLER);         //--登录---处理器
                 }

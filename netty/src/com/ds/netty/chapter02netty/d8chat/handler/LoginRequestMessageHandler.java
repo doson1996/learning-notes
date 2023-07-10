@@ -3,6 +3,7 @@ package com.ds.netty.chapter02netty.d8chat.handler;
 import com.ds.netty.chapter02netty.d8chat.message.LoginRequestMessage;
 import com.ds.netty.chapter02netty.d8chat.message.LoginResponseMessage;
 import com.ds.netty.chapter02netty.d8chat.service.UserServiceFactory;
+import com.ds.netty.chapter02netty.d8chat.session.SessionFactory;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -23,6 +24,7 @@ public class LoginRequestMessageHandler extends SimpleChannelInboundHandler<Logi
         LoginResponseMessage responseMessage;
 
         if (login) {
+            SessionFactory.getSession().bind(ctx.channel(), username); // 用户 、channel 简历关系
             responseMessage = new LoginResponseMessage(true, "登录成功！");
         } else {
             responseMessage = new LoginResponseMessage(false, "用户名或密码错误！");

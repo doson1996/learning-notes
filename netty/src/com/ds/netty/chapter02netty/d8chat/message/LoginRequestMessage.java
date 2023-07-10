@@ -1,6 +1,7 @@
 package com.ds.netty.chapter02netty.d8chat.message;
 
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * @author ds
@@ -8,7 +9,8 @@ import lombok.Data;
  * @description
  */
 @Data
-public class LoginRequestMessage extends Message{
+@ToString(callSuper = true)
+public class LoginRequestMessage extends Message {
     private String username;
     private String password;
 

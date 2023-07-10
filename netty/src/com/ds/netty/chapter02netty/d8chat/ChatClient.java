@@ -1,8 +1,6 @@
 package com.ds.netty.chapter02netty.d8chat;
 
-import com.ds.netty.chapter02netty.d8chat.message.LoginRequestMessage;
-import com.ds.netty.chapter02netty.d8chat.message.LoginResponseMessage;
-import com.ds.netty.chapter02netty.d8chat.message.PingMessage;
+import com.ds.netty.chapter02netty.d8chat.message.*;
 import com.ds.netty.chapter02netty.d8chat.protocol.MessageCodec;
 import com.ds.netty.chapter02netty.d8chat.protocol.ProcotolFrameDecoder;
 import io.netty.bootstrap.Bootstrap;
@@ -88,6 +86,12 @@ public class ChatClient {
                                 if (responseMessage.isSuccess()) LOGIN.set(true);
                                 WAIT_FOR_LOGIN.countDown(); // 减一 唤醒 线程：system in
                             }
+
+                            // 2.聊天处理
+                            if ((msg instanceof ChatResponseMessage)) {
+                                ChatResponseMessage responseMessage = (ChatResponseMessage) msg;
+                               log.info("收到消息 {}", responseMessage);
+                            }
                         }
                         // ###################### [ 1 ] ######################
                         @Override // 【 连接建立后触发一次 】
@@ -132,6 +136,9 @@ public class ChatClient {
                                     String command = scanner.nextLine();
                                     final String[] s = command.split(" ");
                                     switch (s[0]) {
+                                        case "send": // 发送消息
+                                            ctx.writeAndFlush(new ChatRequestMessage(username, s[1], s[2]));
+                                            break;
                                         case "quit":
                                             ctx.channel().close(); // 触发 【channel.closeFuture().sync(); 向下运行】
                                             return;
