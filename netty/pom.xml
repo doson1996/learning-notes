@@ -24,5 +24,10 @@
             <artifactId>logback</artifactId>
             <version>1.0.6</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
     </dependencies>
 </project>
