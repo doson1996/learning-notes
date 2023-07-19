@@ -1,5 +1,7 @@
 package com.ds.netty.chapter02netty.d8chat.message;
 
+import com.ds.netty.chapter02netty.d9rpc.message.RpcRequestMessage;
+import com.ds.netty.chapter02netty.d9rpc.message.RpcResponseMessage;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -49,6 +51,8 @@ public abstract class Message implements Serializable {
     static {
         messageClasses.put(LoginRequestMessage, LoginRequestMessage.class);
         messageClasses.put(LoginResponseMessage, LoginResponseMessage.class);
+        messageClasses.put(RPC_MESSAGE_TYPE_REQUEST, RpcRequestMessage.class);
+        messageClasses.put(RPC_MESSAGE_TYPE_RESPONSE, RpcResponseMessage.class);
     }
 
 }

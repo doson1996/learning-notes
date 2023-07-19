@@ -64,6 +64,7 @@
         <module>zookeeper</module>
         <module>work/ccpsfd</module>
         <module>io</module>
+        <module>redis</module>
     </modules>
 
     <dependencies>
