@@ -15,6 +15,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.util.concurrent.DefaultPromise;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Proxy;
@@ -32,7 +33,10 @@ public class RpcClient {
 
     public static void main(String[] args) {
         HelloService helloService = getProxyService(HelloService.class);
-        helloService.sayHello("zs");
+        String result1 = helloService.sayHello("张三");
+        String result2 = helloService.sayHello("李四");
+        System.out.println("result1 = " + result1);
+        System.out.println("result2 = " + result2);
     }
 
     public static <T> T getProxyService(Class<T> serviceClass) {
@@ -49,15 +53,30 @@ public class RpcClient {
                 parameterTypes[i] = args[i].getClass();
             }
 
+            int sequenceId = (int) (System.currentTimeMillis() % 1000000);
             getChannel().writeAndFlush(new RpcRequestMessage(
-                    (int) (System.currentTimeMillis() % 1000000),
+                    sequenceId,
                     serviceClass.getName(),
                     method.getName(),
-                    String.class,
+                    method.getReturnType(),
                     parameterTypes,
                     args
             ));
-            return new Object();
+
+            // 3. 准备一个Promise对象 来接收结果      【指定 Promise对象 【异步】接受结果的线程】  【这里不会阻塞住，所以下面得阻塞等待结果】
+            DefaultPromise<Object> promise = new DefaultPromise<>(getChannel().eventLoop());
+            RpcResponseMessageHandler.PROMISES.put(sequenceId, promise);
+            log.debug("33333333333333333333333333333333333333333333333333333333333333333333333333");
+
+            // 4. await()不会抛异常， 【【【 同步阻塞 等待promise的结果(成功or失败) 】】】
+            promise.await();
+            if (promise.isSuccess()) {
+                // 调用正常
+                return promise.getNow();
+            } else {
+                // 调用失败
+                throw new RuntimeException(promise.cause());
+            }
         });
     }
 
