@@ -5,7 +5,11 @@ package com.ds.basic.reflect.instance;
  */
 public class User {
 
-    private User() {
+    static {
+        System.out.println("user...");
+    }
+
+    User() {
 
     }
 
