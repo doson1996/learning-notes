@@ -1,0 +1,14 @@
+<config>
+
+    <dataSource>
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://ds.com:3306/mybatisx"/>
+        <property name="user" value="root"/>
+        <property name="password" value="123456"/>
+    </dataSource>
+
+    <mappers>
+        <mapper>mapper/UserMapper.xml</mapper>
+    </mappers>
+
+</config>

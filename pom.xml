@@ -65,6 +65,8 @@
         <module>work/ccpsfd</module>
         <module>io</module>
         <module>redis</module>
+        <module>mybatis</module>
+        <module>mybatis/chapter1</module>
     </modules>
 
     <dependencies>
