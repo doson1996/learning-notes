@@ -16,6 +16,7 @@ public class SqlSessionFactoryBuilderTest {
     public void testBuild() {
         InputStream resourceAsStream = Resources.getResourceAsStream("mybatisx.xml");
         SqlSessionFactory build = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        System.out.println("build = " + build);
     }
 
 }

@@ -8,7 +8,7 @@
     </dataSource>
 
     <mappers>
-        <mapper>mapper/UserMapper.xml</mapper>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 
 </config>

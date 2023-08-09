@@ -25,12 +25,12 @@ public class Configuration {
         this.dataSource = dataSource;
     }
 
-    public Map<String, MappedStatement> getMappedStatements() {
-        return mappedStatements;
+    public void put(MappedStatement statement) {
+        mappedStatements.put(statement.getStatementId(), statement);
     }
 
-    public void setMappedStatements(Map<String, MappedStatement> mappedStatements) {
-        this.mappedStatements = mappedStatements;
+    public MappedStatement get(String statementId) {
+        return mappedStatements.get(statementId);
     }
 
 }

@@ -5,5 +5,7 @@ package com.ds.mybatisx.session;
  * @date 2023/8/8
  * @description
  */
-public class SqlSessionFactory {
+public interface SqlSessionFactory {
+
+    SqlSession openSession();
 }
