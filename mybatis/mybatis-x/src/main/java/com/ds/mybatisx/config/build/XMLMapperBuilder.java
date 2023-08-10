@@ -47,9 +47,5 @@ public class XMLMapperBuilder {
             statement.setSql(sql);
             configuration.put(statement);
         }
-
-        System.out.println("configuration = " + configuration);
-
-
     }
 }

@@ -11,7 +11,7 @@ import com.ds.mybatisx.executor.SimpleExecutor;
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
-    private Configuration configuration;
+    private final Configuration configuration;
 
     public DefaultSqlSessionFactory(Configuration configuration) {
         this.configuration = configuration;
@@ -20,7 +20,7 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
     @Override
     public SqlSession openSession() {
         // 1.创建执行器
-        Executor executor = new SimpleExecutor();
+        Executor executor = new SimpleExecutor(configuration);
         // 2.创建SqlSession
         return new DefaultSqlSession(configuration, executor);
     }
