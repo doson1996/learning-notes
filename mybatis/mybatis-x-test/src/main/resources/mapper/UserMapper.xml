@@ -1,7 +1,7 @@
 <mapper namespace="com.ds.mapper.UserMapper">
 
     <select id="selectList" resultType="com.ds.entity.User">
-        select * from user
+        select * from t1
     </select>
 
     <select id="selectById" parameterType="com.ds.entity.User" resultType="com.ds.entity.User">

@@ -8,11 +8,11 @@ import com.ds.mybatisx.util.ParameterMapping;
 import com.ds.mybatisx.util.ParameterMappingTokenHandler;
 import lombok.SneakyThrows;
 
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.lang.reflect.Method;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,17 +41,32 @@ public class SimpleExecutor implements Executor {
         Connection connection = configuration.getDataSource().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(boundSql.getFinalSql());
         // 解析参数
-        parseParameter(preparedStatement,parameterType,parameter, boundSql);
+        if (parameter != null)
+            parseParameter(preparedStatement, parameterType, parameter, boundSql);
+
         ResultSet resultSet = preparedStatement.executeQuery();
+        // 处理返回结果
+        Class<?> resultClazz = Class.forName(resultType);
+        ArrayList<E> result = new ArrayList<>();
         while (resultSet.next()) {
-            int id = resultSet.getInt("id");
-            System.out.println("id = " + id);
+            // 元数据信息 包含字段名，字段的值
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            Object resultBean = resultClazz.newInstance();
+            for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                String columnName = metaData.getColumnName(i);
+                Object value = resultSet.getObject(columnName);
+                PropertyDescriptor propertyDescriptor = new PropertyDescriptor(columnName, resultClazz);
+                Method writeMethod = propertyDescriptor.getWriteMethod();
+                writeMethod.invoke(resultBean, value);
+            }
+            result.add((E) resultBean);
         }
-        return null;
+        return result;
     }
 
     /**
      * todo 中文乱码
+     *
      * @param preparedStatement
      * @param parameterType
      * @param parameter
@@ -59,6 +74,8 @@ public class SimpleExecutor implements Executor {
      * @throws Exception
      */
     private void parseParameter(PreparedStatement preparedStatement, String parameterType, Object parameter, BoundSql boundSql) throws Exception {
+        if (parameterType == null)
+            return;
         Class<?> paramClazz = Class.forName(parameterType);
         List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
         for (int i = 0; i < parameterMappings.size(); i++) {
