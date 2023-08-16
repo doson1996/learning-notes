@@ -21,8 +21,10 @@ import java.util.List;
  * @description
  */
 public class SimpleExecutor implements Executor {
-
     private final Configuration configuration;
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
 
     public SimpleExecutor(Configuration configuration) {
         this.configuration = configuration;
@@ -38,13 +40,13 @@ public class SimpleExecutor implements Executor {
         BoundSql boundSql = getBoundSql(sql);
         String parameterType = statement.getParameterType();
         String resultType = statement.getResultType();
-        Connection connection = configuration.getDataSource().getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(boundSql.getFinalSql());
+        connection = configuration.getDataSource().getConnection();
+        preparedStatement = connection.prepareStatement(boundSql.getFinalSql());
         // 解析参数
         if (parameter != null)
             parseParameter(preparedStatement, parameterType, parameter, boundSql);
 
-        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet = preparedStatement.executeQuery();
         // 处理返回结果
         Class<?> resultClazz = Class.forName(resultType);
         ArrayList<E> result = new ArrayList<>();
@@ -96,8 +98,18 @@ public class SimpleExecutor implements Executor {
         return new BoundSql(finalSql, parameterMappings);
     }
 
+    @SneakyThrows
     @Override
     public void close() {
         System.out.println("close...");
+        if (resultSet != null)
+            resultSet.close();
+
+        if (preparedStatement != null)
+            preparedStatement.close();
+
+        if (connection != null) {
+            connection.close();
+        }
     }
 }
