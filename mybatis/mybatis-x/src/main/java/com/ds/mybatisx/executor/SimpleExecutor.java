@@ -101,7 +101,6 @@ public class SimpleExecutor implements Executor {
     @SneakyThrows
     @Override
     public void close() {
-        System.out.println("close...");
         if (resultSet != null)
             resultSet.close();
 

@@ -1,11 +1,15 @@
 <mapper namespace="com.ds.mapper.UserMapper">
 
-    <select id="selectList" resultType="com.ds.entity.User">
-        select * from t1
+    <select id="selectAll" resultType="com.ds.entity.User">
+        select * from t1;
     </select>
 
-    <select id="selectById" parameterType="com.ds.entity.User" resultType="com.ds.entity.User">
-        select * from user where id = #{id} and name = #{name};
+    <select id="selectList" parameterType="com.ds.entity.User" resultType="com.ds.entity.User">
+        select * from t1 where id = #{id} and name = #{name};
+    </select>
+
+    <select id="selectOne" parameterType="com.ds.entity.User" resultType="com.ds.entity.User">
+        select * from t1 where id = #{id} and name = #{name};
     </select>
 
 </mapper>

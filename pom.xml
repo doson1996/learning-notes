@@ -67,6 +67,7 @@
         <module>redis</module>
         <module>mybatis</module>
         <module>mybatis/chapter1</module>
+        <module>leecode</module>
     </modules>
 
     <dependencies>

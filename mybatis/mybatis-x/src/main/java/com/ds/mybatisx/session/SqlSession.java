@@ -44,4 +44,12 @@ public interface SqlSession extends Closeable {
      */
     <E> List<E> selectList(String statementId, Object parameter);
 
+    /**
+     * 获取mapper
+     * @param type
+     * @return
+     * @param <T>
+     */
+    <T> T getMapper(Class<T> type);
+
 }

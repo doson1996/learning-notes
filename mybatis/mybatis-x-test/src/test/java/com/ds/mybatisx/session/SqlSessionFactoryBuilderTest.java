@@ -19,7 +19,7 @@ public class SqlSessionFactoryBuilderTest {
         InputStream resourceAsStream = Resources.getResourceAsStream("mybatisx.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        List<User> list = sqlSession.selectList("com.ds.mapper.UserMapper.selectList", new User(1, "user0"));
+        List<User> list = sqlSession.selectList("com.ds.mapper.UserMapper.selectList", new User(3, "zs"));
         System.out.println("list = " + list);
     }
 
