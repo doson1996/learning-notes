@@ -2,15 +2,8 @@ package com.ds.controller;
 
 import com.ds.entity.User;
 import com.ds.mapper.UserMapper;
-import com.ds.mybatisx.io.Resources;
-import com.ds.mybatisx.session.DefaultSqlSession;
-import com.ds.mybatisx.session.SqlSession;
-import com.ds.mybatisx.session.SqlSessionFactory;
-import com.ds.mybatisx.session.SqlSessionFactoryBuilder;
 import com.ds.mybatisx.starter.MyBatsixStarter;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -31,7 +24,7 @@ public class UserController {
         userList = mapper.selectAll();
         System.out.println("userList = " + userList);
 
-        User user1 = mapper.selectOne(user);
+        User user1 = mapper.findUser(user);
         System.out.println("user1 = " + user1);
     }
 }

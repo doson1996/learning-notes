@@ -15,6 +15,8 @@ public class MappedStatement {
     private String parameterType;
     // sql语句
     private String sql;
+    // sql类型
+    private String sqlCommandType;
 
     public String getStatementId() {
         return statementId;
@@ -46,5 +48,13 @@ public class MappedStatement {
 
     public void setSql(String sql) {
         this.sql = sql;
+    }
+
+    public String getSqlCommandType() {
+        return sqlCommandType;
+    }
+
+    public void setSqlCommandType(String sqlCommandType) {
+        this.sqlCommandType = sqlCommandType;
     }
 }

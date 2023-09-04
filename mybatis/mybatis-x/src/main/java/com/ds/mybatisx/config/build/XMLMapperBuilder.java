@@ -45,6 +45,7 @@ public class XMLMapperBuilder {
             statement.setParameterType(parameterType);
             statement.setResultType(resultType);
             statement.setSql(sql);
+            statement.setSqlCommandType("select");
             configuration.put(statement);
         }
     }

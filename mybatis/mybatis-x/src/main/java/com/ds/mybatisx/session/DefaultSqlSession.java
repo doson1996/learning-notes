@@ -2,14 +2,10 @@ package com.ds.mybatisx.session;
 
 import com.ds.mybatisx.config.Configuration;
 import com.ds.mybatisx.executor.Executor;
-import com.ds.mybatisx.io.Resources;
 import com.ds.mybatisx.mapping.MappedStatement;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
+import java.lang.reflect.*;
 import java.util.List;
 
 /**
@@ -66,19 +62,28 @@ public class DefaultSqlSession implements SqlSession {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 String statementId = method.getDeclaringClass().getName() + "." + method.getName();
-                InputStream resourceAsStream = Resources.getResourceAsStream("mybatisx.xml");
-                SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
-                SqlSession sqlSession = sqlSessionFactory.openSession();
-                Method invockeMethod;
-                Object result;
-                if (args == null) {
-                    invockeMethod = sqlSession.getClass().getDeclaredMethod(method.getName(), String.class);
-                    result = invockeMethod.invoke(sqlSession, statementId);
-                } else {
-                    invockeMethod = sqlSession.getClass().getDeclaredMethod(method.getName(), String.class, Object.class);
-                    result = invockeMethod.invoke(sqlSession, statementId, args[0]);
+                MappedStatement statement = configuration.get(statementId);
+                String sqlCommandType = statement.getSqlCommandType();
+                Type genericReturnType = method.getGenericReturnType();
+                // 参数
+                Object param = args != null ? args[0] : null;
+                Object result = null;
+                switch (sqlCommandType) {
+                    case "select":
+                        if (genericReturnType instanceof ParameterizedType) {
+                            result = selectList(statementId, param);
+                        } else {
+                            result = selectOne(statementId, param);
+                        }
+                    case "update":
+                        break;
+                    case "insert":
+                        break;
+                    case "delete":
+                        break;
+
                 }
-                sqlSession.close();
+               
                 return result;
             }
         });

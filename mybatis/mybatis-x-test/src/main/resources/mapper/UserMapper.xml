@@ -8,7 +8,7 @@
         select * from t1 where id = #{id} and name = #{name};
     </select>
 
-    <select id="selectOne" parameterType="com.ds.entity.User" resultType="com.ds.entity.User">
+    <select id="findUser" parameterType="com.ds.entity.User" resultType="com.ds.entity.User">
         select * from t1 where id = #{id} and name = #{name};
     </select>
 
