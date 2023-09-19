@@ -33,4 +33,20 @@ public class ProcessResult {
         return new ProcessResult(200, msg);
     }
 
+    /**
+     * 失败返回
+     * @return
+     */
+    public static ProcessResult fail() {
+        return new ProcessResult(500, "fail");
+    }
+
+    /**
+     * 应答返回
+     * @return
+     */
+    public static ProcessResult ack() {
+        return new ProcessResult(300, "ack");
+    }
+
 }

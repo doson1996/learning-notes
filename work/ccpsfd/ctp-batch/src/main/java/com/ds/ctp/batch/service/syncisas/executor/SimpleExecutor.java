@@ -1,0 +1,20 @@
+package com.ds.ctp.batch.service.syncisas.executor;
+
+import com.alibaba.fastjson2.JSONObject;
+import com.ds.ctp.batch.service.syncisas.operate.Operation;
+
+/**
+ * @author ds
+ * @date 2023/9/19
+ * @description
+ */
+public class SimpleExecutor implements Executor {
+    @Override
+    public boolean execute(Operation operation, JSONObject data, String operate) {
+
+        return false;
+    }
+
+
+
+}
