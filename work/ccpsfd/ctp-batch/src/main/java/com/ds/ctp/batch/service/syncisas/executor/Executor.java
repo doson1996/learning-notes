@@ -10,6 +10,6 @@ import com.ds.ctp.batch.service.syncisas.operate.Operation;
  */
 public interface Executor {
 
-    boolean execute(Operation operation, JSONObject data, String operate);
+    boolean execute(Operation operation, JSONObject data, String type);
 
 }
