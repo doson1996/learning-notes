@@ -32,7 +32,7 @@ public class GenericTokenParser {
 
   public String parse(String text) {
     StringBuilder builder = new StringBuilder();
-    if (text != null && text.length() > 0) {
+    if (text != null && !text.isEmpty()) {
       char[] src = text.toCharArray();
       int offset = 0;
       int start = text.indexOf(openToken, offset);
