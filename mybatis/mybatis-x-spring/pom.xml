@@ -12,5 +12,11 @@
     <groupId>com.ds.mybatisx.spring</groupId>
     <artifactId>mybatis-x-spring</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
