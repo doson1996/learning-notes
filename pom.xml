@@ -39,7 +39,7 @@
         <netty.version>4.1.63.Final</netty.version>
         <hutool.version>5.7.21</hutool.version>
         <rocketmq.version>4.5.2</rocketmq.version>
-        <kafka.version>3.2.0</kafka.version>
+        <kafka.version>3.6.0</kafka.version>
         <zookeeper.version>3.6.3</zookeeper.version>
         <curator.version>4.2.0</curator.version>
         <dubbo.version>3.1.6</dubbo.version>

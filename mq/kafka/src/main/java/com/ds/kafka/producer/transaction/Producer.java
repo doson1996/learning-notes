@@ -1,7 +1,6 @@
 package com.ds.kafka.producer.transaction;
 
 import com.ds.kafka.base.AbstractProducer;
-import com.ds.kafka.producer.interceptor.MyProducerInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
