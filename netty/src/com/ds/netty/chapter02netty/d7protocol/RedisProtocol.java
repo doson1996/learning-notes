@@ -14,8 +14,7 @@ import java.nio.charset.Charset;
 /**
  * @author ds
  * @date 2023/6/26
- * @description
- * <参数数量> CR LF
+ * @description <参数数量> CR LF
  * $<参数 1 的字节数量> CR LF
  * <参数 1 的数据> CR LF
  * ...
@@ -60,7 +59,7 @@ public class RedisProtocol {
                         log.info("redis server 返回：{}", buffer.toString(Charset.defaultCharset()));
                     }
                 })
-                .connect(new InetSocketAddress("47.98.217.92", 6378))
+                .connect(new InetSocketAddress("ds.com", 6378))
                 .sync();
     }
 
