@@ -3,7 +3,10 @@ package com.ds.controller;
 import com.ds.entity.User;
 import com.ds.mapper.UserMapper;
 import com.ds.mybatisx.starter.MyBatsixStarter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -11,7 +14,16 @@ import java.util.List;
  * @date 2023/8/21
  * @description
  */
+@Controller
 public class UserController {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    public List<User> qryUser() {
+        return userMapper.selectAll();
+    }
+
     public static void main(String[] args) throws Exception {
         UserMapper mapper = MyBatsixStarter.getMyBatsixStarter().getMapper(UserMapper.class, "mybatisx.xml");
 
