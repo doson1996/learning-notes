@@ -9,6 +9,8 @@ import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
 import org.springframework.core.type.classreading.MetadataReader;
+import org.springframework.core.type.classreading.MetadataReaderFactory;
+import org.springframework.core.type.filter.TypeFilter;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -47,13 +49,15 @@ public class ClassPathMapperxScanner extends ClassPathBeanDefinitionScanner {
         }
     }
 
-    @Override
-    protected boolean isCandidateComponent(MetadataReader metadataReader) throws IOException {
-        return metadataReader.getClassMetadata().isInterface();
+    public void registerFilters() {
+        // 把basePackages下所有接口都扫描出来
+        addIncludeFilter((metadataReader, metadataReaderFactory) -> true);
     }
 
     @Override
     protected boolean isCandidateComponent(AnnotatedBeanDefinition beanDefinition) {
-        return beanDefinition.getMetadata().hasAnnotation(Mapperx.class.getName());
+        //return  beanDefinition.getMetadata().hasAnnotation(Mapperx.class.getName());
+        return beanDefinition.getMetadata().isInterface();
     }
+
 }

@@ -1,20 +1,25 @@
 package com.ds.mybatisx.spring.mapper;
 
-import com.ds.mybatisx.session.SqlSession;
-import com.ds.mybatisx.starter.MyBatsixStarter;
+/**
+ * @author ds
+ * @date 2023/11/21
+ * @description
+ */
+import com.ds.mybatisx.session.SqlSessionFactory;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
-public class MapperxFactoryBean<T> implements FactoryBean<T> {
+public class MapperxFactoryBean<T> implements FactoryBean<T>, ApplicationContextAware {
 
     private Class<T> mapperInterface;
 
-    public MapperxFactoryBean() {
-        // intentionally empty
-    }
+    private ApplicationContext applicationContext;
 
-//    public MapperxFactoryBean(Class<T> mapperInterface) {
-//        this.mapperInterface = mapperInterface;
-//    }
+    public MapperxFactoryBean() {
+
+    }
 
     public void setMapperInterface(Class<T> mapperInterface) {
         this.mapperInterface = mapperInterface;
@@ -22,8 +27,7 @@ public class MapperxFactoryBean<T> implements FactoryBean<T> {
 
     @Override
     public T getObject() throws Exception {
-        System.out.println("mapperInterface = " + mapperInterface);
-        return MyBatsixStarter.getMyBatsixStarter().getMapper(mapperInterface, "mybatisx.xml");
+        return applicationContext.getBean(SqlSessionFactory.class).openSession().getMapper(mapperInterface);
     }
 
     @Override
@@ -31,4 +35,8 @@ public class MapperxFactoryBean<T> implements FactoryBean<T> {
         return this.mapperInterface;
     }
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 }

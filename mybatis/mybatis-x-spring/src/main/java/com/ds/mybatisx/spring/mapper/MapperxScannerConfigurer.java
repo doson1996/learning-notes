@@ -28,6 +28,7 @@ public class MapperxScannerConfigurer implements BeanDefinitionRegistryPostProce
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry beanDefinitionRegistry) throws BeansException {
         System.out.println("basePackage = " + this.basePackage);
         ClassPathMapperxScanner classPathMapperxScanner = new ClassPathMapperxScanner(beanDefinitionRegistry);
+        classPathMapperxScanner.registerFilters();
         classPathMapperxScanner.scan(basePackage);
     }
 

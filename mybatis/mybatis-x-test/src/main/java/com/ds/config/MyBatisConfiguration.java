@@ -1,6 +1,9 @@
 package com.ds.config;
 
+import com.ds.mybatisx.session.SqlSessionFactory;
 import com.ds.mybatisx.spring.annotion.MapperxScan;
+import com.ds.mybatisx.starter.MyBatsixStarter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,5 +16,10 @@ import org.springframework.context.annotation.Configuration;
 @MapperxScan(basePackages = "com.ds.mapper")
 @ComponentScan("com.ds")
 public class MyBatisConfiguration {
+
+    @Bean
+    public SqlSessionFactory sqlSessionFactory() {
+        return MyBatsixStarter.getMyBatsixStarter().getSqlSessionFactory("mybatisx.xml");
+    }
 
 }

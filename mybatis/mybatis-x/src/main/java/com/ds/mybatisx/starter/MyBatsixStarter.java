@@ -22,10 +22,14 @@ public class MyBatsixStarter {
     }
 
     public <T> T getMapper(Class<T> type, String configLocation) {
-        InputStream resourceAsStream = Resources.getResourceAsStream(configLocation);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory(configLocation);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         return sqlSession.getMapper(type);
+    }
+
+    public SqlSessionFactory getSqlSessionFactory(String configLocation) {
+        InputStream resourceAsStream = Resources.getResourceAsStream(configLocation);
+        return new SqlSessionFactoryBuilder().build(resourceAsStream);
     }
 
 }
