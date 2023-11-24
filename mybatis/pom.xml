@@ -11,8 +11,11 @@
 
     <artifactId>mybatis</artifactId>
     <packaging>pom</packaging>
+
     <modules>
+        <module>chapter1</module>
         <module>mybatis-x</module>
+        <module>mybatis-x-spring</module>
         <module>mybatis-x-test</module>
     </modules>
 

@@ -1,7 +1,7 @@
 package com.ds.mapper;
 
 import com.ds.entity.User;
-import com.ds.mybatisx.annotation.Mapper;
+import com.ds.mybatisx.spring.annotion.Mapperx;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @date 2023/8/8
  * @description
  */
-@Mapper
+@Mapperx
 public interface UserMapper {
 
     List<User> selectAll();

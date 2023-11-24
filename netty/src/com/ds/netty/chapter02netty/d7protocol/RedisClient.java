@@ -23,9 +23,7 @@ import static com.ds.netty.chapter02netty.d7protocol.RedisProtocol.setCommand;
  */
 @Slf4j
 public class RedisClient {
-
     private Channel client;
-
     private String response;
 
     public static void main(String[] args) throws Exception {
@@ -41,7 +39,6 @@ public class RedisClient {
         client.writeAndFlush(buffer);
         return response;
     }
-
     @SneakyThrows
     private void connect() {
         if (client != null)
@@ -57,7 +54,7 @@ public class RedisClient {
                         log.info("redis server 返回：{}", response);
                     }
                 })
-                .connect(new InetSocketAddress("47.98.217.92", 6378))
+                .connect(new InetSocketAddress("ds.com", 6378))
                 .sync()
                 .channel();
     }

@@ -39,4 +39,14 @@ public class Person implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", applicationContext=" + applicationContext +
+                '}';
+    }
+
 }
