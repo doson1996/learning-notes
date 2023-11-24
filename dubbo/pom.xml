@@ -10,6 +10,12 @@
     </parent>
 
     <artifactId>dubbo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>provider</module>
+        <module>provider-api</module>
+        <module>consumer</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -23,5 +29,20 @@
             <type>pom</type>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.ds</groupId>
+                <artifactId>provider</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ds</groupId>
+                <artifactId>provider-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

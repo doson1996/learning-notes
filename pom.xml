@@ -67,6 +67,8 @@
         <module>redis</module>
         <module>mybatis</module>
         <module>leecode</module>
+        <module>dubbo/provider</module>
+        <module>dubbo/provider-api</module>
     </modules>
 
     <dependencies>
