@@ -14,7 +14,7 @@ import org.apache.dubbo.config.bootstrap.DubboBootstrap;
  */
 public class ProviderApp {
 
-    private static final String ZOOKEEPER_ADDRESS = "zookeeper://47.98.217.92:2181";
+    private static final String ZOOKEEPER_ADDRESS = "zookeeper://ds.com:2181";
 
     public static void main(String[] args) throws Exception {
         // 定义所有的服务
