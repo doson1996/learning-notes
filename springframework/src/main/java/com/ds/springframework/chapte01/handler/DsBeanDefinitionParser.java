@@ -1,12 +1,8 @@
 package com.ds.springframework.chapte01.handler;
 
-import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
-import org.springframework.beans.factory.xml.BeanDefinitionParser;
-import org.springframework.beans.factory.xml.ParserContext;
+import org.springframework.util.ClassUtils;
 import org.w3c.dom.Element;
 
 /**
@@ -21,35 +17,42 @@ public class DsBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
      * @param element
      * @return
      */
-    @Override
-    protected Class<?> getBeanClass(Element element) {
-        Class<?> clazz;
-        try {
-            clazz = Class.forName(element.getAttribute("class"));
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return clazz;
-    }
+//    @Override
+//    protected Class<?> getBeanClass(Element element) {
+//        Class<?> clazz;
+//        try {
+//            clazz = Class.forName(element.getAttribute("class"));
+//        } catch (ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return clazz;
+//    }
 
     /**
      * 偷梁换柱
+     *
      * @param element
      * @return
      */
-//    @Override
-//    protected Class<?> getBeanClass(Element element) {
-//       return FactoryBean.class;
-//    }
+    @Override
+    protected Class<?> getBeanClass(Element element) {
+        return DsFactoryBean.class;
+    }
 
     @Override
     protected void doParse(Element element, BeanDefinitionBuilder builder) {
-        AbstractBeanDefinition beanDefinition = builder.getBeanDefinition();
-        //beanDefinition.setBeanClass(this.getBeanClass(element));
+        String clazz = resolveAttribute(element, "class");
+        Class<?> className;
+        try {
+            className = ClassUtils.forName(clazz, this.getClass().getClassLoader());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        builder.addPropertyValue("className", className.getName());
     }
 
     private static String resolveAttribute(Element element, String attributeName) {
-        String attributeValue = element.getAttribute(attributeName);
-        return attributeValue;
+        return element.getAttribute(attributeName);
     }
+    
 }

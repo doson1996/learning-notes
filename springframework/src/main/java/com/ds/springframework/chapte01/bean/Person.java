@@ -31,6 +31,10 @@ public class Person implements ApplicationContextAware {
         this.name = name;
     }
 
+    public void say() {
+        System.out.println(Thread.currentThread().getName() + "  say...");
+    }
+
     public ApplicationContext getApplicationContext() {
         return applicationContext;
     }
