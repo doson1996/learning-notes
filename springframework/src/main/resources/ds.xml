@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:schema="https://www.ds.com/schema/ds"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bean="https://www.ds.com/schema/ds"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+       https://www.ds.com/schema/ds https://www.ds.com/schema/ds.xsd">
+
+        <bean:ds id="person" class="com.ds.springframework.chapte01.bean.Person"/>
+
+</beans>
