@@ -26,8 +26,6 @@ public class ConsumerApp {
                 .reference(reference)
                 .start();
 
-
-
         // 像普通的 java 接口一样调用
         for (int i = 0; i < 10; i++) {
             // 获取订阅到的 Stub
