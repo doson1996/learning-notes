@@ -25,9 +25,12 @@ public class Test {
 
     /**
      * 原理
+     *  com.sun.proxy.$Proxy0
      */
     @SneakyThrows
     public static void principle() {
+        // sun.misc.ProxyGenerator.generateProxyClass(java.lang.String, java.lang.Class<?>[])
+        System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         BaseProxy jdkProxy = new JdkProxy();
         IUserService userService = (IUserService) jdkProxy.create(new UserServiceImpl());
         userService.say();
