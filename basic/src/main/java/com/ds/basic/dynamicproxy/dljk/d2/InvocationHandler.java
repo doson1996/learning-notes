@@ -1,5 +1,6 @@
 package com.ds.basic.dynamicproxy.dljk.d2;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -9,6 +10,6 @@ import java.lang.reflect.Method;
  */
 public interface InvocationHandler {
 
-    Object invoke(Method method, Object[] args);
+    Object invoke(Object proxy, Method method, Object[] args) throws Exception;
 
 }

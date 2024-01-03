@@ -1,17 +1,35 @@
 package com.ds.basic.dynamicproxy.dljk.d2;
 
+import lombok.SneakyThrows;
+
+import java.lang.reflect.Method;
+
 /**
  * @author ds
  * @date 2024/1/3
  * @description
  */
 public class $Proxy0 implements ITarget {
+
+    private final InvocationHandler h;
+
+    private static final Method m1;
+
+    public $Proxy0(InvocationHandler h) {
+        this.h = h;
+    }
+
+    @SneakyThrows
     @Override
     public void say() {
-        // 增强
-        System.out.println("before...");
+        h.invoke(this, m1, new Object[]{});
+    }
 
-        // 执行目标方法
-        new Target().say();
+    static {
+        try {
+            m1 = ITarget.class.getMethod("say");
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
