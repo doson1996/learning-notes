@@ -1,7 +1,6 @@
-package com.ds.basic.dynamicproxy.dljk.d1;
+package com.ds.basic.dynamicproxy.dljdk.d1;
 
 import com.ds.basic.dynamicproxy.demo.UserService;
-import com.ds.basic.dynamicproxy.dljk.d1.Invoker;
 
 /**
  * @author ds

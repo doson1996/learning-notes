@@ -1,4 +1,4 @@
-package com.ds.basic.dynamicproxy.dljk.d1;
+package com.ds.basic.dynamicproxy.dljdk.d1;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

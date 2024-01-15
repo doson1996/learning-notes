@@ -1,4 +1,4 @@
-package com.ds.basic.dynamicproxy.dljk.d3;
+package com.ds.basic.dynamicproxy.dljdk.d3;
 
 import lombok.SneakyThrows;
 

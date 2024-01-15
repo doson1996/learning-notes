@@ -1,4 +1,4 @@
-package com.ds.basic.dynamicproxy.dljk.d2;
+package com.ds.basic.dynamicproxy.dljdk.d2;
 
 /**
  * @author ds

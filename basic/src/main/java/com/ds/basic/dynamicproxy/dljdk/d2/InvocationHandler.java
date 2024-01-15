@@ -1,6 +1,5 @@
-package com.ds.basic.dynamicproxy.dljk.d2;
+package com.ds.basic.dynamicproxy.dljdk.d2;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
