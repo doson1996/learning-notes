@@ -12,6 +12,7 @@ public class Target1 implements ITarget {
         System.out.println("foo...");
     }
 
+    @Aop
     @Override
     public void bar() {
         System.out.println("bar...");

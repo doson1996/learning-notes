@@ -17,9 +17,18 @@ public class Test {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression("execution(* foo())");
 
+        // 切点匹配
         System.out.println(pointcut.matches(Target1.class.getMethod("foo"), Target1.class));
         System.out.println(pointcut.matches(Target1.class.getMethod("bar"), Target1.class));
         System.out.println("-------------------------------------------");
+
+        // 切注解
+        AspectJExpressionPointcut pointcut1 = new AspectJExpressionPointcut();
+        pointcut.setExpression("annotation(com.ds.basic.dynamicproxy.spring.d1.Aop)");
+        System.out.println(pointcut.matches(Target1.class.getMethod("foo"), Target1.class));
+        System.out.println(pointcut.matches(Target1.class.getMethod("bar"), Target1.class));
+        System.out.println("-------------------------------------------");
+
         // 2.准备通知
         MethodInterceptor advice = new MethodInterceptor() {
             @Override
