@@ -27,10 +27,10 @@ public class Config {
     }
 
     @Bean
-    public Advisor advisor1(MethodInterceptor advice) {
+    public Advisor advisor2(MethodInterceptor advice2) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression("execution(* foo())");
-        return new DefaultPointcutAdvisor(pointcut, advice);
+        return new DefaultPointcutAdvisor(pointcut, advice2);
     }
 
 }

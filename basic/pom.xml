@@ -13,6 +13,11 @@
     <version>${revision}</version>
     <packaging>jar</packaging>
 
+
+    <properties>
+        <logging.log4j.version>2.13.0</logging.log4j.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>cglib</groupId>
@@ -43,6 +48,19 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.9</version>
+        </dependency>
+
+        <!-- Log4j2日志记录框架 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${logging.log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${logging.log4j.version}</version>
         </dependency>
     </dependencies>
 </project>
