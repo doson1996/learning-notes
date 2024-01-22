@@ -5,6 +5,10 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.aop.support.StaticMethodMatcherPointcut;
+import org.springframework.core.annotation.MergedAnnotations;
+
+import java.lang.reflect.Method;
 
 /**
  * @author ds
@@ -20,14 +24,39 @@ public class Test {
         // 切点匹配
         System.out.println(pointcut.matches(Target1.class.getMethod("foo"), Target1.class));
         System.out.println(pointcut.matches(Target1.class.getMethod("bar"), Target1.class));
-        System.out.println("-------------------------------------------");
+        System.out.println("------------------切点匹配-------------------------");
 
         // 切注解
         AspectJExpressionPointcut pointcut1 = new AspectJExpressionPointcut();
-        pointcut.setExpression("annotation(com.ds.basic.dynamicproxy.spring.d1.Aop)");
-        System.out.println(pointcut.matches(Target1.class.getMethod("foo"), Target1.class));
-        System.out.println(pointcut.matches(Target1.class.getMethod("bar"), Target1.class));
-        System.out.println("-------------------------------------------");
+        pointcut1.setExpression("@annotation(com.ds.basic.dynamicproxy.spring.d1.Aop)");
+        System.out.println(pointcut1.matches(Target1.class.getMethod("foo"), Target1.class));
+        System.out.println(pointcut1.matches(Target1.class.getMethod("bar"), Target1.class));
+        System.out.println("--------------------切注解-----------------------");
+
+        StaticMethodMatcherPointcut pointcut2 = new StaticMethodMatcherPointcut() {
+            @Override
+            public boolean matches(Method method, Class<?> clazz) {
+                // 匹配方法上有没有Aop注解
+                MergedAnnotations annotations = MergedAnnotations.from(method);
+                if (annotations.isPresent(Aop.class)) {
+                    return true;
+                }
+
+                // 匹配类以及接口上有没有Aop注解
+                annotations = MergedAnnotations.from(clazz, MergedAnnotations.SearchStrategy.TYPE_HIERARCHY);
+                if (annotations.isPresent(Aop.class)) {
+                    return true;
+                }
+
+                return false;
+            }
+        };
+
+        System.out.println(pointcut2.matches(Target1.class.getMethod("foo"), Target1.class));
+        System.out.println(pointcut2.matches(Target1.class.getMethod("bar"), Target1.class));
+        // 实现接口带有Aop注解
+        System.out.println(pointcut2.matches(A.class.getMethod("say"), A.class));
+        System.out.println("--------------------切注解-----------------------");
 
         // 2.准备通知
         MethodInterceptor advice = new MethodInterceptor() {

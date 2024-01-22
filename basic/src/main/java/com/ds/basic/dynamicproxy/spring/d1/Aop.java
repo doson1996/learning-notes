@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @date 2024/1/22
  * @description
  */
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Aop {
 }
