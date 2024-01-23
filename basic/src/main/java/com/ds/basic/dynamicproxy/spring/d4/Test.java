@@ -19,10 +19,10 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) throws Exception {
-        List<Advisor> advisors = new ArrayList<>();
-
         AspectInstanceFactory factory = new SingletonAspectInstanceFactory(new Aspect1());
 
+        // 将高级切面转为低级切面类
+        List<Advisor> advisors = new ArrayList<>();
         for (Method method : Aspect1.class.getDeclaredMethods()) {
             if (method.isAnnotationPresent(Before.class)) {
                 // 解析切点
@@ -59,24 +59,26 @@ public class Test {
                 Advisor advisor = new DefaultPointcutAdvisor(pointcut, advice);
                 advisors.add(advisor);
             }
-
         }
 
         for (Advisor advisor : advisors) {
             System.out.println("advisor = " + advisor);
         }
+        System.out.println("------------------------advisors---------------------------------");
 
         Target1 target1 = new Target1();
         ProxyFactory proxyFactory = new ProxyFactory();
         proxyFactory.addAdvisors(advisors);
         proxyFactory.setTarget(target1);
 
-        List<Object> list = proxyFactory.getInterceptorsAndDynamicInterceptionAdvice(Target1.class.getMethod("foo"), Target1.class);
-        for (Object o : list) {
-            System.out.println("o = " + o);
+        // 通知统一转换为环绕通知 MethodInterceptor
+        // AspectJMethodBeforeAdvice -> MethodBeforeAdviceAdapter
+        List<Object> methodInterceptors = proxyFactory.getInterceptorsAndDynamicInterceptionAdvice(Target1.class.getMethod("foo"), Target1.class);
+        for (Object methodInterceptor : methodInterceptors) {
+            System.out.println(methodInterceptor);
         }
-        // ITarget proxy = (ITarget) proxyFactory.getProxy();
 
-        // proxy.foo();
+//        ITarget proxy = (ITarget) proxyFactory.getProxy();
+//        proxy.foo();
     }
 }
