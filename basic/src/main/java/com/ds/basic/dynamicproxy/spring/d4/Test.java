@@ -1,11 +1,13 @@
 package com.ds.basic.dynamicproxy.spring.d4;
 
+import org.aopalliance.intercept.MethodInvocation;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.*;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.interceptor.ExposeInvocationInterceptor;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 
 import java.lang.reflect.Method;
@@ -18,7 +20,7 @@ import java.util.List;
  * @description
  */
 public class Test {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Throwable {
         List<Advisor> advisors = new ArrayList<>();
 
         AspectInstanceFactory factory = new SingletonAspectInstanceFactory(new Aspect1());
@@ -68,6 +70,8 @@ public class Test {
 
         Target1 target1 = new Target1();
         ProxyFactory proxyFactory = new ProxyFactory();
+        // 把MethodInterceptor放入当前线程
+        proxyFactory.addAdvice(ExposeInvocationInterceptor.INSTANCE);
         proxyFactory.addAdvisors(advisors);
         proxyFactory.setTarget(target1);
 
@@ -75,8 +79,11 @@ public class Test {
         for (Object o : list) {
             System.out.println("o = " + o);
         }
-        // ITarget proxy = (ITarget) proxyFactory.getProxy();
 
-        // proxy.foo();
+        MethodInvocation invocation = new MyReflectiveMethodInvocation(null, target1, Target1.class.getMethod("foo"), new Object[]{}, Target1.class, list);
+        invocation.proceed();
+
+//        ITarget proxy = (ITarget) proxyFactory.getProxy();
+//        proxy.foo();
     }
 }
