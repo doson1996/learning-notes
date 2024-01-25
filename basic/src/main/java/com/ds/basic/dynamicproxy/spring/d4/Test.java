@@ -20,7 +20,7 @@ import java.util.List;
  * @description
  */
 public class Test {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Throwable {
         AspectInstanceFactory factory = new SingletonAspectInstanceFactory(new Aspect1());
 
         // 将高级切面转为低级切面类
@@ -82,7 +82,7 @@ public class Test {
             System.out.println(methodInterceptor);
         }
 
-        MethodInvocation invocation = new MyReflectiveMethodInvocation(null, target1, Target1.class.getMethod("foo"), new Object[]{}, Target1.class, list);
+        MethodInvocation invocation = new MyReflectiveMethodInvocation(null, target1, Target1.class.getMethod("foo"), new Object[]{}, Target1.class, methodInterceptors);
         invocation.proceed();
 
 //        ITarget proxy = (ITarget) proxyFactory.getProxy();
