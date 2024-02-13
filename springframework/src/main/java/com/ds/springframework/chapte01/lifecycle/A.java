@@ -1,0 +1,17 @@
+package com.ds.springframework.chapte01.lifecycle;
+
+import org.springframework.stereotype.Component;
+
+/**
+ * @author ds
+ * @date 2024/2/8
+ * @description
+ */
+@Component
+public class A {
+
+    public void say() {
+        System.out.println("foo...");
+    }
+
+}
