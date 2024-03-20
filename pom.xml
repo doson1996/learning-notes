@@ -69,6 +69,7 @@
         <module>leecode</module>
         <module>dubbo/provider</module>
         <module>dubbo/provider-api</module>
+        <module>mongo</module>
     </modules>
 
     <dependencies>
