@@ -1,4 +1,4 @@
-package com.ds.es;
+package com.ds.es.chapter01;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.search.SearchRequest;

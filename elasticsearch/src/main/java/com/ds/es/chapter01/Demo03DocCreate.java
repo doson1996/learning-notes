@@ -1,12 +1,10 @@
-package com.ds.es;
+package com.ds.es.chapter01;
 
-import com.ds.es.bean.User;
+import com.ds.es.chapter01.bean.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpHost;
-import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
-import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;

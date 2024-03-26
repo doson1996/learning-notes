@@ -1,4 +1,4 @@
-package com.ds.es.bean;
+package com.ds.es.chapter01.bean;
 
 /**
  * @author ds
