@@ -10,6 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class A {
 
+    static {
+        System.out.println("static a...");
+    }
+
     public void say() {
         System.out.println("foo...");
     }
