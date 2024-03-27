@@ -5,8 +5,8 @@ package com.ds.dmqs;
  * @date 2023/9/19
  * @description
  */
-public class BaseClient {
+public interface BaseClient {
 
-
+    void init();
 
 }
