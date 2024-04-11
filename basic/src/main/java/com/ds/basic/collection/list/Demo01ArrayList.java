@@ -16,6 +16,11 @@ public class Demo01ArrayList {
         }
         ArrayList<String> list = new ArrayList<>(5);
         list.addAll(list1);
+
+        System.out.println("list = " + list);
+
+        list.add(0, "1");
+        System.out.println("list = " + list);
     }
 
     private static void m1() {

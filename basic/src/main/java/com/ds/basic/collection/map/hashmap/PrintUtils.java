@@ -37,6 +37,7 @@ public final class PrintUtils {
 
             if (i < (table.length - 1)) {
                 content.append(",");
+               // content.append("\r\n");
             }
         }
         content.append("]");
