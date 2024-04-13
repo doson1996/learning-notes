@@ -4,7 +4,8 @@ package com.ds.jvm.classloader;
  * @Author ds
  * @Date 2021/4/16 14:31
  * @Description     双亲委派
- * @see {@link ClassLoader}  --> loadClass
+ * <p>
+ * {@link ClassLoader#loadClass(String)}
  * <p>
  *          <h3>双亲委派</h3>
  *          作用：<p>
