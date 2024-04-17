@@ -1,6 +1,6 @@
 package com.ds.springframework.chapte01.configuration;
 
-import com.ds.springframework.chapte01.enable.EnableA;
+import com.ds.springframework.chapte01.enable.registrar.EnableCizScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2024/4/12
  * @description
  */
-@EnableA(path = "/usr/local")
+@EnableCizScan(path = "/usr/local")
 @ComponentScan
 @Configuration
 public class AppConfig {

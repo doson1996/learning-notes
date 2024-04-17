@@ -1,4 +1,4 @@
-package com.ds.springframework.chapte01.enable;
+package com.ds.springframework.chapte01.enable.registrar;
 
 import org.springframework.context.annotation.Import;
 
@@ -12,10 +12,10 @@ import java.lang.annotation.Target;
  * @date 2024/4/12
  * @description
  */
-@Import(ARegistrar.class)
+@Import(CizScannerRegistrar.class)
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EnableA {
+public @interface EnableCizScan {
 
     /**
      * 路径
