@@ -4,15 +4,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="user" class="com.ds.springframework.chapte01.xhyl.User">
+    <bean id="user" class="com.ds.springframework.chapter01.xhyl.User">
 
     </bean>
 
-<!--    <bean id="a" class="com.ds.springframework.chapte01.xhyl.A">-->
+<!--    <bean id="a" class="com.ds.springframework.chapter01.xhyl.A">-->
 <!--        <property name="b" ref="b"/>-->
 <!--    </bean>-->
 
-<!--    <bean id="b" class="com.ds.springframework.chapte01.xhyl.B">-->
+<!--    <bean id="b" class="com.ds.springframework.chapter01.xhyl.B">-->
 <!--        <property name="a" ref="a"/>-->
 <!--    </bean>-->
 </beans>
