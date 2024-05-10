@@ -1,8 +1,5 @@
 package com.ds.basic.collection.map.hashmap;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @Author ds
  * @Date 2021/3/19 15:18
@@ -16,12 +13,12 @@ public class Demo01 {
 
        /* HashMap<String,Object> map = new HashMap<>();
         map.put("a","a");*/
-        System.out.println(tableSizeFor(10000));
+        System.out.println(tableSizeFor(4));
 
     }
 
 
-    static final int tableSizeFor(int cap) {
+    static int tableSizeFor(int cap) {
         int n = cap - 1;
         n |= n >>> 1;
         n |= n >>> 2;
