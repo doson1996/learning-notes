@@ -21,6 +21,13 @@ public class MongoIOAdapter extends FileIOAdapter {
      */
     private static final AtomicBoolean NEED_INIT = new AtomicBoolean(true);
 
+    /**
+     * mongo文件路径
+     *  mac："/Users/ds/IdeaProjects/config/data/dictionary/custom/mongo.txt"
+     *  win："D://haizhi//config//data-for-1.7.5//data//dictionary//custom//mongo.txt"
+     */
+    public static final String FILE_PATH = "D://haizhi//config//data-for-1.7.5//data//dictionary//custom//mongo.txt";
+
     @Override
     public InputStream open(String path) throws FileNotFoundException {
         if (NEED_INIT.get()) {
@@ -28,7 +35,7 @@ public class MongoIOAdapter extends FileIOAdapter {
                 System.out.println("读取mongo配置数据");
                 List<Document> list = MongoDB.query();
 
-                File file = new File( "/Users/ds/IdeaProjects/config/data/dictionary/custom/mongo.txt");
+                File file = new File(FILE_PATH);
                 Writer writer = new OutputStreamWriter(Files.newOutputStream(file.toPath()));
 
                 for (int i = 0; i < list.size(); i++) {

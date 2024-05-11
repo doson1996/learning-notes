@@ -19,7 +19,10 @@ import java.util.List;
  */
 public class Test01 {
     public static void main(String[] args) throws IOException {
-        // CustomDictionary.add("美的集团股份有限公司", "cp");
+         CustomDictionary.add("美的集团股份有限公司", "cp");
+
+         
+
           String question = "给我讲一下重庆银行的详情";
         //   question = "请描述重庆银行股份有限公司的基本情况";
 //        question = "请描述重庆银行股份有限公司的注册时间";
