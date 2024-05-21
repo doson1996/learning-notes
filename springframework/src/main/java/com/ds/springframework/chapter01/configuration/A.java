@@ -1,11 +1,13 @@
 package com.ds.springframework.chapter01.configuration;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author ds
  * @date 2024/4/12
  * @description
  */
-// @Component
+@Component
 public class A {
 
     public A() {

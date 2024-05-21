@@ -11,13 +11,23 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
  * @description
  */
 public class CizScannerConfigurer implements BeanDefinitionRegistryPostProcessor {
+
+    private String path;
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-
+        CizScanner scanner = new CizScanner(registry);
+        scanner.registerFilters();
+        scanner.scan(path);
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
 
     }
+
 }

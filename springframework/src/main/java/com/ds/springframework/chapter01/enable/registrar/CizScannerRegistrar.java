@@ -1,5 +1,7 @@
 package com.ds.springframework.chapter01.enable.registrar;
 
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
@@ -17,8 +19,10 @@ public class CizScannerRegistrar implements ImportBeanDefinitionRegistrar {
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
         Map<String, Object> annotationAttributes = importingClassMetadata.getAnnotationAttributes(EnableCizScan.class.getName());
         assert annotationAttributes != null;
-        Object o = annotationAttributes.get("path");
-        System.out.println("annotationAttributes = " + annotationAttributes);
+        String path = (String) annotationAttributes.get("path");
+        BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(CizScannerConfigurer.class);
+        builder.addPropertyValue("path", path);
+        registry.registerBeanDefinition("cizScannerConfigurer", builder.getBeanDefinition());
     }
 
 }

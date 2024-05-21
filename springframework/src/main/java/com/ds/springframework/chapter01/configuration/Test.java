@@ -12,7 +12,10 @@ public class Test {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         A a = context.getBean(A.class);
-        a.say("hello");
+        a.say("hello a");
+
+        B b = context.getBean(B.class);
+        b.say("hello b");
 
         AppConfig appConfig = context.getBean(AppConfig.class);
         System.out.println("appConfig = " + appConfig.getClass());
