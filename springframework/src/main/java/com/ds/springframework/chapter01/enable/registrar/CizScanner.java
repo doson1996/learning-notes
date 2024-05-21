@@ -4,12 +4,9 @@ import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
-import org.springframework.core.type.classreading.MetadataReader;
-import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.core.type.filter.TypeFilter;
 
-import java.io.IOException;
 import java.util.Set;
 
 /**
@@ -32,13 +29,6 @@ public class CizScanner extends ClassPathBeanDefinitionScanner {
 
     public void registerFilters() {
         TypeFilter annotationTypeFilter = new AnnotationTypeFilter(Ciz.class);
-
-//        TypeFilter typeFilter = new TypeFilter() {
-//            @Override
-//            public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
-//                return metadataReader.getAnnotationMetadata().hasAnnotation(Ciz.class.getName());
-//            }
-//        };
         addIncludeFilter(annotationTypeFilter);
     }
 
