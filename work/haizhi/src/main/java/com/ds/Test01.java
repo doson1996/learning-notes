@@ -19,19 +19,8 @@ import java.util.List;
  */
 public class Test01 {
     public static void main(String[] args) throws IOException {
-         CustomDictionary.add("美的集团股份有限公司", "cp");
 
-         
-
-          String question = "给我讲一下重庆银行的详情";
-        //   question = "请描述重庆银行股份有限公司的基本情况";
-//        question = "请描述重庆银行股份有限公司的注册时间";
-//        question = "请描述美的集团股份有限公司的注册时间";
-        //   question = "请描述重庆银行股份有限公司基本情况的";
-        //   question = "说一下重庆银行股份有限公司的基本情况";
-       // question = "请描述请描述美的集团经营范围";
-         question = "重庆银行的经营范围？";
-         question = "重庆银行的详细信息？";
+          String question = "给我讲一下重庆测试科技有限责任公司基本情况的详情";
 
         List<Term> termList = StandardTokenizer.segment(question);
 

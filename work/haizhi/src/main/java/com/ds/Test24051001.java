@@ -17,15 +17,8 @@ import java.util.List;
  */
 public class Test24051001 {
     public static void main(String[] args) throws IOException {
-        // CustomDictionary.add("美的集团股份有限公司", "cp");
-          String question = "请描述重庆银行股份有限公司详情";
-        //   question = "请描述重庆银行股份有限公司的基本情况";
-//        question = "请描述重庆银行股份有限公司的注册时间";
-//        question = "请描述美的集团股份有限公司的注册时间";
-        //   question = "请描述重庆银行股份有限公司基本情况的";
-        //   question = "说一下重庆银行股份有限公司的基本情况";
-        question = "重庆银行基本情况";
 
+        String question = "重庆测试科技有限责任公司基本情况";
 
         List<Term> termList = StandardTokenizer.segment(question);
         System.out.println(termList);
@@ -39,7 +32,7 @@ public class Test24051001 {
                     "\n最短路分词：" + shortestSegment.seg(sentence));
         }
 
-       // HanLP.Config.ShowTermNature = true;    // 关闭词性显示
+        // HanLP.Config.ShowTermNature = true;    // 关闭词性显示
         Segment segment = new CRFLexicalAnalyzer();//旧版本使用的是CRFSegment，已被遗弃
         String[] sentenceArray = new String[]
                 {
