@@ -35,7 +35,7 @@
         <!-- dependency version -->
         <spring-boot-dependencies.version>2.4.3</spring-boot-dependencies.version>
         <springframework.version>5.3.4</springframework.version>
-        <lombok.version>1.18.18</lombok.version>
+        <lombok.version>1.18.32</lombok.version>
         <mysql-connector.version>8.0.23</mysql-connector.version>
         <cglib.version>3.3.0</cglib.version>
         <netty.version>4.1.63.Final</netty.version>
