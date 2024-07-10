@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class MyThreadFactory implements ThreadFactory {
 
-    private final AtomicInteger id = new AtomicInteger(0);
+    private final AtomicInteger id = new AtomicInteger(1);
 
     private final String name;
 
@@ -26,7 +26,7 @@ public class MyThreadFactory implements ThreadFactory {
     public Thread newThread(Runnable task) {
         String threadName = name + "-" + id.getAndDecrement();
         Thread thread = new Thread(task, threadName);
-//        thread.setDaemon(true);
+        thread.setDaemon(false);
         System.out.println("新建线程: " + threadName);
         threadList.add(thread);
         return thread;
