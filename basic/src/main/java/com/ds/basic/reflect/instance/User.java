@@ -1,8 +1,11 @@
 package com.ds.basic.reflect.instance;
 
+import lombok.Data;
+
 /**
  * @author ds
  */
+@Data
 public class User {
 
     static {
@@ -12,6 +15,8 @@ public class User {
     User() {
 
     }
+
+    private String name;
 
     public void say() {
         System.out.println("say...");
