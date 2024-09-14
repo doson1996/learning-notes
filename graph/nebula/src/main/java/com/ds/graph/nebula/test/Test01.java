@@ -27,6 +27,9 @@ public class Test01 {
         Session session = pool.getSession("root", "1", false);
         ResultSet execute = session.execute("SHOW HOSTS;");
         System.out.println("execute = " + execute);
+
+        String s = session.executeJson("USE basketballplayer; MATCH (v:player) RETURN v;");
+        System.out.println("s = " + s);
         session.release();
         pool.close();
     }
