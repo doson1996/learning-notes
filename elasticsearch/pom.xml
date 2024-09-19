@@ -10,6 +10,18 @@
 <!--    </parent>-->
 
     <artifactId>elasticsearch</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <groupId>com.ds</groupId>
     <version>${revision}</version>
 
@@ -17,13 +29,13 @@
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>7.8.0</version>
+            <version>6.8.3</version>
         </dependency>
         <!-- elasticsearch 的客户端 -->
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
-            <version>7.8.0</version>
+            <version>6.8.3</version>
         </dependency>
         <!-- elasticsearch 依赖 2.x 的 log4j -->
         <dependency>
