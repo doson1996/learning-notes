@@ -22,7 +22,7 @@ public class Demo06Volatile {
 
     }
 
-    private static class ThreadA implements Runnable{
+    private static class ThreadA implements Runnable {
 
         @Override
         public void run() {
@@ -35,11 +35,11 @@ public class Demo06Volatile {
         }
     }
 
-    private static class ThreadB implements Runnable{
+    private static class ThreadB implements Runnable {
 
         @Override
         public void run() {
-            while (flag){
+            while (flag) {
                 System.out.println("线程B获等待flag改变");
             }
         }

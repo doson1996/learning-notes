@@ -11,9 +11,7 @@ import java.util.concurrent.Semaphore;
 public class Demo15Semaphore {
 
     public static void main(String[] args) {
-
         Semaphore semaphore = new Semaphore(3);
-
         for (int i = 0; i < 10; i++) {
             new Thread(new ThreadA(semaphore, "Thread" + i)).start();
            /* try {
@@ -25,7 +23,7 @@ public class Demo15Semaphore {
 
     }
 
-    private static class ThreadA implements Runnable{
+    private static class ThreadA implements Runnable {
 
         private Semaphore semaphore;
 
@@ -40,13 +38,13 @@ public class Demo15Semaphore {
         public void run() {
             try {
                 semaphore.acquire();
-                System.out.println(String.format("当前线程--%s, 还剩%d个资源", name,semaphore.availablePermits()));
+                System.out.println(String.format("当前线程--%s, 还剩%d个资源", name, semaphore.availablePermits()));
 
                 Random random = new Random();
                 int ms = random.nextInt(1000);
                 Thread.sleep(ms);
                 semaphore.release();
-                System.out.println(String.format("线程--%s释放了资源",name));
+                System.out.println(String.format("线程--%s释放了资源", name));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -21,7 +21,7 @@ public class Demo04Pipe {
 
     }
 
-    private static class ThreadA implements Runnable{
+    private static class ThreadA implements Runnable {
         private PipedWriter writer;
 
         public ThreadA(PipedWriter writer) {
@@ -36,7 +36,7 @@ public class Demo04Pipe {
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                if(writer != null){
+                if (writer != null) {
                     try {
                         writer.close();
                     } catch (IOException e) {
@@ -57,7 +57,7 @@ public class Demo04Pipe {
     }
 
 
-    private static class ThreadB implements Runnable{
+    private static class ThreadB implements Runnable {
 
         private PipedReader reader;
 
@@ -70,13 +70,13 @@ public class Demo04Pipe {
 
             int v;
             try {
-                while ((v = reader.read()) != -1){
+                while ((v = reader.read()) != -1) {
                     System.out.print((char) v);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                if(reader != null){
+                if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException e) {

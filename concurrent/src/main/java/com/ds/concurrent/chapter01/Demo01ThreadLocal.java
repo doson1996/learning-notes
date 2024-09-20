@@ -15,11 +15,11 @@ public class Demo01ThreadLocal {
         new Thread(new ThreadB(threadLocal)).start();
     }
 
-    private static class ThreadA implements Runnable{
+    private static class ThreadA implements Runnable {
 
         ThreadLocal threadLocal;
 
-        public ThreadA(ThreadLocal threadLocal){
+        public ThreadA(ThreadLocal threadLocal) {
             this.threadLocal = threadLocal;
         }
 
@@ -35,11 +35,11 @@ public class Demo01ThreadLocal {
         }
     }
 
-    private static class ThreadB implements Runnable{
+    private static class ThreadB implements Runnable {
 
         ThreadLocal threadLocal;
 
-        public ThreadB(ThreadLocal threadLocal){
+        public ThreadB(ThreadLocal threadLocal) {
             this.threadLocal = threadLocal;
         }
 

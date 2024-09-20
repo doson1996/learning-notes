@@ -6,8 +6,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @Author ds
  * @Date 2021/3/29 16:09
- * @Description      CountDownLatch
- *
+ * @Description CountDownLatch
  */
 public class Demo17CountDownLatch {
 
@@ -15,7 +14,7 @@ public class Demo17CountDownLatch {
 
         CountDownLatch countDownLatch = new CountDownLatch(3);
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 System.out.println("等待数据加载---");
                 System.out.println("还有" + countDownLatch.getCount() + "个任务没加载");
@@ -33,7 +32,7 @@ public class Demo17CountDownLatch {
 
     }
 
-    static class PreTaskThread implements Runnable{
+    static class PreTaskThread implements Runnable {
 
         private String task;
 

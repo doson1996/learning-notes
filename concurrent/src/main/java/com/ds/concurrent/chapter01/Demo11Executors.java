@@ -3,20 +3,20 @@ package com.ds.concurrent.chapter01;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * @Author ds
  * @Date 2021/3/26 14:16
- * @Description
- *
- *  CachedThreadPool (当需要执⾏很多短时间的任务时，CacheThreadPool的线程复⽤率⽐较⾼， 会显著的提⾼性能。⽽且线程60s后会回收，意味着即使没有任务进来，CacheThreadPool并不会占⽤很多资源。)
- *      1. 提交任务进线程池。
- *      2. 因为corePoolSize为0的关系，不创建核⼼线程，线程池最⼤为Integer.MAX_VALUE。
- *      3. 尝试将任务添加到SynchronousQueue队列。
- *      4. 如果SynchronousQueue⼊列成功，等待被当前运⾏的线程空闲后拉取执⾏。如果当前没有空闲线程，那么就创建⼀个⾮核⼼线程，然后从SynchronousQueue拉取任务并在当前线程执⾏。
- *      5. 如果SynchronousQueue已有任务在等待，⼊列操作将会阻塞。
- *
+ * @Description CachedThreadPool (当需要执⾏很多短时间的任务时，CacheThreadPool的线程复⽤率⽐较⾼， 会显著的提⾼性能。⽽且线程60s后会回收，意味着即使没有任务进来，CacheThreadPool并不会占⽤很多资源。)
+ * 1. 提交任务进线程池。
+ * 2. 因为corePoolSize为0的关系，不创建核⼼线程，线程池最⼤为Integer.MAX_VALUE。
+ * 3. 尝试将任务添加到SynchronousQueue队列。
+ * 4. 如果SynchronousQueue⼊列成功，等待被当前运⾏的线程空闲后拉取执⾏。如果当前没有空闲线程，那么就创建⼀个⾮核⼼线程，然后从SynchronousQueue拉取任务并在当前线程执⾏。
+ * 5. 如果SynchronousQueue已有任务在等待，⼊列操作将会阻塞。
  */
 public class Demo11Executors {
 
@@ -35,11 +35,11 @@ public class Demo11Executors {
         ExecutorService executorService3 = Executors.newScheduledThreadPool(10);
 
 
-        String[] emails = {"1234@abc.com", "1235@abc.com", "1236@abc.com", "1237@abc.com", "1238@abc.com", "1239@abc.com", };
+        String[] emails = {"1234@abc.com", "1235@abc.com", "1236@abc.com", "1237@abc.com", "1238@abc.com", "1239@abc.com",};
         List<String> list = Arrays.asList(emails);
         List<SendMail> sendMailTask = new ArrayList<>();
         for (String s : list) {
-            sendMailTask.add( new SendMail(s));
+            sendMailTask.add(new SendMail(s));
         }
 
         for (SendMail task : sendMailTask) {
@@ -55,7 +55,7 @@ public class Demo11Executors {
 
         private String email;
 
-        public SendMail(String email){
+        public SendMail(String email) {
             this.email = email;
         }
 

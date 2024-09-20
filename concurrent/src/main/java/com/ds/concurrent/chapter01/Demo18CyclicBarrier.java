@@ -6,14 +6,13 @@ import java.util.concurrent.CyclicBarrier;
 /**
  * @Author ds
  * @Date 2021/3/29 16:21
- * @Description      CyclicBarrier
- *
+ * @Description CyclicBarrier
  */
 public class Demo18CyclicBarrier {
 
     public static void main(String[] args) {
 
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(3,()->{
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(3, () -> {
             System.out.println("开始下一关");
         });
 
@@ -34,7 +33,7 @@ public class Demo18CyclicBarrier {
 
     }
 
-    static class PreTaskThread implements Runnable{
+    static class PreTaskThread implements Runnable {
 
         private String task;
 

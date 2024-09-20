@@ -2,7 +2,6 @@ package com.ds.concurrent.chapter01;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @Author ds
@@ -43,7 +42,7 @@ public class Demo08Atomic {
 
     }
 
-    private static class MyThread implements Runnable{
+    private static class MyThread implements Runnable {
 
         @Override
         public void run() {

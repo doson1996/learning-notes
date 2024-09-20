@@ -1,14 +1,12 @@
 package com.ds.concurrent.chapter01;
 
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author ds
  * @Date 2021/3/26 10:09
- * @Description  AQS (AbstractQueuedSynchronizer 的简称，即 抽象队列同步器 )
+ * @Description AQS (AbstractQueuedSynchronizer 的简称，即 抽象队列同步器 )
  */
 public class Demo09Aqs {
 
@@ -41,7 +39,7 @@ public class Demo09Aqs {
         System.out.println(sum);
     }
 
-    private static class MyThread implements Runnable{
+    private static class MyThread implements Runnable {
 
         @Override
         public void run() {
@@ -49,7 +47,7 @@ public class Demo09Aqs {
                 lock.lock();
                 try {
                     sum++;
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
                     lock.unlock();

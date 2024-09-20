@@ -31,7 +31,7 @@ public class Demo13TestVector {
 
     }
 
-    private static Integer getLast(){
+    private static Integer getLast() {
         int lastIndex = vector.size() - 1;
         try {
             Thread.sleep(1000);
@@ -42,13 +42,13 @@ public class Demo13TestVector {
         return vector.get(lastIndex);
     }
 
-    private static void removeLast(){
+    private static void removeLast() {
         int lastIndex = vector.size() - 1;
         System.out.println("removeLast---" + lastIndex);
         vector.remove(lastIndex);
     }
 
-    private static synchronized Integer getLast1(){
+    private static synchronized Integer getLast1() {
         int lastIndex = vector.size() - 1;
         try {
             Thread.sleep(1000);
@@ -59,29 +59,29 @@ public class Demo13TestVector {
         return vector.get(lastIndex);
     }
 
-    private static synchronized void removeLast1(){
+    private static synchronized void removeLast1() {
         int lastIndex = vector.size() - 1;
         System.out.println("removeLast---" + lastIndex);
         vector.remove(lastIndex);
     }
 
 
-    private static class ThreadA implements Runnable{
+    private static class ThreadA implements Runnable {
 
         @Override
         public void run() {
             Integer last = getLast();
-         //   Integer last = getLast1();
+            //   Integer last = getLast1();
             System.out.println("last = " + last);
         }
     }
 
-    private static class ThreadB implements Runnable{
+    private static class ThreadB implements Runnable {
 
         @Override
         public void run() {
             removeLast();
-          //  removeLast1();
+            //  removeLast1();
         }
     }
 }
