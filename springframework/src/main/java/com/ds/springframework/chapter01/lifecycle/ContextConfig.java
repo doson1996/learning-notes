@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 //@ComponentScan("com.ds.springframework.chapter01.lifecycle")
-@DomainScan(scanBasePackages = "com.ds.springframework.chapte01.lifecycle")
+@DomainScan(scanBasePackages = "com.ds.springframework.chapter01.lifecycle")
 public class ContextConfig {
 
 }
