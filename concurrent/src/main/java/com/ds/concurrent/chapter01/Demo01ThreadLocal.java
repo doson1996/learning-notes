@@ -13,6 +13,10 @@ public class Demo01ThreadLocal {
 
         new Thread(new ThreadA(threadLocal)).start();
         new Thread(new ThreadB(threadLocal)).start();
+
+        threadLocal.set("main");
+        System.out.println("main = " + threadLocal.get());
+
     }
 
     private static class ThreadA implements Runnable {
