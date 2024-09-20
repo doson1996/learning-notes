@@ -27,12 +27,13 @@ public class CustomizeThreadPool extends ThreadPoolExecutor {
 
     /**
      * 任务执行前
+     *
      * @param t
      * @param r
      */
     @Override
     protected void beforeExecute(Thread t, Runnable r) {
-       // System.out.println("任务执行前");
+        // System.out.println("任务执行前");
         /**
          * 当创建过的最大线程池达到最大线程数时，改变核心线程数和最大线程数
          */
@@ -46,12 +47,13 @@ public class CustomizeThreadPool extends ThreadPoolExecutor {
 
     /**
      * 任务执行后
+     *
      * @param r
      * @param t
      */
     @Override
     protected void afterExecute(Runnable r, Throwable t) {
-       // System.out.println("任务执行后");
+        // System.out.println("任务执行后");
     }
 
     /**
@@ -59,6 +61,6 @@ public class CustomizeThreadPool extends ThreadPoolExecutor {
      */
     @Override
     protected void terminated() {
-       // System.out.println("线程池关闭前");
+        // System.out.println("线程池关闭前");
     }
 }

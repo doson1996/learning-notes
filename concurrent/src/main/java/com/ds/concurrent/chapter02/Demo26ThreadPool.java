@@ -6,18 +6,17 @@ import java.util.concurrent.*;
 /**
  * @Author ds
  * @Date 2021/4/21 11:49
- * @Description
- *          Java 中的线程池是运用场景最多的并发框架，几乎所有需要异步或并发执行任务程序都可以使用线程池。在开发过程中，合理地使用线程池能够带来 3 个好处。
- *              第一：降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
- *              第二：提高响应速度。当任务到达时，任务可以不需要等到线程创建就能立即执行。
- *              第三：提高线程的可管理性。线程是稀缺资源，如果无限制地创建，不仅会消耗 统资源，还会降低系统的稳定性，使用线程池可以进行统一分配、调优和监控。
- *
- *
- *         ThreadPoolExecutor 执行 execute 方法分下面 4 种情况。
- *              ⚫ 如果当前运行的线程少于 corePoolSize，则创建新线程来执行任务（注意，执行这一步骤需要获取全局锁）。
- *              ⚫ 如果运行的线程等于或多于 corePoolSize，则将任务加入 BlockingQueue。
- *              ⚫ 如果无法将任务加入 BlockingQueue（队列已满），则创建新的线程来处理任务（注意，执行这一步骤需要获取全局锁）。
- *              ⚫ 如果创建新线程将使当前运行的线程超出 maximumPoolSize，任务将被拒绝，并调用 RejectedExecutionHandler.rejectedExecution()方法。
+ * @Description Java 中的线程池是运用场景最多的并发框架，几乎所有需要异步或并发执行任务程序都可以使用线程池。在开发过程中，合理地使用线程池能够带来 3 个好处。
+ * 第一：降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
+ * 第二：提高响应速度。当任务到达时，任务可以不需要等到线程创建就能立即执行。
+ * 第三：提高线程的可管理性。线程是稀缺资源，如果无限制地创建，不仅会消耗 统资源，还会降低系统的稳定性，使用线程池可以进行统一分配、调优和监控。
+ * <p>
+ * <p>
+ * ThreadPoolExecutor 执行 execute 方法分下面 4 种情况。
+ * ⚫ 如果当前运行的线程少于 corePoolSize，则创建新线程来执行任务（注意，执行这一步骤需要获取全局锁）。
+ * ⚫ 如果运行的线程等于或多于 corePoolSize，则将任务加入 BlockingQueue。
+ * ⚫ 如果无法将任务加入 BlockingQueue（队列已满），则创建新的线程来处理任务（注意，执行这一步骤需要获取全局锁）。
+ * ⚫ 如果创建新线程将使当前运行的线程超出 maximumPoolSize，任务将被拒绝，并调用 RejectedExecutionHandler.rejectedExecution()方法。
  */
 public class Demo26ThreadPool {
 
@@ -76,7 +75,7 @@ public class Demo26ThreadPool {
          * {@link CustomizePolicy]
          */
         RejectedExecutionHandler handler = new ThreadPoolExecutor.AbortPolicy();
-                             //    handler = new CustomizePolicy();
+        //    handler = new CustomizePolicy();
 
         ThreadPoolExecutor threadPool = new ThreadPoolExecutor(corePoolSize,
                 maximumPoolSize,
@@ -88,13 +87,13 @@ public class Demo26ThreadPool {
         );
 
         // 线程池提前创建并启动所有基本线程
-       // threadPool.prestartCoreThread();
+        // threadPool.prestartCoreThread();
 
         long start = System.currentTimeMillis();
         for (int i = 0; i < 100; i++) {
             threadPool.submit(new Task());
-          //  Integer res = threadPool.submit(new Task()).get();
-          //  System.out.println("res = " + res);
+            //  Integer res = threadPool.submit(new Task()).get();
+            //  System.out.println("res = " + res);
         }
         long end = System.currentTimeMillis();
         System.out.println("耗时 " + (end - start) + "ms");

@@ -17,17 +17,17 @@ public class Demo02Void {
 
     }
 
-    public void stop(){
+    public void stop() {
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-     //   new Thread(new ThreadA()).start();
-     //   return 1;
+        //   new Thread(new ThreadA()).start();
+        //   return 1;
     }
 
-    private class ThreadA implements Runnable{
+    private class ThreadA implements Runnable {
 
         @Override
         public void run() {

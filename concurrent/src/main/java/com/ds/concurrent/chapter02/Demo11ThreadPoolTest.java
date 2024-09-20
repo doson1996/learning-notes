@@ -26,7 +26,7 @@ public class Demo11ThreadPoolTest {
         pool.shutdown();
     }
 
-    private static class Job implements Runnable{
+    private static class Job implements Runnable {
 
         private String name;
 

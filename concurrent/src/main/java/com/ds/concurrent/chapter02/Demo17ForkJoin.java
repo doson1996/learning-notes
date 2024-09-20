@@ -1,19 +1,16 @@
 package com.ds.concurrent.chapter02;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 import java.util.concurrent.RecursiveTask;
-import java.util.stream.Stream;
 
 /**
  * @Author ds
  * @Date 2021/4/16 16:22
  * @Description Fork/Join 框架是一个用于并行执行任务的框架，是一个把大任务分割
- *              成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架
- *              jdk8 并行流  parallelStream
+ * 成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架
+ * jdk8 并行流  parallelStream
  */
 public class Demo17ForkJoin {
 

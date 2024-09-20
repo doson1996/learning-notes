@@ -10,7 +10,8 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 public class CustomizePolicy implements RejectedExecutionHandler {
 
-    public CustomizePolicy() { }
+    public CustomizePolicy() {
+    }
 
     @Override
     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {

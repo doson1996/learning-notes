@@ -14,11 +14,11 @@ import java.sql.Connection;
  */
 public class ConnectionDriver {
 
-    static class ConnectionHandler implements InvocationHandler{
+    static class ConnectionHandler implements InvocationHandler {
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            if("commit".equals(method.getName())){
+            if ("commit".equals(method.getName())) {
                 ThreadUtils.milliseconds(100);
             }
             return null;
@@ -27,12 +27,13 @@ public class ConnectionDriver {
 
     /**
      * 创建一个 Connection 的代理，在 commit 时休眠 100 毫秒
+     *
      * @return
      */
     public static Connection createConnection() {
         ClassLoader classLoader = ConnectionDriver.class.getClassLoader();
         Class[] clazzs = {Connection.class};
         ConnectionHandler connectionHandler = new ConnectionHandler();
-        return (Connection)Proxy.newProxyInstance(classLoader, clazzs, connectionHandler);
+        return (Connection) Proxy.newProxyInstance(classLoader, clazzs, connectionHandler);
     }
 }

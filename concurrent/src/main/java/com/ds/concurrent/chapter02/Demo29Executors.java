@@ -1,6 +1,5 @@
 package com.ds.concurrent.chapter02;
 
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
@@ -22,7 +21,5 @@ public class Demo29Executors {
          */
         Executors.newCachedThreadPool();
         Executors.newScheduledThreadPool(1);
-
-
     }
 }

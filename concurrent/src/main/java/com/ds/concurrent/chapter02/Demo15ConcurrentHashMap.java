@@ -8,8 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @Author ds
  * @Date 2021/4/15 17:03
- * @Description
- *             在并发编程中使用 HashMap 可能导致程序死循环。而使用线程安全的 HashTable效率又非常低下
+ * @Description 在并发编程中使用 HashMap 可能导致程序死循环。而使用线程安全的 HashTable效率又非常低下
  */
 public class Demo15ConcurrentHashMap {
 
@@ -19,6 +18,7 @@ public class Demo15ConcurrentHashMap {
 
     /**
      * jdk7 死锁
+     *
      * @throws InterruptedException
      */
     public void jdk7() throws InterruptedException {
@@ -44,13 +44,13 @@ public class Demo15ConcurrentHashMap {
      * jdk8 可能导致死循环
      */
     public void jdk8() {
-        Map<String,String> map = new HashMap<>();
-        for (int i = 0;i < 500;i++) {
+        Map<String, String> map = new HashMap<>();
+        for (int i = 0; i < 500; i++) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for (int j = 0;j < 500;j++) {
-                        map.put(Thread.currentThread().getName() + "-" + j, j+"");
+                    for (int j = 0; j < 500; j++) {
+                        map.put(Thread.currentThread().getName() + "-" + j, j + "");
                     }
                 }
             }).start();

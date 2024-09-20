@@ -14,12 +14,12 @@ import java.util.concurrent.atomic.AtomicLong;
 public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
 
     /**
-     *  线程池最大限制数
+     * 线程池最大限制数
      */
     private static final int MAX_WORKER_NUMBERS = 10;
 
     /**
-     *  线程池默认的数量
+     * 线程池默认的数量
      */
     private static final int DEFAULT_WORKER_NUMBERS = 5;
 
@@ -31,10 +31,10 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
     /**
      * 这是一个工作列表，将会向里面插入工作
      */
-    private final LinkedList<Job> jobs = new LinkedList<Job>();
+    private final LinkedList<Job> jobs = new LinkedList<>();
 
     /**
-     *  工作者列表
+     * 工作者列表
      */
     private final List<Worker> workers = Collections.synchronizedList(new ArrayList<Worker>(2));
 
@@ -44,15 +44,15 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
     private int workerNum = DEFAULT_WORKER_NUMBERS;
 
     /**
-     *  线程编号生成
+     * 线程编号生成
      */
     private AtomicLong threadNum = new AtomicLong();
 
-    public DefaultThreadPool(){
+    public DefaultThreadPool() {
         initializeWorkers(DEFAULT_WORKER_NUMBERS);
     }
 
-    public DefaultThreadPool(int num){
+    public DefaultThreadPool(int num) {
         workerNum = num > MAX_WORKER_NUMBERS ? MAX_WORKER_NUMBERS : Math.max(num, MIN_WORKER_NUMBERS);
         initializeWorkers(num);
     }
@@ -60,7 +60,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
     @Override
     public void execute(Runnable job) {
         if (job != null) {
-            synchronized (jobs){
+            synchronized (jobs) {
                 jobs.addLast((Job) job);
                 jobs.notify();
             }
@@ -111,11 +111,11 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
         return jobs.size();
     }
 
-    private void initializeWorkers(int num){
+    private void initializeWorkers(int num) {
         for (int i = 0; i < num; i++) {
             Worker worker = new Worker();
             workers.add(worker);
-            Thread thread = new Thread(worker,"ThreadPool-Worker-" + threadNum.incrementAndGet());
+            Thread thread = new Thread(worker, "ThreadPool-Worker-" + threadNum.incrementAndGet());
             thread.start();
         }
     }
@@ -123,7 +123,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
     /**
      * 工作者，负责消费任务
      */
-    private class Worker implements Runnable{
+    private class Worker implements Runnable {
 
         /**
          * 是否工作
@@ -135,7 +135,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
             while (running) {
                 Job job = null;
                 synchronized (jobs) {
-                    while (jobs.isEmpty()){
+                    while (jobs.isEmpty()) {
                         try {
                             jobs.wait();
                         } catch (InterruptedException e) {
@@ -145,11 +145,11 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool {
                     }
 
                     job = jobs.removeFirst();
-                    if (job != null){
+                    if (job != null) {
                         try {
                             job.run();
                         } catch (Exception e) {
-                           //忽略job执行中的异常
+                            //忽略job执行中的异常
                         }
                     }
                 }

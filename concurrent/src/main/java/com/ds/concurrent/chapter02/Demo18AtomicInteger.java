@@ -5,10 +5,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @Author ds
  * @Date 2021/4/19 13:39
- * @Description
- *              ⚫ AtomicBoolean：原子更新布尔类型。
- *              ⚫ AtomicInteger：原子更新整型。
- *              ⚫ AtomicLong：原子更新长整型。
+ * @Description ⚫ AtomicBoolean：原子更新布尔类型。
+ * ⚫ AtomicInteger：原子更新整型。
+ * ⚫ AtomicLong：原子更新长整型。
  */
 public class Demo18AtomicInteger {
 
@@ -23,8 +22,8 @@ public class Demo18AtomicInteger {
         System.out.println(ai.getAndIncrement());
 
         //compareAndSet 如果输入的数值等于预期值，则以原子方式将该值设置为输入的值
-        System.out.println(ai.compareAndSet(1,5));
-        System.out.println(ai.compareAndSet(2,5));
+        System.out.println(ai.compareAndSet(1, 5));
+        System.out.println(ai.compareAndSet(2, 5));
         System.out.println(ai.get());
 
         ai.lazySet(10);

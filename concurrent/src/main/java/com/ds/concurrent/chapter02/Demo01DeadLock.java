@@ -14,13 +14,13 @@ public class Demo01DeadLock {
     public static void main(String[] args) {
 
         new Thread(() -> {
-            synchronized (A){
+            synchronized (A) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                synchronized (B){
+                synchronized (B) {
                     System.out.println(1);
                 }
 
@@ -29,8 +29,8 @@ public class Demo01DeadLock {
         }).start();
 
         new Thread(() -> {
-            synchronized (B){
-                synchronized (A){
+            synchronized (B) {
+                synchronized (A) {
                     System.out.println(2);
                 }
 

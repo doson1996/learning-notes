@@ -3,9 +3,6 @@ package com.ds.concurrent.chapter02;
 import com.ds.concurrent.chapter02.connectionpool.ConnectionPool;
 
 import java.sql.Connection;
-import java.sql.Statement;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -43,7 +40,7 @@ public class Demo10ConnectionPoolTest {
 
     }
 
-    private static class ConnectionRunner implements Runnable{
+    private static class ConnectionRunner implements Runnable {
 
         int count;
 
@@ -65,14 +62,14 @@ public class Demo10ConnectionPoolTest {
 
             }
 
-            while (count > 0){
+            while (count > 0) {
                 try {
                     Connection connection = pool.fetchConnection(1000);
-                    if (connection != null){
+                    if (connection != null) {
                         try {
                             connection.createStatement();
                             connection.commit();
-                        } catch (Exception e){
+                        } catch (Exception e) {
 
                         } finally {
                             pool.releaseConnection(connection);

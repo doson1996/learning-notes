@@ -1,6 +1,8 @@
 package com.ds.concurrent.chapter02;
 
-import java.util.concurrent.*;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -58,18 +60,17 @@ public class Demo27ThreadPoolMonitoring {
                 }*/
 
                 System.out.println("task--" + ai.getAndIncrement() +
-                                    "-> 线程池的线程数量:" + threadPool.getPoolSize() +
-                                    " - 线程池核心线程数:" + threadPool.getCorePoolSize() +
-                                    " - 线程池最大线程数:" + threadPool.getMaximumPoolSize() +
-                                    " - 线程池活动线程数:" + threadPool.getActiveCount() +
-                                    " - 线程池创建过最大线程数:" + threadPool.getLargestPoolSize() +
-                                    " - 线程池需要执行的任务数:" + threadPool.getTaskCount() +
-                                    " - 线程池已完成的任务数:" + threadPool.getCompletedTaskCount() +
-                                    " - 线程池队列大小:" + (threadPool.getQueue().size() + threadPool.getQueue().remainingCapacity()) +
-                                    " - 当前排队线程数: " + threadPool.getQueue().size() +
-                                    " - 队列剩余大小: " + threadPool.getQueue().remainingCapacity());
+                        "-> 线程池的线程数量:" + threadPool.getPoolSize() +
+                        " - 线程池核心线程数:" + threadPool.getCorePoolSize() +
+                        " - 线程池最大线程数:" + threadPool.getMaximumPoolSize() +
+                        " - 线程池活动线程数:" + threadPool.getActiveCount() +
+                        " - 线程池创建过最大线程数:" + threadPool.getLargestPoolSize() +
+                        " - 线程池需要执行的任务数:" + threadPool.getTaskCount() +
+                        " - 线程池已完成的任务数:" + threadPool.getCompletedTaskCount() +
+                        " - 线程池队列大小:" + (threadPool.getQueue().size() + threadPool.getQueue().remainingCapacity()) +
+                        " - 当前排队线程数: " + threadPool.getQueue().size() +
+                        " - 队列剩余大小: " + threadPool.getQueue().remainingCapacity());
             });
-
         }
 
         threadPool.shutdown();

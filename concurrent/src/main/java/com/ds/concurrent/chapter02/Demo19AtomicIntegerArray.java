@@ -5,21 +5,19 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 /**
  * @Author ds
  * @Date 2021/4/19 14:01
- * @Description
- *      ⚫ AtomicIntegerArray：原子更新整型数组里的元素。
- *      ⚫ AtomicLongArray：原子更新长整型数组里的元素。
- *      ⚫ AtomicReferenceArray：原子更新引用类型数组里的元素。
- *
+ * @Description ⚫ AtomicIntegerArray：原子更新整型数组里的元素。
+ * ⚫ AtomicLongArray：原子更新长整型数组里的元素。
+ * ⚫ AtomicReferenceArray：原子更新引用类型数组里的元素。
  */
 public class Demo19AtomicIntegerArray {
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1,2};
+        int[] arr = new int[]{1, 2};
         AtomicIntegerArray ai = new AtomicIntegerArray(arr);
-        ai.getAndAdd(1,1);
+        ai.getAndAdd(1, 1);
         System.out.println("ai.get(1) = " + ai.get(1));
 
-        ai.getAndSet(1,5);
+        ai.getAndSet(1, 5);
         System.out.println("ai.get(1) = " + ai.get(1));
 
         /**

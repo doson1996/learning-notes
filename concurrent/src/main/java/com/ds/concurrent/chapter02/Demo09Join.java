@@ -23,7 +23,7 @@ public class Demo09Join {
         System.out.println(Thread.currentThread().getName() + " terminate");
     }
 
-    private static class MyThread implements Runnable{
+    private static class MyThread implements Runnable {
 
         private Thread thread;
 

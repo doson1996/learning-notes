@@ -11,13 +11,13 @@ public class Demo05Interrupted {
 
     public static void main(String[] args) {
 
-        Thread sleepThread = new Thread(()->{
+        Thread sleepThread = new Thread(() -> {
             while (true) {
                 SleepUtils.seconds(10);
             }
         });
 
-        Thread busyThread = new Thread(()->{
+        Thread busyThread = new Thread(() -> {
             while (true) {
             }
         });

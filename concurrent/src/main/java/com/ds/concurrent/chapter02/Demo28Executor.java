@@ -15,7 +15,7 @@ public class Demo28Executor {
         Callable<String> a = Executors.callable(new Task(), "a");
         Future<String> submit = executor.submit(a);
         submit.cancel(true);
-     //   System.out.println("submit.get() = " + submit.get());
+        //   System.out.println("submit.get() = " + submit.get());
 
         executor.shutdown();
     }

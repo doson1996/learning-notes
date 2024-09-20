@@ -1,8 +1,6 @@
 package com.ds.concurrent.chapter02;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -10,9 +8,8 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * @Author ds
  * @Date 2021/4/15 16:02
- * @Description
- *              一般都会将 Condition 对象作为成员变量。当调用 await()方法后，当前线程会释放锁并在此等待，
- *              而其他线程调用 Condition 对象的 signal()方法，通知当前线程后，当前线程才从 await()方法返回，并且在返回前已经获取了锁
+ * @Description 一般都会将 Condition 对象作为成员变量。当调用 await()方法后，当前线程会释放锁并在此等待，
+ * 而其他线程调用 Condition 对象的 signal()方法，通知当前线程后，当前线程才从 await()方法返回，并且在返回前已经获取了锁
  */
 public class Demo14Condition {
 
@@ -23,17 +20,17 @@ public class Demo14Condition {
     public static void main(String[] args) {
         BoundedQueue<String> bq = new BoundedQueue<>(10);
 
-        new Thread(()->{
+        new Thread(() -> {
             //conditionWait();
             for (int j = 0; j < 10; j++) {
                 bq.add(j + "");
-               // System.out.println("add" + bq.toString());
+                // System.out.println("add" + bq.toString());
             }
 
         }).start();
 
-        new Thread(()->{
-           // conditionSignal();
+        new Thread(() -> {
+            // conditionSignal();
             for (int j = 0; j < 10; j++) {
                 bq.remove();
                 System.out.println(bq.toString());
@@ -68,9 +65,9 @@ public class Demo14Condition {
     }
 
     /**
-     *  通过一个有界队列的示例来深入了解 Condition 的使用方式。有界队列是一种特殊的队列，
-     *  当队列为空时，队列的获取操作将会阻塞获取线程，直到队列中有新增元素，当队列已满时，
-     *  队列的插入操作将会阻塞插入线程，直到队列出现“空位”
+     * 通过一个有界队列的示例来深入了解 Condition 的使用方式。有界队列是一种特殊的队列，
+     * 当队列为空时，队列的获取操作将会阻塞获取线程，直到队列中有新增元素，当队列已满时，
+     * 队列的插入操作将会阻塞插入线程，直到队列出现“空位”
      */
     private static class BoundedQueue<T> {
 
@@ -87,6 +84,7 @@ public class Demo14Condition {
 
         /**
          * 添加一个元素，如果数组满，则添加线程进入等待状态，直到有"空位"
+         *
          * @param item
          */
         public void add(T item) {
@@ -111,12 +109,13 @@ public class Demo14Condition {
 
         /**
          * 由头部删除一个元素，如果数组空，则删除线程进入等待状态，直到有新添加元素
+         *
          * @return
          */
         public T remove() {
             lock.lock();
             try {
-                while (count == 0){
+                while (count == 0) {
                     try {
                         notEmpty.await();
                     } catch (InterruptedException e) {
