@@ -65,6 +65,7 @@ public class PinYinUtil {
 
         // 风险-法院判决(详情)
         str = "案件名称、判决日期、身份、案由、案件编号、案件类型、原告、被告、文书摘要、判决结果";
+        str = "案件编号、发布日期、涉案金额、被执行人履行情况(lxqk)、被执行人姓名、执行依据文号、组织机构代码、省份、立案时间、执行法院、作出依据单位、生效法律文书确定的义务(yy)、失信被执行人行为具体情形(qx)";
 
         String[] split = str.split("、");
         JSONObject jsonObject = new JSONObject();
