@@ -24,6 +24,6 @@ public interface Config {
     /**
      * 图库
      */
-     String GRAPH = "cq";
+     String GRAPH = "crcp";
     
 }
