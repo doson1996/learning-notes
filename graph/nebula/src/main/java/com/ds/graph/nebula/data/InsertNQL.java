@@ -23,9 +23,26 @@ public class InsertNQL {
         String tableName = "Company";
         String comment = "测试";
 
-//        jsonStr = nb();
-//        tableName = "ads_company_ar_detail_dd";
-//        comment = "测试";
+        // 年报
+        jsonStr = nb();
+        tableName = "ads_company_ar_detail_dd";
+        comment = "测试";
+
+        // 黑名单
+        jsonStr = hmd();
+        tableName = "black_list_detail";
+
+        // 账户状态异常
+        jsonStr = zhztyc();
+        tableName = "account_normal_detail";
+
+        // 借据
+        jsonStr = jj();
+        tableName = "loan_dubil_dtl";
+
+        // 账户状态异常
+        jsonStr = qs();
+        tableName = "entity_ads_edmp_qianshui_di";
 
         JSONObject jsonObject = JSON.parseObject(jsonStr);
         Set<String> keySet = jsonObject.keySet();
@@ -104,6 +121,65 @@ public class InsertNQL {
         return "";
     }
 
+    private static String qs() {
+        return "{\n" +
+                "\t\"qnum\": \"915000002024110502\",\n" +
+                "\t\"eid\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"data_ddate\": \"2024-10-11\",\n" +
+                "\t\"object_key\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"entid\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"entname\": \"重庆测试技术有限公司\",\n" +
+                "\t\"taxcate\": \"国税\",\n" +
+                "\t\"mid\": \"1\",\n" +
+                "\t\"personid\": \"1\",\n" +
+                "\t\"id\": \"1\",\n" +
+                "\t\"debt\": \"100000\",\n" +
+                "\t\"taxtype\": \"城市维护建设税\"\n" +
+                "}";
+    }
+
+
+    private static String jj() {
+        return "{\n" +
+                "\t\"eid\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"payoff_dt\": \"结清日期\",\n" +
+                "\t\"object_key\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"dubil_id\": \"001\",\n" +
+                "\t\"oper_org_id\": \"1001\",\n" +
+                "\t\"cert_id\": \"101\",\n" +
+                "\t\"pay_back_type_self\": \"true\",\n" +
+                "\t\"indv_ind\": \"公私标志\",\n" +
+                "\t\"contr_id\": \"1000001\",\n" +
+                "\t\"asset_tran_ind\": \"true\",\n" +
+                "\t\"credit_code\": \"915000002024110502\",\n" +
+                "\t\"cust_name\": \"重庆测试技术有限公司\",\n" +
+                "\t\"distr_dt\": \"贷款发放日期\",\n" +
+                "\t\"off_owe_int_bal\": 100000,\n" +
+                "\t\"in_off_bs_cate_cd\": \"1\",\n" +
+                "\t\"etl_dt\": \"数据日期\",\n" +
+                "\t\"oper_org_name\": \"总行\",\n" +
+                "\t\"cert_cate_cd\": \"证件类型代1码\",\n" +
+                "\t\"company_id\": \"企业id\",\n" +
+                "\t\"wrtoff_ind\": \"true\",\n" +
+                "\t\"guarantee_type_name\": \"抵押\",\n" +
+                "\t\"loan_amt\": 100000,\n" +
+                "\t\"loan_bal\": 100000,\n" +
+                "\t\"flzp_org_name\": \"总行\",\n" +
+                "\t\"prod_name\": \"贷中贷\",\n" +
+                "\t\"level5_class_cd\": \"正常\",\n" +
+                "\t\"ovdue_bal\": 100000,\n" +
+                "\t\"flzp_org_id\": \"1001\",\n" +
+                "\t\"exec_int_rate\": \"3%\",\n" +
+                "\t\"matr_dt\": \"到期日期\",\n" +
+                "\t\"pay_back_type_selfhide\": \"true\",\n" +
+                "\t\"ovdue_days\": 10,\n" +
+                "\t\"cust_id\": \"10001\",\n" +
+                "\t\"pay_back\": \"true\",\n" +
+                "\t\"strip_line_cate_cd_new\": \"大中条线\",\n" +
+                "\t\"pay_back_type_relate\": \"true\"\n" +
+                "}";
+    }
+
     private static String nb() {
         return "{\n" +
                 "\t\"ANCHEYEAR\": \"2019\",\n" +
@@ -119,15 +195,15 @@ public class InsertNQL {
                 "\t\"EMAIL\": \"1@qq.com\",\n" +
                 "\t\"edit_shareholding_change_infos\": \"[]\",\n" +
                 "\t\"edit_change_infos\": \"[]\",\n" +
-                "\t\"has_invest\": \"[]\",\n" +
+                "\t\"has_invest\": \"true\",\n" +
                 "\t\"shareholder_information\": \"[]\",\n" +
-                "\t\"enterprise_asset_status_information\": \"[]\",\n" +
+                "\t\"enterprise_asset_status_information\": \"{\\\"id\\\": 1,\\\"entid\\\": \\\"8a80a8d54f2184bc8285a923f98dbe09\\\"\\\"ANCHEYEAR\\\": \\\"2019\\\",\\\"ASSGRO\\\": \\\"1000000\\\",\\\"TOTEQU\\\": \\\"1000000\\\",\\\"VENDINC\\\": \\\"1000000\\\",\\\"PROGRO\\\": \\\"1000000\\\",\\\"MAIBUSINC\\\": \\\"1000000\\\",\\\"NETINC\\\": \\\"1000000\\\",\\\"RATGRO\\\": \\\"1000000\\\",\\\"LIAGRO\\\": \\\"1000000\\\"}\",\n" +
                 "\t\"ENTNAME\": \"企业名称\",\n" +
                 "\t\"TEL\": \"企业联系电话\",\n" +
                 "\t\"websites\": \"[]\",\n" +
                 "\t\"out_guarantee_info\": \"[]\",\n" +
                 "\t\"id\": \"1\",\n" +
-                "\t\"etl_dt\": \"date(\"2021-03-17\")\",\n" +
+                "\t\"etl_dt\": \"2024-11-01\",\n" +
                 "\t\"EMPNUM\": 100\n" +
                 "}";
     }
@@ -244,12 +320,28 @@ public class InsertNQL {
 
     // 账户状态异常
     private static String zhztyc() {
-        return "{\"eid\":\"重庆测试技术有限公司915000002024110502\",\"object_key\":\"数据主键\",\"lawlock_rs\":\"异常状态认定原因\",\"lawlock_dt\":\"异常状态开始时间\",\"cust_no\":\"客户号\",\"acct_no\":\"异常的账户号\",\"cust_name\":\"客户名称\"}\n";
+        return "{\n" +
+                "\t\"eid\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"object_key\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"lawlock_rs\": \"异常状态认定原因\",\n" +
+                "\t\"lawlock_dt\": \"异常状态开始时间\",\n" +
+                "\t\"cust_no\": \"c10002\",\n" +
+                "\t\"acct_no\": \"a10002\",\n" +
+                "\t\"cust_name\": \"重庆测试xxx公司\"\n" +
+                "}";
     }
 
     // 黑名单
     private static String hmd() {
-        return "{\"eid\":\"重庆测试技术有限公司915000002024110502\",\"object_key\":\"数据主键\",\"confirm_rs\":\"认定原因\",\"cust_no\":\"客户号\",\"confirm_dt\":\"认定时间\",\"cust_name\":\"客户名称\"}\n";
+        return "{\n" +
+                "\t\"eid\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"object_key\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"system_flag\": \"信贷系统\",\n" +
+                "\t\"confirm_rs\": \"认定原因\",\n" +
+                "\t\"cust_no\": \"c10001\",\n" +
+                "\t\"confirm_dt\": \"认定时间\",\n" +
+                "\t\"cust_name\": \"张三\"\n" +
+                "}";
     }
 
     /**

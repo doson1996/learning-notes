@@ -13,10 +13,6 @@ public class JsonTest {
     public static void main(String[] args) {
         // 借据表
         String table = jjb();
-        // 黑名单
-        table = hmd();
-        // 账户状态异常
-        table = zhztyc();
         // 舆情
         table = yq();
         // 历史执行
@@ -29,6 +25,15 @@ public class JsonTest {
         table = bg();
         // 年报
         table = nb();
+
+        // 黑名单
+        table = hmd();
+        // 账户状态异常
+        table = zhztyc();
+        // 借据
+        table = jj();
+        // 欠税
+        table = qs();
         String[] lineArray = table.split("\n");
         JSONObject json = new JSONObject();
         for (String line : lineArray) {
@@ -36,9 +41,9 @@ public class JsonTest {
             String key = obj[0];
             String value = obj[1];
             json.put(key, value);
-            String md5 = SecureUtil.md5("915000002024110502重庆测试技术有限公司");
+            String md5 = SecureUtil.md5("915000002024110502重庆测试技术有限公司").toUpperCase();
             json.put("eid", md5);
-            json.put("entid", md5);
+//            json.put("entid", md5);
             json.put("object_key", md5);
 //            json.put("mid", UUID.fastUUID().toString().replace("-", ""));
         }
@@ -49,6 +54,61 @@ public class JsonTest {
 
     private static String a() {
         return "";
+    }
+
+    private static String qs() {
+        return "object_key\t数据主键\n" +
+                "eid\t关联查询主键\n" +
+                "id\tid\n" +
+                "mid\t唯一键\n" +
+                "entid\t企业uid\n" +
+                "personid\t个人uid\n" +
+                "entname\t纳税人名称\n" +
+                "qnum\t纳税人识别号\n" +
+                "taxtype\t欠缴税种\n" +
+                "taxcate\t种类1国税2地税\n" +
+                "debt\t总欠税额\n" +
+                "data_ddate\t数据日期";
+    }
+
+
+    private static String jj() {
+        return "eid\t关联查询主键\n" +
+                "object_key\t数据主键\n" +
+                "cust_name\t客户名称\n" +
+                "credit_code\t统一社会信用代码\n" +
+                "company_id\t企业id\n" +
+                "wrtoff_ind\t是否核销\n" +
+                "indv_ind\t公私标志\n" +
+                "loan_bal\t贷款余额\n" +
+                "loan_amt\t贷款金额\n" +
+                "matr_dt\t到期日期\n" +
+                "distr_dt\t贷款发放日期\n" +
+                "ovdue_days\t逾期天数\n" +
+                "level5_class_cd\t五级分类（中文）\n" +
+                "cust_id\t客户编号\n" +
+                "contr_id\t合同编号\n" +
+                "dubil_id\t借据编号\n" +
+                "ovdue_bal\t逾期余额\n" +
+                "off_owe_int_bal\t表外欠息余额\n" +
+                "in_off_bs_cate_cd\t表内外类型代码\n" +
+                "cert_cate_cd\t证件类型代码\n" +
+                "cert_id\t证件编号\n" +
+                "asset_tran_ind\t是否资产转让\n" +
+                "payoff_dt\t结清日期\n" +
+                "pay_back_type_self\t是否自身回流\n" +
+                "pay_back_type_relate\t是否关联方回流\n" +
+                "pay_back_type_selfhide\t是否隐性回流\n" +
+                "pay_back\t是否资金回流\n" +
+                "etl_dt\t数据日期\n" +
+                "exec_int_rate\t执行利率\n" +
+                "prod_name\t贷款产品名称\n" +
+                "strip_line_cate_cd_new\t条线标识\n" +
+                "flzp_org_id\t管户机构号\n" +
+                "flzp_org_name\t管户机构名称\n" +
+                "guarantee_type_name\t担保方式\n" +
+                "oper_org_id\t经办机构号\n" +
+                "oper_org_name\t经办机构名称";
     }
 
     private static String nbZc() {
@@ -279,7 +339,8 @@ public class JsonTest {
                 "confirm_dt\t认定时间\n" +
                 "confirm_rs\t认定原因\n" +
                 "cust_no\t客户号\n" +
-                "cust_name\t客户名称";
+                "cust_name\t客户名称\n" +
+                "system_flag\t来源系统";
     }
 
     /**
