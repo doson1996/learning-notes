@@ -34,6 +34,10 @@ public class JsonTest {
         table = jj();
         // 欠税
         table = qs();
+        // 负面舆情
+        table = fmyq();
+
+
         String[] lineArray = table.split("\n");
         JSONObject json = new JSONObject();
         for (String line : lineArray) {
@@ -55,6 +59,24 @@ public class JsonTest {
     private static String a() {
         return "";
     }
+
+    // 负面舆情
+    private static String fmyq() {
+        return "object_key\t数据主键\t字符串\n" +
+                "eid\t关联查询主键\t字符串\n" +
+                "id\tid\t字符串\n" +
+                "mid\t唯一键\t字符串\n" +
+                "entid\t企业UID\t字符串\n" +
+                "title\t标题\t字符串\n" +
+                "area\t所属地区\t字符串\n" +
+                "impact\t情感\t字符串\n" +
+                "keywords\t文件关键字\t字符串\n" +
+                "all_cities\t城市\t字符串\n" +
+                "all_provinces\t省份\t字符串\n" +
+                "etl_dt\t处理时间\t字符串\n" +
+                "event_time\t舆情发生时间\t";
+    }
+
 
     private static String qs() {
         return "object_key\t数据主键\n" +

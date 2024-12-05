@@ -44,6 +44,9 @@ public class InsertNQL {
         jsonStr = qs();
         tableName = "entity_ads_edmp_qianshui_di";
 
+        jsonStr = fmyq();
+        tableName = "ads_edmp_dataplus_news_dd";
+
         JSONObject jsonObject = JSON.parseObject(jsonStr);
         Set<String> keySet = jsonObject.keySet();
         StringBuilder sb = new StringBuilder("CREATE tag `").append(tableName).append("` (");
@@ -119,6 +122,24 @@ public class InsertNQL {
 
     private static String a() {
         return "";
+    }
+
+    private static String fmyq() {
+        return "{\n" +
+                "\t\"area\": \"所属地区\",\n" +
+                "\t\"eid\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"object_key\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"keywords\": \"文件关键字\",\n" +
+                "\t\"entid\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"impact\": \"情感\",\n" +
+                "\t\"all_cities\": \"重庆\",\n" +
+                "\t\"mid\": \"8A80A8D54F2184BC8285A923F98DBE09\",\n" +
+                "\t\"title\": \"标题\",\n" +
+                "\t\"all_provinces\": \"重庆\",\n" +
+                "\t\"id\": \"id\",\n" +
+                "\t\"etl_dt\": \"处理时间\",\n" +
+                "\t\"event_time\": \"舆情发生时间\"\n" +
+                "}";
     }
 
     private static String qs() {

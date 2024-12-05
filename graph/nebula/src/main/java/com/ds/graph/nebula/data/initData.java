@@ -9,7 +9,7 @@ import java.util.List;
  * @date 2024/11/8
  * @description
  */
-public class initData {
+public class InitData {
     public static void main(String[] args) {
         NebulaRepo nebulaRepo = NebulaRepo.getNebulaRepo();
         String createSpace = "CREATE SPACE IF NOT EXISTS " + Config.GRAPH + " (vid_type=FIXED_STRING(64));";
