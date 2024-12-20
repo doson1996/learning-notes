@@ -7,7 +7,7 @@ package com.ds.dp.a.meituan.reward;
  */
 public class Invitee {
 
-    private int userType;
+    private final int userType;
 
     public Invitee(int userType){
         this.userType = userType;

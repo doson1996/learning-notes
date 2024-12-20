@@ -9,7 +9,7 @@ public class InviteRewardImpl {
     //返奖主流程
     public void sendReward(long userId) {
         //创建工厂
-        FactorRewardStrategyFactory strategyFactory = new FactorRewardStrategyFactory();
+        FactorRewardStrategyFactory strategyFactory = FactorRewardStrategyFactory.getInstance();
 
         //根据用户id查询用户信息
         Invitee invitee = getInviteeByUserId(userId);

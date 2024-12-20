@@ -9,6 +9,8 @@ public class Test {
 
     public static void main(String[] args) {
         InviteRewardImpl inviteReward = new InviteRewardImpl();
+        inviteReward.sendReward(1);
+        inviteReward.sendReward(1);
         inviteReward.sendReward(2);
     }
 
