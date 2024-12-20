@@ -22,4 +22,5 @@ public abstract class RewardStrategy {
       // 更新用户信息以及结算
         System.out.println("更新用户 " + userId + "信息以及结算 " + reward);
     }
+
 }

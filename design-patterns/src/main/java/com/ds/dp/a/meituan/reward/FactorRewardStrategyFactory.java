@@ -5,14 +5,15 @@ package com.ds.dp.a.meituan.reward;
  * @Date 2021/3/26 15:41
  * @Description 具体工厂
  */
-public class FactorRewardStrategyFactory extends StrategyFactory{
+public class FactorRewardStrategyFactory extends StrategyFactory {
 
     @Override
     RewardStrategy createStrategy(Class c) {
         RewardStrategy product = null;
         try {
             product = (RewardStrategy) Class.forName(c.getName()).newInstance();
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
         return product;
     }
 }

@@ -8,8 +8,8 @@ package com.ds.dp.a.meituan.reward;
 public class Test {
 
     public static void main(String[] args) {
-
         InviteRewardImpl inviteReward = new InviteRewardImpl();
         inviteReward.sendReward(2);
     }
+
 }

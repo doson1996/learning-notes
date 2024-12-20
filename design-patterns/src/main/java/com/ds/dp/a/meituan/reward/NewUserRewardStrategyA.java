@@ -13,4 +13,5 @@ public class NewUserRewardStrategyA extends RewardStrategy{
         System.out.println("新用户返奖计算逻辑");
         return 10;
     }
+
 }

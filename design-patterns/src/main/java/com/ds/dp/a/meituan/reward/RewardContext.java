@@ -6,6 +6,7 @@ package com.ds.dp.a.meituan.reward;
  * @Description
  */
 public class RewardContext {
+
     private RewardStrategy strategy;
 
     public RewardContext(RewardStrategy strategy) {

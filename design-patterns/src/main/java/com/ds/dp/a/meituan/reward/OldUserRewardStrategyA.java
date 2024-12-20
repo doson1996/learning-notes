@@ -13,4 +13,5 @@ public class OldUserRewardStrategyA extends RewardStrategy{
         System.out.println("老用户返奖计算逻辑");
         return 5;
     }
+
 }

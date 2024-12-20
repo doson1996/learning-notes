@@ -15,7 +15,7 @@ public class InviteRewardImpl {
         Invitee invitee = getInviteeByUserId(userId);
 
         //新用户返奖策略
-        if (userId == 1) {
+        if (invitee.getUserType() == 1) {
             NewUserRewardStrategyA newUserReward = (NewUserRewardStrategyA) strategyFactory.createStrategy(NewUserRewardStrategyA.class);
             RewardContext rewardContext = new RewardContext(newUserReward);
             //执行返奖策略
@@ -23,7 +23,7 @@ public class InviteRewardImpl {
         }
 
         //老用户返奖策略
-        if(invitee.getUserType() == 2){
+        if (invitee.getUserType() == 2) {
             OldUserRewardStrategyA oldUserReward = (OldUserRewardStrategyA) strategyFactory.createStrategy(OldUserRewardStrategyA.class);
             RewardContext rewardContext = new RewardContext(oldUserReward);
             //执行返奖策略
@@ -31,9 +31,9 @@ public class InviteRewardImpl {
         }
     }
 
-    private Invitee getInviteeByUserId(long userId){
-        if(userId == 1L){
-           return new Invitee(1);
+    private Invitee getInviteeByUserId(long userId) {
+        if (userId == 1L) {
+            return new Invitee(1);
         }
         return new Invitee(2);
     }

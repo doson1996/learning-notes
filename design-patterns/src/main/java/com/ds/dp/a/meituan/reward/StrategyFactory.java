@@ -13,4 +13,5 @@ public abstract class StrategyFactory<T> {
      * @return
      */
     abstract RewardStrategy createStrategy(Class<T> c);
+
 }
