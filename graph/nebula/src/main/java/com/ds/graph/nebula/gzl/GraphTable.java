@@ -7,7 +7,45 @@ package com.ds.graph.nebula.gzl;
  */
 public class GraphTable {
     public static void main(String[] args) {
-        String  str = "ac_card\t档案管理卡片表\n" +
+        // 图平台表
+        String str = graph();
+        // 图平台nacos表
+        str = nacos();
+        // 风铃服务
+        str = iapServer();
+
+        String[] split = str.split("\n");
+        for (String s : split) {
+            String[] split1 = s.split("\t");
+            System.out.println(split1[0] + "(" + split1[1] + ")");
+        }
+
+    }
+
+    private static String iapServer() {
+        return "account\t用户服务\n" +
+                "bank\t实时服务\n" +
+                "follow\t关注服务\n" +
+                "search\t搜索服务";
+    }
+
+    private static String nacos() {
+        return "config_info\t配置信息表\n" +
+                "config_info_aggr\t配置信息聚合表\n" +
+                "config_info_beta\t配置信息测试版表\n" +
+                "config_info_tag\t配置信息标签表\n" +
+                "config_tags_relation\t配置信息标签关联表\n" +
+                "group_capacity\t集群、各Group容量信息表\n" +
+                "his_config_info\t历史配置信息表\n" +
+                "permissions\t权限信息\n" +
+                "roles\t角色信息\n" +
+                "tenant_capacity\t租户容量信息表\n" +
+                "tenant_info\t租户信息\n" +
+                "users\t用户信息";
+    }
+
+    private static String graph() {
+        return "ac_card\t档案管理卡片表\n" +
                 "ac_card_base\t档案管理基本信息卡片详情表\n" +
                 "ac_card_common\t档案管理普通卡片详情表\n" +
                 "ac_card_quote\t档案管理引用卡片详情表\n" +
@@ -196,12 +234,6 @@ public class GraphTable {
                 "sys_user_role\t用户与角色\n" +
                 "tr_task_error\t大数据平台错误数据记录\n" +
                 "tr_task_instance\t大数据平台任务实例表";
-
-        String[] split = str.split("\n");
-        for (String s : split) {
-            String[] split1 = s.split("\t");
-            System.out.println(split1[0] + "(" + split1[1] + ")");
-        }
-
     }
+
 }

@@ -7,19 +7,14 @@ import java.util.List;
 /**
  * @author ds
  * @date 2025/1/15
- * @description 图平台服务
+ * @description 风铃服务
  */
-public class GraphServer {
+public class IapServer {
 
-    public static List<String> list = Lists.newArrayList("图平台搜索服务",
-            "图平台spark任务服务",
-            "图平台个人库应用服务",
-            "图平台调度服务",
-            "图平台挖掘服务",
-            "图平台分析服务",
-            "图平台对象存储服务",
-            "图平台构建服务",
-            "图平台网关服务");
+    public static List<String> list = Lists.newArrayList("风铃用户服务",
+            "风铃实时服务",
+            "风铃关注服务",
+            "风铃搜索服务");
 
     public static void main(String[] args) {
         String str = "后端：图平台搜索服务迁移到国产服务器\t0.5\n" +
