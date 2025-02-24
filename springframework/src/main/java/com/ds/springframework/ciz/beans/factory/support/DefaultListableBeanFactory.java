@@ -13,7 +13,9 @@ import java.util.Map;
  */
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry {
 
-    private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
+    private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
+
+    private final Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
 
     @Override
     public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) {
@@ -25,6 +27,19 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
         BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
         if (beanDefinition == null) throw new BeansException("No bean named '" + beanName + "' is defined");
         return beanDefinition;
+    }
+
+    public InstantiationStrategy getInstantiationStrategy() {
+        return instantiationStrategy;
+    }
+
+    public void setInstantiationStrategy(InstantiationStrategy instantiationStrategy) {
+        this.instantiationStrategy = instantiationStrategy;
+    }
+
+    @Override
+    public Object getBean(String name, Object... args) throws BeansException {
+        return null;
     }
 
 }
