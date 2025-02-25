@@ -5,27 +5,29 @@ package com.ds.concurrent.util;
  * @Date 2021/4/2 14:29
  * @Description
  */
-public class ThreadUtils extends SleepUtils{
+public class ThreadUtils extends SleepUtils {
 
-   private ThreadUtils(){};
+    private ThreadUtils() {
+    }
+
+    ;
 
     /**
-     *
      * @param lock
      */
-   public static void wait(Object lock){
-       try {
-           lock.wait();
-       } catch (InterruptedException e) {
-           e.printStackTrace();
-       }
-   }
+    public static void wait(Object lock) {
+        try {
+            lock.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public static void notify(Object lock){
+    public static void notify(Object lock) {
         lock.notify();
     }
 
-    public static void notifyAll(Object lock){
+    public static void notifyAll(Object lock) {
         lock.notifyAll();
     }
 }

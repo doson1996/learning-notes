@@ -1,9 +1,9 @@
 package com.ds.basic.dynamicproxy.dlcglib.d1;
 
+import java.lang.reflect.Method;
+
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-
-import java.lang.reflect.Method;
 
 /**
  * @author ds

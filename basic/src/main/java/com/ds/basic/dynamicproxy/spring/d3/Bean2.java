@@ -1,7 +1,5 @@
 package com.ds.basic.dynamicproxy.spring.d3;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.annotation.PostConstruct;
 
 /**
@@ -11,7 +9,7 @@ import javax.annotation.PostConstruct;
  */
 public class Bean2 {
 
-  //  @Autowired
+    //  @Autowired
     public void setBean1(Bean1 bean1) {
         System.out.println("setBean1 = " + bean1.getClass());
     }

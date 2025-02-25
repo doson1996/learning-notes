@@ -22,14 +22,16 @@ public class Invoker implements InvocationHandler {
 
     /**
      * 返回接口的代理对象
+     *
      * @return
      */
     public Object getInstance() {
-        return Proxy.newProxyInstance(target.getClassLoader(),new Class[]{target}, this);
+        return Proxy.newProxyInstance(target.getClassLoader(), new Class[]{target}, this);
     }
 
     /**
      * 请求转发实现
+     *
      * @return
      * @throws Throwable
      */

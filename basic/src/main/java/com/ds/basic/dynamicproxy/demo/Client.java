@@ -14,7 +14,7 @@ public class Client {
          */
         UserService userService = new UserServiceImpl();
         JdkProxy jdkProxy = new JdkProxy();
-        UserService proxy = (UserService)jdkProxy.newProxy(userService);
+        UserService proxy = (UserService) jdkProxy.newProxy(userService);
         proxy.save();
 
         /**
@@ -22,7 +22,7 @@ public class Client {
          */
         CglibService cglibService = new CglibService();
         CglibProxy cglibProxy = new CglibProxy();
-        CglibService cglib = (CglibService)cglibProxy.newProxy(cglibService);
+        CglibService cglib = (CglibService) cglibProxy.newProxy(cglibService);
         cglib.save();
 
 

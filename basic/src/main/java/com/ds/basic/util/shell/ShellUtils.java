@@ -1,6 +1,10 @@
 package com.ds.basic.util.shell;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeoutException;
@@ -11,7 +15,7 @@ import java.util.concurrent.TimeoutException;
  * @date 2019/06/13 20:50
  */
 public class ShellUtils {
-    
+
     public static int executeProcess(final long timeout, final String[] command)
             throws IOException, InterruptedException, TimeoutException {
         Process process = Runtime.getRuntime().exec(command, null);
@@ -81,7 +85,7 @@ public class ShellUtils {
                 if (exit == 0) {
                     System.out.println("子进程正常完成");
                 } else {
-                     System.out.println("子进程异常结束");
+                    System.out.println("子进程异常结束");
                 }
             } catch (InterruptedException ignore) {
                 return;
@@ -97,16 +101,16 @@ public class ShellUtils {
     public static void readStreamInfo(InputStream... inputStreams) {
         ExecutorService executorService = Executors.newFixedThreadPool(inputStreams.length);
         for (InputStream in : inputStreams) {
-            executorService.execute(()->{
-                try{
+            executorService.execute(() -> {
+                try {
                     BufferedReader br = new BufferedReader(new InputStreamReader(in, "GBK"));
                     String line;
-                    while((line = br.readLine())!=null){
-                         System.out.println(" inputStream: " + line);
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(" inputStream: " + line);
                     }
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
-                }finally {
+                } finally {
                     try {
                         in.close();
                     } catch (IOException e) {

@@ -1,6 +1,5 @@
 package com.ds.concurrent.chapter03;
 
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -17,16 +16,15 @@ public class Demo03Lock {
 }
 
 
-
 class Buyer implements Runnable {
 
     final ReentrantLock lock = new ReentrantLock();
 
-     int ticket = 10;
+    int ticket = 10;
 
     @Override
     public void run() {
-       buy();
+        buy();
     }
 
     public void buy() {

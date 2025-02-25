@@ -1,21 +1,19 @@
 package com.ds.basic.dynamicproxy.spring.d2;
 
+import java.util.List;
+
 import org.springframework.aop.Advisor;
-import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
 import org.springframework.context.annotation.ConfigurationClassPostProcessor;
 import org.springframework.context.support.GenericApplicationContext;
-
-import java.lang.reflect.Method;
-import java.util.List;
 
 /**
  * @author ds
  * @date 2024/1/22
  * @description 代理对象创建时机
- *                  创建 -> (*)依赖注入 -> 初始化 (*)
- *                  依赖注入之前 （【循环依赖的时候】如果这里创建好了，后面就不会创建）
- *                  初始化之后    【没有循环依赖的时候】
- *                     注意： 在对象创建完成之前的依赖注入、初始化方法都应调用原始对象的方法
+ * 创建 -> (*)依赖注入 -> 初始化 (*)
+ * 依赖注入之前 （【循环依赖的时候】如果这里创建好了，后面就不会创建）
+ * 初始化之后    【没有循环依赖的时候】
+ * 注意： 在对象创建完成之前的依赖注入、初始化方法都应调用原始对象的方法
  */
 public class Test {
     public static void main(String[] args) throws Exception {
@@ -26,7 +24,7 @@ public class Test {
         context.registerBean(MyAnnotationAwareAspectJAutoProxyCreator.class);
         context.refresh();
         for (String name : context.getBeanDefinitionNames()) {
-             System.out.println("name = " + name);
+            System.out.println("name = " + name);
         }
         System.out.println("------------------------bean----------------------");
 
@@ -52,7 +50,7 @@ public class Test {
         System.out.println("o1 = " + o1.getClass());
         System.out.println("o2 = " + o2.getClass());
 
-        ((ITarget)o1).foo();
-        ((Target2)o2).say();
+        ((ITarget) o1).foo();
+        ((Target2) o2).say();
     }
 }

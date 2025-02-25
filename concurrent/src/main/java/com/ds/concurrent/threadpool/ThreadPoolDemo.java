@@ -50,7 +50,7 @@ public class ThreadPoolDemo {
         System.out.println("Finished all threads");
     }
 
-    private static int getScore(){
+    private static int getScore() {
         return 1;
     }
 }

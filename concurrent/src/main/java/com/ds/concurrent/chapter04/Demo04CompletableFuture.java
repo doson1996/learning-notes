@@ -1,13 +1,12 @@
 package com.ds.concurrent.chapter04;
 
-import com.ds.concurrent.threadpool.LogPolicy;
-import com.ds.concurrent.threadpool.NameThreadFactory;
-import com.ds.concurrent.util.SleepUtils;
-
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import com.ds.concurrent.threadpool.LogPolicy;
+import com.ds.concurrent.threadpool.NameThreadFactory;
 
 /**
  * @author ds

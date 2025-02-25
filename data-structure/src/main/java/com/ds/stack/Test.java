@@ -25,11 +25,12 @@ public class Test {
         System.out.println(new StringBuffer("abc").reverse());
         System.out.println(reverse("abc"));
         // 检查符号是否成对出现
-      //  System.out.println(isValid("[]"));
+        //  System.out.println(isValid("[]"));
     }
 
     /**
      * 反转字符串
+     *
      * @param str
      * @return
      */
@@ -49,7 +50,7 @@ public class Test {
     }
 
 
-    public static boolean isValid(String s){
+    public static boolean isValid(String s) {
         // 括号之间的对应规则
         Map<Character, Character> mappings = new HashMap<>();
         mappings.put(')', '(');

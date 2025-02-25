@@ -1,10 +1,9 @@
 package com.ds.basic.base;
 
-import java.util.Arrays;
-
 /**
  * for 数据量少的时候更快，更直观、容易理解
  * System.arraycopy 数据量大的时候更快
+ *
  * @author ds
  */
 public class Demo05Array {
@@ -35,6 +34,6 @@ public class Demo05Array {
         long end2 = System.nanoTime();
         System.out.println("System.arraycopy耗时 " + (end2 - start2) + "纳秒");
 
-       // System.out.println(Arrays.toString(arr1));
+        // System.out.println(Arrays.toString(arr1));
     }
 }

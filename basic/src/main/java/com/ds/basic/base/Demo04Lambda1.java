@@ -4,7 +4,7 @@ package com.ds.basic.base;
  * @author ds
  * @date 2021/12/22 22:45
  */
- public class Demo04Lambda1 {
+public class Demo04Lambda1 {
 
     static class Person1 implements IPerson {
         @Override

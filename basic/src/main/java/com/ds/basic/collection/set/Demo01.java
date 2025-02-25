@@ -1,7 +1,9 @@
 package com.ds.basic.collection.set;
 
-import java.util.*;
-import java.util.concurrent.Executors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
@@ -25,7 +27,7 @@ public class Demo01 {
         list.add(2);
         list.add(1);
         list.add(2);
-        List<Integer> collect = list.stream().distinct().filter(a-> a > 1).collect(Collectors.toList());
+        List<Integer> collect = list.stream().distinct().filter(a -> a > 1).collect(Collectors.toList());
         System.out.println("collect = " + collect.toString());
 
     }

@@ -1,8 +1,8 @@
 package com.ds.concurrent.chapter02;
 
-import com.ds.concurrent.util.ThreadUtils;
-
 import java.util.concurrent.CountDownLatch;
+
+import com.ds.concurrent.util.ThreadUtils;
 
 /**
  * @Author ds

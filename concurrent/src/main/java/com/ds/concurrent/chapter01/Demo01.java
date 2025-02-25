@@ -1,6 +1,5 @@
 package com.ds.concurrent.chapter01;
 
-import com.ds.concurrent.util.SleepUtils;
 import com.ds.concurrent.util.ThreadUtils;
 
 /**
@@ -16,10 +15,10 @@ public class Demo01 {
         int size = 10;
 
 
-        new Thread(()->{
+        new Thread(() -> {
             synchronized (lock) {
                 for (int i = 0; i < size; i++) {
-                    if (i % 2 == 0){
+                    if (i % 2 == 0) {
                         System.out.println(Thread.currentThread().getName() + " " + i);
                         ThreadUtils.notifyAll(lock);
                         ThreadUtils.wait(lock);
@@ -27,19 +26,19 @@ public class Demo01 {
                     }
                 }
             }
-        },"A").start();
+        }, "A").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             synchronized (lock) {
                 for (int i = 0; i < size; i++) {
-                    if (i % 2 != 0){
+                    if (i % 2 != 0) {
                         System.out.println(Thread.currentThread().getName() + " " + i);
                         ThreadUtils.notifyAll(lock);
                         ThreadUtils.wait(lock);
                     }
                 }
             }
-        },"B").start();
+        }, "B").start();
 
     }
 }

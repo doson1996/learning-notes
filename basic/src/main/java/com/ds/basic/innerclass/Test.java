@@ -9,7 +9,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-       // Demo01.StaticInnerClass.say();
+        // Demo01.StaticInnerClass.say();
 
         Singleton instance1 = Singleton.getInstance();
         Singleton instance2 = Singleton.getInstance();

@@ -1,11 +1,11 @@
 package com.ds.concurrent.chapter02;
 
-import com.ds.concurrent.util.ThreadUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.locks.ReentrantLock;
+
+import com.ds.concurrent.util.ThreadUtils;
 
 /**
  * @Author ds

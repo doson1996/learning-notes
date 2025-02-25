@@ -42,7 +42,7 @@ public class FastList<E> extends AbstractList<E> implements List<E> {
         E oldValue = (E) elementData[index];
         int numMoved = size - index - 1;
         if (numMoved > 0)
-            System.arraycopy(elementData, index+1, elementData, index,
+            System.arraycopy(elementData, index + 1, elementData, index,
                     numMoved);
         elementData[--size] = null;
         return oldValue;

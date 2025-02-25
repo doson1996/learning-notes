@@ -13,7 +13,7 @@ public class Demo01StringBufferEqBuilder {
      * 每种方式测试次数
      */
     public static final int SIZE = 10000;
-    
+
     public static void main(String[] args) {
         String str = "";
         /**
@@ -32,8 +32,8 @@ public class Demo01StringBufferEqBuilder {
         for (int i = 0; i < SIZE; i++) {
             str = str + intToString(i);
         }
-        long endTime =  getSystemTime();
-        System.out.println("+=========="+calculation(startTime,endTime));
+        long endTime = getSystemTime();
+        System.out.println("+==========" + calculation(startTime, endTime));
 
         //用stringJoiner拼接字符串
         startTime = getSystemTime();
@@ -41,8 +41,8 @@ public class Demo01StringBufferEqBuilder {
         for (int i = 0; i < SIZE; i++) {
             stringJoiner.add(intToString(i));
         }
-        endTime =  getSystemTime();
-        System.out.println("stringJoiner=========="+calculation(startTime,endTime));
+        endTime = getSystemTime();
+        System.out.println("stringJoiner==========" + calculation(startTime, endTime));
 
         //用stringBuilder拼接字符串
         startTime = getSystemTime();
@@ -50,8 +50,8 @@ public class Demo01StringBufferEqBuilder {
         for (int i = 0; i < SIZE; i++) {
             stringBuilder.append(intToString(i));
         }
-        endTime =  getSystemTime();
-        System.out.println("StringBuilder=========="+calculation(startTime,endTime));
+        endTime = getSystemTime();
+        System.out.println("StringBuilder==========" + calculation(startTime, endTime));
 
         //用stringBuffer拼接字符串
         startTime = getSystemTime();
@@ -59,24 +59,24 @@ public class Demo01StringBufferEqBuilder {
         for (int i = 0; i < SIZE; i++) {
             stringBuffer.append(intToString(i));
         }
-        endTime =  getSystemTime();
-        System.out.println("StringBuffer=========="+calculation(startTime,endTime));
+        endTime = getSystemTime();
+        System.out.println("StringBuffer==========" + calculation(startTime, endTime));
 
         //调用100000次的stringBuilder.toString()
         startTime = getSystemTime();
         for (int i = 0; i < SIZE; i++) {
             stringBuilder.toString();
         }
-        endTime =  getSystemTime();
-        System.out.println("StringBuilderToString=========="+calculation(startTime,endTime));
+        endTime = getSystemTime();
+        System.out.println("StringBuilderToString==========" + calculation(startTime, endTime));
 
         //调用100000次的stringBuffer.toString()
         startTime = getSystemTime();
         for (int i = 0; i < SIZE; i++) {
             stringBuffer.toString();
         }
-        endTime =  getSystemTime();
-        System.out.println("StringBufferToString=========="+calculation(startTime,endTime));
+        endTime = getSystemTime();
+        System.out.println("StringBufferToString==========" + calculation(startTime, endTime));
 
         /**
          * StringBuilderToString==========8819ms
@@ -91,42 +91,45 @@ public class Demo01StringBufferEqBuilder {
         for (int i = 0; i < SIZE; i++) {
             stringBuffer.append(i).toString();
         }
-        endTime =  getSystemTime();
-        System.out.println("StringBufferAppendToString=========="+calculation(startTime,endTime));
+        endTime = getSystemTime();
+        System.out.println("StringBufferAppendToString==========" + calculation(startTime, endTime));
 
         startTime = getSystemTime();
         for (int i = 0; i < SIZE; i++) {
             stringBuilder.append(i).toString();
         }
-        endTime =  getSystemTime();
-        System.out.println("StringBuilderAppendToString=========="+calculation(startTime,endTime));
+        endTime = getSystemTime();
+        System.out.println("StringBuilderAppendToString==========" + calculation(startTime, endTime));
 
     }
 
     /**
      * 获取当前时间
+     *
      * @return
      */
-    public static long getSystemTime(){
+    public static long getSystemTime() {
         return System.currentTimeMillis();
     }
 
     /**
      * 计算结束时间和开始时间之间差距多少毫秒
+     *
      * @param startTime 开始时间
      * @param endTime   结束时间
      * @return
      */
-    public static String calculation(long startTime,long endTime){
+    public static String calculation(long startTime, long endTime) {
         return (endTime - startTime) + "ms";
     }
 
     /**
      * 把int转换为String
+     *
      * @param i
      * @return
      */
-    public static String intToString(Integer i){
+    public static String intToString(Integer i) {
         return String.valueOf(i);
     }
 

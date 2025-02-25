@@ -1,6 +1,9 @@
 package com.ds.basic.io.serializable;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * @Author ds
@@ -15,18 +18,18 @@ public class Demo01 {
         read();
     }
 
-    public static void write() throws Exception{
+    public static void write() throws Exception {
 
-        User user = new User("张三","abc@d.com");
+        User user = new User("张三", "abc@d.com");
         ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("user.txt"));
         os.writeObject(user);
         os.close();
     }
 
-    public static void read() throws Exception{
+    public static void read() throws Exception {
 
         ObjectInputStream oi = new ObjectInputStream(new FileInputStream("user.txt"));
-        User readUser = (User)oi.readObject();
+        User readUser = (User) oi.readObject();
         System.out.println(readUser);
         oi.close();
     }

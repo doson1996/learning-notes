@@ -5,7 +5,7 @@ package com.ds.basic.oop;
  * @Date 2021/3/29 9:34
  * @Description
  */
-public class Son implements Father{
+public class Son implements Father {
 
     public int i = 10;
 

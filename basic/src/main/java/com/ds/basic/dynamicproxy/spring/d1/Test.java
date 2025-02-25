@@ -1,5 +1,7 @@
 package com.ds.basic.dynamicproxy.spring.d1;
 
+import java.lang.reflect.Method;
+
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
@@ -7,8 +9,6 @@ import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.core.annotation.MergedAnnotations;
-
-import java.lang.reflect.Method;
 
 /**
  * @author ds

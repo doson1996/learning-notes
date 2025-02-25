@@ -1,9 +1,6 @@
 package com.ds.basic.dynamicproxy.base;
 
-import com.ds.basic.dynamicproxy.base.BaseJdkProxy;
-
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 
 /**
  * @author ds

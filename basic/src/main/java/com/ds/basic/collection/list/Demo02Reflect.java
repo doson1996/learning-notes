@@ -33,7 +33,7 @@ public class Demo02Reflect {
          * 如果传入其它的如 Integer.class 会报 NoSuchMethodException: java.util.List.add(java.lang.Integer)
          * 应该是由于java的泛型在编译的时候都会转为Object
          */
-        List.class.getMethod("add",Object.class).invoke(list,1);
+        List.class.getMethod("add", Object.class).invoke(list, 1);
 
         System.out.println("list = " + list);
     }

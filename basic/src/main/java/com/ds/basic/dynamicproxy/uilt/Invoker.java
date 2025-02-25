@@ -15,8 +15,8 @@ public class Invoker<T> implements InvocationHandler {
         this.target = target;
     }
 
-    public T newProxy(){
-        return (T) Proxy.newProxyInstance(target.getClass().getClassLoader(),target.getClass().getInterfaces(),this);
+    public T newProxy() {
+        return (T) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 
 

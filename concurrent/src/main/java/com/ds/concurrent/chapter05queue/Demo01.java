@@ -1,12 +1,12 @@
 package com.ds.concurrent.chapter05queue;
 
-import com.ds.concurrent.util.SleepUtils;
-
 import java.util.Comparator;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import com.ds.concurrent.util.SleepUtils;
 
 /**
  * @author ds

@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 /**
  * 激活finalshell
+ *
  * @author ds
  */
 public class Active {
@@ -20,7 +21,7 @@ public class Active {
     public static void generateKey(String hardwareId) throws NoSuchAlgorithmException {
         String proKey = transform(61305 + hardwareId + 8552);
         String pfKey = transform(2356 + hardwareId + 13593);
-        System.out.println("请将此行复制到离线激活中："+proKey);
+        System.out.println("请将此行复制到离线激活中：" + proKey);
         System.out.println(pfKey);
     }
 

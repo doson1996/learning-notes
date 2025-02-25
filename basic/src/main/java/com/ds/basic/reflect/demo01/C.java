@@ -3,7 +3,7 @@ package com.ds.basic.reflect.demo01;
 /**
  * @author ds
  */
-public class C  extends B {
+public class C extends B {
 
     private String c;
 

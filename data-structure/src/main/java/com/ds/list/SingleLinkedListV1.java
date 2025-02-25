@@ -66,7 +66,7 @@ public class SingleLinkedListV1<E> extends AbstractList<E> implements List<E> {
         for (int i = 1; i < size; i++) {
             if (index == i)
                 return node.element;
-            // 继续往下寻找
+                // 继续往下寻找
             else
                 node = node.next;
         }

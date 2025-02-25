@@ -1,9 +1,13 @@
 package com.ds.basic.collection.map.hashmap;
 
-import lombok.SneakyThrows;
-
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import lombok.SneakyThrows;
 
 /**
  * @author ds
@@ -37,7 +41,7 @@ public final class PrintUtils {
 
             if (i < (table.length - 1)) {
                 content.append(",");
-               // content.append("\r\n");
+                // content.append("\r\n");
             }
         }
         content.append("]");
@@ -91,7 +95,7 @@ public final class PrintUtils {
             param.put(index, list);
         }
 
-        param.forEach((k,v) -> System.out.println(k + " " + Arrays.toString(v.toArray())));
+        param.forEach((k, v) -> System.out.println(k + " " + Arrays.toString(v.toArray())));
 
     }
 

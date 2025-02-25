@@ -5,7 +5,7 @@ package com.ds.basic.dynamicproxy.demo;
  * @Date 2021/3/19 9:45
  * @Description
  */
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Override
     public void save() {

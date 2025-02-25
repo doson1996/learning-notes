@@ -6,13 +6,13 @@ import java.util.List;
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
 import com.alibaba.otter.canal.common.utils.AddressUtils;
-import com.alibaba.otter.canal.protocol.Message;
 import com.alibaba.otter.canal.protocol.CanalEntry.Column;
 import com.alibaba.otter.canal.protocol.CanalEntry.Entry;
 import com.alibaba.otter.canal.protocol.CanalEntry.EntryType;
 import com.alibaba.otter.canal.protocol.CanalEntry.EventType;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowChange;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowData;
+import com.alibaba.otter.canal.protocol.Message;
 
 /**
  * @author ds
@@ -78,7 +78,7 @@ public class Test {
                     eventType));
 
             for (RowData rowData : rowChage.getRowDatasList()) {
-                if (eventType == EventType.DELETE ) {
+                if (eventType == EventType.DELETE) {
                     printColumn(rowData.getBeforeColumnsList());
                 } else if (eventType == EventType.INSERT) {
                     printColumn(rowData.getAfterColumnsList());

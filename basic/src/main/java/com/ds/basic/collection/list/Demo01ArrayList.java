@@ -1,6 +1,9 @@
 package com.ds.basic.collection.list;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @Author ds
@@ -27,7 +30,7 @@ public class Demo01ArrayList {
         List<Integer> list = new ArrayList<>();
         list.add(5, 1);
 
-        String[] strings = {"1","2","3"};
+        String[] strings = {"1", "2", "3"};
         ArrayList<String> list1 = new ArrayList<>(Arrays.asList(strings));
         list1.add("1");
         System.out.println(list1);

@@ -1,13 +1,13 @@
 package com.ds.basic.dynamicproxy.base.test;
 
+import java.io.FileOutputStream;
+
 import com.ds.basic.dynamicproxy.base.BaseProxy;
 import com.ds.basic.dynamicproxy.base.CglibProxy;
 import com.ds.basic.dynamicproxy.base.JdkProxy;
 import com.ds.basic.dynamicproxy.base.ProxyFactory;
 import lombok.SneakyThrows;
 import sun.misc.ProxyGenerator;
-
-import java.io.FileOutputStream;
 
 /**
  * @author ds
@@ -18,14 +18,14 @@ public class Test {
     public static void main(String[] args) {
         principle();
 
-       // testJdk();
-       // testCglib();
-      //  testFactory();
+        // testJdk();
+        // testCglib();
+        //  testFactory();
     }
 
     /**
      * 原理
-     *  com.sun.proxy.$Proxy0
+     * com.sun.proxy.$Proxy0
      */
     @SneakyThrows
     public static void principle() {
@@ -34,7 +34,7 @@ public class Test {
         BaseProxy jdkProxy = new JdkProxy();
         IUserService userService = (IUserService) jdkProxy.create(new UserServiceImpl());
         userService.say();
-        byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0",new Class[]{userService.getClass()});
+        byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0", new Class[]{userService.getClass()});
 
         FileOutputStream os = new FileOutputStream("Proxy0.class");
         os.write(bytes);

@@ -10,7 +10,7 @@ public class Demo04Lambda2 {
     public static void main(String[] args) {
         ILambda lambda = null;
 
-        lambda = (str)-> {
+        lambda = (str) -> {
             if (Objects.isNull(str)) {
                 return "null";
             }

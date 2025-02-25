@@ -1,9 +1,9 @@
 package com.ds.basic.dynamicproxy.base.test;
 
+import java.io.Serializable;
+
 import com.ds.basic.dynamicproxy.base.CglibProxy;
 import com.ds.basic.dynamicproxy.base.JdkProxy;
-
-import java.io.Serializable;
 
 /**
  * @author ds

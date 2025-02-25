@@ -3,7 +3,7 @@ package com.ds.basic.reflect.instance;
 /**
  * @author ds
  * @date 2023/8/7
- * @description  获取 Class 对象的四种方式
+ * @description 获取 Class 对象的四种方式
  */
 public class ClazzTest {
     public static void main(String[] args) throws ClassNotFoundException {

@@ -9,6 +9,7 @@ public interface BaseProxy {
 
     /**
      * 创建代理对象
+     *
      * @param target
      * @return
      */

@@ -1,8 +1,5 @@
 package com.ds.concurrent.test;
 
-import com.ds.concurrent.util.SleepUtils;
-
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -22,7 +19,6 @@ public class Test02 {
             executorService.submit(b);
             executorService.submit(c);
         }
-
 
 
         executorService.shutdown();

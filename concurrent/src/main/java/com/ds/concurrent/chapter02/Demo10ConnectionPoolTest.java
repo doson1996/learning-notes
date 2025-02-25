@@ -1,10 +1,10 @@
 package com.ds.concurrent.chapter02;
 
-import com.ds.concurrent.chapter02.connectionpool.ConnectionPool;
-
 import java.sql.Connection;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import com.ds.concurrent.chapter02.connectionpool.ConnectionPool;
 
 /**
  * @Author ds

@@ -1,17 +1,14 @@
 package com.ds.basic.collection.map.linkedhashmap;
 
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author ds
  */
 public class Demo01 {
     public static void main(String[] args) {
-        Map<String,Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         for (int i = 10; i > 0; i--) {
             map.put(i + "", i);
         }

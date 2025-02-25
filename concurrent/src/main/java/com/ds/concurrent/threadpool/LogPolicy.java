@@ -1,7 +1,5 @@
 package com.ds.concurrent.threadpool;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 

@@ -1,6 +1,7 @@
 package com.ds.list;
 
-import java.util.*;
+import java.util.AbstractList;
+import java.util.List;
 
 /**
  * @author ds

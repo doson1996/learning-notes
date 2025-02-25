@@ -1,10 +1,12 @@
 package com.ds.concurrent.threadpool;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
-import java.util.concurrent.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author ds
@@ -21,9 +23,10 @@ public class ThreadPoolChangeDemo {
 
     /**
      * 自定义线程池
+     *
      * @return
      */
-    private static ThreadPoolExecutor buildThreadPoolExecutor(){
+    private static ThreadPoolExecutor buildThreadPoolExecutor() {
         int corePoolSize = 2;
         int maximumPoolSize = 5;
         long keepAliveTime = 60L;
@@ -47,7 +50,7 @@ public class ThreadPoolChangeDemo {
      */
     private static void dynamicModifyExecutor(ThreadPoolExecutor executor) throws InterruptedException {
         for (int i = 0; i < 20; i++) {
-            executor.submit(()->{
+            executor.submit(() -> {
                 threadPoolStatus(executor, "创建任务");
                 try {
                     TimeUnit.SECONDS.sleep(5);
@@ -65,10 +68,11 @@ public class ThreadPoolChangeDemo {
 
     /**
      * 线程池状态
+     *
      * @param executor
      * @param name
      */
-    private static void threadPoolStatus(ThreadPoolExecutor executor, String name){
+    private static void threadPoolStatus(ThreadPoolExecutor executor, String name) {
         LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue) executor.getQueue();
         System.out.println(new Date().toString() + Thread.currentThread().getName() + "-" + name + "-: " +
                 " 线程池线程数: " + executor.getPoolSize() +
@@ -80,11 +84,11 @@ public class ThreadPoolChangeDemo {
                 " 队列大小: " + (queue.size() + queue.remainingCapacity()) +
                 " 当前排队线程数: " + queue.size() +
                 " 队列剩余大小: " + queue.remainingCapacity() +
-                " 队列使用度: " + divide(queue.size(),(queue.size() + queue.remainingCapacity()))
-                );
+                " 队列使用度: " + divide(queue.size(), (queue.size() + queue.remainingCapacity()))
+        );
     }
 
-    private static String divide(int n1,int n2){
-        return String.format("%1.2f%%",Double.parseDouble(n1 + "") / Double.parseDouble(n2 + "") * 100);
+    private static String divide(int n1, int n2) {
+        return String.format("%1.2f%%", Double.parseDouble(n1 + "") / Double.parseDouble(n2 + "") * 100);
     }
 }

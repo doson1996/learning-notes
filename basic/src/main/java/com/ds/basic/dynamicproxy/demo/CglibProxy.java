@@ -1,11 +1,11 @@
 package com.ds.basic.dynamicproxy.demo;
 
 
+import java.lang.reflect.Method;
+
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-
-import java.lang.reflect.Method;
 
 /**
  * @Author ds
@@ -16,7 +16,7 @@ public class CglibProxy implements MethodInterceptor {
 
     private Object target;
 
-    public Object newProxy(Object target){
+    public Object newProxy(Object target) {
         this.target = target;
         //1.创建Enhancer
         Enhancer enhancer = new Enhancer();

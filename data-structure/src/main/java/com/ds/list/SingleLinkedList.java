@@ -80,7 +80,7 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
         for (int i = 1; i < size; i++) {
             if (index == i)
                 return node.element;
-            // 继续往下寻找
+                // 继续往下寻找
             else
                 node = node.next;
         }
@@ -119,7 +119,7 @@ public class SingleLinkedList<E> extends AbstractList<E> implements List<E> {
                 prev.next = current;
                 size--;
                 return element;
-            // 继续往下寻找
+                // 继续往下寻找
             } else {
                 // 当前节点赋值给上一个节点
                 prev = current;

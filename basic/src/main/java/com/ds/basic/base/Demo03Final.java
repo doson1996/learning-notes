@@ -13,6 +13,6 @@ public class Demo03Final {
          * Cannot assign a value to final variable 'ZS'
          * 无法为最终变量“ZS”赋值
          */
-     //  ZS = new User("ls", 21);
+        //  ZS = new User("ls", 21);
     }
 }

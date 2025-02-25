@@ -9,13 +9,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class SleepUtils {
 
-    protected SleepUtils(){}
+    protected SleepUtils() {
+    }
 
     /**
      * 暂停线程 milliseconds 毫秒
+     *
      * @param milliseconds
      */
-    public static void milliseconds(long milliseconds){
+    public static void milliseconds(long milliseconds) {
         try {
             TimeUnit.MILLISECONDS.sleep(milliseconds);
         } catch (InterruptedException e) {
@@ -25,9 +27,10 @@ public class SleepUtils {
 
     /**
      * 暂停线程 seconds 秒
+     *
      * @param seconds
      */
-    public static void seconds(long seconds){
+    public static void seconds(long seconds) {
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
@@ -37,9 +40,10 @@ public class SleepUtils {
 
     /**
      * 暂停线程 minutes 分钟
+     *
      * @param minutes
      */
-    public static void minutes(long minutes){
+    public static void minutes(long minutes) {
         try {
             TimeUnit.MINUTES.sleep(minutes);
         } catch (InterruptedException e) {

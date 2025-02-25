@@ -1,8 +1,8 @@
 package com.ds.basic.dynamicproxy.spring.d3;
 
-import org.springframework.beans.factory.InitializingBean;
-
 import javax.annotation.Resource;
+
+import org.springframework.beans.factory.InitializingBean;
 
 /**
  * @author ds

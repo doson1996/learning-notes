@@ -1,6 +1,6 @@
 package com.ds.basic.collection.map.hashmap;
 
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * @author ds
@@ -11,7 +11,7 @@ public class Demo02Print {
     public static void main(String[] args) {
         HashMap<String, Object> map = new HashMap<>();
         for (int i = 0; i < 6; i++) {
-          //  map.put(String.valueOf(i), i);
+            //  map.put(String.valueOf(i), i);
         }
         map.put("1", "1");
         map.put("A", "A");
@@ -24,7 +24,7 @@ public class Demo02Print {
         map.put("Ʊ", "Ʊ");
         map.put("ǁ", "ǁ");
 
-       // map.put("b", "b");
+        // map.put("b", "b");
 //        map.put("d", "d");
 //        map.put("D", "D");
         PrintUtils.hashMap(map);

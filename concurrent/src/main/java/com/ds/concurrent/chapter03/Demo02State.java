@@ -6,7 +6,7 @@ package com.ds.concurrent.chapter03;
  */
 public class Demo02State {
     public static void main(String[] args) {
-        Thread thread = new Thread(()->{
+        Thread thread = new Thread(() -> {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

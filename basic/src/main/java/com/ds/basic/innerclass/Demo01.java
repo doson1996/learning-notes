@@ -3,7 +3,7 @@ package com.ds.basic.innerclass;
 /**
  * @Author ds
  * @Date 2021/3/17 9:33
- * @Description  静态嵌套类和嵌套类
+ * @Description 静态嵌套类和嵌套类
  */
 public class Demo01 {
 
@@ -20,21 +20,21 @@ public class Demo01 {
 
     }
 
-    public void say(){
+    public void say() {
         new InnerClass().say();
     }
 
 
-    private class InnerClass{
+    private class InnerClass {
 
-        public void say(){
+        public void say() {
             System.out.println("InnerClass" + msg);
         }
     }
 
-    public static class StaticInnerClass{
+    public static class StaticInnerClass {
 
-        public static void say(){
+        public static void say() {
             System.out.println("InnerClass" + smsg);
         }
     }

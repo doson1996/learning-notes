@@ -1,9 +1,9 @@
 package com.ds.concurrent.chapter02;
 
-import com.ds.concurrent.util.SleepUtils;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.ds.concurrent.util.SleepUtils;
 
 /**
  * @Author ds

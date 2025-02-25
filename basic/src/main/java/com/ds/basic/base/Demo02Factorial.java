@@ -12,8 +12,8 @@ public class Demo02Factorial {
         System.out.println(factorial(5));
     }
 
-    public static int factorial(int i){
-        if(i == 1){
+    public static int factorial(int i) {
+        if (i == 1) {
             return 1;
         }
         System.out.println(i);
