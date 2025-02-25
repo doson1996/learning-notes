@@ -12,14 +12,14 @@ public abstract class Abstraction {
      */
     protected Implementor implementor;
 
-    public Abstraction(Implementor implementor){
+    public Abstraction(Implementor implementor) {
         this.implementor = implementor;
     }
 
     /**
      * 实例操作，实现一定的功能，可能需要转调实现部分的具体实现方法
      */
-    public void operation(){
+    public void operation() {
         implementor.operationImpl();
     }
 }

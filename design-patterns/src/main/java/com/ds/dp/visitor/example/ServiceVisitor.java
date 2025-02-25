@@ -5,7 +5,7 @@ package com.ds.dp.visitor.example;
  * @Date 2021/4/14 15:43
  * @Description
  */
-public class ServiceVisitor implements Visitor{
+public class ServiceVisitor implements Visitor {
     @Override
     public void visitEnterpriseCustomer(EnterpriseCustomer enterpriseCustomer) {
         System.out.println(enterpriseCustomer.getName() + "提出企业服务");

@@ -9,6 +9,7 @@ public interface LoginCallback {
 
     /**
      * 根据用户名查找用户
+     *
      * @param username
      * @return
      */
@@ -16,6 +17,7 @@ public interface LoginCallback {
 
     /**
      * 密码加密
+     *
      * @param password
      * @return
      */
@@ -23,6 +25,7 @@ public interface LoginCallback {
 
     /**
      * 验证登录数据
+     *
      * @param loginModel
      * @param dbModel
      * @param loginTemplate

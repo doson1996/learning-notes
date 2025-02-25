@@ -5,7 +5,7 @@ package com.ds.dp.strategy.example;
  * @Date 2021/3/31 10:21
  * @Description 支付到银行卡 第二种扩展
  */
-public class Card1 implements PaymentStrategy{
+public class Card1 implements PaymentStrategy {
 
     private String account;
 

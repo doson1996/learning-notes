@@ -5,7 +5,7 @@ package com.ds.dp.visitor.unused;
  * @Date 2021/4/14 11:38
  * @Description 企业客户
  */
-public class EnterpriseCustomer extends Customer{
+public class EnterpriseCustomer extends Customer {
 
     private String linkman;
 

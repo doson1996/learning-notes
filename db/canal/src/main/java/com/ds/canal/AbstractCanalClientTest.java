@@ -13,11 +13,11 @@ import org.springframework.util.Assert;
  */
 public class AbstractCanalClientTest extends BaseCanalClientTest {
 
-    public AbstractCanalClientTest(String destination){
+    public AbstractCanalClientTest(String destination) {
         this(destination, null);
     }
 
-    public AbstractCanalClientTest(String destination, CanalConnector connector){
+    public AbstractCanalClientTest(String destination, CanalConnector connector) {
         this.destination = destination;
         this.connector = connector;
     }

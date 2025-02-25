@@ -5,7 +5,7 @@ package com.ds.dp.mediator;
  * @Date 2021/3/15 15:01
  * @Description cpu
  */
-public class Cpu extends Colleague{
+public class Cpu extends Colleague {
 
     public Cpu(Mediator mediator) {
         super(mediator);
@@ -15,7 +15,7 @@ public class Cpu extends Colleague{
 
     private String cpuData = "";
 
-    public void process(String data){
+    public void process(String data) {
         System.out.println("cpu处理数据--" + data);
         String[] ss = data.split(",");
         this.soundData = ss[0];

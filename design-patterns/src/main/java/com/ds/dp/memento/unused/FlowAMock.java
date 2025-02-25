@@ -19,25 +19,25 @@ public class FlowAMock {
     /**
      * 运行流程的第一个阶段
      */
-    public void runPhaseOne(){
+    public void runPhaseOne() {
 
         tempResult = 1;
         tempState = "runPhaseOne";
     }
 
 
-    public void schema1(){
+    public void schema1() {
 
         tempState = tempState + ",schema1";
         System.out.println(this.tempState + "--" + this.tempResult);
-        this.tempState  += 1;
+        this.tempState += 1;
     }
 
-    public void schema2(){
+    public void schema2() {
 
         tempState = tempState + ",schema2";
         System.out.println(this.tempState + "--" + this.tempResult);
-        this.tempState  += 2;
+        this.tempState += 2;
     }
 
     public FlowAMock(String flowName) {
@@ -59,7 +59,6 @@ public class FlowAMock {
     public void setTempState(String tempState) {
         this.tempState = tempState;
     }
-
 
 
 }

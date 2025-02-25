@@ -1,6 +1,5 @@
 package com.ds.dp.adapter;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -12,12 +11,14 @@ import java.util.List;
 public interface LogOperateApi {
     /**
      * 写日志
+     *
      * @param logs 日志
      */
     void write(List<LogModel> logs);
 
     /**
      * 读日志
+     *
      * @return 日志列表
      */
     List<String> read();

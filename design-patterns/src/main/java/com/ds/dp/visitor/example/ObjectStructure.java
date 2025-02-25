@@ -1,7 +1,6 @@
 package com.ds.dp.visitor.example;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +15,10 @@ public class ObjectStructure {
 
     /**
      * 示意方法，提供给客户端操作的高层接口
+     *
      * @param visitor
      */
-    public void handlerRequest(Visitor visitor){
+    public void handlerRequest(Visitor visitor) {
         for (Customer customer : list) {
             customer.accept(visitor);
         }
@@ -26,9 +26,10 @@ public class ObjectStructure {
 
     /**
      * 示意方法，向对象结构中添加元素
+     *
      * @param customer
      */
-    public void addElement(Customer customer){
+    public void addElement(Customer customer) {
         list.add(customer);
     }
 }

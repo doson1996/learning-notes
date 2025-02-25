@@ -15,10 +15,11 @@ public class Context {
 
     /**
      * 上下文对客户端提供的操作接口，可以有参数和返回值
+     *
      * @param arg
      * @return
      */
-    public int contextInterface(int arg){
+    public int contextInterface(int arg) {
         return strategy.algorithmInterface(arg);
     }
 

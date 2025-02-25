@@ -13,6 +13,7 @@ public abstract class Customer {
 
     /**
      * 接受访问者访问
+     *
      * @param visitor
      */
     public abstract void accept(Visitor visitor);

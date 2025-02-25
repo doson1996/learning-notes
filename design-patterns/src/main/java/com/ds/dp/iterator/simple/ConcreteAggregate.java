@@ -5,7 +5,7 @@ package com.ds.dp.iterator.simple;
  * @Date 2021/3/24 9:48
  * @Description 具体的聚合对象，创建相应的迭代器
  */
-public class ConcreteAggregate extends Aggregate{
+public class ConcreteAggregate extends Aggregate {
 
     /**
      * 示意，表示聚合对象具体内容
@@ -22,19 +22,18 @@ public class ConcreteAggregate extends Aggregate{
     }
 
     /**
-     *
      * @param index
      * @return
      */
-    public Object get(int index){
+    public Object get(int index) {
         Object item = null;
-        if(index < ss.length){
+        if (index < ss.length) {
             item = ss[index];
         }
         return item;
     }
 
-    public int size(){
+    public int size() {
         return ss.length;
     }
 }

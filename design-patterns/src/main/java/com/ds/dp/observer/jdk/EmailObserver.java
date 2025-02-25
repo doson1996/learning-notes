@@ -14,7 +14,7 @@ public class EmailObserver implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        EmailSubject emailSubject = (EmailSubject)o;
+        EmailSubject emailSubject = (EmailSubject) o;
         System.out.println(email + "--收到邮件--" + emailSubject.getEmailContent());
     }
 

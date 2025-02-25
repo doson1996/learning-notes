@@ -10,22 +10,23 @@ public abstract class LoginTemplate {
 
     /**
      * 登录
+     *
      * @param username
      * @param password
      * @return
      */
-    public final boolean login(String username,String password){
+    public final boolean login(String username, String password) {
         //校验参数
-        if(username == null || password == null){
+        if (username == null || password == null) {
             return false;
         }
 
         password = encryptPassword(password);
 
         LoginModel user = findByUsername(username);
-        if(user != null){
-            if(username.equals(user.getUsername())
-                    && password.equals(user.getPassword())){
+        if (user != null) {
+            if (username.equals(user.getUsername())
+                    && password.equals(user.getPassword())) {
                 System.out.println("登录成功---");
                 return true;
             }
@@ -37,6 +38,7 @@ public abstract class LoginTemplate {
 
     /**
      * 示意方法，根据用户名查找用户
+     *
      * @param username
      * @return 用户信息
      */
@@ -44,10 +46,11 @@ public abstract class LoginTemplate {
 
     /**
      * 示意方法，加密密码
+     *
      * @param password
      * @return
      */
-    public String encryptPassword(String password){
+    public String encryptPassword(String password) {
         System.out.println("普通用户普通加密");
         return password + "123";
     }

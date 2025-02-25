@@ -11,7 +11,7 @@ public class Client {
 
         VoteManager manager = new VoteManager();
         for (int i = 0; i < 10; i++) {
-            manager.vote("zs","投票");
+            manager.vote("zs", "投票");
         }
 
     }

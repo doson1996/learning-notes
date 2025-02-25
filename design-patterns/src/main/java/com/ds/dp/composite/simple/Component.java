@@ -13,27 +13,28 @@ public abstract class Component {
     public abstract void someOperation();
 
     /**
-     *  向组合对象中添加组件对象
+     * 向组合对象中添加组件对象
+     *
      * @param child
      */
-    public void addChild(Component child){
+    public void addChild(Component child) {
         throw new UnsupportedOperationException("not support addChild");
     }
 
     /**
-     *  向组合对象中移除组件对象
+     * 向组合对象中移除组件对象
+     *
      * @param child
      */
-    public void removeChild(Component child){
+    public void removeChild(Component child) {
         throw new UnsupportedOperationException("not support removeChild");
     }
 
     /**
-     *
      * @param index
      * @return
      */
-    public Component getChild(int index){
+    public Component getChild(int index) {
         throw new UnsupportedOperationException("not support getChild");
     }
 

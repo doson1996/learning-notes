@@ -14,17 +14,19 @@ public abstract class Colleague {
 
     /**
      * 构造方法，传入中介者对象
+     *
      * @param mediator
      */
-    public Colleague(Mediator mediator){
+    public Colleague(Mediator mediator) {
         this.mediator = mediator;
     }
 
     /**
      * 获取中介者对象
+     *
      * @return
      */
-    public Mediator getMediator(){
-       return mediator;
+    public Mediator getMediator() {
+        return mediator;
     }
 }

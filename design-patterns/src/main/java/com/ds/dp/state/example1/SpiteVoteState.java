@@ -13,7 +13,7 @@ public class SpiteVoteState implements VoteState {
         Integer count = voteManager.getVoteCount().get(user);
         System.out.println("恶意刷票，取消投票");
         voteManager.getVoteMap().remove(user);
-        if(count >= 7) {
+        if (count >= 7) {
             voteManager.getStateMap().put(user, new BlackVoteState());
         }
     }

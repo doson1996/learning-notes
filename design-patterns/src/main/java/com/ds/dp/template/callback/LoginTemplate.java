@@ -9,17 +9,18 @@ public class LoginTemplate {
 
     /**
      * 登录
+     *
      * @param loginModel
      * @param callback
      * @return
      */
-    public final boolean login(LoginModel loginModel, LoginCallback callback){
+    public final boolean login(LoginModel loginModel, LoginCallback callback) {
 
         LoginModel dbUser = callback.findLoginUser(loginModel.getUsername());
-        if(dbUser != null){
+        if (dbUser != null) {
             String encryptPassword = callback.encryptPassword(loginModel.getPassword());
             loginModel.setPassword(encryptPassword);
-            return callback.match(loginModel,dbUser,this);
+            return callback.match(loginModel, dbUser, this);
         }
 
         return false;

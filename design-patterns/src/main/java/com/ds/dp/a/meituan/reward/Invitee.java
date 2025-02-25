@@ -9,11 +9,11 @@ public class Invitee {
 
     private final int userType;
 
-    public Invitee(int userType){
+    public Invitee(int userType) {
         this.userType = userType;
     }
 
-    public int getUserType(){
+    public int getUserType() {
         return this.userType;
     }
 

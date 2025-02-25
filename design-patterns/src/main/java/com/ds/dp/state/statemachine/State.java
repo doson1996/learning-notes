@@ -9,6 +9,7 @@ public interface State {
 
     /**
      * 执行状态对应的功能处理
+     *
      * @param context
      */
     void doWork(StateMachine context);

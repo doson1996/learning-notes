@@ -18,7 +18,7 @@ public class Demo01 {
 
         List<LogModel> logs = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            LogModel log = new LogModel("" + i,"日志内容" + i);
+            LogModel log = new LogModel("" + i, "日志内容" + i);
             logs.add(log);
         }
 

@@ -9,6 +9,7 @@ public interface ObServer {
 
     /**
      * 观察到有新报纸
+     *
      * @param subject
      */
     void update(Subject subject);

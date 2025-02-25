@@ -14,7 +14,6 @@ public class Context {
     }
 
     /**
-     *
      * @param parameter
      */
     public void request(String parameter) {

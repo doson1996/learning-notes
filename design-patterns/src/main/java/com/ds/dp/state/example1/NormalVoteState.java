@@ -11,10 +11,10 @@ public class NormalVoteState implements VoteState {
     public void vote(String user, String voteItem, VoteManager voteManager) {
         //正常投票
         System.out.println("投票成功");
-        voteManager.getVoteMap().put(user,voteItem);
+        voteManager.getVoteMap().put(user, voteItem);
 
         //投票成功后，维护下一个状态(重复投票)
-        voteManager.getStateMap().put(user,new RepeatVoteState());
+        voteManager.getStateMap().put(user, new RepeatVoteState());
 
     }
 }

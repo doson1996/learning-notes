@@ -9,12 +9,14 @@ public interface OrderApi {
 
     /**
      * 获取订单产品的数量
+     *
      * @return
      */
     int getOrderProductNum();
 
     /**
      * 设置订单产品的数量
+     *
      * @param num
      */
     void setOrderProductNum(int num);

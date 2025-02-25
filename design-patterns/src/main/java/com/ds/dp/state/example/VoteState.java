@@ -9,6 +9,7 @@ public interface VoteState {
 
     /**
      * 处理状态对应的行为
+     *
      * @param user
      * @param voteItem
      * @param voteManager

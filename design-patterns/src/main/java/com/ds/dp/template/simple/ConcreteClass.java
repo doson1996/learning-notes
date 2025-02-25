@@ -5,7 +5,7 @@ package com.ds.dp.template.simple;
  * @Date 2021/3/26 17:40
  * @Description
  */
-public class ConcreteClass extends TemplateAbstractClass{
+public class ConcreteClass extends TemplateAbstractClass {
 
     @Override
     public void doSth1() {

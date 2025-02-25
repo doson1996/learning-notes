@@ -16,14 +16,14 @@ public class Client {
         pm.setHandler(dm);
         dm.setHandler(gm);
 
-        String res1 = pm.handlerFeeRequest("张三",300);
-        String res2 = pm.handlerFeeRequest("李四",300);
+        String res1 = pm.handlerFeeRequest("张三", 300);
+        String res2 = pm.handlerFeeRequest("李四", 300);
 
-        String res3 = pm.handlerFeeRequest("张三",600);
-        String res4 = pm.handlerFeeRequest("李四",600);
+        String res3 = pm.handlerFeeRequest("张三", 600);
+        String res4 = pm.handlerFeeRequest("李四", 600);
 
-        String res5 = pm.handlerFeeRequest("张三",1300);
-        String res6 = pm.handlerFeeRequest("李四",1300);
+        String res5 = pm.handlerFeeRequest("张三", 1300);
+        String res6 = pm.handlerFeeRequest("李四", 1300);
 
         System.out.println("res1 = " + res1);
         System.out.println("res2 = " + res2);

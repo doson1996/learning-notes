@@ -35,13 +35,13 @@ public class Demo01 {
 
 }
 
-class AppConfig{
+class AppConfig {
 
     private String conf1;
 
     private String conf2;
 
-    public AppConfig(){
+    public AppConfig() {
         readConfig();
     }
 
@@ -69,7 +69,7 @@ class AppConfig{
                 '}';
     }
 
-    public void readConfig(){
+    public void readConfig() {
 
         Properties properties = new Properties();
         InputStream is = null;
@@ -87,7 +87,7 @@ class AppConfig{
     }
 }
 
-class SingletonAppConfig{
+class SingletonAppConfig {
 
     private static SingletonAppConfig instance = new SingletonAppConfig();
 
@@ -95,11 +95,11 @@ class SingletonAppConfig{
 
     private String conf2;
 
-    private SingletonAppConfig(){
+    private SingletonAppConfig() {
         readConfig();
     }
 
-    public static SingletonAppConfig getInstance(){
+    public static SingletonAppConfig getInstance() {
         return instance;
     }
 
@@ -127,7 +127,7 @@ class SingletonAppConfig{
                 '}';
     }
 
-    public void readConfig(){
+    public void readConfig() {
 
         Properties properties = new Properties();
         InputStream is = null;

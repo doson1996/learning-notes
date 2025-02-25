@@ -5,14 +5,14 @@ package com.ds.dp.factory.abstractF;
  * @Date 2021/3/12 9:25
  * @Description
  */
-public class AmdCpu implements CpuApi{
+public class AmdCpu implements CpuApi {
 
     /**
      * 脚针数
      */
     private int pins = 0;
 
-    public AmdCpu(int pins){
+    public AmdCpu(int pins) {
         this.pins = pins;
     }
 

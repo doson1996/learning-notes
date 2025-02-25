@@ -12,7 +12,7 @@ public enum Singleton05 {
      */
     instance;
 
-    public void say(String msg){
+    public void say(String msg) {
         System.out.print(msg);
     }
 }

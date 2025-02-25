@@ -9,6 +9,7 @@ public interface State {
 
     /**
      * 状态对应的处理
+     *
      * @param parameter
      */
     void handle(String parameter);

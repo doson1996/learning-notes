@@ -9,17 +9,18 @@ public class MainBoardFactory {
 
     /**
      * 创建主板
+     *
      * @param type
      * @return
      */
-    public static MainBoardApi createMainBoard(int type){
+    public static MainBoardApi createMainBoard(int type) {
         MainBoardApi mainBoard = null;
 
-        if (type == 1){
+        if (type == 1) {
             mainBoard = new GaMainBoard(10);
         }
 
-        if (type == 2){
+        if (type == 2) {
             mainBoard = new MsiMainBoard(20);
         }
 

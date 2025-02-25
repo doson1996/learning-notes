@@ -1,6 +1,9 @@
 package com.ds.dp.adapter;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,19 +13,19 @@ import java.util.List;
  * @Version 1.0
  * @Description 日志操作接口实现类
  */
-public class LogOperate implements LogOperateApi{
+public class LogOperate implements LogOperateApi {
 
     private String fileName = LogOperate.class.getResource("/").getPath() + "log.txt";
 
     @Override
-    public void write(List<LogModel> logs){
+    public void write(List<LogModel> logs) {
 
         FileWriter writer = null;
 
         try {
 
             writer = new FileWriter(fileName);
-            for (LogModel log: logs) {
+            for (LogModel log : logs) {
                 writer.write(log.toString());
                 writer.write("\r\n");
             }
@@ -31,7 +34,7 @@ public class LogOperate implements LogOperateApi{
             e.printStackTrace();
         } finally {
 
-            if(writer != null){
+            if (writer != null) {
                 try {
                     writer.close();
                 } catch (IOException e) {
@@ -61,7 +64,7 @@ public class LogOperate implements LogOperateApi{
             e.printStackTrace();
         } finally {
 
-            if(reader != null){
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {

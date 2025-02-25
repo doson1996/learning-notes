@@ -5,7 +5,7 @@ package com.ds.dp.decorator.simple;
  * @Date 2021/4/8 11:29
  * @Description
  */
-public class ConcreteDecoratorA extends Decorator{
+public class ConcreteDecoratorA extends Decorator {
 
     public ConcreteDecoratorA(Component component) {
         super(component);

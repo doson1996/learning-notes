@@ -13,7 +13,7 @@ public class Price {
         this.strategy = strategy;
     }
 
-    public double quote(double goodsPrice){
+    public double quote(double goodsPrice) {
         return strategy.calcPrice(goodsPrice);
     }
 }

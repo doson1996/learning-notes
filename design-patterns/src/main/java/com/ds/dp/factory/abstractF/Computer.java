@@ -13,22 +13,23 @@ public class Computer {
 
     /**
      * 组装电脑
+     *
      * @param cpuType
      * @param mainBoardType
      */
-    public void makeComputer(int cpuType,int mainBoardType){
+    public void makeComputer(int cpuType, int mainBoardType) {
         //准备配件
-        prepare(cpuType,mainBoardType);
+        prepare(cpuType, mainBoardType);
 
     }
 
-    public void makeComputer(AbstractFactory brand){
+    public void makeComputer(AbstractFactory brand) {
         //准备配件
         prepare(brand);
 
     }
 
-    public void prepare(AbstractFactory brand){
+    public void prepare(AbstractFactory brand) {
 
         this.cpuApi = brand.createCpu();
         this.mainBoardApi = brand.createMainBoard();

@@ -9,6 +9,7 @@ public interface PaymentStrategy {
 
     /**
      * 支付工资
+     *
      * @param context
      */
     void pay(PaymentContext context);

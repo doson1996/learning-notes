@@ -15,7 +15,7 @@ public class DataCheckStep extends ExceptionStep {
         process(context);
         if ("200".equals(context.get("code"))) {
             // 参数校验成功执行步骤
-            context.put("msg","参数校验成功");
+            context.put("msg", "参数校验成功");
             setNextStep(new ResultStep());
         } else {
             setNextStep(new ResultStep());

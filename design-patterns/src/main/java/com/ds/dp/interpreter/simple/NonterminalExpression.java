@@ -5,7 +5,7 @@ package com.ds.dp.interpreter.simple;
  * @Date 2021/4/7 10:09
  * @Description
  */
-public class NonterminalExpression extends AbstractExpression{
+public class NonterminalExpression extends AbstractExpression {
 
     @Override
     public void interpret(Context ctx) {

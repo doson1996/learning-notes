@@ -5,7 +5,7 @@ package com.ds.dp.command.example;
  * @Date 2021/3/19 11:33
  * @Description 技嘉主板
  */
-public class GigaMainBoard implements MainBoard{
+public class GigaMainBoard implements MainBoard {
 
     @Override
     public void bootUp() {

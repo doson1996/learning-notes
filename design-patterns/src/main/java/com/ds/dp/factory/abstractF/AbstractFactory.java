@@ -9,18 +9,20 @@ public interface AbstractFactory {
 
     /**
      * 创建cpu
+     *
      * @return
      */
     CpuApi createCpu();
 
     /**
      * 创建主板
+     *
      * @return
      */
     MainBoardApi createMainBoard();
 }
 
-class Dell01 implements AbstractFactory{
+class Dell01 implements AbstractFactory {
 
     static {
         System.out.println("dell--------");
@@ -37,7 +39,7 @@ class Dell01 implements AbstractFactory{
     }
 }
 
-class Hp01 implements AbstractFactory{
+class Hp01 implements AbstractFactory {
 
     static {
         System.out.println("hp--------");

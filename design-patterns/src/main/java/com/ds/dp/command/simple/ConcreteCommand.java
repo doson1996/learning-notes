@@ -5,7 +5,7 @@ package com.ds.dp.command.simple;
  * @Date 2021/3/18 9:25
  * @Description 具体的命令实现对象
  */
-public class ConcreteCommand implements Command{
+public class ConcreteCommand implements Command {
 
     /**
      * 命令接收者

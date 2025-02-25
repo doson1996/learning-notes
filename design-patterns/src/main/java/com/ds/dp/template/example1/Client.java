@@ -9,12 +9,12 @@ public class Client {
 
     public static void main(String[] args) {
 
-        LoginModel user = new LoginModel("zs","123456");
+        LoginModel user = new LoginModel("zs", "123456");
         NormaLogin normaLogin = new NormaLogin();
-        normaLogin.login(user.getUsername(),user.getPassword());
+        normaLogin.login(user.getUsername(), user.getPassword());
 
-        LoginModel admin = new LoginModel("ls","123456");
+        LoginModel admin = new LoginModel("ls", "123456");
         AdminLogin adminLogin = new AdminLogin();
-        adminLogin.login(admin.getUsername(),admin.getPassword());
+        adminLogin.login(admin.getUsername(), admin.getPassword());
     }
 }

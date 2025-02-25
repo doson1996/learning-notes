@@ -8,7 +8,7 @@ import java.util.Date;
  * @Date 2021/3/31 11:02
  * @Description
  */
-public abstract class LogStrategyTemplate implements LogStrategy{
+public abstract class LogStrategyTemplate implements LogStrategy {
 
     @Override
     public final void log(String log) {
@@ -20,6 +20,7 @@ public abstract class LogStrategyTemplate implements LogStrategy{
 
     /**
      * 真正执行日志记录，让子类去实现
+     *
      * @param log
      */
     public abstract void doLog(String log);

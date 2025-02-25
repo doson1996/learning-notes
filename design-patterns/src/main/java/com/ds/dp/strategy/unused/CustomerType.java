@@ -28,5 +28,4 @@ public class CustomerType {
     public static final int IMPORTANT_CUSTOMERS = 3;
 
 
-
 }

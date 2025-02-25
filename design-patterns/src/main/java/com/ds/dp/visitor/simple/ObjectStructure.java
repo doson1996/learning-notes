@@ -14,9 +14,10 @@ public class ObjectStructure {
 
     /**
      * 示意方法，提供给客户端操作的高层接口
+     *
      * @param visitor
      */
-    public void handlerRequest(Visitor visitor){
+    public void handlerRequest(Visitor visitor) {
         for (Element element : list) {
             element.accept(visitor);
         }
@@ -24,9 +25,10 @@ public class ObjectStructure {
 
     /**
      * 示意方法，向对象结构中添加元素
+     *
      * @param element
      */
-    public void addElement(Element element){
+    public void addElement(Element element) {
         list.add(element);
     }
 }

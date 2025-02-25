@@ -5,7 +5,7 @@ package com.ds.dp.strategy.example;
  * @Date 2021/3/31 10:21
  * @Description
  */
-public class Card implements PaymentStrategy{
+public class Card implements PaymentStrategy {
 
     @Override
     public void pay(PaymentContext context) {

@@ -8,7 +8,7 @@ import java.util.List;
  * @Version 1.0
  * @Description 类适配器
  */
-public class ClassAdapter extends LogOperate implements LogDbOperateApi{
+public class ClassAdapter extends LogOperate implements LogDbOperateApi {
 
     @Override
     public void insert(LogModel log) {

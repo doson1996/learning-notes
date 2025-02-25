@@ -5,7 +5,7 @@ package com.ds.dp.command.example1;
  * @Date 2021/3/19 14:12
  * @Description
  */
-public class Print implements Command{
+public class Print implements Command {
 
     private String str = "";
 

@@ -5,7 +5,7 @@ package com.ds.dp.strategy.example;
  * @Date 2021/3/31 10:08
  * @Description 扩展银行卡支付
  */
-public class PaymentContext1 extends PaymentContext{
+public class PaymentContext1 extends PaymentContext {
 
     private String account;
 

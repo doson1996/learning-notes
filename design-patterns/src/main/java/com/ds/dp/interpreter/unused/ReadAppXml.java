@@ -1,16 +1,14 @@
 package com.ds.dp.interpreter.unused;
 
 
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.InputStream;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 /**
  * @Author ds
@@ -25,7 +23,7 @@ public class ReadAppXml {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             doc = builder.parse(is);
-          //  doc.normalize();
+            //  doc.normalize();
 
             NodeList jdbc = doc.getElementsByTagName("jdbc");
             NodeList dcList = ((Element) jdbc.item(0)).getElementsByTagName("driver-class");

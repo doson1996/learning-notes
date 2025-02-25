@@ -21,7 +21,7 @@ public class StateMachine {
      * 执行工作，客户端处理流程的接口方法
      * 在客户完成自己业务后调用
      */
-    public void doWord(){
+    public void doWord() {
         //转调相应的状态对象真正完成功能处理
         this.state.doWork(this);
     }

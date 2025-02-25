@@ -5,7 +5,7 @@ package com.ds.dp.flyweight.simple;
  * @Date 2021/4/6 9:59
  * @Description 享元对象
  */
-public class ConcreteFlyweight implements Flyweight{
+public class ConcreteFlyweight implements Flyweight {
 
     private String innerState;
 

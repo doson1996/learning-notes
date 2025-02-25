@@ -13,7 +13,7 @@ public class Invoker {
         this.command = command;
     }
 
-    public void startPrint(){
+    public void startPrint() {
         command.execute();
     }
 

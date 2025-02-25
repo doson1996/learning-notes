@@ -5,7 +5,7 @@ package com.ds.dp.observer.example;
  * @Date 2021/3/17 11:56
  * @Description 报纸
  */
-public class Newspaper extends Subject{
+public class Newspaper extends Subject {
 
     /**
      * 报纸的内容
@@ -18,6 +18,7 @@ public class Newspaper extends Subject{
 
     /**
      * 新的报纸
+     *
      * @param content
      */
     public void setContent(String content) {

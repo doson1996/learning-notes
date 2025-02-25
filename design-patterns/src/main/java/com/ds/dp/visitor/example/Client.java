@@ -12,12 +12,12 @@ public class Client {
 
         Customer pCustomer = new PersonCustomer();
         pCustomer.setName("张三");
-       // pCustomer.serviceRequest();
+        // pCustomer.serviceRequest();
         os.addElement(pCustomer);
 
         Customer eCustomer = new EnterpriseCustomer();
         eCustomer.setName("xx集团");
-       // eCustomer.serviceRequest();
+        // eCustomer.serviceRequest();
         os.addElement(eCustomer);
 
         Visitor visitor = new ServiceVisitor();

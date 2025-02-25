@@ -5,7 +5,7 @@ package com.ds.dp.proxy.simple;
  * @Date 2021/3/16 11:32
  * @Description 代理对象
  */
-public class Proxy implements Subject{
+public class Proxy implements Subject {
 
     /**
      * 持有被具体代理的具体目标对象

@@ -12,12 +12,14 @@ public interface LogDbOperateApi {
 
     /**
      * 插入日志记录
+     *
      * @param log 日志记录
      */
     void insert(LogModel log);
 
     /**
      * 获取日志记录
+     *
      * @return 日志记录列表
      */
     List<LogModel> getLogs();

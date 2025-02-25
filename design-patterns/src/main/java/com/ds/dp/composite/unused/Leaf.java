@@ -15,9 +15,10 @@ public class Leaf {
 
     /**
      * 输出叶子对象的结构，
+     *
      * @param preStr 前缀，层级拼接
      */
-    public void printStruct(String preStr){
+    public void printStruct(String preStr) {
         System.out.println(preStr + "-" + name);
     }
 }

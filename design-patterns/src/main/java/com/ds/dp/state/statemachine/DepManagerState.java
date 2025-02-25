@@ -5,7 +5,7 @@ package com.ds.dp.state.statemachine;
  * @Date 2021/4/1 13:39
  * @Description
  */
-public class DepManagerState implements LeaveRequestState{
+public class DepManagerState implements LeaveRequestState {
 
     @Override
     public void doWork(StateMachine context) {

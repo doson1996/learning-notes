@@ -14,24 +14,26 @@ public class Subject {
 
     /**
      * 添加观察者
+     *
      * @param obServer
      */
-    public void add(ObServer obServer){
+    public void add(ObServer obServer) {
         list.add(obServer);
     }
 
     /**
      * 删除观察者
+     *
      * @param obServer
      */
-    public void del(ObServer obServer){
+    public void del(ObServer obServer) {
         list.remove(obServer);
     }
 
     /**
      * 有新报纸
      */
-    public void notifyObServer(){
+    public void notifyObServer() {
 
         list.forEach(obServer -> {
             obServer.update(this);

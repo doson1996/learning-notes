@@ -5,7 +5,7 @@ package com.ds.dp.a.meituan.reward;
  * @Date 2021/3/26 15:37
  * @Description 新用户返奖具体策略A
  */
-public class NewUserRewardStrategyA extends RewardStrategy{
+public class NewUserRewardStrategyA extends RewardStrategy {
 
     @Override
     public int reward(long userId) {

@@ -28,25 +28,28 @@ public class Composite {
 
     /**
      * 添加其他组合对象
+     *
      * @param composite
      */
-    public void addChildComposite(Composite composite){
+    public void addChildComposite(Composite composite) {
         childComposite.add(composite);
     }
 
     /**
      * 向组合对象添加叶子对象
+     *
      * @param leaf
      */
-    public void addChildLeaf(Leaf leaf){
+    public void addChildLeaf(Leaf leaf) {
         childLeaf.add(leaf);
     }
 
     /**
      * 输出组合对象自身的结构
+     *
      * @param preStr
      */
-    public void printStruct(String preStr){
+    public void printStruct(String preStr) {
         System.out.println(preStr + "-" + this.name);
         preStr = " ";
 

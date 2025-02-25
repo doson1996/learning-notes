@@ -9,6 +9,7 @@ public interface Mediator {
 
     /**
      * 同事对象在改变自身时通知中介者，让其去负责相应的与其他同事对象的交互
+     *
      * @param colleague 同事对象自身
      */
     void change(Colleague colleague);

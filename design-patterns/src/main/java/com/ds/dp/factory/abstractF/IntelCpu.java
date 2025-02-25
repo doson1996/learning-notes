@@ -5,14 +5,14 @@ package com.ds.dp.factory.abstractF;
  * @Date 2021/3/12 9:25
  * @Description
  */
-public class IntelCpu implements CpuApi{
+public class IntelCpu implements CpuApi {
 
     /**
      * 脚针数
      */
     private int pins = 0;
 
-    public IntelCpu(int pins){
+    public IntelCpu(int pins) {
         this.pins = pins;
     }
 

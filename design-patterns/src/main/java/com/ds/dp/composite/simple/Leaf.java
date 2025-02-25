@@ -5,7 +5,7 @@ package com.ds.dp.composite.simple;
  * @Date 2021/3/24 15:39
  * @Description 叶子对象
  */
-public class Leaf extends Component{
+public class Leaf extends Component {
 
 
     @Override

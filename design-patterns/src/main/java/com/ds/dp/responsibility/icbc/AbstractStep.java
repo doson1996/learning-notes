@@ -5,6 +5,7 @@ import java.util.Map;
 /**
  * 责任链模式
  * 所有步骤顶级父类
+ *
  * @author ds
  */
 public abstract class AbstractStep {

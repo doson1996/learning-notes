@@ -7,7 +7,7 @@ package com.ds.dp.command.example1;
  */
 public class Invoker2 {
 
-    public void startPrint(Command1 command1){
+    public void startPrint(Command1 command1) {
         System.out.println("Invoker2 开始打印");
         command1.execute();
         System.out.println("Invoker2 打印结束");

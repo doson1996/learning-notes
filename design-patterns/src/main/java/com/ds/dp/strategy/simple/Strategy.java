@@ -9,6 +9,7 @@ public interface Strategy {
 
     /**
      * 某个算法的接口 参数
+     *
      * @param arg
      * @return
      */

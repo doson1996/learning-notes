@@ -11,17 +11,19 @@ public class Caretaker {
 
     /**
      * 保存备忘录对象
+     *
      * @param memento
      */
-    public void saveMemento(Memento memento){
+    public void saveMemento(Memento memento) {
         this.memento = memento;
     }
 
     /**
      * 获取被保存的备忘录对象
+     *
      * @return
      */
-    public Memento retriveMemento(){
+    public Memento retriveMemento() {
         return this.memento;
     }
 

@@ -9,14 +9,15 @@ public class Price {
 
     /**
      * 报价，对不同的客户，计算不同的报价
+     *
      * @param goodsPrice
      * @param customerType
      * @return
      */
-    public double quote(double goodsPrice,int customerType){
+    public double quote(double goodsPrice, int customerType) {
         double price = goodsPrice;
 
-        switch (customerType){
+        switch (customerType) {
             case CustomerType.ORDINARY_CUSTOMER:
                 System.out.println("普通客户没有折扣");
                 break;
@@ -54,10 +55,11 @@ public class Price {
 
     /**
      * 计算老客户价格
+     *
      * @param price
      * @return
      */
-    private double calcPriceForOld(double price){
+    private double calcPriceForOld(double price) {
         System.out.println("老客户打9折");
         return price * 0.9d;
     }

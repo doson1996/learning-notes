@@ -9,6 +9,7 @@ public interface Strategy {
 
     /**
      * 计算价格
+     *
      * @param goodsPrice
      * @return
      */

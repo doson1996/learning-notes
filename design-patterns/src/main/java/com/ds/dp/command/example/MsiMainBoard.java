@@ -5,7 +5,7 @@ package com.ds.dp.command.example;
  * @Date 2021/3/19 11:37
  * @Description 微星主板
  */
-public class MsiMainBoard implements MainBoard{
+public class MsiMainBoard implements MainBoard {
 
     @Override
     public void bootUp() {

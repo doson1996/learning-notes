@@ -5,7 +5,7 @@ package com.ds.dp.prototype.sample;
  * @Date 2021/3/15 11:46
  * @Description
  */
-public class ConcretePrototype1 implements Prototype{
+public class ConcretePrototype1 implements Prototype {
 
     @Override
     public Prototype clone() {

@@ -9,18 +9,21 @@ public interface OrderApi {
 
     /**
      * 获取订单产品的数量
+     *
      * @return
      */
     int getOrderProductNum();
 
     /**
      * 设置订单产品的数量
+     *
      * @param num
      */
     void setOrderProductNum(int num);
 
     /**
      * 克隆方法
+     *
      * @return 订单原型的实例
      */
     OrderApi clone();

@@ -9,6 +9,7 @@ public interface Flyweight {
 
     /**
      * 示例操作，传入外部状态
+     *
      * @param extState
      */
     void operation(String extState);

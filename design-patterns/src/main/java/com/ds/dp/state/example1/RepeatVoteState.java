@@ -13,8 +13,8 @@ public class RepeatVoteState implements VoteState {
         //重复投票
         System.out.println("请不要重复投票");
         Integer count = voteManager.getVoteCount().get(user);
-        if(count >= 4){
-            voteManager.getStateMap().put(user,new SpiteVoteState());
+        if (count >= 4) {
+            voteManager.getStateMap().put(user, new SpiteVoteState());
         }
     }
 }

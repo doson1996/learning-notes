@@ -17,23 +17,24 @@ public class Subject {
 
     /**
      * 注册
+     *
      * @param obServer
      */
-    public void attach(ObServer obServer){
+    public void attach(ObServer obServer) {
         list.add(obServer);
     }
 
     /**
      * 删除
      */
-    public void detach(ObServer obServer){
+    public void detach(ObServer obServer) {
         list.remove(obServer);
     }
 
     /**
      * 通知
      */
-    public void notifyObServer(){
+    public void notifyObServer() {
         for (ObServer obServer : list) {
             obServer.update(this);
         }

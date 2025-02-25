@@ -4,7 +4,7 @@ package com.ds.dp.composite.unused;
  * @Author ds
  * @Date 2021/3/24 15:55
  * @Description 不使用组合模式的解决办法
- *              必需要区别对待叶子对象和组合对象
+ * 必需要区别对待叶子对象和组合对象
  */
 public class Client {
 

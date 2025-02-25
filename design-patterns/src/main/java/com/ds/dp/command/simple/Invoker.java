@@ -9,14 +9,14 @@ public class Invoker {
 
     private Command command;
 
-    public void setCommand(Command command){
+    public void setCommand(Command command) {
         this.command = command;
     }
 
     /**
      * 示意方法，要求命令执行请求
      */
-    public void runCommand(){
+    public void runCommand() {
         command.execute();
     }
 }

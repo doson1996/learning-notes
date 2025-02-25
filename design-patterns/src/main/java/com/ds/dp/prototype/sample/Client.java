@@ -14,16 +14,17 @@ public class Client {
 
     /**
      * 构造方法，传入需要使用的原型接口对象
+     *
      * @param prototype
      */
-    public Client(Prototype prototype){
+    public Client(Prototype prototype) {
         this.prototype = prototype;
     }
 
     /**
      * 示意方法
      */
-    public void operate(){
+    public void operate() {
 
         //需要创建原型接口的对象
         Prototype newPrototype = prototype.clone();

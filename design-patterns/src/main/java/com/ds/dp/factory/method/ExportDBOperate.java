@@ -5,7 +5,7 @@ package com.ds.dp.factory.method;
  * @Date 2021/3/8 15:30
  * @Description
  */
-public class ExportDBOperate extends ExportOperate{
+public class ExportDBOperate extends ExportOperate {
 
     @Override
     protected ExportFileApi factoryMethod() {

@@ -61,10 +61,10 @@ public class EnterpriseOrder implements OrderApi {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "企业订单订购人:" + name
-             + "，产品编号:" + productNo
-             + "，数量:" + num;
+                + "，产品编号:" + productNo
+                + "，数量:" + num;
     }
 
 }

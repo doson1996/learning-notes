@@ -9,7 +9,7 @@ public class Client {
 
     public static void main(String[] args) {
 
-        LoginModel loginModel = new LoginModel("zs","123456");
+        LoginModel loginModel = new LoginModel("zs", "123456");
         LoginTemplate loginTemplate = new LoginTemplate();
         boolean login = loginTemplate.login(loginModel, new LoginCallbackImpl());
         System.out.println(login);

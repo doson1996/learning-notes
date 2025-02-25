@@ -5,7 +5,7 @@ package com.ds.dp.command.example;
  * @Date 2021/3/19 11:38
  * @Description 开机命令
  */
-public class BootUpCommand implements Command{
+public class BootUpCommand implements Command {
 
     private MainBoard mainBoard;
 

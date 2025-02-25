@@ -5,7 +5,7 @@ package com.ds.dp.bridge.simple;
  * @Date 2021/4/13 16:02
  * @Description
  */
-public class RefinedAbstraction extends Abstraction{
+public class RefinedAbstraction extends Abstraction {
 
     public RefinedAbstraction(Implementor implementor) {
         super(implementor);
@@ -13,7 +13,7 @@ public class RefinedAbstraction extends Abstraction{
 
     @Override
     public void operation() {
-       System.out.println("扩展方法");
-       super.operation();
+        System.out.println("扩展方法");
+        super.operation();
     }
 }

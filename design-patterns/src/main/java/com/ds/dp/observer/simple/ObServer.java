@@ -9,6 +9,7 @@ public interface ObServer {
 
     /**
      * 更新的接口
+     *
      * @param subject
      */
     public void update(Subject subject);

@@ -9,6 +9,7 @@ public abstract class Element {
 
     /**
      * 接受访问者的访问
+     *
      * @param visitor
      */
     public abstract void accept(Visitor visitor);

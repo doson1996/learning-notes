@@ -9,11 +9,11 @@ public class OrderBusiness {
 
     private static final int MAX_NUM = 1000;
 
-    public void saveOrder(OrderApi order){
+    public void saveOrder(OrderApi order) {
 
         int orderProductNum = order.getOrderProductNum();
 
-        while (orderProductNum > MAX_NUM){
+        while (orderProductNum > MAX_NUM) {
 
             OrderApi newOrder = order.clone();
             newOrder.setOrderProductNum(MAX_NUM);

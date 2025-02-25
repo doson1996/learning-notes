@@ -5,7 +5,7 @@ package com.ds.dp.factory.method;
  * @Date 2021/3/8 15:22
  * @Description
  */
-public class ExportDB implements ExportFileApi{
+public class ExportDB implements ExportFileApi {
 
     @Override
     public boolean export(String data) {

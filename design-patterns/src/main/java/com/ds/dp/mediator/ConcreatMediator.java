@@ -5,7 +5,7 @@ package com.ds.dp.mediator;
  * @Date 2021/3/15 14:45
  * @Description 具体的中介者实现
  */
-public class ConcreatMediator implements Mediator{
+public class ConcreatMediator implements Mediator {
 
     private ColleagueA colleagueA;
 

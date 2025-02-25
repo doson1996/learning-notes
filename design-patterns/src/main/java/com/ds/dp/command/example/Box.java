@@ -9,11 +9,11 @@ public class Box {
 
     private Command command;
 
-    public Box(Command command){
+    public Box(Command command) {
         this.command = command;
     }
 
-    public void powerButton(){
+    public void powerButton() {
         command.execute();
     }
 }

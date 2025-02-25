@@ -7,16 +7,16 @@ package com.ds.dp.strategy.example1;
  */
 public class LogContext {
 
-   public void log(String log){
+    public void log(String log) {
 
-      LogStrategy strategy = new DbLog();
-      try {
-         strategy.write(log);
-      } catch (Exception e) {
-         strategy = new FileLog();
-         strategy.write(log);
-      }
+        LogStrategy strategy = new DbLog();
+        try {
+            strategy.write(log);
+        } catch (Exception e) {
+            strategy = new FileLog();
+            strategy.write(log);
+        }
 
-   }
+    }
 
 }

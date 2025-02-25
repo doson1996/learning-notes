@@ -5,11 +5,11 @@ package com.ds.dp.template.callback;
  * @Date 2021/3/29 10:14
  * @Description
  */
-public class LoginCallbackImpl implements LoginCallback{
+public class LoginCallbackImpl implements LoginCallback {
 
     @Override
     public LoginModel findLoginUser(String username) {
-        return new LoginModel(username,"123456");
+        return new LoginModel(username, "123456");
     }
 
     @Override
@@ -19,8 +19,8 @@ public class LoginCallbackImpl implements LoginCallback{
 
     @Override
     public boolean match(LoginModel loginModel, LoginModel dbModel, LoginTemplate loginTemplate) {
-        if(loginModel.getUsername().equals(dbModel.getUsername())
-                && loginModel.getPassword().equals(dbModel.getPassword())){
+        if (loginModel.getUsername().equals(dbModel.getUsername())
+                && loginModel.getPassword().equals(dbModel.getPassword())) {
             return true;
         }
 

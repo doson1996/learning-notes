@@ -1,17 +1,21 @@
 package com.ds.dp.proxy;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @Author ds
  * @Date 2021/3/16 11:53
  * @Description
  */
-public class Proxy implements UserApi{
+public class Proxy implements UserApi {
 
     private User user = null;
 
-    public Proxy(User user){
+    public Proxy(User user) {
         this.user = user;
     }
 
@@ -33,10 +37,10 @@ public class Proxy implements UserApi{
             connection = getConnection();
             String sql = "SELECT * FROM proxy_user t WHERE t.id = ?";
             ps = connection.prepareStatement(sql);
-            ps.setInt(1,getUserId());
+            ps.setInt(1, getUserId());
             ResultSet resultSet = ps.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
 
                 int dept = resultSet.getInt("dept_no");
                 user.setDeptNo(dept);
@@ -78,7 +82,7 @@ public class Proxy implements UserApi{
     @Override
     public int getDeptNo() {
 
-        if( !this.loaded){
+        if (!this.loaded) {
             reload();
             loaded = true;
         }
@@ -93,9 +97,10 @@ public class Proxy implements UserApi{
 
     /**
      * 获取数据库连接
+     *
      * @return
      */
-    private static Connection getConnection(){
+    private static Connection getConnection() {
         String url = "jdbc:mysql://192.168.33.130:3306/learning_note?useSSL=true";
         String user = "root";
         String password = "123456";
@@ -107,7 +112,7 @@ public class Proxy implements UserApi{
             connection = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("SQLException" + e.getMessage());
         }
 

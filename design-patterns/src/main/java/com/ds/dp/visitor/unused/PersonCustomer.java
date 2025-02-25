@@ -5,7 +5,7 @@ package com.ds.dp.visitor.unused;
  * @Date 2021/4/14 11:37
  * @Description 个人客户
  */
-public class PersonCustomer extends Customer{
+public class PersonCustomer extends Customer {
 
     private String telephone;
 

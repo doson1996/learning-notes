@@ -5,7 +5,7 @@ package com.ds.dp.decorator.simple;
  * @Date 2021/4/8 11:29
  * @Description
  */
-public class ConcreteDecoratorB extends Decorator{
+public class ConcreteDecoratorB extends Decorator {
 
     public ConcreteDecoratorB(Component component) {
         super(component);
@@ -20,7 +20,7 @@ public class ConcreteDecoratorB extends Decorator{
         addBehavior();
     }
 
-    public void addBehavior(){
+    public void addBehavior() {
         //需要添加的职责实现
         System.out.println("需要添加的职责实现");
     }

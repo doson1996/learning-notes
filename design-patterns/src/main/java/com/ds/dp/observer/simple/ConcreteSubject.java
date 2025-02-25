@@ -5,7 +5,7 @@ package com.ds.dp.observer.simple;
  * @Date 2021/3/17 11:24
  * @Description
  */
-public class ConcreteSubject extends Subject{
+public class ConcreteSubject extends Subject {
 
     /**
      * 示意，目标对象的状态

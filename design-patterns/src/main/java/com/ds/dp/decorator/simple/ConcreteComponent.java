@@ -5,7 +5,7 @@ package com.ds.dp.decorator.simple;
  * @Date 2021/4/8 11:24
  * @Description 具体实现组件对象接口的对象
  */
-public class ConcreteComponent extends Component{
+public class ConcreteComponent extends Component {
 
     @Override
     public void operation() {

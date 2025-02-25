@@ -18,7 +18,7 @@ public enum UserTypeEnum {
 
     private int type;
 
-    UserTypeEnum(int type){
+    UserTypeEnum(int type) {
         this.type = type;
     }
 

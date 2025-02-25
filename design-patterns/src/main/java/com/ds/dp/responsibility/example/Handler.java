@@ -18,6 +18,7 @@ public abstract class Handler {
 
     /**
      * 处理聚餐费用的申请
+     *
      * @param user
      * @param fee
      * @return 申请结果通知

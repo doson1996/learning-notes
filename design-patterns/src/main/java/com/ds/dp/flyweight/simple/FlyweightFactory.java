@@ -10,15 +10,15 @@ import java.util.Map;
  */
 public class FlyweightFactory {
 
-    Map<String,Flyweight> fs = new HashMap<>();
+    Map<String, Flyweight> fs = new HashMap<>();
 
-    public Flyweight getFlyweight(String key){
+    public Flyweight getFlyweight(String key) {
         Flyweight flyweight = fs.get(key);
 
-        if(flyweight == null){
+        if (flyweight == null) {
 
             flyweight = new ConcreteFlyweight(key);
-            fs.put(key,flyweight);
+            fs.put(key, flyweight);
         }
 
         return flyweight;

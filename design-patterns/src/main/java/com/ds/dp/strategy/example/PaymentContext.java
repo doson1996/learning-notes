@@ -30,7 +30,7 @@ public class PaymentContext {
     /**
      * 立即支付工资
      */
-    public void payNow(){
+    public void payNow() {
         strategy.pay(this);
     }
 }

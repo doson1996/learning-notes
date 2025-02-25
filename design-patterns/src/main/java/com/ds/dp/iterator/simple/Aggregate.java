@@ -9,6 +9,7 @@ public abstract class Aggregate {
 
     /**
      * 工厂方法，创建相应迭代器的接口
+     *
      * @return 相应迭代器的接口
      */
     public abstract Iterator createIterator();

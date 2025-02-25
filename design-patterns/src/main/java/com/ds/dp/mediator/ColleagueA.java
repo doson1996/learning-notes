@@ -5,7 +5,7 @@ package com.ds.dp.mediator;
  * @Date 2021/3/15 14:55
  * @Description
  */
-public class ColleagueA extends Colleague{
+public class ColleagueA extends Colleague {
 
     public ColleagueA(Mediator mediator) {
         super(mediator);
@@ -14,7 +14,7 @@ public class ColleagueA extends Colleague{
     /**
      * 示意方法
      */
-    public void doSomething(){
+    public void doSomething() {
         getMediator().change(this);
     }
 }

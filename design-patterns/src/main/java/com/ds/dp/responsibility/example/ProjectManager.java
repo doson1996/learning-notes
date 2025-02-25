@@ -5,14 +5,14 @@ package com.ds.dp.responsibility.example;
  * @Date 2021/4/9 10:38
  * @Description
  */
-public class ProjectManager extends Handler{
+public class ProjectManager extends Handler {
 
     String result = "";
 
     @Override
     public String handlerFeeRequest(String user, double fee) {
         //小于500项目经理处理
-        if (fee < 500){
+        if (fee < 500) {
             if ("张三".equals(user)) {
                 result = "项目经理同意" + user + "申请费用" + fee + "元";
             } else {

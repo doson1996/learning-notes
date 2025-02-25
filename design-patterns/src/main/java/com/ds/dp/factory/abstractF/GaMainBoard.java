@@ -5,12 +5,12 @@ package com.ds.dp.factory.abstractF;
  * @Date 2021/3/12 9:30
  * @Description 技嘉主板
  */
-public class GaMainBoard implements MainBoardApi{
+public class GaMainBoard implements MainBoardApi {
 
     private int cpuHoles = 0;
 
-    public GaMainBoard(int cpuHoles){
-      this.cpuHoles = cpuHoles;
+    public GaMainBoard(int cpuHoles) {
+        this.cpuHoles = cpuHoles;
     }
 
     @Override

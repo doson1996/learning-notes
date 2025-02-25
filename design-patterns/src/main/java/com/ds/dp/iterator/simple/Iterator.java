@@ -8,7 +8,7 @@ package com.ds.dp.iterator.simple;
 public interface Iterator {
 
     /**
-     *  移动聚合对象到第一个位置
+     * 移动聚合对象到第一个位置
      */
     void first();
 
@@ -18,14 +18,16 @@ public interface Iterator {
     void next();
 
     /**
-     *  判断聚合对象是否移动到最后一个位置
+     * 判断聚合对象是否移动到最后一个位置
+     *
      * @return true  已经移到最后一个位置
-     *         false 没有移到最后一个位置
+     * false 没有移到最后一个位置
      */
     boolean isDone();
 
     /**
      * 返回当前迭代的元素
+     *
      * @return
      */
     Object currentItem();

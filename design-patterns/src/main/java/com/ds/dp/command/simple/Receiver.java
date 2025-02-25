@@ -10,7 +10,7 @@ public class Receiver {
     /**
      * 执行命令
      */
-    public void action(){
+    public void action() {
         System.out.println("执行命令");
     }
 }

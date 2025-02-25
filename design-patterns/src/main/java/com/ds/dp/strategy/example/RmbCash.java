@@ -5,7 +5,7 @@ package com.ds.dp.strategy.example;
  * @Date 2021/3/31 10:08
  * @Description
  */
-public class RmbCash implements PaymentStrategy{
+public class RmbCash implements PaymentStrategy {
 
     @Override
     public void pay(PaymentContext context) {

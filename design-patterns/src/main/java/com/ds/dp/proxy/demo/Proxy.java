@@ -5,11 +5,11 @@ package com.ds.dp.proxy.demo;
  * @Date 2021/3/17 10:31
  * @Description
  */
-public class Proxy implements AService{
+public class Proxy implements AService {
 
     AService aService;
 
-    Proxy(AService aService){
+    Proxy(AService aService) {
         this.aService = aService;
     }
 

@@ -8,7 +8,7 @@ import java.util.Map;
  * @Date 2021/3/8 14:32
  * @Version 1.0
  * @Description 控制实例数
- *              这里设置为两个实例，不是线程安全的
+ * 这里设置为两个实例，不是线程安全的
  */
 public class OneExtend {
 
@@ -27,27 +27,26 @@ public class OneExtend {
     /**
      * 缓存实例
      */
-    private static Map<String,OneExtend> cache = new HashMap<>();
+    private static Map<String, OneExtend> cache = new HashMap<>();
 
 
-    public static OneExtend getInstance(){
+    public static OneExtend getInstance() {
 
         String key = DEFAULT_KEY + num;
         OneExtend oneExtend = cache.get(key);
-        if(oneExtend == null){
+        if (oneExtend == null) {
             oneExtend = new OneExtend();
-            cache.put(key,oneExtend);
+            cache.put(key, oneExtend);
         }
 
         num++;
 
-        if(num > MAX_NUM){
+        if (num > MAX_NUM) {
             num = 1;
         }
 
         return oneExtend;
     }
-
 
 
 }

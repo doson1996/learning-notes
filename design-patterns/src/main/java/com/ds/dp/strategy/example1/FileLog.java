@@ -5,7 +5,7 @@ package com.ds.dp.strategy.example1;
  * @Date 2021/3/31 10:48
  * @Description 写入文件
  */
-public class FileLog implements LogStrategy{
+public class FileLog implements LogStrategy {
 
     @Override
     public void write(String log) {

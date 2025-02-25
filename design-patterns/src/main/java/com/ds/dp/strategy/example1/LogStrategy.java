@@ -9,6 +9,7 @@ public interface LogStrategy {
 
     /**
      * 写日志
+     *
      * @param log
      */
     void write(String log);

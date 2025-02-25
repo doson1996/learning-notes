@@ -5,7 +5,7 @@ package com.ds.dp.factory.method;
  * @Date 2021/3/8 15:21
  * @Description 导出文本文件
  */
-public class ExportTxt implements ExportFileApi{
+public class ExportTxt implements ExportFileApi {
 
     @Override
     public boolean export(String data) {

@@ -9,20 +9,21 @@ public class NormaLogin {
 
     /**
      * 示意方法，简单登录
+     *
      * @param username
      * @param password
      * @return
      */
-    public boolean login(String username,String password){
+    public boolean login(String username, String password) {
         //校验参数
-        if(username == null || password == null){
+        if (username == null || password == null) {
             return false;
         }
 
         User user = findByUsername(username);
-        if(user != null){
-            if(username.equals(user.getUsername())
-                    && password.equals(user.getPassword())){
+        if (user != null) {
+            if (username.equals(user.getUsername())
+                    && password.equals(user.getPassword())) {
                 System.out.println("用户登录成功---");
                 return true;
             }
@@ -34,14 +35,15 @@ public class NormaLogin {
 
     /**
      * 示意方法，根据用户名查找用户
+     *
      * @param username
      * @return 用户信息
      */
-    private User findByUsername(String username){
-        if ("no".equals(username)){
+    private User findByUsername(String username) {
+        if ("no".equals(username)) {
             return null;
         }
-        return new User(username,"123456");
+        return new User(username, "123456");
     }
 
 

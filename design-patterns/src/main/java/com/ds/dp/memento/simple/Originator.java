@@ -12,11 +12,11 @@ public class Originator {
      */
     private String state;
 
-    public Memento createMemento(){
+    public Memento createMemento() {
         return new MementoImpl(state);
     }
 
-    public void setMemento(Memento memento){
+    public void setMemento(Memento memento) {
         MementoImpl memento1 = (MementoImpl) memento;
         this.state = memento1.getState();
     }
@@ -24,7 +24,7 @@ public class Originator {
     /**
      * 真正的备忘录对象
      */
-    private static class MementoImpl implements Memento{
+    private static class MementoImpl implements Memento {
 
         /**
          * 示意，需要保存的状态
@@ -35,7 +35,7 @@ public class Originator {
             this.state = state;
         }
 
-        public String getState(){
+        public String getState() {
             return state;
         }
     }

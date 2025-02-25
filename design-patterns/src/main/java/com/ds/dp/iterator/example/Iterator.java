@@ -9,12 +9,14 @@ public interface Iterator<E> {
 
     /**
      * 是否有下一个元素
+     *
      * @return
      */
     boolean hasNext();
 
     /**
      * 获取下一个元素
+     *
      * @return
      */
     E next();

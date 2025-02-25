@@ -20,7 +20,7 @@ public abstract class TemplateAbstractClass {
     /**
      * 模板方法
      */
-    public void template(){
+    public void template() {
         doSth1();
         doSth2();
     }

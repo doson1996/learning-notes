@@ -5,12 +5,12 @@ package com.ds.dp.factory.abstractF;
  * @Date 2021/3/12 9:30
  * @Description 微星主板
  */
-public class MsiMainBoard implements MainBoardApi{
+public class MsiMainBoard implements MainBoardApi {
 
     private int cpuHoles = 0;
 
-    public MsiMainBoard(int cpuHoles){
-      this.cpuHoles = cpuHoles;
+    public MsiMainBoard(int cpuHoles) {
+        this.cpuHoles = cpuHoles;
     }
 
     @Override

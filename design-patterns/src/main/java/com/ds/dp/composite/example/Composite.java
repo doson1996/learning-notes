@@ -25,7 +25,7 @@ public class Composite extends Component {
     public void printStruct(String preStr) {
         System.out.println(preStr + "-" + this.name);
 
-        if(childComponents != null){
+        if (childComponents != null) {
 
             preStr += " ";
             for (Component c : childComponents) {
@@ -36,15 +36,15 @@ public class Composite extends Component {
 
     @Override
     public void addChild(Component child) {
-        if(childComponents == null){
+        if (childComponents == null) {
             childComponents = new ArrayList<>();
         }
-       childComponents.add(child);
+        childComponents.add(child);
     }
 
     @Override
     public void removeChild(Component child) {
-        if(childComponents != null){
+        if (childComponents != null) {
             childComponents.remove(child);
         }
     }
@@ -52,8 +52,8 @@ public class Composite extends Component {
     @Override
     public Component getChild(int index) {
         Component child = null;
-        if(childComponents != null){
-            if(index < 0 || index >= childComponents.size()){
+        if (childComponents != null) {
+            if (index < 0 || index >= childComponents.size()) {
                 throw new ArrayIndexOutOfBoundsException("index:" + index + " out of bounds");
             }
             child = childComponents.get(index);

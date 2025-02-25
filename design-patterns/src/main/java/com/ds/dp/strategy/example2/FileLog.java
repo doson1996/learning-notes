@@ -5,7 +5,7 @@ package com.ds.dp.strategy.example2;
  * @Date 2021/3/31 11:09
  * @Description
  */
-public class FileLog extends LogStrategyTemplate{
+public class FileLog extends LogStrategyTemplate {
 
     @Override
     public void doLog(String log) {

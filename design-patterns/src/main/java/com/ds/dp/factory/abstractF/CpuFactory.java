@@ -9,17 +9,18 @@ public class CpuFactory {
 
     /**
      * 创建cpu
+     *
      * @param type
      * @return
      */
-    public static CpuApi createCpu(int type){
+    public static CpuApi createCpu(int type) {
         CpuApi cpu = null;
 
-        if(type == 1){
+        if (type == 1) {
             cpu = new IntelCpu(10);
         }
 
-        if (type == 2){
+        if (type == 2) {
             cpu = new AmdCpu(20);
         }
 

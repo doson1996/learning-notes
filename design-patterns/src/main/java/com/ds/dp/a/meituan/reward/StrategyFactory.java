@@ -9,6 +9,7 @@ public abstract class StrategyFactory<T> {
 
     /**
      * 生成策略
+     *
      * @param c
      * @return
      */

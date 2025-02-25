@@ -60,10 +60,10 @@ public class PersonOrder implements OrderApi {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "个人订单订购人:" + name
-             + "，产品编号:" + productNo
-             + "，数量:" + num;
+                + "，产品编号:" + productNo
+                + "，数量:" + num;
     }
 
 }

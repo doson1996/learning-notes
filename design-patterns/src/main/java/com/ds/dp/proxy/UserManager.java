@@ -1,6 +1,10 @@
 package com.ds.dp.proxy;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,10 +17,11 @@ public class UserManager {
 
     /**
      * 根据部门编号获取该部门所有员工
+     *
      * @param deptNo
      * @return
      */
-    public List<User> getByDeptNo(int deptNo){
+    public List<User> getByDeptNo(int deptNo) {
 
         List<User> result = new LinkedList<>();
         Connection connection = null;
@@ -26,10 +31,10 @@ public class UserManager {
             connection = getConnection();
             String sql = "SELECT * FROM proxy_user t WHERE t.dept_no LIKE ?";
             ps = connection.prepareStatement(sql);
-            ps.setString(1,deptNo + "%");
+            ps.setString(1, deptNo + "%");
             ResultSet resultSet = ps.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int userId = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int dept = resultSet.getInt("dept_no");
@@ -57,9 +62,10 @@ public class UserManager {
 
     /**
      * 获取数据库连接
+     *
      * @return
      */
-    private static Connection getConnection(){
+    private static Connection getConnection() {
         String url = "jdbc:mysql://192.168.33.130:3306/learning_note?useSSL=true";
         String user = "root";
         String password = "123456";
@@ -71,7 +77,7 @@ public class UserManager {
             connection = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("SQLException" + e.getMessage());
         }
 

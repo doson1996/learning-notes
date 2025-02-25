@@ -5,7 +5,7 @@ package com.ds.dp.responsibility.simple;
  * @Date 2021/4/9 10:23
  * @Description
  */
-public class ConcreteHandler1 extends Handler{
+public class ConcreteHandler1 extends Handler {
 
     @Override
     public void handlerRequest() {

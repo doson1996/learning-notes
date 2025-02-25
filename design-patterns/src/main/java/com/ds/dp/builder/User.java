@@ -11,7 +11,7 @@ public class User {
 
     private String email;
 
-    public User(){
+    public User() {
 
     }
 
@@ -44,31 +44,31 @@ public class User {
                 '}';
     }
 
-    public static UserBuilder builder(){
+    public static UserBuilder builder() {
         return new UserBuilder();
     }
 
-    public static class UserBuilder{
+    public static class UserBuilder {
 
         private String name;
 
         private String email;
 
-        public UserBuilder name(String name){
+        public UserBuilder name(String name) {
             this.name = name;
             return this;
         }
-        
-        public UserBuilder email(String email){
+
+        public UserBuilder email(String email) {
             this.email = email;
             return this;
         }
 
-        public User build(){
-            if(name == null || name.length() < 1){
+        public User build() {
+            if (name == null || name.length() < 1) {
                 throw new IllegalArgumentException("name不能为空！");
             }
-            return new User(name,email);
+            return new User(name, email);
         }
 
     }
