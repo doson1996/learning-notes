@@ -25,5 +25,11 @@
             <artifactId>cache-memory</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.ds</groupId>
+            <artifactId>cache-disk</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
