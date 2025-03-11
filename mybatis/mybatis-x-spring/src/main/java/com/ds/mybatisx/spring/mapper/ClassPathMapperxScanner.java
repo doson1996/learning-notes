@@ -1,20 +1,14 @@
 package com.ds.mybatisx.spring.mapper;
 
-import com.ds.mybatisx.spring.annotion.Mapperx;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Arrays;
+import java.util.Set;
+
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
-import org.springframework.core.type.classreading.MetadataReader;
-import org.springframework.core.type.classreading.MetadataReaderFactory;
-import org.springframework.core.type.filter.TypeFilter;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Set;
 
 /**
  * @author ds

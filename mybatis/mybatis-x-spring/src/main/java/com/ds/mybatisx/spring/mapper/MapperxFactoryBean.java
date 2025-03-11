@@ -5,6 +5,7 @@ package com.ds.mybatisx.spring.mapper;
  * @date 2023/11/21
  * @description
  */
+
 import com.ds.mybatisx.session.SqlSessionFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.FactoryBean;

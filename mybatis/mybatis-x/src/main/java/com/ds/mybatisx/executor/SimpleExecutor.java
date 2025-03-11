@@ -1,5 +1,15 @@
 package com.ds.mybatisx.executor;
 
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ds.mybatisx.config.Configuration;
 import com.ds.mybatisx.mapping.MappedStatement;
 import com.ds.mybatisx.util.BoundSql;
@@ -7,13 +17,6 @@ import com.ds.mybatisx.util.GenericTokenParser;
 import com.ds.mybatisx.util.ParameterMapping;
 import com.ds.mybatisx.util.ParameterMappingTokenHandler;
 import lombok.SneakyThrows;
-
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author ds

@@ -1,14 +1,14 @@
 package com.ds.mybatisx.config.build;
 
+import java.io.InputStream;
+import java.util.List;
+
 import com.ds.mybatisx.config.Configuration;
 import com.ds.mybatisx.mapping.MappedStatement;
 import lombok.SneakyThrows;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-
-import java.io.InputStream;
-import java.util.List;
 
 /**
  * @author ds

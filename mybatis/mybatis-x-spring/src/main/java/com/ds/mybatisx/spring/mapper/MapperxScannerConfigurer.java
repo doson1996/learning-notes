@@ -5,8 +5,6 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 
-import java.util.List;
-
 /**
  * @author ds
  * @date 2023/11/21

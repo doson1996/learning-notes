@@ -10,10 +10,11 @@ import java.util.List;
 public interface Executor {
     /**
      * 执行查询
+     *
      * @param statementId
      * @param parameter
-     * @return
      * @param <E>
+     * @return
      */
     <E> List<E> doQuery(String statementId, Object parameter);
 

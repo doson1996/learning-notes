@@ -1,5 +1,9 @@
 package com.ds.mybatisx.config.build;
 
+import java.io.InputStream;
+import java.util.List;
+import java.util.Properties;
+
 import com.alibaba.druid.pool.DruidDataSource;
 import com.ds.mybatisx.config.Configuration;
 import com.ds.mybatisx.io.Resources;
@@ -7,10 +11,6 @@ import lombok.SneakyThrows;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-
-import java.io.InputStream;
-import java.util.List;
-import java.util.Properties;
 
 /**
  * @author ds

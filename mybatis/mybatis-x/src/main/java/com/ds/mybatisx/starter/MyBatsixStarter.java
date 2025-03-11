@@ -1,12 +1,12 @@
 package com.ds.mybatisx.starter;
 
+import java.io.InputStream;
+
 import com.ds.mybatisx.io.Resources;
 import com.ds.mybatisx.session.SqlSession;
 import com.ds.mybatisx.session.SqlSessionFactory;
 import com.ds.mybatisx.session.SqlSessionFactoryBuilder;
 import lombok.Getter;
-
-import java.io.InputStream;
 
 /**
  * @author ds

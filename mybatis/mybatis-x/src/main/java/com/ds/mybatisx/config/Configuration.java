@@ -1,10 +1,11 @@
 package com.ds.mybatisx.config;
 
-import com.ds.mybatisx.mapping.MappedStatement;
-
-import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.sql.DataSource;
+
+import com.ds.mybatisx.mapping.MappedStatement;
 
 /**
  * @author ds

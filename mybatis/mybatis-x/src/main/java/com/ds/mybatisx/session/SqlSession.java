@@ -12,43 +12,48 @@ public interface SqlSession extends Closeable {
 
     /**
      * 查询单个结果
+     *
      * @param statementId
-     * @return
      * @param <T>
+     * @return
      */
     <T> T selectOne(String statementId);
 
     /**
      * 查询单个结果
+     *
      * @param statementId
      * @param parameter
-     * @return
      * @param <T>
+     * @return
      */
     <T> T selectOne(String statementId, Object parameter);
 
     /**
      * 查询多个结果
+     *
      * @param statementId
-     * @return
      * @param <E>
+     * @return
      */
     <E> List<E> selectList(String statementId);
 
     /**
      * 查询多个结果
+     *
      * @param statementId
      * @param parameter
-     * @return
      * @param <E>
+     * @return
      */
     <E> List<E> selectList(String statementId, Object parameter);
 
     /**
      * 获取mapper
+     *
      * @param type
-     * @return
      * @param <T>
+     * @return
      */
     <T> T getMapper(Class<T> type);
 

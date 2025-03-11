@@ -1,9 +1,9 @@
 package com.ds.mybatisx.session;
 
+import java.io.InputStream;
+
 import com.ds.mybatisx.config.Configuration;
 import com.ds.mybatisx.config.build.XMLConfigBuilder;
-
-import java.io.InputStream;
 
 /**
  * @author ds

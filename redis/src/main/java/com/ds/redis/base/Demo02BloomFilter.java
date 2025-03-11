@@ -2,6 +2,8 @@ package com.ds.redis.base;
 
 import com.ds.redis.RedisClient;
 import org.redisson.api.RBloomFilter;
+import org.redisson.api.RRateLimiter;
+import org.redisson.api.RateType;
 import org.redisson.api.RedissonClient;
 
 /**
