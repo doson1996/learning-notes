@@ -153,6 +153,9 @@ public class WordSplitter {
 
                     // 记录已导入的表格
                     importedTables.add(table);
+
+                    // 处理嵌套表格
+                    handleNestedTables(asposeTable);
                 }
             } else if (nodeType != NodeType.COMMENT) {  // 如果段落不属于表格且不是评论，则导入段落
                 // 否则只导入段落
@@ -163,6 +166,76 @@ public class WordSplitter {
 
                 // 复制段落格式
                 copyParagraphFormat(paragraph, (Paragraph) importedNode);
+
+                // 复制字体样式
+                copyFontStyles(paragraph, (Paragraph) importedNode);
+            }
+        }
+
+        /**
+         * 处理嵌套表格，确保嵌套表格不会被重复导入
+         */
+        private void handleNestedTables(com.aspose.words.Table table) {
+            for (int rowIndex = 0; rowIndex < table.getRows().getCount(); rowIndex++) {
+                com.aspose.words.Row row = table.getRows().get(rowIndex);
+                for (int cellIndex = 0; cellIndex < row.getCells().getCount(); cellIndex++) {
+                    com.aspose.words.Cell cell = row.getCells().get(cellIndex);
+                    int childCount = cell.getChildNodes(NodeType.ANY, true).getCount();
+                    for (int i = 0; i < childCount; i++) {
+                        Node childNode = cell.getChildNodes(NodeType.ANY, true).get(i);
+                        if (childNode.getNodeType() == NodeType.TABLE) {
+                            com.aspose.words.Table nestedTable = (com.aspose.words.Table) childNode;
+                            if (!isTableAlreadyImported(nestedTable)) {
+                                importedTables.add(nestedTable); // 记录嵌套表格
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /**
+         * 复制段落中运行对象的字体样式
+         */
+        private void copyFontStyles(Paragraph sourceParagraph, Paragraph targetParagraph) {
+            if (sourceParagraph == null || targetParagraph == null) {
+                return;
+            }
+
+            // 遍历源段落中的所有运行对象
+            for (com.aspose.words.Run sourceRun : sourceParagraph.getRuns()) {
+                // 找到对应的运行对象
+                com.aspose.words.Run targetRun = null;
+                for (com.aspose.words.Run run : targetParagraph.getRuns()) {
+                    if (run.getText().equals(sourceRun.getText())) {
+                        targetRun = run;
+                        break;
+                    }
+                }
+
+                if (targetRun == null) {
+                    // 如果没有找到对应的运行对象，则创建新的运行对象
+                    targetRun = new com.aspose.words.Run(targetParagraph.getDocument(), sourceRun.getText());
+                    targetParagraph.getRuns().add(targetRun);
+                }
+
+                // 复制字体名称
+                targetRun.getFont().setName(sourceRun.getFont().getName());
+
+                // 复制字体大小
+                targetRun.getFont().setSize(sourceRun.getFont().getSize());
+
+                // 复制字体颜色
+                targetRun.getFont().setColor(sourceRun.getFont().getColor());
+
+                // 复制加粗属性
+                targetRun.getFont().setBold(sourceRun.getFont().getBold());
+
+                // 复制斜体属性
+                targetRun.getFont().setItalic(sourceRun.getFont().getItalic());
+
+                // 复制下划线属性
+                targetRun.getFont().setUnderline(sourceRun.getFont().getUnderline());
             }
         }
 
@@ -178,7 +251,10 @@ public class WordSplitter {
                 double lineSpacing = sourceParagraph.getParagraphFormat().getLineSpacing();
                 targetParagraph.getParagraphFormat().setLineSpacing(lineSpacing);
 
-                // 替换 setSpacingAfter 和 getSpacingAfter 为 SpaceAfter 属性
+                // 复制段落行距规则
+                targetParagraph.getParagraphFormat().setLineSpacingRule(sourceParagraph.getParagraphFormat().getLineSpacingRule());
+
+                // 复制段落前后间距
                 targetParagraph.getParagraphFormat().setSpaceAfter(sourceParagraph.getParagraphFormat().getSpaceAfter());
                 targetParagraph.getParagraphFormat().setSpaceBefore(sourceParagraph.getParagraphFormat().getSpaceBefore());
 
@@ -276,7 +352,9 @@ public class WordSplitter {
          * 检查目标文档中是否已包含指定表格
          */
         private boolean isTableAlreadyImported(Node table) {
-            return importedTables.contains(table);
+            // 使用表格的唯一标识（如 hashCode）进行判断
+            return importedTables.stream()
+                    .anyMatch(importedTable -> importedTable.hashCode() == table.hashCode());
         }
 
         /**
