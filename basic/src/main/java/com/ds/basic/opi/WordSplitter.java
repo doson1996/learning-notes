@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.aspose.words.AutoFitBehavior;
 import com.aspose.words.Body;
 import com.aspose.words.BorderCollection;
 import com.aspose.words.Document;
@@ -161,6 +160,32 @@ public class WordSplitter {
                 // 将段落插入到目标文档的主体部分
                 Body body = currentDoc.getFirstSection().getBody();
                 body.appendChild(importedNode);
+
+                // 复制段落格式
+                copyParagraphFormat(paragraph, (Paragraph) importedNode);
+            }
+        }
+
+        /**
+         * 复制段落格式
+         */
+        private void copyParagraphFormat(Paragraph sourceParagraph, Paragraph targetParagraph) {
+            if (sourceParagraph != null && targetParagraph != null) {
+                // 复制段落对齐方式
+                targetParagraph.getParagraphFormat().setAlignment(sourceParagraph.getParagraphFormat().getAlignment());
+
+                // 复制段落行距
+                double lineSpacing = sourceParagraph.getParagraphFormat().getLineSpacing();
+                targetParagraph.getParagraphFormat().setLineSpacing(lineSpacing);
+
+                // 替换 setSpacingAfter 和 getSpacingAfter 为 SpaceAfter 属性
+                targetParagraph.getParagraphFormat().setSpaceAfter(sourceParagraph.getParagraphFormat().getSpaceAfter());
+                targetParagraph.getParagraphFormat().setSpaceBefore(sourceParagraph.getParagraphFormat().getSpaceBefore());
+
+                // 复制段落缩进
+                targetParagraph.getParagraphFormat().setFirstLineIndent(sourceParagraph.getParagraphFormat().getFirstLineIndent());
+                targetParagraph.getParagraphFormat().setLeftIndent(sourceParagraph.getParagraphFormat().getLeftIndent());
+                targetParagraph.getParagraphFormat().setRightIndent(sourceParagraph.getParagraphFormat().getRightIndent());
             }
         }
 
@@ -212,42 +237,11 @@ public class WordSplitter {
                             copyCellBorders(sourceCell, targetCell);
                         }
 
-                        // 复制单元格内的文本字体样式
-//                        copyFontStyles(sourceCell, targetCell);
                     }
                 }
             }
         }
 
-        /**
-         * 复制单元格内的文本字体样式
-         */
-        private void copyFontStyles(com.aspose.words.Cell sourceCell, com.aspose.words.Cell targetCell) throws Exception {
-            for (Paragraph sourceParagraph : (Iterable<Paragraph>) sourceCell.getChildNodes(NodeType.PARAGRAPH, true)) {
-                // 使用目标文档导入段落，并直接附加到目标单元格
-                Node importedNode = currentDoc.importNode(sourceParagraph, true);
-                targetCell.appendChild(importedNode);
-
-                // 遍历段落中的 Run 节点，直接设置字体样式
-                for (com.aspose.words.Run sourceRun : (Iterable<com.aspose.words.Run>) sourceParagraph.getChildNodes(NodeType.RUN, true)) {
-                    // 获取目标段落中的对应 Run 节点
-                    com.aspose.words.Run targetRun = (com.aspose.words.Run) ((Paragraph) importedNode).getChildNodes(NodeType.RUN, true).get(sourceParagraph.getChildNodes(NodeType.RUN, true).indexOf(sourceRun));
-
-                    if (targetRun != null) {
-                        // 复制字体名称
-                        targetRun.getFont().setName(sourceRun.getFont().getName());
-                        // 复制字体大小
-                        targetRun.getFont().setSize(sourceRun.getFont().getSize());
-                        // 复制字体颜色
-                        targetRun.getFont().setColor(sourceRun.getFont().getColor());
-                        // 复制加粗、斜体等格式
-                        targetRun.getFont().setBold(sourceRun.getFont().getBold());
-                        targetRun.getFont().setItalic(sourceRun.getFont().getItalic());
-                        targetRun.getFont().setUnderline(sourceRun.getFont().getUnderline());
-                    }
-                }
-            }
-        }
 
         /**
          * 复制单元格边框属性
