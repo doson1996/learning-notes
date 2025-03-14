@@ -5,13 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.aspose.words.Body;
-import com.aspose.words.BorderCollection;
 import com.aspose.words.Document;
 import com.aspose.words.HeaderFooterType;
 import com.aspose.words.Node;
 import com.aspose.words.NodeType;
 import com.aspose.words.Paragraph;
 import com.aspose.words.SaveFormat;
+import com.aspose.words.Section;
 import com.aspose.words.StyleIdentifier;
 
 public class WordSplitter {
@@ -19,12 +19,23 @@ public class WordSplitter {
     // 输出目录
     static String outputDir = "D://docx//";
 
+    // 拆分style
+    public static final String TITLE_STYLE = "heading 1";
+
     public static void main(String[] args) throws Exception {
         // 输入的Word文件路径
         String inputFilePath = "D://hy.docx";
 //        String inputFilePath = "D://docx//output_part_6.docx";
 
+        if (!isValidFile(inputFilePath)) {
+            System.err.println("输入文件无效：" + inputFilePath);
+            return;
+        }
+
         Document doc = new Document(inputFilePath);
+
+        // 删除最后一页
+        removeLastPage(doc);
 
         // 初始化拆分工具
         DocumentPartSaver saver = new DocumentPartSaver(doc);
@@ -55,9 +66,39 @@ public class WordSplitter {
      * 检测段落是否为标题
      */
     private static boolean isTitle(Paragraph paragraph) {
-        // 判断段落样式是否为标题样式（例如 Heading 1、Heading 2 等）
-        String type = paragraph.getParagraphFormat().getStyle().getName();
-        return type != null && type.toLowerCase().startsWith("heading 1");
+        try {
+            // 判断段落样式是否为标题样式（例如 Heading 1、Heading 2 等）
+            String type = paragraph.getParagraphFormat().getStyle().getName();
+            return type != null && type.toLowerCase().startsWith(TITLE_STYLE);
+        } catch (Exception e) {
+            // no op
+        }
+
+        return false;
+    }
+
+    /**
+     * 删除文档的最后一页
+     */
+    private static void removeLastPage(Document doc) throws Exception {
+        if (doc.getSections().getCount() == 0) {
+            return;
+        }
+
+        Section lastSection = doc.getLastSection();
+        if (lastSection.getBody().getParagraphs().getCount() == 0) {
+            return;
+        }
+
+        // 删除最后一页的所有段落
+        lastSection.getBody().getParagraphs().clear();
+    }
+
+    /**
+     * 校验文件路径是否有效
+     */
+    private static boolean isValidFile(String filePath) {
+        return filePath != null && !filePath.isEmpty() && new java.io.File(filePath).exists();
     }
 
     /**
@@ -116,7 +157,7 @@ public class WordSplitter {
 
                     if (targetHeaderFooter == null) {
                         // 如果目标部分中不存在对应类型的页眉页脚，则添加
-                        targetSection.getHeadersFooters().add((com.aspose.words.HeaderFooter) importedHeaderFooter);
+                        targetSection.getHeadersFooters().add(importedHeaderFooter);
                     } else {
                         // 如果存在，则替换内容
                         targetHeaderFooter.getChildNodes().clear();
@@ -149,7 +190,6 @@ public class WordSplitter {
                     // 复制表格样式和单元格样式
                     copyTableStyle((com.aspose.words.Table) table, asposeTable);
 
-                    System.out.println("table = " + table.getText());
                     // 记录已导入的表格
                     importedTables.add(table);
 
@@ -199,7 +239,6 @@ public class WordSplitter {
                         if (childNode.getNodeType() == NodeType.TABLE) {
                             com.aspose.words.Table nestedTable = (com.aspose.words.Table) childNode;
                             if (!isTableAlreadyImported(nestedTable)) {
-                                System.out.println("nestedTable = " + nestedTable.getText());
                                 nestedTables.add(nestedTable); // 记录嵌套表格
                                 // 递归处理嵌套表格中的嵌套表格
                                 handleNestedTables(nestedTable);
@@ -324,41 +363,8 @@ public class WordSplitter {
                             if (sourceShading != null) {
                                 targetShading.setBackgroundPatternColor(sourceShading.getBackgroundPatternColor());
                             }
-
-                            // 复制边框属性
-                            copyCellBorders(sourceCell, targetCell);
                         }
 
-                    }
-                }
-            }
-        }
-
-
-        /**
-         * 复制单元格边框属性
-         */
-        private void copyCellBorders(com.aspose.words.Cell sourceCell, com.aspose.words.Cell targetCell) throws Exception {
-            if (sourceCell.getCellFormat() != null && targetCell.getCellFormat() != null) {
-                BorderCollection sourceBorders = sourceCell.getCellFormat().getBorders();
-                BorderCollection targetBorders = targetCell.getCellFormat().getBorders();
-
-                // 遍历所有边框类型
-                for (int borderType : com.aspose.words.BorderType.getValues()) {
-                    // 检查 borderType 是否在有效范围内
-                    if (borderType >= 0 && borderType < sourceBorders.getCount() && borderType < targetBorders.getCount()) {
-                        com.aspose.words.Border sourceBorder = sourceBorders.get(borderType);
-                        com.aspose.words.Border targetBorder = targetBorders.get(borderType);
-
-                        if (sourceBorder != null && targetBorder != null) {
-                            // 复制边框样式
-                            targetBorder.setLineStyle(sourceBorder.getLineStyle());
-                            targetBorder.setColor(sourceBorder.getColor());
-                            targetBorder.setLineWidth(sourceBorder.getLineWidth());
-                        }
-                    } else {
-                        // 如果 borderType 不合法，记录日志或跳过
-//                        System.err.println("Invalid borderType: " + borderType);
                     }
                 }
             }
