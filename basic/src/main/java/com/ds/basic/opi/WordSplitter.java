@@ -23,7 +23,8 @@ public class WordSplitter {
 
     public static void main(String[] args) throws Exception {
         // 输入的Word文件路径
-        String inputFilePath = "D://hy.docx";
+//        String inputFilePath = "D://hy.docx";
+        String inputFilePath = "D://docx//output_part_6.docx";
 
         Document doc = new Document(inputFilePath);
 
@@ -66,12 +67,13 @@ public class WordSplitter {
      */
     private static class DocumentPartSaver {
         // 保存原始文档的引用
-        private Document sourceDoc;
+        private final Document sourceDoc;
         private Document currentDoc;
-        private DocumentBuilder builder;
         private int partNumber = 1;
+        // 已导入的表格集合
         private Set<Node> importedTables = new HashSet<>();
-
+        // 嵌套表格集合
+        private Set<Node> nestedTables = new HashSet<>();
 
         public DocumentPartSaver(Document sourceDoc) throws Exception {
             // 保存原始文档的引用
@@ -84,7 +86,6 @@ public class WordSplitter {
          */
         public void startNewPart() throws Exception {
             currentDoc = new Document();
-            builder = new DocumentBuilder(currentDoc);
 
             // 移除默认的空白段落
             if (currentDoc.getFirstSection().getBody().getParagraphs().getCount() > 0) {
@@ -140,17 +141,17 @@ public class WordSplitter {
             if (nodeType == NodeType.CELL) {
                 // 如果段落属于表格，则导入整个表格
                 Node table = paragraph.getAncestor(NodeType.TABLE);
-                if (!isTableAlreadyImported(table)) {
+                if (!isTableAlreadyImported(table) && !isNestedTableAlreadyImported(table)) {
                     Node importedTable = currentDoc.importNode(table, true);
                     Body body = currentDoc.getFirstSection().getBody();
                     body.appendChild(importedTable);
 
                     // 设置表格样式
                     com.aspose.words.Table asposeTable = (com.aspose.words.Table) importedTable;
-//                    asposeTable.autoFit(AutoFitBehavior.AUTO_FIT_TO_CONTENTS);
                     // 复制表格样式和单元格样式
                     copyTableStyle((com.aspose.words.Table) table, asposeTable);
 
+                    System.out.println("table = " + table.getText());
                     // 记录已导入的表格
                     importedTables.add(table);
 
@@ -172,6 +173,20 @@ public class WordSplitter {
             }
         }
 
+        private boolean isNestedTableAlreadyImported(Node table) {
+            try {
+                for (Node nestedTable : nestedTables) {
+                    if (nestedTable.getText().equals(table.getText())) {
+                        return true;
+                    }
+                }
+            } catch (Exception e) {
+                // no op
+            }
+
+            return false;
+        }
+
         /**
          * 处理嵌套表格，确保嵌套表格不会被重复导入
          */
@@ -186,7 +201,10 @@ public class WordSplitter {
                         if (childNode.getNodeType() == NodeType.TABLE) {
                             com.aspose.words.Table nestedTable = (com.aspose.words.Table) childNode;
                             if (!isTableAlreadyImported(nestedTable)) {
-                                importedTables.add(nestedTable); // 记录嵌套表格
+                                System.out.println("nestedTable = " + nestedTable.getText());
+                                nestedTables.add(nestedTable); // 记录嵌套表格
+                                // 递归处理嵌套表格中的嵌套表格
+                                handleNestedTables(nestedTable);
                             }
                         }
                     }
@@ -352,9 +370,7 @@ public class WordSplitter {
          * 检查目标文档中是否已包含指定表格
          */
         private boolean isTableAlreadyImported(Node table) {
-            // 使用表格的唯一标识（如 hashCode）进行判断
-            return importedTables.stream()
-                    .anyMatch(importedTable -> importedTable.hashCode() == table.hashCode());
+            return importedTables.contains(table);
         }
 
         /**
