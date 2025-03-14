@@ -7,14 +7,12 @@ import java.util.Set;
 import com.aspose.words.Body;
 import com.aspose.words.BorderCollection;
 import com.aspose.words.Document;
-import com.aspose.words.DocumentBuilder;
 import com.aspose.words.HeaderFooterType;
 import com.aspose.words.Node;
 import com.aspose.words.NodeType;
 import com.aspose.words.Paragraph;
 import com.aspose.words.SaveFormat;
 import com.aspose.words.StyleIdentifier;
-
 
 public class WordSplitter {
 
@@ -23,8 +21,8 @@ public class WordSplitter {
 
     public static void main(String[] args) throws Exception {
         // 输入的Word文件路径
-//        String inputFilePath = "D://hy.docx";
-        String inputFilePath = "D://docx//output_part_6.docx";
+        String inputFilePath = "D://hy.docx";
+//        String inputFilePath = "D://docx//output_part_6.docx";
 
         Document doc = new Document(inputFilePath);
 
@@ -71,9 +69,9 @@ public class WordSplitter {
         private Document currentDoc;
         private int partNumber = 1;
         // 已导入的表格集合
-        private Set<Node> importedTables = new HashSet<>();
+        private final Set<Node> importedTables = new HashSet<>();
         // 嵌套表格集合
-        private Set<Node> nestedTables = new HashSet<>();
+        private final Set<Node> nestedTables = new HashSet<>();
 
         public DocumentPartSaver(Document sourceDoc) throws Exception {
             // 保存原始文档的引用
