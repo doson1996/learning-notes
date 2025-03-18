@@ -22,9 +22,14 @@ public class WordSplitter {
     // 拆分style
     public static final String TITLE_STYLE = "heading 1";
 
+//    public static  String FILE_NAME = "hy-dl";
+    public static  String FILE_NAME = "hy-qc";
+//    public static final String FILE_NAME = "hy-qc1";
+
     public static void main(String[] args) throws Exception {
         // 输入的Word文件路径
-        String inputFilePath = "D://hy.docx";
+
+        String inputFilePath = "D://docx//" + FILE_NAME + ".docx";
 //        String inputFilePath = "D://docx//output_part_6.docx";
 
         if (!isValidFile(inputFilePath)) {
@@ -35,7 +40,7 @@ public class WordSplitter {
         Document doc = new Document(inputFilePath);
 
         // 删除最后一页
-        removeLastPage(doc);
+//        removeLastPage(doc);
 
         // 初始化拆分工具
         DocumentPartSaver saver = new DocumentPartSaver(doc);
@@ -78,7 +83,7 @@ public class WordSplitter {
     }
 
     /**
-     * 删除文档的最后一页
+     * 删除文档的最后一页（封底）
      */
     private static void removeLastPage(Document doc) throws Exception {
         if (doc.getSections().getCount() == 0) {
@@ -386,7 +391,7 @@ public class WordSplitter {
             }
 
             // 保存为新的 Word 文件
-            String outputFilePath = outputDir + "output_part_" + partNumber + ".docx";
+            String outputFilePath = outputDir + FILE_NAME + "_" + partNumber + ".docx";
             try (FileOutputStream fos = new FileOutputStream(outputFilePath)) {
                 currentDoc.save(fos, SaveFormat.DOCX);
             }

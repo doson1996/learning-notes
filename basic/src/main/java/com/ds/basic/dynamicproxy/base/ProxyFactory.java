@@ -3,20 +3,29 @@ package com.ds.basic.dynamicproxy.base;
 /**
  * @author ds
  * @date 2023/4/14
- * @description
+ * @description 动态代理工厂类，根据目标对象特性选择合适的代理方式
  */
 public class ProxyFactory implements BaseProxy {
 
-    private BaseProxy jdkProxy = new JdkProxy();
+    private final BaseProxy jdkProxy = new JdkProxy();
 
-    private BaseProxy cglibProxy = new CglibProxy();
+    private final BaseProxy cglibProxy = new CglibProxy();
 
     @Override
     public Object create(Object target) {
-        // 被代理对象没有实现接口或是一个接口的时候，用cglib代理
-        if (target.getClass().getInterfaces().length == 0 || target.getClass().isInterface()) {
+        if (target == null) {
+            throw new IllegalArgumentException("目标对象不能为空");
+        }
+
+        Class<?> targetClass = target.getClass();
+        int interfaceCount = targetClass.getInterfaces().length;
+
+        // 判断是否使用 CGLIB 代理
+        if (interfaceCount == 0 || targetClass.isInterface()) {
             return cglibProxy.create(target);
         }
+
+        // 默认使用 JDK 动态代理
         return jdkProxy.create(target);
     }
 }
