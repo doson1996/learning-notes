@@ -257,9 +257,9 @@ public class WordSplitter {
             }
 
             // 检查段落中是否包含图片或其他非文本元素
-            for (Node childNode : paragraph.getChildNodes(NodeType.ANY, true).toArray()) { // 修复点：使用toArray()方法
-                if (childNode.getNodeType() == NodeType.SHAPE) {
-                    // 如果段落中包含图片（Shape），则段落不为空
+            for (Node childNode : paragraph.getChildNodes(NodeType.ANY, true).toArray()) {
+                if (childNode.getNodeType() == NodeType.SHAPE || childNode.getNodeType() == NodeType.TABLE) {
+                    // 如果段落中包含图片（Shape）或表格，则段落不为空
                     return false;
                 }
             }
@@ -348,6 +348,11 @@ public class WordSplitter {
 
                 // 复制下划线属性
                 targetRun.getFont().setUnderline(sourceRun.getFont().getUnderline());
+
+                // 复制其他字体属性（如高亮、阴影等）
+                targetRun.getFont().setHighlightColor(sourceRun.getFont().getHighlightColor());
+                targetRun.getFont().setAllCaps(sourceRun.getFont().getAllCaps());
+                targetRun.getFont().setSmallCaps(sourceRun.getFont().getSmallCaps());
             }
         }
 
@@ -366,9 +371,9 @@ public class WordSplitter {
                 // 复制段落行距规则
                 targetParagraph.getParagraphFormat().setLineSpacingRule(sourceParagraph.getParagraphFormat().getLineSpacingRule());
 
-                // 调整段落前后间距，避免过大值导致空白页
-                double spaceAfter = Math.min(sourceParagraph.getParagraphFormat().getSpaceAfter(), 50.0); // 最大值设为50
-                double spaceBefore = Math.min(sourceParagraph.getParagraphFormat().getSpaceBefore(), 50.0); // 最大值设为50
+                // 复制段落前后间距
+                double spaceAfter = sourceParagraph.getParagraphFormat().getSpaceAfter();
+                double spaceBefore = sourceParagraph.getParagraphFormat().getSpaceBefore();
                 targetParagraph.getParagraphFormat().setSpaceAfter(spaceAfter);
                 targetParagraph.getParagraphFormat().setSpaceBefore(spaceBefore);
 
