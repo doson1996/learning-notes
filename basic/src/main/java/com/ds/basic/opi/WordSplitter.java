@@ -22,8 +22,8 @@ public class WordSplitter {
     // 拆分style
     public static final String TITLE_STYLE = "heading 1";
 
-//    public static  String FILE_NAME = "hy-dl";
-    public static  String FILE_NAME = "hy-qc";
+//        public static  String FILE_NAME = "hy-dl";
+    public static String FILE_NAME = "hy-qc";
 //    public static final String FILE_NAME = "hy-qc1";
 
     public static void main(String[] args) throws Exception {
@@ -40,7 +40,7 @@ public class WordSplitter {
         Document doc = new Document(inputFilePath);
 
         // 删除最后一页
-//        removeLastPage(doc);
+        removeLastPage(doc);
 
         // 初始化拆分工具
         DocumentPartSaver saver = new DocumentPartSaver(doc);
@@ -138,6 +138,9 @@ public class WordSplitter {
 
             // 复制源文档的页眉和页脚设置
             copyHeadersAndFooters(sourceDoc, currentDoc);
+
+            // 复制源文档的页边距设置
+            copyPageMargins(sourceDoc, currentDoc);
         }
 
         /**
@@ -177,9 +180,36 @@ public class WordSplitter {
         }
 
         /**
+         * 复制源文档的页边距设置到目标文档
+         */
+        private void copyPageMargins(Document sourceDoc, Document targetDoc) {
+            for (com.aspose.words.Section sourceSection : sourceDoc.getSections()) {
+                com.aspose.words.Section targetSection = targetDoc.getLastSection();
+
+                // 复制页边距设置
+                com.aspose.words.PageSetup sourcePageSetup = sourceSection.getPageSetup();
+                com.aspose.words.PageSetup targetPageSetup = targetSection.getPageSetup();
+
+                targetPageSetup.setLeftMargin(sourcePageSetup.getLeftMargin());
+                targetPageSetup.setRightMargin(sourcePageSetup.getRightMargin());
+                targetPageSetup.setTopMargin(sourcePageSetup.getTopMargin());
+                targetPageSetup.setBottomMargin(sourcePageSetup.getBottomMargin());
+
+                // 可选：复制其他页面设置（如纸张大小、方向等）
+                targetPageSetup.setPaperSize(sourcePageSetup.getPaperSize());
+                targetPageSetup.setOrientation(sourcePageSetup.getOrientation());
+            }
+        }
+
+        /**
          * 添加段落到当前部分
          */
         public void addParagraph(Paragraph paragraph) throws Exception {
+            // 跳过空段落
+            if (isBlankParagraph(paragraph)) {
+                return;
+            }
+
             // 处理表格
             int nodeType = paragraph.getParentNode().getNodeType();
             if (nodeType == NodeType.CELL) {
@@ -214,6 +244,28 @@ public class WordSplitter {
                 // 复制字体样式
                 copyFontStyles(paragraph, (Paragraph) importedNode);
             }
+        }
+
+        /**
+         * 判断段落是否为空（包括考虑图片等非文本元素）
+         */
+        private boolean isBlankParagraph(Paragraph paragraph) {
+            // 检查段落文本是否为空
+            String text = paragraph.getText().trim();
+            if (!text.isEmpty()) {
+                return false; // 如果有非空文本，则段落不为空
+            }
+
+            // 检查段落中是否包含图片或其他非文本元素
+            for (Node childNode : paragraph.getChildNodes(NodeType.ANY, true).toArray()) { // 修复点：使用toArray()方法
+                if (childNode.getNodeType() == NodeType.SHAPE) {
+                    // 如果段落中包含图片（Shape），则段落不为空
+                    return false;
+                }
+            }
+
+            // 如果没有文本且没有非文本元素，则段落为空
+            return true;
         }
 
         private boolean isNestedTableAlreadyImported(Node table) {
@@ -314,9 +366,11 @@ public class WordSplitter {
                 // 复制段落行距规则
                 targetParagraph.getParagraphFormat().setLineSpacingRule(sourceParagraph.getParagraphFormat().getLineSpacingRule());
 
-                // 复制段落前后间距
-                targetParagraph.getParagraphFormat().setSpaceAfter(sourceParagraph.getParagraphFormat().getSpaceAfter());
-                targetParagraph.getParagraphFormat().setSpaceBefore(sourceParagraph.getParagraphFormat().getSpaceBefore());
+                // 调整段落前后间距，避免过大值导致空白页
+                double spaceAfter = Math.min(sourceParagraph.getParagraphFormat().getSpaceAfter(), 50.0); // 最大值设为50
+                double spaceBefore = Math.min(sourceParagraph.getParagraphFormat().getSpaceBefore(), 50.0); // 最大值设为50
+                targetParagraph.getParagraphFormat().setSpaceAfter(spaceAfter);
+                targetParagraph.getParagraphFormat().setSpaceBefore(spaceBefore);
 
                 // 复制段落缩进
                 targetParagraph.getParagraphFormat().setFirstLineIndent(sourceParagraph.getParagraphFormat().getFirstLineIndent());
