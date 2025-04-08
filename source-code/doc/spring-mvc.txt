@@ -1,0 +1,4 @@
+1.WebMvcAutoConfiguration
+	在这里注入了requestMappingHandlerMapping
+2.requestMappingHandlerMapping
+	在bean的初始化方法（afterPropertiesSet）扫描出带@Controller和@RequestMapping的类和方法

@@ -1,7 +1,11 @@
 package com.ds.basic.opi;
 
+import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import com.aspose.words.Body;
@@ -14,7 +18,7 @@ import com.aspose.words.SaveFormat;
 import com.aspose.words.Section;
 import com.aspose.words.StyleIdentifier;
 
-public class WordSplitter {
+public class WordUtils {
 
     // 输出目录
     static String outputDir = "D://docx//output//";
@@ -22,25 +26,35 @@ public class WordSplitter {
     // 拆分style
     public static final String TITLE_STYLE = "heading 1";
 
-        public static  String FILE_NAME = "hy-dl";
-//    public static String FILE_NAME = "hy-qc";
-//    public static final String FILE_NAME = "hy-qc1";
+    public static String FILE_NAME ;
 
-    public static void main(String[] args) throws Exception {
+    public static void spilt(String inputDir) throws Exception {
+        Path path = Paths.get(inputDir);
+        File file = path.toFile();
+        if (file.exists() && file.isDirectory()) {
+            for (File listFile : Objects.requireNonNull(file.listFiles())) {
+                if (listFile.isFile() && listFile.getName().endsWith(".docx")) {
+                    FILE_NAME = listFile.getName().split("\\.")[0];
+                    System.out.println("file " + listFile.getAbsolutePath());
+                    doSpilt(listFile.getAbsolutePath());
+                }
+            }
+        }
+
+    }
+
+    public static void doSpilt(String filePath) throws Exception {
         // 输入的Word文件路径
 
-        String inputFilePath = "D://docx//" + FILE_NAME + ".docx";
-//        String inputFilePath = "D://docx//output_part_6.docx";
-
-        if (!isValidFile(inputFilePath)) {
-            System.err.println("输入文件无效：" + inputFilePath);
+        if (!isValidFile(filePath)) {
+            System.err.println("输入文件无效：" + filePath);
             return;
         }
 
-        Document doc = new Document(inputFilePath);
+        Document doc = new Document(filePath);
 
         // 删除最后一页
-        removeLastPage(doc);
+//        removeLastPage(doc);
 
         // 初始化拆分工具
         DocumentPartSaver saver = new DocumentPartSaver(doc);
@@ -147,8 +161,8 @@ public class WordSplitter {
          * 复制源文档的页眉和页脚到目标文档
          */
         private void copyHeadersAndFooters(Document sourceDoc, Document targetDoc) {
-            for (com.aspose.words.Section sourceSection : sourceDoc.getSections()) {
-                com.aspose.words.Section targetSection = targetDoc.getLastSection();
+            for (Section sourceSection : sourceDoc.getSections()) {
+                Section targetSection = targetDoc.getLastSection();
 
                 // 确保目标部分已初始化页眉页脚集合
                 if (targetSection.getHeadersFooters().getCount() == 0) {
@@ -183,8 +197,8 @@ public class WordSplitter {
          * 复制源文档的页边距设置到目标文档
          */
         private void copyPageMargins(Document sourceDoc, Document targetDoc) {
-            for (com.aspose.words.Section sourceSection : sourceDoc.getSections()) {
-                com.aspose.words.Section targetSection = targetDoc.getLastSection();
+            for (Section sourceSection : sourceDoc.getSections()) {
+                Section targetSection = targetDoc.getLastSection();
 
                 // 复制页边距设置
                 com.aspose.words.PageSetup sourcePageSetup = sourceSection.getPageSetup();

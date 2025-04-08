@@ -4,9 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!--    <bean id="user" class="com.ds.springframework.chapter01.xhyl.User">-->
-
-<!--    </bean>-->
+    <bean id="user" class="com.ds.springframework.chapter01.xhyl.User" init-method="sayHello">
+        <property name="name" value="ds"/>
+    </bean>
 
     <bean id="a" class="com.ds.springframework.chapter01.xhyl.A">
         <property name="b" ref="b"/>

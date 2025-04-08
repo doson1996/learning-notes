@@ -74,6 +74,7 @@
         <module>dubbo/provider-api</module>
         <module>mongo</module>
         <module>graph</module>
+        <module>source-code</module>
     </modules>
 
     <dependencies>

@@ -1,0 +1,29 @@
+主类
+	@SpringBootApplication
+		@ComponentScan
+			bean扫描，没有指定扫描路径的话就是扫描主类所在的包下面的路径
+		@SpringBootConfiguration
+			@Configuration
+		@EnableAutoConfiguration
+		
+main方法
+	SpringApplication.run(args)
+		首先会new一个SpringApplication，然后调用它的run方法
+			在构造方法里会去推断当前应用类型（none、servlet、reactive）、设置主类、准备初始化器、监听器
+		
+		run方法
+			准备环境	
+			打印banner （printBanner）
+			创建容器
+			准备容器
+			刷新容器之前
+			刷新容器
+			刷新容器之后
+			应用启动之后（ApplicationRunner、CommandLineRunner）
+			
+			捕获异常
+		
+	
+自动装配
+		SPI思想
+		Conditional注解
