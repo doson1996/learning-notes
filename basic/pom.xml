@@ -69,5 +69,11 @@
             <artifactId>aspose-words</artifactId>
             <version>23.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.21</version>
+        </dependency>
     </dependencies>
 </project>
