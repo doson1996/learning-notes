@@ -37,7 +37,7 @@ public class ExportReport {
         builder.getParagraphFormat().setAlignment(ParagraphAlignment.CENTER); // 设置居中对齐
 
         builder.getFont().setBold(true); // 设置加粗
-        builder.writeln("重庆银行小微公司授信业务调查报告");
+        builder.writeln("重庆xx银行小微公司授信业务调查报告");
         builder.getFont().setBold(false); // 重置加粗
 
         // 添加段落
@@ -45,7 +45,7 @@ public class ExportReport {
         builder.getParagraphFormat().setAlignment(ParagraphAlignment.JUSTIFY);
         // 设置首行缩进，单位是磅（point）， 0.85厘米 = 24.09磅
         builder.getParagraphFormat().setFirstLineIndent(24.09);
-        builder.writeln("本调查报告作为授信重要决策材料，代表机构贷前调查的尽职调查结果。本机构根据重庆银行股份有限公司相关制度和流程，根据借款人、担保人、其他第三方提供的材料并核对了相关原件，复印材料加盖了企业公章，结合机构调查人搜集的其他材料，经机构审慎调查、核实、分析和整理后完成的。报告全面反映了客户的主要信息，机构对报告内容的真实性、准确性、完整性及所作判断的合理性负责，并同意本次授信业务申报方案。");
+        builder.writeln("本调查报告作为授信重要决策材料，代表机构贷前调查的尽职调查结果。本机构根据重庆xx银行股份有限公司相关制度和流程，根据借款人、担保人、其他第三方提供的材料并核对了相关原件，复印材料加盖了企业公章，结合机构调查人搜集的其他材料，经机构审慎调查、核实、分析和整理后完成的。报告全面反映了客户的主要信息，机构对报告内容的真实性、准确性、完整性及所作判断的合理性负责，并同意本次授信业务申报方案。");
 
         // 重置首行缩进为0，如果需要
         builder.getParagraphFormat().setFirstLineIndent(0.0);
