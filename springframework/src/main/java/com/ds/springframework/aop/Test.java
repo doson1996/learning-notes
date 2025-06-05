@@ -26,28 +26,31 @@ public class Test {
         // 添加一个方法执行前的通知
         proxyFactory.addAdvice(new BeforeAdvice());
 
-        // 为代理类引入一个新的需要实现的接口--Runnable
-//        proxyFactory.addAdvice(new DmzIntroductionAdvice());
+        // 为代理类引入一个新的需要实现的接口--IService
+        proxyFactory.addAdvice(new IntroductionAdvice());
 
         // 设置目标类
         proxyFactory.setTarget(new DsService());
 
         // 因为要测试代理对象自己定义的方法，所以这里启用cglib代理
-        proxyFactory.setProxyTargetClass(true);
+//        proxyFactory.setProxyTargetClass(true);
 
         // 创建代理对象
         Object proxy = proxyFactory.getProxy();
 
         // 调用代理类的toString方法，通过控制台查看代理逻辑的执行情况
-        proxy.toString();
+//        proxy.toString();
 
-        if (proxy instanceof DsService) {
-            ((DsService) proxy).testAop();
-        }
+//        if (proxy instanceof DsService) {
+//            ((DsService) proxy).testAop();
+//        }
 
         // 判断引入是否成功，并执行引入的逻辑
-        if (proxy instanceof Runnable) {
-            ((Runnable) proxy).run();
+        if (proxy instanceof IService) {
+            ((IService) proxy).say();
         }
+
+//        proxyFactory.setTarget(IService.class);
+
     }
 }
