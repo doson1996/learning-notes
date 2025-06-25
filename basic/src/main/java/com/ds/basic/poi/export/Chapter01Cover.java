@@ -30,7 +30,7 @@ public class Chapter01Cover {
         builder.getParagraphFormat().setAlignment(ParagraphAlignment.RIGHT);
         builder.getFont().setName("宋体(正文)");
         builder.getFont().setSize(12);
-        builder.writeln("重庆银行公司类信贷业务审查报告模板"); // 空行触发边框显示
+        builder.writeln("xx银行公司类信贷业务审查报告模板"); // 空行触发边框显示
 
 // 清除边框设置防止影响后续内容
         builder.getParagraphFormat().getBorders().getByBorderType(com.aspose.words.BorderType.LEFT).setLineStyle(com.aspose.words.LineStyle.NONE);
@@ -47,7 +47,7 @@ public class Chapter01Cover {
         builder.getFont().setSize(18);
         builder.getFont().setBold(false);
         builder.getFont().setName("方正小标宋_GBK");
-        builder.writeln("重庆银行大中公司授信业务调查报告");
+        builder.writeln("xx银行大中公司授信业务调查报告");
 
         // 添加副标题
         builder.getFont().setSize(16);

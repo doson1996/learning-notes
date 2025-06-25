@@ -1,9 +1,7 @@
 package com.ds.basic.poi.export;
 
-import com.aspose.words.BreakType;
 import com.aspose.words.Document;
 import com.aspose.words.DocumentBuilder;
-import com.aspose.words.ParagraphAlignment;
 
 /**
  * 声明
@@ -29,7 +27,7 @@ public class Chapter01Declaration {
         builder.getFont().setName("仿宋_GB2312");
         builder.getFont().setSize(16);  // 三号
         builder.write("    ");
-        builder.write("本调查报告作为授信重要决策材料，代表机构贷前调查的尽职调查结果。本机构根据重庆银行股份有限公司相关制度和流程，根据借款人、担保人、其他第三方提供的材料并核对了相关原件，复印材料加盖了企业公章，结合机构调查人搜集的其他材料，经机构审慎调查、核实、分析和整理后完成的。报告全面反映了客户的主要信息，机构对报告内容的真实性、准确性、完整性及所作判断的合理性负责，并同意本次授信业务申报方案。");
+        builder.write("本调查报告作为授信重要决策材料，代表机构贷前调查的尽职调查结果。本机构根据xx银行股份有限公司相关制度和流程，根据借款人、担保人、其他第三方提供的材料并核对了相关原件，复印材料加盖了企业公章，结合机构调查人搜集的其他材料，经机构审慎调查、核实、分析和整理后完成的。报告全面反映了客户的主要信息，机构对报告内容的真实性、准确性、完整性及所作判断的合理性负责，并同意本次授信业务申报方案。");
         builder.writeln();
         builder.writeln();
 

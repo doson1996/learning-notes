@@ -25,7 +25,7 @@ import org.springframework.util.CollectionUtils;
 public class FileUtils {
 
     public static void main(String[] args) {
-        String zipFilePath = "D:\\haizhi\\doc\\2025\\03.尽调-行业\\重庆银行2025.04.07.zip";
+        String zipFilePath = "D:\\haizhi\\doc\\2025\\03.尽调-行业\\xx银行2025.04.07.zip";
 //        String destDirectory = "D:\\haizhi\\doc\\2025\\03.尽调-行业\\out\\";
 //        try {
 //            unzip(zipFilePath, destDirectory);
