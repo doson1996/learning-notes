@@ -29,7 +29,9 @@ public class Test {
                 .replaceAll("<body.*?>", "")
                 .replaceAll("</div>", "</p>")
                 .replaceAll("<div>", "<p>")
-                .replaceAll("<div.*?>", "");
+                .replaceAll("<div.*?>", "")
+                .replaceAll("<a.*?>", "")
+                .replaceAll("</a>", "");
 
         System.out.println("str = " + str);
 
