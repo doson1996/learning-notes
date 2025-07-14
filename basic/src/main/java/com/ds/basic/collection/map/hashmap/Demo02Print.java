@@ -23,7 +23,7 @@ public class Demo02Print {
         PrintUtils.hashMap(map);
         map.put("Ʊ", "Ʊ");
         map.put("ǁ", "ǁ");
-
+        map.get("1");
         // map.put("b", "b");
 //        map.put("d", "d");
 //        map.put("D", "D");

@@ -1,5 +1,7 @@
 package com.ds.springframework.chapter01.configuration;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,6 +19,11 @@ public class A {
     public String say(String msg) {
         System.out.println("msg = " + msg);
         return msg;
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("init...");
     }
 
 }
