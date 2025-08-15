@@ -15,7 +15,7 @@
 
 
     <properties>
-<!--        <logging.log4j.version>2.13.0</logging.log4j.version>-->
+        <!--        <logging.log4j.version>2.13.0</logging.log4j.version>-->
         <logging.log4j.version>2.18.0</logging.log4j.version>
     </properties>
 
@@ -23,6 +23,18 @@
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.14.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>2.0.57</version>
         </dependency>
 
         <dependency>
