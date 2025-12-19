@@ -7,8 +7,9 @@ import javax.annotation.PostConstruct;
  * @date 2024/1/22
  * @description
  */
-public class Bean1 {
+public final class Bean1 implements IBean {
 
+    @Override
     public void foo() {
         System.out.println("bean1 foo...");
     }

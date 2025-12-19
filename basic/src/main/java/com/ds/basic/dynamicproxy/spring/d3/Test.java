@@ -25,7 +25,7 @@ public class Test {
         context.registerBean(BeanConfig.class);
         context.refresh();
 
-        Bean1 bean1 = context.getBean(Bean1.class);
+        IBean bean1 = context.getBean(IBean.class);
         System.out.println("bean1 = " + bean1.getClass());
         bean1.foo();
         context.close();
