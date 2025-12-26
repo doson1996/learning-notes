@@ -1,20 +1,24 @@
 package com.ds.basic.dynamicproxy.spring.d3;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @author ds
  * @date 2024/1/28
  * @description
  */
+//@Component
 public class B {
 
-    public B() {
+//    @Autowired
+    public B(A a) {
         System.out.println("B()");
     }
 
-    @Resource
+//    @Autowired
     private void setA(A a) {
         System.out.println("setA = " + a.getClass());
     }

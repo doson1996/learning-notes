@@ -17,12 +17,12 @@ import org.springframework.context.support.GenericApplicationContext;
 public class Test {
     public static void main(String[] args) throws Exception {
         GenericApplicationContext context = new GenericApplicationContext();
-        context.registerBean(Aspect2.class);
+//        context.registerBean(Aspect2.class);
         context.registerBean(ConfigurationClassPostProcessor.class);
         context.registerBean(AutowiredAnnotationBeanPostProcessor.class);
         context.registerBean(CommonAnnotationBeanPostProcessor.class);
         context.registerBean(MyAnnotationAwareAspectJAutoProxyCreator.class);
-        context.registerBean(BeanConfig.class);
+        context.registerBean(Config.class);
         context.refresh();
 
         IBean bean1 = context.getBean(IBean.class);

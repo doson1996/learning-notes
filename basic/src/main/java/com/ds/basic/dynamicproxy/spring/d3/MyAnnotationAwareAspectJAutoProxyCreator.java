@@ -14,8 +14,22 @@ import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProx
 public class MyAnnotationAwareAspectJAutoProxyCreator extends AnnotationAwareAspectJAutoProxyCreator {
 
     @Override
+    protected List<Advisor> findCandidateAdvisors() {
+        List<Advisor> candidateAdvisors = super.findCandidateAdvisors();
+        if (!candidateAdvisors.isEmpty()) {
+            System.out.println("candidateAdvisors = " + candidateAdvisors);
+        }
+        return candidateAdvisors;
+    }
+
+    @Override
     public List<Advisor> findEligibleAdvisors(Class<?> beanClass, String beanName) {
-        return super.findEligibleAdvisors(beanClass, beanName);
+        System.out.println(beanName + " findEligibleAdvisors...");
+        List<Advisor> eligibleAdvisors = super.findEligibleAdvisors(beanClass, beanName);
+        if (!eligibleAdvisors.isEmpty()) {
+            System.out.println(beanName + " eligibleAdvisors = " + eligibleAdvisors);
+        }
+        return eligibleAdvisors;
     }
 
     @Override

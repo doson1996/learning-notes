@@ -3,19 +3,23 @@ package com.ds.basic.dynamicproxy.spring.d3;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @author ds
  * @date 2024/1/28
  * @description
  */
+//@Component
 public class A implements InitializingBean {
 
-    public A() {
-        System.out.println("A()");
-    }
+//    @Autowired
+//    public A(B b) {
+//        System.out.println("A()");
+//    }
 
-    @Resource
+//    @Autowired
     private void setB(B b) {
         System.out.println("setB = " + b.getClass());
     }
