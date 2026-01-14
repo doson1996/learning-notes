@@ -28,6 +28,12 @@ public class Test {
         IBean bean1 = context.getBean(IBean.class);
         System.out.println("bean1 = " + bean1.getClass());
         bean1.foo();
+
+        Object beanA = context.getBean("myFactoryBean");
+        Object myFactoryBean = context.getBean("&myFactoryBean");
+
+//        A a = context.getBean(A.class);
+
         context.close();
     }
 }

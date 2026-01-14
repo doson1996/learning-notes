@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @date 2024/1/28
  * @description
  */
-//@Component
+@Component
 public class A implements InitializingBean {
 
 //    @Autowired
