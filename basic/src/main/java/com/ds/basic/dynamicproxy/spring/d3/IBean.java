@@ -8,4 +8,7 @@ package com.ds.basic.dynamicproxy.spring.d3;
 public interface IBean {
 
     void foo();
+
+    void say();
+
 }

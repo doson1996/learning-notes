@@ -28,6 +28,7 @@ public class Test {
         IBean bean1 = context.getBean(IBean.class);
         System.out.println("bean1 = " + bean1.getClass());
         bean1.foo();
+        bean1.say();
         context.close();
     }
 }

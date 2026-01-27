@@ -14,6 +14,11 @@ public final class Bean1 implements IBean {
         System.out.println("bean1 foo...");
     }
 
+    @Override
+    public void say() {
+        System.out.println("bean1 say...");
+    }
+
     //  @Autowired
     public void setBean2(Bean2 bean2) {
         System.out.println("setBean2 = " + bean2.getClass());
