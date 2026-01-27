@@ -17,18 +17,24 @@ import org.springframework.context.support.GenericApplicationContext;
 public class Test {
     public static void main(String[] args) throws Exception {
         GenericApplicationContext context = new GenericApplicationContext();
-        context.registerBean(Aspect2.class);
+//        context.registerBean(Aspect2.class);
         context.registerBean(ConfigurationClassPostProcessor.class);
         context.registerBean(AutowiredAnnotationBeanPostProcessor.class);
         context.registerBean(CommonAnnotationBeanPostProcessor.class);
         context.registerBean(MyAnnotationAwareAspectJAutoProxyCreator.class);
-        context.registerBean(BeanConfig.class);
+        context.registerBean(Config.class);
         context.refresh();
 
         IBean bean1 = context.getBean(IBean.class);
         System.out.println("bean1 = " + bean1.getClass());
         bean1.foo();
         bean1.say();
+
+        Object beanA = context.getBean("myFactoryBean");
+        Object myFactoryBean = context.getBean("&myFactoryBean");
+
+//        A a = context.getBean(A.class);
+
         context.close();
     }
 }

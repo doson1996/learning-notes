@@ -3,6 +3,7 @@ package com.ds.basic.dynamicproxy.spring.d3;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
 /**
  * @author ds
@@ -10,6 +11,7 @@ import org.aspectj.lang.annotation.Before;
  * @description 高级切面
  */
 @Aspect
+@Component
 public class Aspect2 {
 
     @Before("execution(* foo())")

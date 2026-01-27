@@ -1,6 +1,7 @@
 package com.ds.basic.dynamicproxy.spring.d3;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -8,8 +9,9 @@ import org.springframework.context.annotation.Configuration;
  * @date 2024/1/22
  * @description
  */
+@ComponentScan
 @Configuration
-public class BeanConfig {
+public class Config {
 
     @Bean
     public Bean1 bean1() {

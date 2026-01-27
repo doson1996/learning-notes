@@ -1,20 +1,22 @@
 package com.ds.zk;
 
+import java.util.List;
+
+import org.apache.zookeeper.AddWatchMode;
 import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
 /**
  * @author ds
  */
 public class ZkClient {
 
-    private static final String HOST = "dy.com:2181";
+    private static final String HOST = "ds.com:2181";
 
     private ZooKeeper zooKeeper;
 
@@ -24,10 +26,10 @@ public class ZkClient {
             // 注册一次，监听一次
             System.out.println("------------------");
             try {
-                List<String> children = zooKeeper.getChildren("/", true);
-                for (String child : children) {
-                    System.out.println("child = " + child);
-                }
+//                List<String> children = zooKeeper.getChildren("/", true);
+//                for (String child : children) {
+//                    System.out.println("child = " + child);
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -71,6 +73,18 @@ public class ZkClient {
         Stat stat = zooKeeper.exists("/zk", false);
         System.out.println("stat = " + stat);
         System.out.println(stat == null ? "节点不存在" : "节点已存在");
+    }
+
+    @Test
+    public void watch() throws Exception {
+        zooKeeper.addWatch("/", (event) -> {
+            System.out.println("event = " + event);
+        }, AddWatchMode.PERSISTENT);
+
+
+        for (int i = 0; i < 10000; i++) {
+            Thread.sleep(1000);
+        }
     }
 
 }
