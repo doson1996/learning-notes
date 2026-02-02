@@ -51,14 +51,19 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.2.1.RELEASE</version>
+<!--            <version>5.2.1.RELEASE</version>-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
         </dependency>
 
         <!--spring aop支持-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>5.2.1.RELEASE</version>
+<!--            <version>5.2.1.RELEASE</version>-->
         </dependency>
 
         <!--aspectj支持-->
