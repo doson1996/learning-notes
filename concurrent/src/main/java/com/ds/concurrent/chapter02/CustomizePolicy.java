@@ -16,8 +16,8 @@ public class CustomizePolicy implements RejectedExecutionHandler {
     @Override
     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
         // 可以记录日志或存入数据库
-       /* System.out.println("Task " + r.toString() +
+        System.out.println("Task " + r.toString() +
                 " rejected from " +
-                executor.toString());*/
+                executor.toString());
     }
 }

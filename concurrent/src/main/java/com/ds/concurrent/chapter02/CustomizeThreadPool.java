@@ -41,11 +41,11 @@ public class CustomizeThreadPool extends ThreadPoolExecutor {
         /**
          * 当创建过的最大线程池达到最大线程数时，改变核心线程数和最大线程数
          */
-        if (this.getLargestPoolSize() == this.getMaximumPoolSize() - 1) {
-            int maximumPoolSize = this.getMaximumPoolSize();
-            this.setMaximumPoolSize(maximumPoolSize * 2);
-            this.setCorePoolSize(maximumPoolSize);
-        }
+//        if (this.getLargestPoolSize() == this.getMaximumPoolSize() - 1) {
+//            int maximumPoolSize = this.getMaximumPoolSize();
+//            this.setMaximumPoolSize(maximumPoolSize * 2);
+//            this.setCorePoolSize(maximumPoolSize);
+//        }
 
     }
 
@@ -67,4 +67,5 @@ public class CustomizeThreadPool extends ThreadPoolExecutor {
     protected void terminated() {
         // System.out.println("线程池关闭前");
     }
+
 }

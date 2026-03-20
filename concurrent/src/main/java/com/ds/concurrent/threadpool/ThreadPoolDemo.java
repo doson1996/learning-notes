@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @Date 2021/4/8 16:24
  * @Description
  *      一、线程池提交任务
- *       executor.execute() {@link ThreadPoolExecutor#execute(Runnable)}
+ *       executor.execute() {@link ThreadPoolExecutor#execute(Runnable)}  判断是添加线程还是把任务添加到队列
  *        int c = ctl.get();
  *       // 1.如果线程池中的线程数量小于corePoolSize，则优先创建线程，若创建成功则返回，否则进入下一步
  *         if (workerCountOf(c) < corePoolSize) {
@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
  *         else if (!addWorker(command, false))
  *             reject(command);
  *
- *       二、添加worker
+ *       二、添加worker                                                 添加线程后启动线程 runWorker，从队列中获取并执行任务
  *       addWorker {@link ThreadPoolExecutor#addWorker(Runnable, boolean)}
  *
  */
