@@ -9,6 +9,32 @@ import java.util.concurrent.TimeUnit;
  * @Author ds
  * @Date 2021/4/8 16:24
  * @Description
+ *      一、线程池提交任务
+ *       executor.execute() {@link ThreadPoolExecutor#execute(Runnable)}
+ *        int c = ctl.get();
+ *       // 1.如果线程池中的线程数量小于corePoolSize，则优先创建线程，若创建成功则返回，否则进入下一步
+ *         if (workerCountOf(c) < corePoolSize) {
+ *             if (addWorker(command, true))
+ *                 return;
+ *             c = ctl.get();
+ *         }
+ *        // 2. 如果线程池中的线程数量大于等于corePoolSize，则尝试将任务放入workQueue中
+ *         if (isRunning(c) && workQueue.offer(command)) {
+ *             int recheck = ctl.get();
+ *             // 如果线程池已经关闭，需要将刚才放入队列的任务移除并拒绝
+ *             if (!isRunning(recheck) && remove(command))
+ *                 reject(command);
+ *             // 如果没有工作线程，添加一个空任务 Worker，从队列中获取并执行任务
+ *             else if (workerCountOf(recheck) == 0)
+ *                 addWorker(null, false);
+ *         }
+ *        // 3. 如果workQueue已满,则创建非核心线程
+ *         else if (!addWorker(command, false))
+ *             reject(command);
+ *
+ *       二、添加worker
+ *       addWorker {@link ThreadPoolExecutor#addWorker(Runnable, boolean)}
+ *
  */
 public class ThreadPoolDemo {
 

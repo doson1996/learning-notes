@@ -5,6 +5,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.ds.concurrent.util.SleepUtils;
+
 /**
  * @Author ds
  * @Date 2021/4/21 16:02
@@ -20,7 +22,7 @@ public class Demo27ThreadPoolMonitoring {
 
     private static final Long KEEP_ALIVE_TIME = 10L;
 
-    private static AtomicInteger ai = new AtomicInteger(1);
+    private static final AtomicInteger TASK_NUM = new AtomicInteger(1);
 
     private static final ThreadPoolExecutor threadPool = new CustomizeThreadPool(  // new CustomizeThreadPool(  new ThreadPoolExecutor(
             CORE_POOL_SIZE,
@@ -31,22 +33,12 @@ public class Demo27ThreadPoolMonitoring {
             new CustomizePolicy());
 
     public static void main(String[] args) {
-
-
         for (int i = 0; i < 40; i++) {
             //有序启动线程
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            SleepUtils.milliseconds(5);
 
             threadPool.execute(() -> {
-                try {
-                    Thread.sleep(20);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                SleepUtils.milliseconds(20);
 
                 /**
                  * {@link CustomizePolicy} ->beforeExecute
@@ -59,7 +51,7 @@ public class Demo27ThreadPoolMonitoring {
                     threadPool.setCorePoolSize(maximumPoolSize);
                 }*/
 
-                System.out.println("task--" + ai.getAndIncrement() +
+                System.out.println("task--" + TASK_NUM.getAndIncrement() +
                         "-> 线程池的线程数量:" + threadPool.getPoolSize() +
                         " - 线程池核心线程数:" + threadPool.getCorePoolSize() +
                         " - 线程池最大线程数:" + threadPool.getMaximumPoolSize() +
@@ -73,7 +65,7 @@ public class Demo27ThreadPoolMonitoring {
             });
         }
 
-        threadPool.shutdown();
+//        threadPool.shutdown();
     }
 
 }

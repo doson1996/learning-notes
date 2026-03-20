@@ -2,6 +2,7 @@ package com.ds.concurrent.chapter01;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author ds
@@ -25,20 +26,37 @@ public class Demo12BlockingQueue {
     public static void main(String[] args) throws InterruptedException {
 
         BlockingQueue<String> abq = new ArrayBlockingQueue<>(1, true);
-        abq.put("a");
+//        abq.put("a");
+//        abq.put("a1");
 
         Thread thread = new Thread(() -> {
             try {
-                Thread.sleep(1000);
-                String take = abq.take();
-                System.out.println("take = " + take);
+                for (int i = 0; i < 10; i++) {
+                    String take = abq.poll(500, TimeUnit.MILLISECONDS);
+                    System.out.println("take = " + take);
+                    Thread.sleep(1000);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
         thread.start();
 
-        abq.put("b");
+        Thread thread2 = new Thread(() -> {
+            try {
+                for (int i = 0; i < 10; i++) {
+                    Thread.sleep(1000);
+                    abq.put(i + "");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread2.start();
+
+//        abq.put("b");
+
+        thread.join();
         System.out.println("abq = " + abq);
     }
 
