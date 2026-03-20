@@ -29,7 +29,7 @@ public class ExportReport {
         // 创建一个新的文档
         Document doc = new Document();
         DocumentBuilder builder = new DocumentBuilder(doc);
-
+//        addWatermark(builder, "数智尽调-张三-2687");
         // 添加标题
         builder.getParagraphFormat().setStyleIdentifier(StyleIdentifier.HEADING_1);
         builder.getParagraphFormat().setSpaceAfter(SPACE_BEFORE);
@@ -83,6 +83,23 @@ public class ExportReport {
         // 保存文档
         doc.save(file3);
 
+    }
+
+    private static void addWatermark(DocumentBuilder builder, String text) throws Exception {
+        // 设置字体样式
+        builder.getFont().setName("Arial");
+        builder.getFont().setSize(14);
+        builder.getFont().setColor(java.awt.Color.LIGHT_GRAY);
+
+        // 插入文本水印
+        builder.moveToHeaderFooter(com.aspose.words.HeaderFooterType.HEADER_PRIMARY);
+        builder.getParagraphFormat().setAlignment(ParagraphAlignment.RIGHT);
+        builder.writeln(text);
+        // 锁定文档以防止编辑水印
+//        builder.getDocument().protect(com.aspose.words.ProtectionType.READ_ONLY, "password");
+        com.aspose.words.Range headerRange = builder.getCurrentSection().getHeadersFooters()
+                .getByHeaderFooterType(com.aspose.words.HeaderFooterType.HEADER_PRIMARY).getRange();
+        headerRange.toDocument().protect(com.aspose.words.ProtectionType.READ_ONLY, "password");
     }
 
 
