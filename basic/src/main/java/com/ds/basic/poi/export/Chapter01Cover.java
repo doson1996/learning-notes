@@ -1,5 +1,8 @@
 package com.ds.basic.poi.export;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.aspose.words.BreakType;
 import com.aspose.words.Document;
 import com.aspose.words.DocumentBuilder;
@@ -10,6 +13,77 @@ import com.aspose.words.Underline;
  * 封面
  */
 public class Chapter01Cover {
+    // 用于存储生成的文档列表
+    private static List<Document> documents = new ArrayList<>();
+
+    // 生成多个文档并在每个文档的页眉添加水印
+    public static void generateMultipleDocuments() throws Exception {
+        String[] documentNames = {"Cover1.docx", "Cover2.docx", "Cover3.docx"};
+        String[] watermarks = {"数智尽调-张三-2687", "数智尽调-李四-2688", "数智尽调-王五-2689"};
+
+        for (int i = 0; i < documentNames.length; i++) {
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            // 进入页眉区域并添加水印
+            builder.moveToHeaderFooter(com.aspose.words.HeaderFooterType.HEADER_PRIMARY);
+            addWatermark(builder, watermarks[i]);
+
+            // 返回主文档
+            builder.moveToSection(0);
+            builder.moveToDocumentStart();
+
+            // 添加主标题
+            builder.getParagraphFormat().setAlignment(ParagraphAlignment.CENTER);
+            builder.getFont().setSize(18);
+            builder.getFont().setBold(false);
+            builder.getFont().setName("方正小标宋_GBK");
+            builder.writeln("xx银行大中公司授信业务调查报告");
+
+            // 添加副标题
+            builder.getFont().setSize(16);
+            builder.writeln("(2024年版)");
+
+            // 插入空行
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+
+            builder.getParagraphFormat().setAlignment(ParagraphAlignment.LEFT);
+            String kg = "         ";
+            // 客户名称
+            addUnderlinedRow(builder, kg + "客户名称：", "重庆测试技术有限公司");
+
+            // 申报机构
+            addUnderlinedRow(builder, kg + "申报机构：", "延安分行");
+
+            // 所属集团
+            addUnderlinedRow(builder, kg + "所属集团：", "重庆测试（集团）有限责任公司");
+
+            // 申报日期
+            addUnderlinedRow(builder, kg + "申报日期：", "2025.05.13");
+
+            // 联系人员
+            addUnderlinedRow(builder, kg + "联系人员：", "张三");
+
+            // 联系方式
+            addUnderlinedRow(builder, kg + "联系方式：", "13012345678");
+
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+            builder.insertBreak(BreakType.LINE_BREAK);
+
+            // 保存文档
+            doc.save("output/" + documentNames[i]);
+            documents.add(doc);
+        }
+    }
     public static void main(String[] args) throws Exception {
         // 创建一个新的文档
         Document doc = new Document();
@@ -18,19 +92,24 @@ public class Chapter01Cover {
         // 进入页眉区域
         builder.moveToHeaderFooter(com.aspose.words.HeaderFooterType.HEADER_PRIMARY);
 
+        // 添加水印
+        addWatermark(builder, "数智尽调-张三-2687");
+        // 返回主文档
+        builder.moveToSection(0);
+        builder.moveToDocumentStart();
 // 添加空段落并设置下边框作为横线
-        builder.getParagraphFormat().clearFormatting();
-        builder.getParagraphFormat().setAlignment(ParagraphAlignment.LEFT); // 横线靠左开始
+//        builder.getParagraphFormat().clearFormatting();
+//        builder.getParagraphFormat().setAlignment(ParagraphAlignment.LEFT); // 横线靠左开始
 
 // 开始构建段落边框
-        builder.getParagraphFormat().getBorders().getByBorderType(com.aspose.words.BorderType.BOTTOM)
-                .setLineStyle(com.aspose.words.LineStyle.SINGLE);
-        builder.getParagraphFormat().getBorders().getByBorderType(com.aspose.words.BorderType.BOTTOM)
-                .setLineWidth(1.0);
-        builder.getParagraphFormat().setAlignment(ParagraphAlignment.RIGHT);
-        builder.getFont().setName("宋体(正文)");
-        builder.getFont().setSize(12);
-        builder.writeln("xx银行公司类信贷业务审查报告模板"); // 空行触发边框显示
+//        builder.getParagraphFormat().getBorders().getByBorderType(com.aspose.words.BorderType.BOTTOM)
+//                .setLineStyle(com.aspose.words.LineStyle.SINGLE);
+//        builder.getParagraphFormat().getBorders().getByBorderType(com.aspose.words.BorderType.BOTTOM)
+//                .setLineWidth(1.0);
+//        builder.getParagraphFormat().setAlignment(ParagraphAlignment.RIGHT);
+//        builder.getFont().setName("宋体(正文)");
+//        builder.getFont().setSize(12);
+//        builder.writeln("xx银行公司类信贷业务审查报告模板"); // 空行触发边框显示
 
 // 清除边框设置防止影响后续内容
         builder.getParagraphFormat().getBorders().getByBorderType(com.aspose.words.BorderType.LEFT).setLineStyle(com.aspose.words.LineStyle.NONE);
@@ -92,6 +171,23 @@ public class Chapter01Cover {
         doc.save("output/Cover.docx");
 
 
+    }
+
+    private static void addWatermark(DocumentBuilder builder, String text) throws Exception {
+        // 设置字体样式
+        builder.getFont().setName("Arial");
+        builder.getFont().setSize(14);
+        builder.getFont().setColor(java.awt.Color.LIGHT_GRAY);
+
+        // 插入文本水印
+        builder.moveToHeaderFooter(com.aspose.words.HeaderFooterType.HEADER_PRIMARY);
+        builder.getParagraphFormat().setAlignment(ParagraphAlignment.RIGHT);
+        builder.writeln(text);
+        // 锁定文档以防止编辑水印
+//        builder.getDocument().protect(com.aspose.words.ProtectionType.READ_ONLY, "password");
+        com.aspose.words.Range headerRange = builder.getCurrentSection().getHeadersFooters()
+                .getByHeaderFooterType(com.aspose.words.HeaderFooterType.HEADER_PRIMARY).getRange();
+        headerRange.toDocument().protect(com.aspose.words.ProtectionType.READ_ONLY, "password");
     }
 
     // 封装添加下划线行的方法，提升可读性和复用性
