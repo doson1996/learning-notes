@@ -58,12 +58,13 @@ public class ThreadPoolDemo {
 
         for (int i = 0; i < 10; i++) {
             executor.execute(() -> {
-                try {
-                    Thread.sleep(2000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                System.out.println("CurrentThread name:" + Thread.currentThread().getName() + "date：" + Instant.now());
+//                throw new RuntimeException("");
+//                try {
+//                    Thread.sleep(2000);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                System.out.println("CurrentThread name:" + Thread.currentThread().getName() + "date：" + Instant.now());
             });
         }
         //终止线程池

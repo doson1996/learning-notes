@@ -1,5 +1,6 @@
 package com.ds.basic.dynamicproxy.spring.d5;
 
+import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
 import org.springframework.aop.aspectj.autoproxy.AspectJAwareAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.ConfigurationClassPostProcessor;
 import org.springframework.context.support.GenericApplicationContext;
@@ -13,7 +14,7 @@ public class Test {
     public static void main(String[] args) {
         GenericApplicationContext context = new GenericApplicationContext();
         context.registerBean(ConfigurationClassPostProcessor.class);
-        context.registerBean(AspectJAwareAdvisorAutoProxyCreator.class);
+        context.registerBean(AnnotationAwareAspectJAutoProxyCreator.class);
         context.registerBean(BeanConfig.class);
         context.refresh();
 

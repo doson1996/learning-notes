@@ -190,10 +190,73 @@ public class Chapter01Cover {
         headerRange.toDocument().protect(com.aspose.words.ProtectionType.READ_ONLY, "password");
     }
 
+
     // 封装添加下划线行的方法，提升可读性和复用性
     private static void addUnderlinedRow(DocumentBuilder builder, String label, String value) throws Exception {
+        // 设置标签样式
+        builder.getFont().setName("方正仿宋_GBK");
+        builder.getFont().setSize(14);
+        builder.write(label);
 
+        // 定义固定的下划线长度（所有行都使用这个长度）
+        int fixedUnderlineLength = 40; // 可以根据需要调整这个值
 
+        int valueDisplayWidth = getDisplayWidth(value);
+
+        // 计算左右两边的空格数，使值在下划线区域内居中
+        int contentPadding = fixedUnderlineLength - valueDisplayWidth;
+        int leftPadding = contentPadding / 2;
+        int rightPadding = contentPadding - leftPadding;
+
+        // 开始下划线
+        builder.getFont().setUnderline(Underline.SINGLE);
+
+        // 写入左边空格
+        for (int i = 0; i < leftPadding; i++) {
+            builder.write(" ");
+        }
+
+        // 写入值
+        builder.write(value);
+
+        // 写入右边空格，填满剩余空间
+        for (int i = 0; i < rightPadding; i++) {
+            builder.write(" ");
+        }
+
+        // 结束下划线
+        builder.getFont().setUnderline(Underline.NONE);
+
+        // 插入换行
+        builder.insertBreak(BreakType.LINE_BREAK);
+        builder.getFont().setName("方正仿宋_GBK");
+        builder.getFont().setSize(14);
+    }
+
+    // 计算字符串的显示宽度（中文算 2，英文算 1）
+    private static int getDisplayWidth(String text) {
+        int width = 0;
+        for (char c : text.toCharArray()) {
+            if (isChineseChar(c)) {
+                width += 2;
+            } else {
+                width += 1;
+            }
+        }
+        return width;
+    }
+
+    // 判断是否为中文字符
+    private static boolean isChineseChar(char c) {
+        Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
+        return block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+                || block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+                || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+                || block == Character.UnicodeBlock.CJK_RADICALS_SUPPLEMENT
+                || block == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION;
+    }
+    // 封装添加下划线行的方法，提升可读性和复用性
+    private static void addUnderlinedRowOld(DocumentBuilder builder, String label, String value) throws Exception {
         // 设置标签样式
         builder.getFont().setName("方正仿宋_GBK");
         builder.getFont().setSize(14);
