@@ -20,5 +20,6 @@ public class Test {
 
         Target target = context.getBean(Target.class);
         target.foo(1);
+        target.foo(1);
     }
 }
