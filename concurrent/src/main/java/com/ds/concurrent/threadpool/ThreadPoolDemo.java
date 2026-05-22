@@ -1,6 +1,5 @@
 package com.ds.concurrent.threadpool;
 
-import java.time.Instant;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -24,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  *             // 如果线程池已经关闭，需要将刚才放入队列的任务移除并拒绝
  *             if (!isRunning(recheck) && remove(command))
  *                 reject(command);
- *             // 如果没有工作线程，添加一个空任务 Worker，从队列中获取并执行任务
+ *             // 如果没有工作线程，添加一个空任务 Worker，从队列中获取并执行任务[corePoolSize == 0]
  *             else if (workerCountOf(recheck) == 0)
  *                 addWorker(null, false);
  *         }

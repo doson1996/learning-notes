@@ -1,12 +1,14 @@
 package com.ds.concurrent.threadpool;
 
 import java.util.Date;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import com.ds.concurrent.threadpool.queue.TaskQueue;
+import com.ds.concurrent.util.SleepUtils;
 
 /**
  * @Author ds
@@ -18,6 +20,7 @@ public class ThreadPoolChangeDemo {
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor executor = buildThreadPoolExecutor();
         dynamicModifyExecutor(executor);
+        TimeUnit.SECONDS.sleep(30);
         executor.shutdown();
     }
 
@@ -31,11 +34,10 @@ public class ThreadPoolChangeDemo {
         int maximumPoolSize = 5;
         long keepAliveTime = 60L;
         TimeUnit unit = TimeUnit.MICROSECONDS;
-        BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>(1);
+        TaskQueue<Runnable> workQueue = new TaskQueue<>(100);
         ThreadFactory threadFactory = new NameThreadFactory("ds");
-        RejectedExecutionHandler handler = new ThreadPoolExecutor.DiscardPolicy();
-
-        return new ThreadPoolExecutor(
+        RejectedExecutionHandler handler = new ThreadPoolExecutor.AbortPolicy();
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 corePoolSize,
                 maximumPoolSize,
                 keepAliveTime,
@@ -43,6 +45,8 @@ public class ThreadPoolChangeDemo {
                 workQueue,
                 threadFactory,
                 handler);
+        workQueue.setParent(threadPoolExecutor);
+        return threadPoolExecutor;
     }
 
     /**
@@ -50,20 +54,17 @@ public class ThreadPoolChangeDemo {
      */
     private static void dynamicModifyExecutor(ThreadPoolExecutor executor) throws InterruptedException {
         for (int i = 0; i < 20; i++) {
+            SleepUtils.seconds(1);
             executor.submit(() -> {
                 threadPoolStatus(executor, "创建任务");
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                SleepUtils.seconds(10);
             });
         }
         /*threadPoolStatus(executor, "改变之前");
         executor.setCorePoolSize(10);
         executor.setMaximumPoolSize(10);
         threadPoolStatus(executor, "改变之后");*/
-        Thread.currentThread().join();
+//        Thread.currentThread().join();
     }
 
     /**
@@ -74,7 +75,7 @@ public class ThreadPoolChangeDemo {
      */
     private static void threadPoolStatus(ThreadPoolExecutor executor, String name) {
         LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue) executor.getQueue();
-        System.out.println(new Date().toString() + Thread.currentThread().getName() + "-" + name + "-: " +
+        System.out.println(new Date() + " " + Thread.currentThread().getName() + "-" + name + ": " +
                 " 线程池线程数: " + executor.getPoolSize() +
                 " 活动线程数: " + executor.getActiveCount() +
                 " 核心线程池数: " + executor.getCorePoolSize() +
