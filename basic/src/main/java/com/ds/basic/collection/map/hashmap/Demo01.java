@@ -15,6 +15,14 @@ public class Demo01 {
         map.put("a","a");*/
         System.out.println(tableSizeFor(4));
 
+        int tableLength = tableSizeFor(16);
+        int hash = 15;
+        int i1 = hash % tableLength;
+        System.out.println("i1 = " + i1);
+       // 10000
+       // 01111
+        int i2 = (tableLength - 1) & hash;
+        System.out.println("i2 = " + i2);
     }
 
 
