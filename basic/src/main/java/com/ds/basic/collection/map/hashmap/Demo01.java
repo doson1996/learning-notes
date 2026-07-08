@@ -13,16 +13,30 @@ public class Demo01 {
 
        /* HashMap<String,Object> map = new HashMap<>();
         map.put("a","a");*/
-        System.out.println(tableSizeFor(4));
+        System.out.println(tableSizeFor(33));
 
         int tableLength = tableSizeFor(16);
-        int hash = 15;
-        int i1 = hash % tableLength;
-        System.out.println("i1 = " + i1);
+        int hash1 = 15;
+        int hash2 = 31;
+        int i11 = hash1 % tableLength;
+        System.out.println("i11 = " + i11);
+        // 等于 hash2 % tableLength
+        // 11111 (31)
+        // 01111 (15)
+        int i21 = hash2 & (tableLength - 1);
+        System.out.println("i21 = " + i21);
        // 10000
        // 01111
-        int i2 = (tableLength - 1) & hash;
-        System.out.println("i2 = " + i2);
+        int i12 = tableLength & hash1;
+        System.out.println("i12 = " + i12);
+        int i22 = tableLength & hash2;
+        System.out.println("i22 = " + i22);
+        // tableLength作为2的次方扩容一倍后，hash值不用重新计算
+        tableLength = tableSizeFor(32);
+        i11 = hash1 % tableLength;
+        System.out.println("i11 = " + i11);
+        i21 = hash2 % tableLength;
+        System.out.println("i21 = " + i21);
     }
 
 
