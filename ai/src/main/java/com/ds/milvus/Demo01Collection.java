@@ -5,57 +5,53 @@ import io.milvus.v2.client.MilvusClientV2;
 import io.milvus.v2.common.DataType;
 import io.milvus.v2.service.collection.request.AddFieldReq;
 import io.milvus.v2.service.collection.request.CreateCollectionReq;
+import io.milvus.v2.service.collection.request.DropCollectionReq;
 
 /**
  * @author ds
  * @date 2026/7/10
  * @description
  */
-public class CollectionDemo {
+public class Demo01Collection {
 
     public static void main(String[] args) {
-        String CLUSTER_ENDPOINT = "http://ds.com:19530";
-        String TOKEN = "root:Milvus";
-
-        // 1. Connect to Milvus server
-        ConnectConfig connectConfig = ConnectConfig.builder()
-                .uri(CLUSTER_ENDPOINT)
-//                .token(TOKEN)
-                .build();
-
-        MilvusClientV2 client = new MilvusClientV2(connectConfig);
-
-        // 3. Create a collection in customized setup mode
+        MilvusClientV2 client = MilvusHelper.milvusClient();
 
         // 3.1 Create schema
         CreateCollectionReq.CollectionSchema schema = client.createSchema();
 
         // 3.2 Add fields to schema
         schema.addField(AddFieldReq.builder()
-                .fieldName("my_id")
+                .fieldName("id")
                 .dataType(DataType.Int64)
                 .isPrimaryKey(true)
                 .autoID(false)
                 .build());
 
         schema.addField(AddFieldReq.builder()
-                .fieldName("my_vector")
+                .fieldName("vector")
                 .dataType(DataType.FloatVector)
                 .dimension(5)
                 .build());
 
         schema.addField(AddFieldReq.builder()
-                .fieldName("my_varchar")
+                .fieldName("color")
                 .dataType(DataType.VarChar)
-                .maxLength(512)
+                .maxLength(32)
                 .build());
 
-
         CreateCollectionReq customizedSetupReq2 = CreateCollectionReq.builder()
-                .collectionName("ds")
+                .collectionName(MilvusHelper.COLLECTION_NAME)
                 .collectionSchema(schema)
                 .build();
 
+        // 先删除
+        DropCollectionReq dropDsParam = DropCollectionReq.builder()
+                .collectionName(MilvusHelper.COLLECTION_NAME)
+                .build();
+        client.dropCollection(dropDsParam);
+
+        // 再创建
         client.createCollection(customizedSetupReq2);
     }
 
