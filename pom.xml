@@ -50,6 +50,7 @@
     </properties>
 
     <modules>
+        <module>ai</module>
         <module>basic</module>
         <module>concurrent</module>
         <module>data-structure</module>
