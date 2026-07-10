@@ -1,4 +1,4 @@
-package com.ds;
+package com.ds.dashscope;
 
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
 
