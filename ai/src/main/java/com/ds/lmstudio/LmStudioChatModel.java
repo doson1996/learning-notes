@@ -69,7 +69,6 @@ public class LmStudioChatModel implements ChatModel {
                 JSONObject output = outputArr.getJSONObject(i);
                 if (output != null && !output.isEmpty()) {
                     String type = output.getString("type");
-                    String content = "";
                     String text = "";
                     String thinking = "";
                     if ("message".equals(type)) {
@@ -77,7 +76,7 @@ public class LmStudioChatModel implements ChatModel {
                     }
 
                     if ("reasoning".equals(type)) {
-                        thinking = output.getString("reasoning");
+                        thinking = output.getString("content");
                     }
                     AiMessage aiMessage = AiMessage.builder()
                             .thinking(thinking)
