@@ -1,11 +1,13 @@
 package com.ds.milvus;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import io.milvus.v2.client.MilvusClientV2;
+import io.milvus.v2.service.utility.request.FlushReq;
 import io.milvus.v2.service.vector.request.InsertReq;
 import io.milvus.v2.service.vector.response.InsertResp;
 
@@ -39,5 +41,9 @@ public class Demo02Insert {
 
         InsertResp insertResp = client.insert(insertReq);
         System.out.println(insertResp);
+
+        // flush后才能查询
+        FlushReq flushReq = FlushReq.builder().collectionNames(Collections.singletonList(MilvusHelper.COLLECTION_NAME)).build();
+        client.flush(flushReq);
     }
 }
