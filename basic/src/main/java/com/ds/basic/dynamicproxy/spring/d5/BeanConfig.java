@@ -21,4 +21,9 @@ public class BeanConfig {
         return new Target();
     }
 
+    @Bean
+    public A a() {
+        return new A();
+    }
+
 }
