@@ -19,9 +19,9 @@ public class Aspect1 {
         System.out.println("Aspect1 before2..." + i);
     }
 
-    @Before("execution(* setA(..)) && args(i)")  // 动态调用，需要参数绑定和切点对象
-    public void before3(int i) {
-        System.out.println("Aspect1 before3..." + i);
+    @Before("execution(* setA(..))")  // 动态调用，需要参数绑定和切点对象
+    public void before3() {
+        System.out.println("Aspect1 before3 setA...");
     }
 
     @After("execution(* foo(..))")

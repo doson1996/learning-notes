@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class Target {
 
-    @Autowired
+//    @Autowired
     private A a;
 
     @Autowired
