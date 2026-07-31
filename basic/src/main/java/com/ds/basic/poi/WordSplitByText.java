@@ -8,7 +8,6 @@ import com.aspose.words.Document;
 import com.aspose.words.Node;
 import com.aspose.words.NodeCollection;
 import com.aspose.words.NodeType;
-import com.aspose.words.PageSetup;
 import com.aspose.words.Paragraph;
 import com.aspose.words.SaveFormat;
 import com.aspose.words.Section;
@@ -22,7 +21,7 @@ public class WordSplitByText {
 
     public static void main(String[] args) throws Exception {
         // ========== 配置区域 ==========
-        String srcPath = "D:\\haizhi\\doc\\2025\\03.尽调\\数字分析助手\\报告模板\\重庆银行小微公司授信业务调查报告.docx";               // 源文档
+        String srcPath = "D:\\haizhi\\doc\\2025\\03.尽调\\数字分析助手\\报告模板\\小微公司授信业务调查报告.docx";               // 源文档
         String outputDir = "D:\\haizhi\\doc\\2025\\03.尽调\\数字分析助手\\报告模板\\";                // 输出目录
 
         // 作为拆分依据的标题文本（按文档出现顺序给出）
