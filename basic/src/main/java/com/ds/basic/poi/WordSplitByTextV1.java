@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.aspose.words.Body;
 import com.aspose.words.Document;
 import com.aspose.words.Node;
 import com.aspose.words.NodeCollection;
@@ -102,20 +103,36 @@ public class WordSplitByTextV1 {
      * 完全新建文档，不依赖源 Section，杜绝空指针。
      */
     private static Document extractContent(Document srcDoc, Paragraph start, Paragraph end) throws Exception {
-        Document dstDoc = new Document();                // 默认 A4 空白文档
-        Section dstSection = dstDoc.getFirstSection();  // 新文档一定有 Section
+        // 克隆文档结构（所有样式、主题、列表等），不复制正文
+        Document dstDoc = (Document) srcDoc.deepClone(false);
 
+        // 获取第一节，如果不存在则新建一个（极罕见情况）
+        Section dstSection = dstDoc.getFirstSection();
+        if (dstSection == null) {
+            dstSection = new Section(dstDoc);
+            dstDoc.appendChild(dstSection);
+        }
+        // 确保 Body 存在（正常情况总是有的）
+        Body dstBody = dstSection.getBody();
+        if (dstBody == null) {
+            dstBody = new Body(dstDoc);
+            dstSection.appendChild(dstBody);
+        }
+        // 清空默认空段落，准备导入
+        dstBody.removeAllChildren();
+
+        // 逐节点导入
         Node currNode = start;
         while (currNode != null && currNode != end) {
-            Node nextNode = currNode.getNextSibling(); // 先保存下一个兄弟节点
+            Node nextNode = currNode.getNextSibling();
             Node imported = dstDoc.importNode(currNode, true);
-            dstSection.getBody().appendChild(imported);
+            dstBody.appendChild(imported);
             currNode = nextNode;
         }
 
-        // 确保至少有一个段落（防止保存空文档报错）
-        if (dstSection.getBody().getChildNodes().getCount() == 0) {
-            dstSection.getBody().appendChild(new Paragraph(dstDoc));
+        // 保证至少有一个段落
+        if (dstBody.getChildNodes().getCount() == 0) {
+            dstBody.appendChild(new Paragraph(dstDoc));
         }
 
         return dstDoc;
