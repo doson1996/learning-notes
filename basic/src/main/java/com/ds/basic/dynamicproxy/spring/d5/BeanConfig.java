@@ -18,11 +18,13 @@ public class BeanConfig {
 
     @Bean
     public Target target() {
+        System.out.println("target...");
         return new Target();
     }
 
     @Bean
     public A a() {
+        System.out.println("a...");
         return new A();
     }
 
