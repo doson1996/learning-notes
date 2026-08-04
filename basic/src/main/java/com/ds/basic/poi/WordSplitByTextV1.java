@@ -18,7 +18,7 @@ import com.aspose.words.Table;
 /**
  * @author ds
  * @date 2026/7/31
- * @description 根据标题拆分，再判断有没有内容
+ * @description 根据标题拆分，再判断有没有内容(内网初始版本)
  */
 public class WordSplitByTextV1 {
 
