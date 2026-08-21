@@ -15,7 +15,7 @@ public class Test {
         WordAnalysisService service = new WordAnalysisService(chatModel);
 
         String result = service.analyzeWordDocument(
-                "D:\\haizhi\\doc\\2025\\03.尽调\\数字分析助手\\报告模板\\重庆银行小微公司授信业务调查报告.docx",
+                "D:\\haizhi\\doc\\2025\\03.尽调\\数字分析助手\\报告模板\\小微公司授信业务调查报告.docx",
                 "抓取文档中的注册资金并展示出来"
         );
 

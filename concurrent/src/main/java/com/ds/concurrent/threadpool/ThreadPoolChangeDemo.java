@@ -19,6 +19,7 @@ public class ThreadPoolChangeDemo {
 
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor executor = buildThreadPoolExecutor();
+        executor.prestartAllCoreThreads();
         dynamicModifyExecutor(executor);
         TimeUnit.SECONDS.sleep(30);
         executor.shutdown();
