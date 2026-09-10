@@ -23,6 +23,7 @@ public class Demo03FutureTask {
     public static void main(String[] args) throws Exception {
         FutureTask<String> futureTask = new FutureTask<>(() -> {
             System.out.println("执行任务...");
+            Thread.sleep(2000);
             return "1";
         });
 
@@ -30,8 +31,22 @@ public class Demo03FutureTask {
             threadPool.submit(futureTask);
         }
 
-        String s = futureTask.get();
-        System.out.println("s = " + s);
+        for (int i = 0; i < 5; i++) {
+            int finalI = i;
+            new Thread(()->{
+                String s = null;
+                try {
+                    s = futureTask.get(finalI * 1000, TimeUnit.MILLISECONDS);
+                } catch (Exception e) {
+                    System.out.println(finalI + "异常");
+                    throw new RuntimeException(e);
+                }
+                System.out.println("s" + finalI + " = " + s);
+            }).start();
+        }
+
+
+
 
         threadPool.shutdown();
     }
