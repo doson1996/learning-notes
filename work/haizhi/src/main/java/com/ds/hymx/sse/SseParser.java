@@ -74,7 +74,7 @@ public class SseParser {
                 }
                 break;
             case "retry":
-                // 本示例暂不处理重连间隔，业务层可自行解析
+                // 暂不处理重连间隔，业务层可自行解析
                 break;
             default:
                 // 未知字段忽略
