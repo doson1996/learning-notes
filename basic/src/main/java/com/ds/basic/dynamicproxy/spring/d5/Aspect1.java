@@ -29,6 +29,11 @@ public class Aspect1 {
         System.out.println("Aspect1 after...");
     }
 
+    @After("execution(* afterPropertiesSet(..))")
+    public void after4() {
+        System.out.println("Aspect1 after4 afterPropertiesSet...");
+    }
+
     @Before("execution(* foo(..))")             //静态调用，不需要切点
     public void before1() {
         System.out.println("Aspect1 before1...");
