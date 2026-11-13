@@ -1,5 +1,7 @@
 package com.ds.basic.dynamicproxy.spring.d5;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class Target implements InitializingBean {
 
-//    @Autowired
+    @Resource
     private A a;
 
 //    @PostConstruct
@@ -23,11 +25,11 @@ public class Target implements InitializingBean {
         System.out.println("Target构造方法..");
     }
 
-    @Autowired
-    public void setA(A a) {
-        System.out.println("setA a = " + a);
-        this.a = a;
-    };
+//    @Autowired
+//    public void setA(A a) {
+//        System.out.println("setA a = " + a);
+//        this.a = a;
+//    };
 
     public void foo(int i) {
         System.out.println("foo a = " + i + this.a);
