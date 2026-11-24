@@ -1,6 +1,5 @@
 package com.ds.basic.dynamicproxy.spring.d5;
 
-import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
 import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 import org.springframework.context.annotation.ConfigurationClassPostProcessor;

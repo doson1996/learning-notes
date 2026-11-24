@@ -24,7 +24,7 @@ public class WordSplitByTextV1 {
 
     public static void main(String[] args) throws Exception {
         // ========== 配置区域 ==========
-        String srcPath = "D:\\haizhi\\doc\\2025\\03.尽调\\数字分析助手\\报告模板\\XXXX小微公司授信业务调查报告.docx";               // 源文档
+        String srcPath = "D:\\haizhi\\doc\\2025\\03.尽调\\数字分析助手\\报告模板\\小微公司授信业务调查报告.docx";               // 源文档
         String outputDir = "D:\\haizhi\\doc\\2025\\03.尽调\\数字分析助手\\报告模板\\output";                // 输出目录
 
         // 作为拆分依据的标题文本（按文档出现顺序给出）
@@ -72,11 +72,18 @@ public class WordSplitByTextV1 {
 
         // 2. 按标题位置拆分并保存
         for (int i = 0; i < headingParas.size(); i++) {
-            Paragraph start = headingParas.get(i);
+            Paragraph heading = headingParas.get(i);
+            Paragraph start = heading;
+            if (i == 0) {
+                // 第一个章节从正文第一个段落开始，把封面一起带上
+                start = doc.getFirstSection().getBody().getFirstParagraph();
+            }
+
             Paragraph end = (i + 1 < headingParas.size()) ? headingParas.get(i + 1) : null;
 
             Document newDoc = extractContent(doc, start, end);
-            String titleText = start.toString(SaveFormat.TEXT).trim();
+            // 文件名和空章节判断始终用章节标题，不能用封面首段
+            String titleText = heading.toString(SaveFormat.TEXT).trim();
 
             // ★ 检测空章节（排除标题自身）
             if (isSectionEmpty(newDoc, titleText)) {
