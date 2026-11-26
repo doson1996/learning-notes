@@ -67,21 +67,28 @@ public class WordSplitByTextV2 {
             return;
         }
 
+        // 关键：按文档全局顺序收集所有 Section 的 Body 顶层节点。
+        // 原实现用 start.getNextSibling() 遍历，只能停留在同一个 Section 内，
+        // 封面单独成节时，第一个章节就只截到封面。
+        List<Node> blocks = collectTopLevelBlocks(doc);
+        System.out.println("源文档节数=" + doc.getSections().getCount()
+                + "，匹配标题数=" + headingParas.size() + "，顶层节点数=" + blocks.size());
+
         int savedCount = 0;
         int skippedCount = 0;
 
         // 2. 按标题位置拆分并保存
         for (int i = 0; i < headingParas.size(); i++) {
             Paragraph heading = headingParas.get(i);
-            Paragraph start = heading;
+            Node start = heading;
             if (i == 0) {
-                // 第一个章节从正文第一个段落开始，把封面一起带上
-                start = doc.getFirstSection().getBody().getFirstParagraph();
+                // 第一个章节从文档最开头（封面）开始，跨节也要带上正文
+                start = blocks.isEmpty() ? heading : blocks.get(0);
             }
 
-            Paragraph end = (i + 1 < headingParas.size()) ? headingParas.get(i + 1) : null;
+            Node end = (i + 1 < headingParas.size()) ? headingParas.get(i + 1) : null;
 
-            Document newDoc = extractContent(doc, start, end);
+            Document newDoc = extractContent(doc, start, end, blocks);
             // 文件名和空章节判断始终用章节标题，不能用封面首段
             String titleText = heading.toString(SaveFormat.TEXT).trim();
 
@@ -106,35 +113,70 @@ public class WordSplitByTextV2 {
     }
 
     /**
-     * 提取 start 到 end（不含 end）之间的内容，生成独立文档。
-     * 完全新建文档，不依赖源 Section，杜绝空指针。
+     * 收集整个文档中所有 Section 的 Body 直接子节点，按文档顺序排列。
      */
-    private static Document extractContent(Document srcDoc, Paragraph start, Paragraph end) throws Exception {
-        // 克隆文档结构（所有样式、主题、列表等），不复制正文
+    private static List<Node> collectTopLevelBlocks(Document srcDoc) {
+        List<Node> blocks = new ArrayList<>();
+        for (Section section : srcDoc.getSections()) {
+            Body body = section.getBody();
+            if (body == null) continue;
+            for (Node child = body.getFirstChild(); child != null; child = child.getNextSibling()) {
+                blocks.add(child);
+            }
+        }
+        return blocks;
+    }
+
+    /**
+     * 找到 node 所属的顶层 block（Body 的直接子节点）在 blocks 中的下标。
+     * 标题位于表格单元格内时，返回其所属的最外层表格的下标。
+     */
+    private static int indexOfTopLevelBlock(List<Node> blocks, Node node) {
+        Node top = node;
+        while (top != null && top.getParentNode() != null
+                && top.getNodeType() != NodeType.SECTION
+                && top.getNodeType() != NodeType.DOCUMENT
+                && top.getParentNode().getNodeType() != NodeType.BODY) {
+            top = top.getParentNode();
+        }
+        if (top == null || top.getNodeType() == NodeType.SECTION
+                || top.getNodeType() == NodeType.DOCUMENT) {
+            return -1;
+        }
+        for (int i = 0; i < blocks.size(); i++) {
+            if (blocks.get(i) == top) return i;
+        }
+        return -1;
+    }
+
+    /**
+     * 提取 start 到 end（不含 end）之间的顶层节点，生成独立文档。
+     * 基于全局 block 列表按位置切片，可跨越 Section 分节符。
+     */
+    private static Document extractContent(Document srcDoc, Node start, Node end,
+                                           List<Node> blocks) throws Exception {
+        // 克隆文档结构（样式、主题、列表等），不复制正文
         Document dstDoc = (Document) srcDoc.deepClone(false);
 
-        // 获取第一节，如果不存在则新建一个（极罕见情况）
         Section dstSection = dstDoc.getFirstSection();
         if (dstSection == null) {
             dstSection = new Section(dstDoc);
             dstDoc.appendChild(dstSection);
         }
-        // 确保 Body 存在（正常情况总是有的）
         Body dstBody = dstSection.getBody();
         if (dstBody == null) {
             dstBody = new Body(dstDoc);
             dstSection.appendChild(dstBody);
         }
-        // 清空默认空段落，准备导入
         dstBody.removeAllChildren();
 
-        // 逐节点导入
-        Node currNode = start;
-        while (currNode != null && currNode != end) {
-            Node nextNode = currNode.getNextSibling();
-            Node imported = dstDoc.importNode(currNode, true);
-            dstBody.appendChild(imported);
-            currNode = nextNode;
+        int startIdx = indexOfTopLevelBlock(blocks, start);
+        int endIdx = (end == null) ? blocks.size() : indexOfTopLevelBlock(blocks, end);
+        if (startIdx < 0) startIdx = 0;
+        if (endIdx < startIdx) endIdx = blocks.size();
+
+        for (int i = startIdx; i < endIdx; i++) {
+            dstBody.appendChild(dstDoc.importNode(blocks.get(i), true));
         }
 
         // 保证至少有一个段落
